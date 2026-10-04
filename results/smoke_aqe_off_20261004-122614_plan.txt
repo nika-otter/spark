@@ -1,0 +1,74 @@
+== Physical Plan ==
+OverwriteByExpression (13)
++- * Project (12)
+   +- * SortMergeJoin Inner (11)
+      :- * Sort (5)
+      :  +- Exchange (4)
+      :     +- * Filter (3)
+      :        +- * ColumnarToRow (2)
+      :           +- Scan parquet  (1)
+      +- * Sort (10)
+         +- Exchange (9)
+            +- * Filter (8)
+               +- * ColumnarToRow (7)
+                  +- Scan parquet  (6)
+
+
+(1) Scan parquet 
+Output [3]: [id#0L, dim_id#1L, amount#2]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/smoke/fact]
+PushedFilters: [IsNotNull(dim_id)]
+ReadSchema: struct<id:bigint,dim_id:bigint,amount:double>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [3]: [id#0L, dim_id#1L, amount#2]
+
+(3) Filter [codegen id : 1]
+Input [3]: [id#0L, dim_id#1L, amount#2]
+Condition : isnotnull(dim_id#1L)
+
+(4) Exchange
+Input [3]: [id#0L, dim_id#1L, amount#2]
+Arguments: hashpartitioning(dim_id#1L, 200), ENSURE_REQUIREMENTS, [plan_id=53]
+
+(5) Sort [codegen id : 2]
+Input [3]: [id#0L, dim_id#1L, amount#2]
+Arguments: [dim_id#1L ASC NULLS FIRST], false, 0
+
+(6) Scan parquet 
+Output [3]: [dim_id#3L, category#4L, payload#5]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/smoke/dim]
+PushedFilters: [IsNotNull(category), EqualTo(category,7), IsNotNull(dim_id)]
+ReadSchema: struct<dim_id:bigint,category:bigint,payload:string>
+
+(7) ColumnarToRow [codegen id : 3]
+Input [3]: [dim_id#3L, category#4L, payload#5]
+
+(8) Filter [codegen id : 3]
+Input [3]: [dim_id#3L, category#4L, payload#5]
+Condition : ((isnotnull(category#4L) AND (category#4L = 7)) AND isnotnull(dim_id#3L))
+
+(9) Exchange
+Input [3]: [dim_id#3L, category#4L, payload#5]
+Arguments: hashpartitioning(dim_id#3L, 200), ENSURE_REQUIREMENTS, [plan_id=62]
+
+(10) Sort [codegen id : 4]
+Input [3]: [dim_id#3L, category#4L, payload#5]
+Arguments: [dim_id#3L ASC NULLS FIRST], false, 0
+
+(11) SortMergeJoin [codegen id : 5]
+Left keys [1]: [dim_id#1L]
+Right keys [1]: [dim_id#3L]
+Join type: Inner
+Join condition: None
+
+(12) Project [codegen id : 5]
+Output [5]: [dim_id#1L, id#0L, amount#2, category#4L, payload#5]
+Input [6]: [id#0L, dim_id#1L, amount#2, dim_id#3L, category#4L, payload#5]
+
+(13) OverwriteByExpression
+Input [5]: [dim_id#1L, id#0L, amount#2, category#4L, payload#5]
+Arguments: NoopWrite
+

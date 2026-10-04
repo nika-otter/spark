@@ -1,0 +1,150 @@
+== Physical Plan ==
+OverwriteByExpression (27)
++- AdaptiveSparkPlan (26)
+   +- == Final Plan ==
+      ResultQueryStage (17), Statistics(sizeInBytes=8.0 EiB)
+      +- * Project (16)
+         +- * BroadcastHashJoin Inner BuildRight (15)
+            :- AQEShuffleRead (6)
+            :  +- ShuffleQueryStage (5), Statistics(sizeInBytes=305.2 MiB, rowCount=1.00E+7)
+            :     +- Exchange (4)
+            :        +- * Filter (3)
+            :           +- * ColumnarToRow (2)
+            :              +- Scan parquet  (1)
+            +- BroadcastQueryStage (14), Statistics(sizeInBytes=1056.0 KiB, rowCount=1.00E+3)
+               +- BroadcastExchange (13)
+                  +- AQEShuffleRead (12)
+                     +- ShuffleQueryStage (11), Statistics(sizeInBytes=93.8 KiB, rowCount=1.00E+3)
+                        +- Exchange (10)
+                           +- * Filter (9)
+                              +- * ColumnarToRow (8)
+                                 +- Scan parquet  (7)
+   +- == Initial Plan ==
+      Project (25)
+      +- SortMergeJoin Inner (24)
+         :- Sort (20)
+         :  +- Exchange (19)
+         :     +- Filter (18)
+         :        +- Scan parquet  (1)
+         +- Sort (23)
+            +- Exchange (22)
+               +- Filter (21)
+                  +- Scan parquet  (7)
+
+
+(1) Scan parquet 
+Output [3]: [id#0L, dim_id#1L, amount#2]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/smoke/fact]
+PushedFilters: [IsNotNull(dim_id)]
+ReadSchema: struct<id:bigint,dim_id:bigint,amount:double>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [3]: [id#0L, dim_id#1L, amount#2]
+
+(3) Filter [codegen id : 1]
+Input [3]: [id#0L, dim_id#1L, amount#2]
+Condition : isnotnull(dim_id#1L)
+
+(4) Exchange
+Input [3]: [id#0L, dim_id#1L, amount#2]
+Arguments: hashpartitioning(dim_id#1L, 200), ENSURE_REQUIREMENTS, [plan_id=50]
+
+(5) ShuffleQueryStage
+Output [3]: [id#0L, dim_id#1L, amount#2]
+Arguments: 0
+
+(6) AQEShuffleRead
+Input [3]: [id#0L, dim_id#1L, amount#2]
+Arguments: local
+
+(7) Scan parquet 
+Output [3]: [dim_id#3L, category#4L, payload#5]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/smoke/dim]
+PushedFilters: [IsNotNull(category), EqualTo(category,7), IsNotNull(dim_id)]
+ReadSchema: struct<dim_id:bigint,category:bigint,payload:string>
+
+(8) ColumnarToRow [codegen id : 2]
+Input [3]: [dim_id#3L, category#4L, payload#5]
+
+(9) Filter [codegen id : 2]
+Input [3]: [dim_id#3L, category#4L, payload#5]
+Condition : ((isnotnull(category#4L) AND (category#4L = 7)) AND isnotnull(dim_id#3L))
+
+(10) Exchange
+Input [3]: [dim_id#3L, category#4L, payload#5]
+Arguments: hashpartitioning(dim_id#3L, 200), ENSURE_REQUIREMENTS, [plan_id=72]
+
+(11) ShuffleQueryStage
+Output [3]: [dim_id#3L, category#4L, payload#5]
+Arguments: 1
+
+(12) AQEShuffleRead
+Input [3]: [dim_id#3L, category#4L, payload#5]
+Arguments: local
+
+(13) BroadcastExchange
+Input [3]: [dim_id#3L, category#4L, payload#5]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, false]),false), [plan_id=99]
+
+(14) BroadcastQueryStage
+Output [3]: [dim_id#3L, category#4L, payload#5]
+Arguments: 2
+
+(15) BroadcastHashJoin [codegen id : 3]
+Left keys [1]: [dim_id#1L]
+Right keys [1]: [dim_id#3L]
+Join type: Inner
+Join condition: None
+
+(16) Project [codegen id : 3]
+Output [5]: [dim_id#1L, id#0L, amount#2, category#4L, payload#5]
+Input [6]: [id#0L, dim_id#1L, amount#2, dim_id#3L, category#4L, payload#5]
+
+(17) ResultQueryStage
+Output [5]: [dim_id#1L, id#0L, amount#2, category#4L, payload#5]
+Arguments: 3
+
+(18) Filter
+Input [3]: [id#0L, dim_id#1L, amount#2]
+Condition : isnotnull(dim_id#1L)
+
+(19) Exchange
+Input [3]: [id#0L, dim_id#1L, amount#2]
+Arguments: hashpartitioning(dim_id#1L, 200), ENSURE_REQUIREMENTS, [plan_id=31]
+
+(20) Sort
+Input [3]: [id#0L, dim_id#1L, amount#2]
+Arguments: [dim_id#1L ASC NULLS FIRST], false, 0
+
+(21) Filter
+Input [3]: [dim_id#3L, category#4L, payload#5]
+Condition : ((isnotnull(category#4L) AND (category#4L = 7)) AND isnotnull(dim_id#3L))
+
+(22) Exchange
+Input [3]: [dim_id#3L, category#4L, payload#5]
+Arguments: hashpartitioning(dim_id#3L, 200), ENSURE_REQUIREMENTS, [plan_id=32]
+
+(23) Sort
+Input [3]: [dim_id#3L, category#4L, payload#5]
+Arguments: [dim_id#3L ASC NULLS FIRST], false, 0
+
+(24) SortMergeJoin
+Left keys [1]: [dim_id#1L]
+Right keys [1]: [dim_id#3L]
+Join type: Inner
+Join condition: None
+
+(25) Project
+Output [5]: [dim_id#1L, id#0L, amount#2, category#4L, payload#5]
+Input [6]: [id#0L, dim_id#1L, amount#2, dim_id#3L, category#4L, payload#5]
+
+(26) AdaptiveSparkPlan
+Output [5]: [dim_id#1L, id#0L, amount#2, category#4L, payload#5]
+Arguments: isFinalPlan=true
+
+(27) OverwriteByExpression
+Input [5]: [dim_id#1L, id#0L, amount#2, category#4L, payload#5]
+Arguments: NoopWrite
+

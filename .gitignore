@@ -1,0 +1,17 @@
+# Data and logs (normally on Docker volumes; ignored in case of local copies)
+data/
+spark-events/
+spark-warehouse/
+metastore_db/
+*.parquet
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
