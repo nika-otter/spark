@@ -5,19 +5,37 @@ Writes results/smoke_aqe_<on|off>_<timestamp>.json and ..._plan.txt.
 """
 
 import argparse
+import json
+import os
 import time
 
 from pyspark.sql import functions as F
 
-from spark_conf import (
-    DATA_DIR,
-    build_session,
-    effective_conf,
-    environment_info,
-    executor_task_summary,
-    last_sql_execution,
-    write_run_record,
-)
+from metrics import Rest
+from spark_conf import DATA_DIR, RESULTS_DIR, build_session, effective_conf, environment_info
+
+
+def last_sql_execution(rest):
+    """Latest completed SQL execution, including its final physical plan."""
+    executions = rest.get("/sql?details=true&planDescription=true&length=10000")
+    completed = [e for e in executions if e["status"] == "COMPLETED"]
+    return max(completed, key=lambda e: e["id"])
+
+
+def executor_task_summary(rest):
+    """Completed tasks per executor host (the driver entry is excluded)."""
+    return {e["hostPort"]: e["completedTasks"] for e in rest.get("/allexecutors")
+            if e["id"] != "driver"}
+
+
+def write_run_record(run_name, record):
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+    base = os.path.join(RESULTS_DIR, "{}_{}".format(run_name, time.strftime("%Y%m%d-%H%M%S")))
+    with open(base + ".json", "w") as f:
+        json.dump(record, f, indent=2, sort_keys=True)
+    with open(base + "_plan.txt", "w") as f:
+        f.write(record["final_physical_plan"])
+    return base
 
 
 def main():
@@ -38,13 +56,14 @@ def main():
     result.write.format("noop").mode("overwrite").save()
     elapsed = time.perf_counter() - start
 
-    execution = last_sql_execution(spark)
+    rest = Rest(spark)
+    execution = last_sql_execution(rest)
     record = {
         "run": run_name,
         "elapsed_seconds": round(elapsed, 3),
         "sql_execution_duration_ms": execution["duration"],
         "final_physical_plan": execution["planDescription"],
-        "tasks_per_executor": executor_task_summary(spark),
+        "tasks_per_executor": executor_task_summary(rest),
         "environment": environment_info(spark),
         "conf": effective_conf(spark),
     }

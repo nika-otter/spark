@@ -1,7 +1,7 @@
 COMPOSE := docker compose
 SUBMIT  := $(COMPOSE) exec spark-master /opt/spark/bin/spark-submit
 
-.PHONY: up down status logs submit smoke-generate smoke history-check
+.PHONY: up down status logs submit smoke-generate smoke history-check venv pilot-null pilot-null-summary
 
 up:            ## Start master, 3 workers and History Server
 	$(COMPOSE) up -d
@@ -30,3 +30,12 @@ smoke:         ## Run the smoke join with AQE off and on
 
 history-check: ## List applications known to the History Server
 	@curl -s http://localhost:18080/api/v1/applications | python3 -m json.tool
+
+venv:          ## Project-local Python env for analysis (pandas, matplotlib)
+	python3 -m venv .venv && .venv/bin/pip install -q pandas matplotlib
+
+pilot-null:    ## Generate datasets and run the NULL-share pilot grid (~2 h)
+	scripts/run_pilot_null.sh all 2>&1 | tee results/pilot_null_grid.log
+
+pilot-null-summary: ## Build results/pilot_null_summary.csv and the plot
+	.venv/bin/python analysis/pilot_null.py

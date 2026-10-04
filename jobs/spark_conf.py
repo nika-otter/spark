@@ -1,16 +1,12 @@
 """Baseline Spark SQL configuration shared by all jobs.
 
-Every value is set explicitly (even where it equals the Spark default) so that
+Every value is set explicitly (all equal to the Spark 4.1.3 defaults) so that
 each run records exactly which parameters it used. CBO is disabled and
 ANALYZE TABLE is never used: the static planner only sees file-size based
 estimates, and AQE only sees runtime statistics.
 """
 
-import json
-import os
 import platform
-import time
-import urllib.request
 
 from pyspark.sql import SparkSession
 
@@ -36,6 +32,17 @@ BASELINE_CONF = {
     "spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes": str(256 * 1024 * 1024),
 }
 
+# Internal (non-public) confs that `SET -v` does not list but that affect
+# join planning; their resolved values are recorded explicitly.
+EXTRA_RECORDED_KEYS = [
+    "spark.sql.join.preferSortMergeJoin",
+    "spark.sql.adaptive.forceOptimizeSkewedJoin",
+    "spark.sql.adaptive.maxShuffledHashJoinLocalMapThreshold",
+    "spark.sql.adaptive.coalescePartitions.initialPartitionNum",
+    "spark.sql.adaptive.optimizer.excludedRules",
+    "spark.sql.shuffle.compression.codec",
+]
+
 
 def build_session(app_name, overrides=None):
     """Create a SparkSession with the baseline config plus per-run overrides."""
@@ -49,46 +56,21 @@ def build_session(app_name, overrides=None):
 
 
 def effective_conf(spark):
-    """Return every explicitly set Spark/SQL property of the running session."""
+    """Full effective configuration of the running session.
+
+    Contains the SparkConf (cluster/application settings), every public SQL
+    conf with its resolved value (`SET -v`, defaults included), every SQL conf
+    set in the session, and the internal keys from EXTRA_RECORDED_KEYS.
+    """
     props = dict(spark.sparkContext.getConf().getAll())
-    for key in BASELINE_CONF:
-        props[key] = spark.conf.get(key)
+    props.update({r.key: r.value for r in spark.sql("SET -v").collect()})
+    props.update({r.key: r.value for r in spark.sql("SET").collect()})
+    for key in EXTRA_RECORDED_KEYS:
+        try:
+            props[key] = spark.conf.get(key)
+        except Exception:  # key unknown to this Spark version
+            props[key] = None
     return dict(sorted(props.items()))
-
-
-def rest_get(spark, path):
-    """Query the driver's monitoring REST API (/api/v1/...)."""
-    app_id = spark.sparkContext.applicationId
-    url = "http://localhost:4040/api/v1/applications/{}{}".format(app_id, path)
-    with urllib.request.urlopen(url) as resp:
-        return json.loads(resp.read())
-
-
-def last_sql_execution(spark):
-    """Latest completed SQL execution, including its final physical plan."""
-    executions = rest_get(spark, "/sql?details=true&planDescription=true&length=10000")
-    completed = [e for e in executions if e["status"] == "COMPLETED"]
-    return max(completed, key=lambda e: e["id"])
-
-
-def executor_task_summary(spark):
-    """Completed tasks per executor host (the driver entry is excluded)."""
-    return {
-        e["hostPort"]: e["completedTasks"]
-        for e in rest_get(spark, "/allexecutors")
-        if e["id"] != "driver"
-    }
-
-
-def write_run_record(run_name, record):
-    os.makedirs(RESULTS_DIR, exist_ok=True)
-    stamp = time.strftime("%Y%m%d-%H%M%S")
-    base = os.path.join(RESULTS_DIR, "{}_{}".format(run_name, stamp))
-    with open(base + ".json", "w") as f:
-        json.dump(record, f, indent=2, sort_keys=True)
-    with open(base + "_plan.txt", "w") as f:
-        f.write(record["final_physical_plan"])
-    return base
 
 
 def environment_info(spark):

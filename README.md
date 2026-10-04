@@ -22,6 +22,9 @@ Docker Desktop with **10 CPUs** and **22 GB** memory (Settings → Resources).
 | `make smoke-generate` | Write smoke-test tables (10M and 1M rows) as Parquet |
 | `make smoke` | Run the smoke join with AQE off, then on |
 | `make history-check` | List applications known to the History Server |
+| `make venv` | Create the project-local `.venv` used by `analysis/` |
+| `make pilot-null` | Generate datasets and run the NULL-share pilot grid |
+| `make pilot-null-summary` | Summary CSV and plot for the pilot |
 
 To delete all data and event logs: `docker compose down -v`.
 
@@ -38,9 +41,27 @@ To delete all data and event logs: `docker compose down -v`.
 |---|---|
 | `docker-compose.yml` | Cluster definition, resource limits, volumes |
 | `conf/spark-defaults.conf` | Infrastructure settings (master URL, executor sizing, event log) |
-| `jobs/spark_conf.py` | Baseline experiment config (shuffle partitions, AQE, broadcast threshold, CBO off) and run-recording helpers |
+| `jobs/spark_conf.py` | Baseline experiment config (shuffle partitions, AQE, broadcast threshold, CBO off) and effective-config dump |
+| `jobs/generate.py` | Deterministic data generator (facts, dim) with per-dataset manifest |
+| `jobs/metrics.py` | Per-run metrics from the driver REST API -> JSON + `results/runs.csv` |
+| `jobs/experiments.py` | Experiment definitions (datasets, query, conf overrides) |
+| `jobs/run_experiment.py` | One app per (scenario, mode): 1 warm-up + 5 measured runs to noop |
 | `jobs/smoke_*.py` | Smoke test |
-| `results/` | Per-run JSON (time, effective config, tasks per executor) and final physical plan |
+| `scripts/run_pilot_null.sh` | Pilot grid driver |
+| `analysis/pilot_null.py` | Pilot summary and plot (runs on the host in `.venv`) |
+| `results/runs.csv` | One row per run; full record in `results/runs/<experiment>/<scenario>/<mode>/*.json` |
+| `results/calibration/` | Calibration runs for the pilot |
+
+## Generator and runner
+
+```
+make submit JOB=jobs/generate.py ARGS="facts --rows 1000000 --n-keys 1000 --null-share 0.1"
+make submit JOB=jobs/run_experiment.py ARGS="--experiment pilot_null --mode aqe_on --param join=left --param null_share=0.12"
+```
+
+Datasets are written to `/opt/spark-data/datasets/<id>/data` with
+`manifest.json` next to it; `<id>` encodes all parameters and existing
+datasets are not regenerated.
 
 ## Storage
 
