@@ -42,6 +42,7 @@ def main():
     parser.add_argument("--warmup", type=int, default=1)
     parser.add_argument("--csv", default=RESULTS_DIR + "/runs.csv")
     parser.add_argument("--generate-only", action="store_true")
+    parser.add_argument("--job-id", default=None, help="batch job id recorded with each run")
     args = parser.parse_args()
 
     scenario = build_scenario(args.experiment, args.param)
@@ -85,6 +86,7 @@ def main():
 
         record = {
             "recorded_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+            "job_id": args.job_id,
             "experiment": scenario.experiment,
             "scenario_id": scenario.scenario_id,
             "mode": args.mode,

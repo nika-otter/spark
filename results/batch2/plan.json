@@ -1,0 +1,1706 @@
+[
+ {
+  "job_id": "r1_000_inner_check_null_share-0_aqe_on_nocoalesce",
+  "round": 1,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on_nocoalesce"
+ },
+ {
+  "job_id": "r1_001_exp_a_small_null_share-0_aqe_off",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_002_exp_c_compression_codec-lz4_payload_kind-repetitive_aqe_on",
+  "round": 1,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "lz4"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_003_exp_b_partitions_shuffle_partitions-2001_aqe_on",
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_004_inner_check_null_share-0.12_aqe_on_nocoalesce",
+  "round": 1,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.12
+  },
+  "mode": "aqe_on_nocoalesce"
+ },
+ {
+  "job_id": "r1_005_exp_a_small_null_share-0.3_aqe_on_skew64m",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.3
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r1_006_exp_a_small_null_share-0.05_aqe_off",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.05
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_007_exp_a_small_null_share-0_aqe_on_skew64m",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r1_008_exp_c_compression_codec-lz4_payload_kind-random_aqe_on",
+  "round": 1,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "lz4"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_009_exp_a_small_null_share-0.1_aqe_off",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.1
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_010_exp_c_compression_codec-zstd_payload_kind-repetitive_aqe_off",
+  "round": 1,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "zstd"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_011_exp_a_small_null_share-0.15_aqe_on_skew64m",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.15
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r1_012_exp_c_compression_codec-lz4_payload_kind-random_aqe_off",
+  "round": 1,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "lz4"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_013_exp_b_partitions_shuffle_partitions-4000_aqe_on",
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 4000
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_014_exp_a_small_null_share-0.3_aqe_on",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.3
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_015_exp_c_compression_codec-lz4_payload_kind-repetitive_aqe_off",
+  "round": 1,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "lz4"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_016_exp_a_small_null_share-0.1_aqe_on_skew64m",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.1
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r1_017_exp_a_small_null_share-0.2_aqe_off",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.2
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_018_exp_b_partitions_shuffle_partitions-2001_aqe_off",
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_019_exp_a_small_null_share-0_aqe_on",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_020_inner_check_null_share-0.12_aqe_off",
+  "round": 1,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.12
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_021_exp_a_small_null_share-0.15_aqe_off",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.15
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_022_exp_c_compression_codec-zstd_payload_kind-random_aqe_on",
+  "round": 1,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "zstd"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_023_exp_a_small_null_share-0.2_aqe_on_skew64m",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.2
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r1_024_exp_c_compression_codec-zstd_payload_kind-repetitive_aqe_on",
+  "round": 1,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "zstd"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_025_exp_a_small_null_share-0.05_aqe_on_skew64m",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.05
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r1_026_exp_a_small_null_share-0.2_aqe_on",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.2
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_027_inner_check_null_share-0_aqe_off",
+  "round": 1,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_028_exp_b_partitions_shuffle_partitions-200_aqe_on",
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_029_exp_b_partitions_shuffle_partitions-2000_aqe_on",
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2000
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_030_exp_a_small_null_share-0.15_aqe_on",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.15
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_031_exp_a_small_null_share-0.03_rows-55000000_aqe_off",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "rows": 55000000,
+   "null_share": 0.03
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_032_exp_b_partitions_accurate_skew_factor-5.0_shuffle_partitions-4000_aqe_on",
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 4000,
+   "accurate_skew_factor": 5.0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_033_inner_check_null_share-0_aqe_on",
+  "round": 1,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_034_exp_c_compression_codec-zstd_payload_kind-random_aqe_off",
+  "round": 1,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "zstd"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_035_inner_check_null_share-0.5_aqe_off",
+  "round": 1,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.5
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_036_exp_a_small_null_share-0.05_aqe_on",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.05
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_037_exp_a_small_null_share-0.3_aqe_off",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.3
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_038_exp_b_partitions_shuffle_partitions-200_aqe_off",
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r1_039_exp_a_small_null_share-0.03_rows-55000000_aqe_on",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "rows": 55000000,
+   "null_share": 0.03
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_040_exp_b_partitions_shuffle_partitions-1000_aqe_on",
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 1000
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_041_inner_check_null_share-0.5_aqe_on",
+  "round": 1,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.5
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_042_exp_a_small_null_share-0.1_aqe_on",
+  "round": 1,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.1
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_043_inner_check_null_share-0.12_aqe_on",
+  "round": 1,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.12
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_044_exp_b_partitions_accurate_skew_factor-5.0_shuffle_partitions-2001_aqe_on",
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001,
+   "accurate_skew_factor": 5.0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r1_045_inner_check_null_share-0.5_aqe_on_nocoalesce",
+  "round": 1,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.5
+  },
+  "mode": "aqe_on_nocoalesce"
+ },
+ {
+  "job_id": "r2_000_exp_c_compression_codec-zstd_payload_kind-random_aqe_off",
+  "round": 2,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "zstd"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_001_exp_a_small_null_share-0_aqe_off",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_002_exp_a_small_null_share-0.2_aqe_on",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.2
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_003_exp_b_partitions_shuffle_partitions-2001_aqe_on",
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_004_inner_check_null_share-0.5_aqe_off",
+  "round": 2,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.5
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_005_exp_a_small_null_share-0.1_aqe_off",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.1
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_006_inner_check_null_share-0.12_aqe_on",
+  "round": 2,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.12
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_007_exp_b_partitions_shuffle_partitions-1000_aqe_on",
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 1000
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_008_exp_a_small_null_share-0.3_aqe_on_skew64m",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.3
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r2_009_exp_a_small_null_share-0.2_aqe_off",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.2
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_010_exp_a_small_null_share-0.15_aqe_on_skew64m",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.15
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r2_011_exp_a_small_null_share-0.15_aqe_off",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.15
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_012_exp_b_partitions_accurate_skew_factor-5.0_shuffle_partitions-2001_aqe_on",
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001,
+   "accurate_skew_factor": 5.0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_013_exp_a_small_null_share-0.3_aqe_off",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.3
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_014_exp_c_compression_codec-zstd_payload_kind-repetitive_aqe_on",
+  "round": 2,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "zstd"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_015_inner_check_null_share-0.5_aqe_on",
+  "round": 2,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.5
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_016_exp_b_partitions_shuffle_partitions-200_aqe_off",
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_017_exp_c_compression_codec-lz4_payload_kind-repetitive_aqe_on",
+  "round": 2,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "lz4"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_018_exp_b_partitions_shuffle_partitions-2001_aqe_off",
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_019_exp_b_partitions_accurate_skew_factor-5.0_shuffle_partitions-4000_aqe_on",
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 4000,
+   "accurate_skew_factor": 5.0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_020_exp_a_small_null_share-0.05_aqe_off",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.05
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_021_exp_b_partitions_shuffle_partitions-4000_aqe_on",
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 4000
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_022_exp_a_small_null_share-0.03_rows-55000000_aqe_on",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "rows": 55000000,
+   "null_share": 0.03
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_023_exp_a_small_null_share-0_aqe_on_skew64m",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r2_024_inner_check_null_share-0_aqe_off",
+  "round": 2,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_025_inner_check_null_share-0_aqe_on",
+  "round": 2,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_026_inner_check_null_share-0.5_aqe_on_nocoalesce",
+  "round": 2,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.5
+  },
+  "mode": "aqe_on_nocoalesce"
+ },
+ {
+  "job_id": "r2_027_exp_c_compression_codec-lz4_payload_kind-random_aqe_on",
+  "round": 2,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "lz4"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_028_exp_a_small_null_share-0.05_aqe_on_skew64m",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.05
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r2_029_exp_b_partitions_shuffle_partitions-200_aqe_on",
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_030_exp_a_small_null_share-0.1_aqe_on_skew64m",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.1
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r2_031_exp_c_compression_codec-lz4_payload_kind-repetitive_aqe_off",
+  "round": 2,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "lz4"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_032_exp_b_partitions_shuffle_partitions-2000_aqe_on",
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2000
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_033_exp_a_small_null_share-0.3_aqe_on",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.3
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_034_exp_a_small_null_share-0.03_rows-55000000_aqe_off",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "rows": 55000000,
+   "null_share": 0.03
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_035_exp_c_compression_codec-zstd_payload_kind-random_aqe_on",
+  "round": 2,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "zstd"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_036_inner_check_null_share-0_aqe_on_nocoalesce",
+  "round": 2,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on_nocoalesce"
+ },
+ {
+  "job_id": "r2_037_exp_a_small_null_share-0.05_aqe_on",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.05
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_038_exp_c_compression_codec-lz4_payload_kind-random_aqe_off",
+  "round": 2,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "lz4"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_039_exp_a_small_null_share-0.1_aqe_on",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.1
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_040_exp_a_small_null_share-0.15_aqe_on",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.15
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_041_exp_a_small_null_share-0_aqe_on",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r2_042_exp_a_small_null_share-0.2_aqe_on_skew64m",
+  "round": 2,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.2
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r2_043_exp_c_compression_codec-zstd_payload_kind-repetitive_aqe_off",
+  "round": 2,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "zstd"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r2_044_inner_check_null_share-0.12_aqe_on_nocoalesce",
+  "round": 2,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.12
+  },
+  "mode": "aqe_on_nocoalesce"
+ },
+ {
+  "job_id": "r2_045_inner_check_null_share-0.12_aqe_off",
+  "round": 2,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.12
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_000_exp_a_small_null_share-0.03_rows-55000000_aqe_on",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "rows": 55000000,
+   "null_share": 0.03
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_001_exp_a_small_null_share-0.03_rows-55000000_aqe_off",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "rows": 55000000,
+   "null_share": 0.03
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_002_exp_a_small_null_share-0.05_aqe_on",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.05
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_003_exp_a_small_null_share-0_aqe_on",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_004_exp_a_small_null_share-0_aqe_on_skew64m",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r3_005_exp_a_small_null_share-0.2_aqe_on",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.2
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_006_inner_check_null_share-0.12_aqe_off",
+  "round": 3,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.12
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_007_exp_c_compression_codec-lz4_payload_kind-repetitive_aqe_off",
+  "round": 3,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "lz4"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_008_inner_check_null_share-0.5_aqe_off",
+  "round": 3,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.5
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_009_exp_a_small_null_share-0_aqe_off",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_010_exp_c_compression_codec-zstd_payload_kind-random_aqe_on",
+  "round": 3,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "zstd"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_011_exp_b_partitions_shuffle_partitions-2001_aqe_on",
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_012_exp_a_small_null_share-0.15_aqe_off",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.15
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_013_exp_a_small_null_share-0.15_aqe_on",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.15
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_014_exp_a_small_null_share-0.2_aqe_off",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.2
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_015_inner_check_null_share-0_aqe_on",
+  "round": 3,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_016_inner_check_null_share-0.12_aqe_on_nocoalesce",
+  "round": 3,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.12
+  },
+  "mode": "aqe_on_nocoalesce"
+ },
+ {
+  "job_id": "r3_017_inner_check_null_share-0_aqe_on_nocoalesce",
+  "round": 3,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on_nocoalesce"
+ },
+ {
+  "job_id": "r3_018_exp_b_partitions_accurate_skew_factor-5.0_shuffle_partitions-2001_aqe_on",
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001,
+   "accurate_skew_factor": 5.0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_019_exp_b_partitions_shuffle_partitions-200_aqe_on",
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_020_exp_c_compression_codec-lz4_payload_kind-repetitive_aqe_on",
+  "round": 3,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "lz4"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_021_exp_a_small_null_share-0.3_aqe_off",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.3
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_022_exp_a_small_null_share-0.3_aqe_on",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.3
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_023_inner_check_null_share-0.5_aqe_on",
+  "round": 3,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.5
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_024_exp_c_compression_codec-zstd_payload_kind-random_aqe_off",
+  "round": 3,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "zstd"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_025_exp_a_small_null_share-0.15_aqe_on_skew64m",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.15
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r3_026_exp_b_partitions_shuffle_partitions-2000_aqe_on",
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2000
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_027_exp_c_compression_codec-zstd_payload_kind-repetitive_aqe_on",
+  "round": 3,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "zstd"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_028_exp_b_partitions_shuffle_partitions-1000_aqe_on",
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 1000
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_029_exp_a_small_null_share-0.3_aqe_on_skew64m",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.3
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r3_030_exp_a_small_null_share-0.1_aqe_on_skew64m",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.1
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r3_031_exp_b_partitions_shuffle_partitions-4000_aqe_on",
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 4000
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_032_exp_a_small_null_share-0.05_aqe_off",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.05
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_033_exp_a_small_null_share-0.05_aqe_on_skew64m",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.05
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r3_034_exp_a_small_null_share-0.1_aqe_on",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.1
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_035_exp_c_compression_codec-lz4_payload_kind-random_aqe_on",
+  "round": 3,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "lz4"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_036_inner_check_null_share-0_aqe_off",
+  "round": 3,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_037_inner_check_null_share-0.12_aqe_on",
+  "round": 3,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.12
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_038_exp_c_compression_codec-zstd_payload_kind-repetitive_aqe_off",
+  "round": 3,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "zstd"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_039_exp_b_partitions_shuffle_partitions-200_aqe_off",
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_040_exp_c_compression_codec-lz4_payload_kind-random_aqe_off",
+  "round": 3,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "lz4"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_041_exp_a_small_null_share-0.2_aqe_on_skew64m",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.2
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r3_042_inner_check_null_share-0.5_aqe_on_nocoalesce",
+  "round": 3,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.5
+  },
+  "mode": "aqe_on_nocoalesce"
+ },
+ {
+  "job_id": "r3_043_exp_b_partitions_shuffle_partitions-2001_aqe_off",
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r3_044_exp_b_partitions_accurate_skew_factor-5.0_shuffle_partitions-4000_aqe_on",
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 4000,
+   "accurate_skew_factor": 5.0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r3_045_exp_a_small_null_share-0.1_aqe_off",
+  "round": 3,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.1
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_000_exp_c_compression_codec-lz4_payload_kind-random_aqe_off",
+  "round": 4,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "lz4"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_001_exp_c_compression_codec-zstd_payload_kind-repetitive_aqe_on",
+  "round": 4,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "zstd"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_002_exp_b_partitions_shuffle_partitions-1000_aqe_on",
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 1000
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_003_inner_check_null_share-0_aqe_on_nocoalesce",
+  "round": 4,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on_nocoalesce"
+ },
+ {
+  "job_id": "r4_004_inner_check_null_share-0.5_aqe_on",
+  "round": 4,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.5
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_005_exp_a_small_null_share-0.05_aqe_off",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.05
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_006_exp_b_partitions_shuffle_partitions-2000_aqe_on",
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2000
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_007_exp_a_small_null_share-0.03_rows-55000000_aqe_off",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "rows": 55000000,
+   "null_share": 0.03
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_008_exp_a_small_null_share-0.2_aqe_on",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.2
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_009_exp_c_compression_codec-zstd_payload_kind-repetitive_aqe_off",
+  "round": 4,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "zstd"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_010_exp_a_small_null_share-0_aqe_on",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_011_exp_b_partitions_shuffle_partitions-2001_aqe_off",
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_012_exp_a_small_null_share-0.1_aqe_on",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.1
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_013_exp_a_small_null_share-0.05_aqe_on",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.05
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_014_exp_b_partitions_accurate_skew_factor-5.0_shuffle_partitions-4000_aqe_on",
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 4000,
+   "accurate_skew_factor": 5.0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_015_exp_a_small_null_share-0_aqe_on_skew64m",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r4_016_exp_a_small_null_share-0.1_aqe_on_skew64m",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.1
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r4_017_exp_c_compression_codec-zstd_payload_kind-random_aqe_off",
+  "round": 4,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "zstd"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_018_exp_a_small_null_share-0.03_rows-55000000_aqe_on",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "rows": 55000000,
+   "null_share": 0.03
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_019_exp_b_partitions_shuffle_partitions-200_aqe_on",
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_020_exp_a_small_null_share-0.2_aqe_off",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.2
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_021_exp_b_partitions_accurate_skew_factor-5.0_shuffle_partitions-2001_aqe_on",
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001,
+   "accurate_skew_factor": 5.0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_022_exp_a_small_null_share-0.15_aqe_on_skew64m",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.15
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r4_023_inner_check_null_share-0_aqe_off",
+  "round": 4,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_024_exp_c_compression_codec-lz4_payload_kind-repetitive_aqe_on",
+  "round": 4,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "lz4"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_025_exp_c_compression_codec-zstd_payload_kind-random_aqe_on",
+  "round": 4,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "zstd"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_026_exp_b_partitions_shuffle_partitions-2001_aqe_on",
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_027_exp_a_small_null_share-0.3_aqe_on_skew64m",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.3
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r4_028_exp_c_compression_codec-lz4_payload_kind-random_aqe_on",
+  "round": 4,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "random",
+   "codec": "lz4"
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_029_exp_a_small_null_share-0.3_aqe_off",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.3
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_030_inner_check_null_share-0.5_aqe_on_nocoalesce",
+  "round": 4,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.5
+  },
+  "mode": "aqe_on_nocoalesce"
+ },
+ {
+  "job_id": "r4_031_exp_a_small_null_share-0.2_aqe_on_skew64m",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.2
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r4_032_exp_a_small_null_share-0.05_aqe_on_skew64m",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.05
+  },
+  "mode": "aqe_on_skew64m"
+ },
+ {
+  "job_id": "r4_033_inner_check_null_share-0.12_aqe_off",
+  "round": 4,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.12
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_034_exp_a_small_null_share-0.15_aqe_off",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.15
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_035_exp_b_partitions_shuffle_partitions-4000_aqe_on",
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 4000
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_036_exp_c_compression_codec-lz4_payload_kind-repetitive_aqe_off",
+  "round": 4,
+  "experiment": "exp_c_compression",
+  "params": {
+   "payload_kind": "repetitive",
+   "codec": "lz4"
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_037_inner_check_null_share-0_aqe_on",
+  "round": 4,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_038_inner_check_null_share-0.12_aqe_on",
+  "round": 4,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.12
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_039_inner_check_null_share-0.12_aqe_on_nocoalesce",
+  "round": 4,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.12
+  },
+  "mode": "aqe_on_nocoalesce"
+ },
+ {
+  "job_id": "r4_040_exp_a_small_null_share-0_aqe_off",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_041_exp_b_partitions_shuffle_partitions-200_aqe_off",
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_042_exp_a_small_null_share-0.3_aqe_on",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.3
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_043_inner_check_null_share-0.5_aqe_off",
+  "round": 4,
+  "experiment": "inner_check",
+  "params": {
+   "null_share": 0.5
+  },
+  "mode": "aqe_off"
+ },
+ {
+  "job_id": "r4_044_exp_a_small_null_share-0.15_aqe_on",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.15
+  },
+  "mode": "aqe_on"
+ },
+ {
+  "job_id": "r4_045_exp_a_small_null_share-0.1_aqe_off",
+  "round": 4,
+  "experiment": "exp_a_small",
+  "params": {
+   "null_share": 0.1
+  },
+  "mode": "aqe_off"
+ }
+]

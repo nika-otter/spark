@@ -25,6 +25,9 @@ Docker Desktop with **10 CPUs** and **22 GB** memory (Settings → Resources).
 | `make venv` | Create the project-local `.venv` used by `analysis/` |
 | `make pilot-null` | Generate datasets and run the NULL-share pilot grid |
 | `make pilot-null-summary` | Summary CSV and plot for the pilot |
+| `scripts/batch2.sh` | Start or resume batch 2 (INNER check, experiments A/B/C) in the background under caffeinate |
+| `.venv/bin/python analysis/batch2.py` | Batch 2 summaries (`results/*_summary.csv`) and plots |
+| `.venv/bin/python analysis/pilot_anomalies.py` | Pilot anomaly checks from event logs and executor logs |
 
 To delete all data and event logs: `docker compose down -v`.
 
@@ -51,6 +54,9 @@ To delete all data and event logs: `docker compose down -v`.
 | `analysis/pilot_null.py` | Pilot summary and plot (runs on the host in `.venv`) |
 | `results/runs.csv` | One row per run; full record in `results/runs/<experiment>/<scenario>/<mode>/*.json` |
 | `results/calibration/` | Calibration runs for the pilot |
+| `scripts/batch2.py` | Batch 2 plan: 4 rounds, randomized order, 1 warm-up + 2 measured runs per app; resumable |
+| `results/batch2/` | Batch 2 plan, per-job CSVs, done markers (logs are not committed) |
+| `docs/source_notes.md` | Spark 4.1.3 source references: skew join, coalescing, MapStatus, shuffle sizes |
 
 ## Generator and runner
 

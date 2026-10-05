@@ -40,8 +40,24 @@ EXTRA_RECORDED_KEYS = [
     "spark.sql.adaptive.maxShuffledHashJoinLocalMapThreshold",
     "spark.sql.adaptive.coalescePartitions.initialPartitionNum",
     "spark.sql.adaptive.optimizer.excludedRules",
-    "spark.sql.shuffle.compression.codec",
+    "spark.sql.files.maxPartitionBytes",
+    "spark.sql.files.openCostInBytes",
 ]
+
+# Core (SparkConf) settings that determine shuffle block sizes as seen by AQE.
+# Values are the Spark 4.1.3 defaults (see docs/source_notes.md); the
+# effective value is recorded, falling back to the default when unset.
+CORE_DEFAULTS = {
+    "spark.io.compression.codec": "lz4",
+    "spark.io.compression.zstd.level": "1",
+    "spark.io.compression.lz4.blockSize": "32k",
+    "spark.shuffle.compress": "true",
+    "spark.shuffle.sort.bypassMergeThreshold": "200",
+    "spark.shuffle.minNumPartitionsToHighlyCompress": "2000",
+    "spark.shuffle.accurateBlockThreshold": str(100 * 1024 * 1024),
+    "spark.shuffle.accurateBlockSkewedFactor": "-1.0",
+    "spark.shuffle.maxAccurateSkewedBlockNumber": "100",
+}
 
 
 def build_session(app_name, overrides=None):

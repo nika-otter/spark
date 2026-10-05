@@ -15,6 +15,9 @@ Definitions and known limits:
   from join-stage task read bytes: with AQE off one task reads exactly one
   shuffle partition of each side, so it equals the raw partition size ratio;
   with AQE on, tasks read post-AQE (coalesced/split) partitions.
+- "facts scan stage": the completed stage with the largest input bytes; its
+  task count is the number of map tasks producing the facts shuffle.
+- Stage duration = completionTime - submissionTime from the REST API.
 - Quantiles: median as statistics.median, p95 as nearest-rank.
 """
 
@@ -26,6 +29,7 @@ import re
 import statistics
 import time
 import urllib.request
+from datetime import datetime
 
 JOIN_OPERATORS = [
     "SortMergeJoin",
@@ -36,12 +40,13 @@ JOIN_OPERATORS = [
 ]
 
 CSV_FIELDS = [
-    "recorded_at", "app_id", "experiment", "scenario_id", "mode", "run_index",
+    "recorded_at", "job_id", "app_id", "experiment", "scenario_id", "mode", "run_index",
     "is_warmup", "params", "datasets", "elapsed_seconds", "sql_duration_ms",
     "join_strategies", "skew_join_applied", "skewed_partitions", "skew_splits",
     "partitions_before", "partitions_after", "shuffle_write_bytes",
     "shuffle_read_bytes", "num_tasks", "gc_time_ms", "spill_memory_bytes",
-    "spill_disk_bytes", "join_stage_id", "join_stage_tasks",
+    "spill_disk_bytes", "executor_run_time_ms", "facts_scan_map_tasks",
+    "join_stage_id", "join_stage_tasks", "join_stage_duration_ms",
     "join_task_duration_ms_min", "join_task_duration_ms_median",
     "join_task_duration_ms_p95", "join_task_duration_ms_max",
     "join_task_read_bytes_min", "join_task_read_bytes_median",
@@ -157,7 +162,15 @@ def aqe_actions(execution):
     }
 
 
+def _rest_time_ms(value):
+    if not value:
+        return None
+    return datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%Z").timestamp() * 1000
+
+
 def _stage_summary(stage):
+    submitted = _rest_time_ms(stage.get("submissionTime"))
+    completed = _rest_time_ms(stage.get("completionTime"))
     return {
         "stage_id": stage["stageId"],
         "attempt_id": stage["attemptId"],
@@ -173,6 +186,7 @@ def _stage_summary(stage):
         "shuffle_write_bytes": stage["shuffleWriteBytes"],
         "spill_memory_bytes": stage["memoryBytesSpilled"],
         "spill_disk_bytes": stage["diskBytesSpilled"],
+        "duration_ms": (completed - submitted) if submitted and completed else None,
     }
 
 
@@ -206,6 +220,7 @@ def join_stage_metrics(rest, stages):
         "stage_id": stage["stage_id"],
         "attempt_id": stage["attempt_id"],
         "join_stage_ambiguous": len(readers) > 1,
+        "stage_duration_ms": stage["duration_ms"],
         "tasks": len(ok),
         "tasks_per_host": hosts,
         "duration_ms": distribution([t["duration"] for t in ok]),
@@ -226,6 +241,8 @@ def collect(spark, run_label):
     execution = find_execution(rest, run_label)
     stages = stage_metrics(rest, execution)
     completed = [s for s in stages if s["status"] == "COMPLETE"]
+    scans = [s for s in completed if s["input_bytes"] > 0]
+    facts_scan = max(scans, key=lambda s: s["input_bytes"]) if scans else None
     return {
         "sql_execution_id": execution["id"],
         "sql_status": execution["status"],
@@ -241,8 +258,11 @@ def collect(spark, run_label):
             "gc_time_ms": sum(s["gc_time_ms"] for s in completed),
             "spill_memory_bytes": sum(s["spill_memory_bytes"] for s in completed),
             "spill_disk_bytes": sum(s["spill_disk_bytes"] for s in completed),
+            "executor_run_time_ms": sum(s["executor_run_time_ms"] for s in completed),
             "skipped_stages": sum(1 for s in stages if s["status"] == "SKIPPED"),
         },
+        "facts_scan_stage_id": facts_scan["stage_id"] if facts_scan else None,
+        "facts_scan_map_tasks": facts_scan["num_complete_tasks"] if facts_scan else None,
         "join_stage": join_stage_metrics(rest, stages),
     }
 
@@ -257,6 +277,7 @@ def csv_row(record):
     dur, rd, mem = js.get("duration_ms"), js.get("shuffle_read_bytes"), js.get("peak_execution_memory_bytes")
     row = {
         "recorded_at": record["recorded_at"],
+        "job_id": record.get("job_id"),
         "app_id": record["environment"]["application_id"],
         "experiment": record["experiment"],
         "scenario_id": record["scenario_id"],
@@ -275,12 +296,14 @@ def csv_row(record):
         "partitions_after": "|".join(map(str, m["aqe"]["partitions_after"])),
         "join_stage_id": js.get("stage_id"),
         "join_stage_tasks": js.get("tasks"),
+        "join_stage_duration_ms": js.get("stage_duration_ms"),
+        "facts_scan_map_tasks": m["facts_scan_map_tasks"],
         "task_read_max_over_median": js.get("task_read_max_over_median"),
         "json_path": record["json_path"],
     }
     row.update({k: m["totals"][k] for k in (
         "shuffle_write_bytes", "shuffle_read_bytes", "num_tasks", "gc_time_ms",
-        "spill_memory_bytes", "spill_disk_bytes")})
+        "spill_memory_bytes", "spill_disk_bytes", "executor_run_time_ms")})
     for prefix, dist in (("join_task_duration_ms", dur), ("join_task_read_bytes", rd),
                          ("join_task_peak_mem", mem)):
         for q in ("min", "median", "p95", "max"):

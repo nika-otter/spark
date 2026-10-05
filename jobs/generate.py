@@ -16,9 +16,12 @@ Tables:
 
 Usage (inside the master container):
   spark-submit generate.py facts --rows N --n-keys N [--hot-share F]
-      [--null-share F] [--payload-bytes N] [--seed N]
+      [--null-share F] [--payload-bytes N] [--seed N] [--payload-kind K]
   spark-submit generate.py dim --n-keys N [--match-rate F] [--payload-bytes N]
-      [--seed N]
+      [--seed N] [--payload-kind K]
+
+payload kinds: hex (default, string), random (binary, incompressible),
+repetitive (binary, highly compressible); see _payload().
 """
 
 import argparse
@@ -48,15 +51,39 @@ def _uniform(seed, salt, col):
     return _hash(seed, salt, col).bitwiseAND(F.lit(_U53)).cast("double") / float(1 << 53)
 
 
-def _payload(seed, payload_bytes, col):
-    """Hex string of exactly payload_bytes characters derived from `col`."""
+PAYLOAD_KINDS = ("hex", "random", "repetitive")
+
+
+def _sha512_hex(seed, i, col):
+    return F.sha2(F.concat_ws(":", F.lit(seed), F.lit("payload"), F.lit(i), col.cast("string")), 512)
+
+
+def _payload(seed, payload_bytes, col, kind="hex"):
+    """Payload of exactly payload_bytes bytes derived from `col`.
+
+    hex:        string of hex digits from SHA-512 (random content, 4 bits of
+                entropy per byte); the original pilot payload
+    random:     binary, raw SHA-512 output bytes (8 bits of entropy per byte,
+                incompressible)
+    repetitive: binary, a 4-byte per-row token repeated to payload_bytes
+                (highly compressible)
+    """
+    if kind not in PAYLOAD_KINDS:
+        raise ValueError("unknown payload kind " + kind)
     if payload_bytes <= 0:
-        return F.lit("")
-    chunks = [
-        F.sha2(F.concat_ws(":", F.lit(seed), F.lit("payload"), F.lit(i), col.cast("string")), 512)
-        for i in range(math.ceil(payload_bytes / 128))
-    ]
-    return F.substring(F.concat(*chunks), 1, payload_bytes)
+        return F.lit("") if kind == "hex" else F.lit(b"")
+    if kind == "hex":
+        chunks = [_sha512_hex(seed, i, col) for i in range(math.ceil(payload_bytes / 128))]
+        return F.substring(F.concat(*chunks), 1, payload_bytes)
+    if kind == "random":
+        chunks = [F.unhex(_sha512_hex(seed, i, col)) for i in range(math.ceil(payload_bytes / 64))]
+        return F.substring(F.concat(*chunks), 1, payload_bytes)
+    token = F.substring(_sha512_hex(seed, 0, col), 1, 4)
+    return F.substring(F.repeat(token, math.ceil(payload_bytes / 4)), 1, payload_bytes).cast("binary")
+
+
+def _kind_tag(kind):
+    return "" if kind == "hex" else "_kind-" + kind
 
 
 def _fmt(x):
@@ -94,19 +121,21 @@ class FactsSpec:
     keys: Tuple[KeySpec, ...]
     payload_bytes: int = 100
     seed: int = 42
+    payload_kind: str = "hex"
     table: str = field(default="facts", init=False)
 
     def dataset_id(self):
         parts = ["facts", "rows-{}".format(self.rows)]
         parts += [k.tag() for k in self.keys]
         parts += ["payload-{}".format(self.payload_bytes), "seed-{}".format(self.seed)]
-        return "_".join(parts)
+        return "_".join(parts) + _kind_tag(self.payload_kind)
 
     def build(self, spark):
         id_col = F.col("id")
         cols = [id_col]
         cols += [k.column(self.seed, id_col).alias(k.name) for k in self.keys]
-        cols.append(_payload(self.seed, self.payload_bytes, id_col).alias("payload"))
+        cols.append(_payload(self.seed, self.payload_bytes, id_col, self.payload_kind)
+                    .alias("payload"))
         return spark.range(self.rows).select(*cols)
 
     def stats(self, df):
@@ -144,6 +173,7 @@ class DimSpec:
     match_rate: float = 1.0
     payload_bytes: int = 100
     seed: int = 42
+    payload_kind: str = "hex"
 
     @property
     def table(self):
@@ -151,7 +181,8 @@ class DimSpec:
 
     def dataset_id(self):
         return "{}_n{}_match{}_payload-{}_seed-{}".format(
-            self.table, self.n_keys, _fmt(self.match_rate), self.payload_bytes, self.seed)
+            self.table, self.n_keys, _fmt(self.match_rate), self.payload_bytes,
+            self.seed) + _kind_tag(self.payload_kind)
 
     def build(self, spark):
         i = F.col("id")
@@ -160,7 +191,7 @@ class DimSpec:
             F.when(matched, i).otherwise(i + self.n_keys).alias(self.key),
             F.pmod(_hash(self.seed, "filter:" + self.key, i), F.lit(FILTER_BUCKETS))
             .cast("int").alias("filter_bucket"),
-            _payload(self.seed, self.payload_bytes, i).alias("payload"),
+            _payload(self.seed, self.payload_bytes, i, self.payload_kind).alias("payload"),
         )
 
     def stats(self, df):
@@ -240,19 +271,22 @@ def main():
     facts.add_argument("--null-share", type=float, default=0.0)
     facts.add_argument("--payload-bytes", type=int, default=100)
     facts.add_argument("--seed", type=int, default=42)
+    facts.add_argument("--payload-kind", choices=PAYLOAD_KINDS, default="hex")
 
     dim = sub.add_parser("dim")
     dim.add_argument("--n-keys", type=int, required=True)
     dim.add_argument("--match-rate", type=float, default=1.0)
     dim.add_argument("--payload-bytes", type=int, default=100)
     dim.add_argument("--seed", type=int, default=42)
+    dim.add_argument("--payload-kind", choices=PAYLOAD_KINDS, default="hex")
 
     args = parser.parse_args()
     if args.table == "facts":
         key = KeySpec("k", args.n_keys, args.hot_share, args.null_share)
-        spec = FactsSpec(args.rows, (key,), args.payload_bytes, args.seed)
+        spec = FactsSpec(args.rows, (key,), args.payload_bytes, args.seed, args.payload_kind)
     else:
-        spec = DimSpec("k", args.n_keys, args.match_rate, args.payload_bytes, args.seed)
+        spec = DimSpec("k", args.n_keys, args.match_rate, args.payload_bytes, args.seed,
+                       args.payload_kind)
 
     spark, _ = build_session("generate-" + spec.dataset_id())
     ensure_dataset(spark, spec)
