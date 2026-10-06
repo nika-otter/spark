@@ -1,0 +1,42 @@
+{
+ "exp_c2_dose_codec-lz4_payload_random_fraction-0.0": {
+  "r_facts": 12.880503144654089,
+  "r_overall": 12.88663252692919
+ },
+ "exp_c2_dose_codec-lz4_payload_random_fraction-0.04": {
+  "r_facts": 6.778891620957064,
+  "r_overall": 6.796777498370122
+ },
+ "exp_c2_dose_codec-lz4_payload_random_fraction-0.19": {
+  "r_facts": 3.836437593663027,
+  "r_overall": 3.840692595126572
+ },
+ "exp_c2_dose_codec-lz4_payload_random_fraction-0.53": {
+  "r_facts": 2.0,
+  "r_overall": 2.0003015102924646
+ },
+ "exp_c2_dose_codec-lz4_payload_random_fraction-1.0": {
+  "r_facts": 1.1666666666666667,
+  "r_overall": 1.166791909824926
+ },
+ "exp_c2_dose_codec-zstd_payload_random_fraction-0.0": {
+  "r_facts": 20.49756934515299,
+  "r_overall": 20.609149957639087
+ },
+ "exp_c2_dose_codec-zstd_payload_random_fraction-0.19": {
+  "r_facts": 5.21498726809749,
+  "r_overall": 5.220473567494098
+ },
+ "exp_c2_dose_codec-zstd_payload_random_fraction-1.0": {
+  "r_facts": 1.2727272727272727,
+  "r_overall": 1.272995272733616
+ },
+ "exp_d_pipeline_join-left_n_dims-5_null_share-0.2_payload_bytes-100_payload_kind-mixed_payload_random_fraction-0.04_rows-3000000_shuffle_partitions-2001": {
+  "r_facts": 1.6797188755020083,
+  "r_overall": 1.9692895276455435
+ },
+ "exp_rules_payload_random_fraction-0.04": {
+  "r_facts": 7.70338527673294,
+  "r_overall": 7.691505059021923
+ }
+}

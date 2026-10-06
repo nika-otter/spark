@@ -15,9 +15,17 @@ Definitions and known limits:
   from join-stage task read bytes: with AQE off one task reads exactly one
   shuffle partition of each side, so it equals the raw partition size ratio;
   with AQE on, tasks read post-AQE (coalesced/split) partitions.
-- "facts scan stage": the completed stage with the largest input bytes; its
+- "facts scan stage": the completed stage with no shuffle input and the largest
+  shuffle output (input bytes of Parquet scans were found to be under 1 MiB, so
+  they are not used); its
   task count is the number of map tasks producing the facts shuffle.
 - Stage duration = completionTime - submissionTime from the REST API.
+- Compression ratio of a shuffle = Exchange "data size" (sum of UnsafeRow
+  bytes) / Exchange "shuffle bytes written" (bytes after the codec). Both are
+  parsed from the SQL metric strings, which Spark formats with 4 significant
+  digits (e.g. "259.4 MiB"); the ratio is therefore exact to about 0.1 %.
+  "facts" ratio = the exchange with the largest data size; "overall" =
+  sum of data size / sum of bytes written over all shuffle exchanges.
 - Quantiles: median as statistics.median, p95 as nearest-rank.
 """
 
@@ -42,7 +50,8 @@ JOIN_OPERATORS = [
 CSV_FIELDS = [
     "recorded_at", "job_id", "app_id", "experiment", "scenario_id", "mode", "run_index",
     "is_warmup", "params", "datasets", "elapsed_seconds", "sql_duration_ms",
-    "join_strategies", "skew_join_applied", "skewed_partitions", "skew_splits",
+    "join_strategies", "shuffle_exchanges", "num_stages", "compression_ratio_facts",
+    "compression_ratio_overall", "skew_join_applied", "skewed_partitions", "skew_splits",
     "partitions_before", "partitions_after", "shuffle_write_bytes",
     "shuffle_read_bytes", "num_tasks", "gc_time_ms", "spill_memory_bytes",
     "spill_disk_bytes", "executor_run_time_ms", "facts_scan_map_tasks",
@@ -109,6 +118,35 @@ def final_plan_tree(plan):
     else:
         tree = plan.split("\n\n", 1)[0]
     return tree
+
+
+_UNITS = {"B": 1, "KiB": 1024, "MiB": 1024 ** 2, "GiB": 1024 ** 3, "TiB": 1024 ** 4}
+
+
+def parse_size_total(value):
+    """Total of a size metric string ('total (min, med, max ...)\n259.4 MiB (...)')."""
+    if not value:
+        return None
+    line = value.strip().split("\n")[-1]
+    m = re.match(r"([\d.,]+)\s*(B|KiB|MiB|GiB|TiB)", line)
+    if not m:
+        return None
+    return float(m.group(1).replace(",", "")) * _UNITS[m.group(2)]
+
+
+def shuffle_exchange_count(plan):
+    """Shuffle exchanges in the final plan tree (BroadcastExchange excluded)."""
+    return len(re.findall(r"(?<![A-Za-z])Exchange\b", final_plan_tree(plan)))
+
+
+def compression_ratios(exchanges):
+    sizes = [(parse_size_total(e["data_size"]), parse_size_total(e["shuffle_bytes_written"]))
+             for e in exchanges]
+    sizes = [(d, w) for d, w in sizes if d and w]
+    if not sizes:
+        return None, None
+    facts = max(sizes)
+    return facts[0] / facts[1], sum(d for d, _ in sizes) / sum(w for _, w in sizes)
 
 
 def join_strategy_counts(plan):
@@ -241,15 +279,22 @@ def collect(spark, run_label):
     execution = find_execution(rest, run_label)
     stages = stage_metrics(rest, execution)
     completed = [s for s in stages if s["status"] == "COMPLETE"]
-    scans = [s for s in completed if s["input_bytes"] > 0]
-    facts_scan = max(scans, key=lambda s: s["input_bytes"]) if scans else None
+    # Map stages reading the source tables: no shuffle input, shuffle output.
+    scans = [s for s in completed if s["shuffle_read_bytes"] == 0 and s["shuffle_write_bytes"] > 0]
+    facts_scan = max(scans, key=lambda s: s["shuffle_write_bytes"]) if scans else None
+    aqe = aqe_actions(execution)
+    ratio_facts, ratio_overall = compression_ratios(aqe["exchanges"])
     return {
         "sql_execution_id": execution["id"],
         "sql_status": execution["status"],
         "sql_duration_ms": execution["duration"],
         "final_physical_plan": execution["planDescription"],
         "join_strategies": join_strategy_counts(execution["planDescription"]),
-        "aqe": aqe_actions(execution),
+        "aqe": aqe,
+        "shuffle_exchanges": shuffle_exchange_count(execution["planDescription"]),
+        "num_stages": len(completed),
+        "compression_ratio_facts": ratio_facts,
+        "compression_ratio_overall": ratio_overall,
         "stages": stages,
         "totals": {
             "shuffle_write_bytes": sum(s["shuffle_write_bytes"] for s in completed),
@@ -289,6 +334,10 @@ def csv_row(record):
         "elapsed_seconds": record["elapsed_seconds"],
         "sql_duration_ms": m["sql_duration_ms"],
         "join_strategies": json.dumps({k: v for k, v in m["join_strategies"].items() if v}),
+        "shuffle_exchanges": m.get("shuffle_exchanges"),
+        "num_stages": m.get("num_stages"),
+        "compression_ratio_facts": m.get("compression_ratio_facts"),
+        "compression_ratio_overall": m.get("compression_ratio_overall"),
         "skew_join_applied": m["aqe"]["skew_join_applied"],
         "skewed_partitions": m["aqe"]["skewed_partitions"],
         "skew_splits": m["aqe"]["skew_splits"],

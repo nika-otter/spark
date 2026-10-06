@@ -25,6 +25,7 @@ repetitive (binary, highly compressible); see _payload().
 """
 
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -51,14 +52,16 @@ def _uniform(seed, salt, col):
     return _hash(seed, salt, col).bitwiseAND(F.lit(_U53)).cast("double") / float(1 << 53)
 
 
-PAYLOAD_KINDS = ("hex", "random", "repetitive")
+PAYLOAD_KINDS = ("hex", "random", "repetitive", "mixed")
+MIXED_FILLER = 0x41  # constant byte used for the compressible part of "mixed"
+MAX_ID_CHARS = 200   # longer dataset ids are shortened with a hash
 
 
 def _sha512_hex(seed, i, col):
     return F.sha2(F.concat_ws(":", F.lit(seed), F.lit("payload"), F.lit(i), col.cast("string")), 512)
 
 
-def _payload(seed, payload_bytes, col, kind="hex"):
+def _payload(seed, payload_bytes, col, kind="hex", random_fraction=1.0):
     """Payload of exactly payload_bytes bytes derived from `col`.
 
     hex:        string of hex digits from SHA-512 (random content, 4 bits of
@@ -67,6 +70,9 @@ def _payload(seed, payload_bytes, col, kind="hex"):
                 incompressible)
     repetitive: binary, a 4-byte per-row token repeated to payload_bytes
                 (highly compressible)
+    mixed:      binary, round(random_fraction * payload_bytes) random bytes
+                followed by a constant filler byte; random_fraction in [0, 1]
+                sets the compressibility continuously (1 byte granularity)
     """
     if kind not in PAYLOAD_KINDS:
         raise ValueError("unknown payload kind " + kind)
@@ -78,12 +84,31 @@ def _payload(seed, payload_bytes, col, kind="hex"):
     if kind == "random":
         chunks = [F.unhex(_sha512_hex(seed, i, col)) for i in range(math.ceil(payload_bytes / 64))]
         return F.substring(F.concat(*chunks), 1, payload_bytes)
+    if kind == "mixed":
+        n_random = int(round(random_fraction * payload_bytes))
+        filler = F.lit(bytes([MIXED_FILLER]) * (payload_bytes - n_random))
+        if n_random == 0:
+            return filler
+        chunks = [F.unhex(_sha512_hex(seed, i, col)) for i in range(math.ceil(n_random / 64))]
+        return F.concat(F.substring(F.concat(*chunks), 1, n_random), filler)
     token = F.substring(_sha512_hex(seed, 0, col), 1, 4)
     return F.substring(F.repeat(token, math.ceil(payload_bytes / 4)), 1, payload_bytes).cast("binary")
 
 
-def _kind_tag(kind):
-    return "" if kind == "hex" else "_kind-" + kind
+def _kind_tag(kind, random_fraction=1.0):
+    if kind == "hex":
+        return ""
+    if kind == "mixed":
+        return "_kind-mixed{:g}".format(random_fraction)
+    return "_kind-" + kind
+
+
+def _shorten(dataset_id, spec):
+    """Keep ids below the file-name limit: long ids get a hash of the full spec."""
+    if len(dataset_id) <= MAX_ID_CHARS:
+        return dataset_id
+    digest = hashlib.sha1(json.dumps(asdict(spec), sort_keys=True).encode()).hexdigest()[:12]
+    return dataset_id[:MAX_ID_CHARS - 14] + "_h" + digest
 
 
 def _fmt(x):
@@ -122,20 +147,28 @@ class FactsSpec:
     payload_bytes: int = 100
     seed: int = 42
     payload_kind: str = "hex"
+    payload_random_fraction: float = 1.0   # used by payload_kind "mixed"
+    num_files: int = 0                     # > 0: write exactly this many files
     table: str = field(default="facts", init=False)
 
     def dataset_id(self):
         parts = ["facts", "rows-{}".format(self.rows)]
         parts += [k.tag() for k in self.keys]
         parts += ["payload-{}".format(self.payload_bytes), "seed-{}".format(self.seed)]
-        return "_".join(parts) + _kind_tag(self.payload_kind)
+        dataset_id = "_".join(parts) + _kind_tag(self.payload_kind, self.payload_random_fraction)
+        if self.num_files > 0:
+            dataset_id += "_files-{}".format(self.num_files)
+        return _shorten(dataset_id, self)
 
     def build(self, spark):
         id_col = F.col("id")
         cols = [id_col]
         cols += [k.column(self.seed, id_col).alias(k.name) for k in self.keys]
-        cols.append(_payload(self.seed, self.payload_bytes, id_col, self.payload_kind)
-                    .alias("payload"))
+        cols.append(_payload(self.seed, self.payload_bytes, id_col, self.payload_kind,
+                             self.payload_random_fraction).alias("payload"))
+        # One range partition per output file: each task writes one file.
+        if self.num_files > 0:
+            return spark.range(0, self.rows, 1, self.num_files).select(*cols)
         return spark.range(self.rows).select(*cols)
 
     def stats(self, df):
@@ -174,6 +207,7 @@ class DimSpec:
     payload_bytes: int = 100
     seed: int = 42
     payload_kind: str = "hex"
+    payload_random_fraction: float = 1.0   # used by payload_kind "mixed"
 
     @property
     def table(self):
@@ -182,7 +216,7 @@ class DimSpec:
     def dataset_id(self):
         return "{}_n{}_match{}_payload-{}_seed-{}".format(
             self.table, self.n_keys, _fmt(self.match_rate), self.payload_bytes,
-            self.seed) + _kind_tag(self.payload_kind)
+            self.seed) + _kind_tag(self.payload_kind, self.payload_random_fraction)
 
     def build(self, spark):
         i = F.col("id")
@@ -191,7 +225,8 @@ class DimSpec:
             F.when(matched, i).otherwise(i + self.n_keys).alias(self.key),
             F.pmod(_hash(self.seed, "filter:" + self.key, i), F.lit(FILTER_BUCKETS))
             .cast("int").alias("filter_bucket"),
-            _payload(self.seed, self.payload_bytes, i, self.payload_kind).alias("payload"),
+            _payload(self.seed, self.payload_bytes, i, self.payload_kind,
+                     self.payload_random_fraction).alias("payload"),
         )
 
     def stats(self, df):

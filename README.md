@@ -28,6 +28,9 @@ Docker Desktop with **10 CPUs** and **22 GB** memory (Settings → Resources).
 | `scripts/batch2.sh` | Start or resume batch 2 (INNER check, experiments A/B/C) in the background under caffeinate |
 | `.venv/bin/python analysis/batch2.py` | Batch 2 summaries (`results/*_summary.csv`) and plots |
 | `.venv/bin/python analysis/pilot_anomalies.py` | Pilot anomaly checks from event logs and executor logs |
+| `scripts/batch3.sh` | Start or resume batch 3 (experiment C2, rule check, experiment D) under caffeinate |
+| `.venv/bin/python analysis/batch3.py` | Batch 3 summaries (`results/exp_c2_summary.csv`, `exp_rules_summary.csv`, `exp_d_summary.csv`, `exp_d_plans/`) |
+| `.venv/bin/python analysis/figures.py` | Thesis figures (Ukrainian) in `results/figures/` as PNG 300 dpi and PDF |
 
 To delete all data and event logs: `docker compose down -v`.
 
@@ -56,6 +59,8 @@ To delete all data and event logs: `docker compose down -v`.
 | `results/calibration/` | Calibration runs for the pilot |
 | `scripts/batch2.py` | Batch 2 plan: 4 rounds, randomized order, 1 warm-up + 2 measured runs per app; resumable |
 | `results/batch2/` | Batch 2 plan, per-job CSVs, done markers (logs are not committed) |
+| `scripts/batch3.py` | Batch 3 plan: generation, rule-2 ratio calibration, 4 randomized rounds |
+| `results/batch3/` | Batch 3 plan, ratios.json, calibration CSVs, per-job CSVs, done markers |
 | `docs/source_notes.md` | Spark 4.1.3 source references: skew join, coalescing, MapStatus, shuffle sizes |
 
 ## Generator and runner

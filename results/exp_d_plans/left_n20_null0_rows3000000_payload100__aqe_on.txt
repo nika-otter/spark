@@ -1,0 +1,2237 @@
+== Physical Plan ==
+OverwriteByExpression (418)
++- AdaptiveSparkPlan (417)
+   +- == Final Plan ==
+      ResultQueryStage (256), Statistics(sizeInBytes=8.0 EiB)
+      +- * Project (255)
+         +- * SortMergeJoin LeftOuter (254)
+            :- * Sort (245)
+            :  +- AQEShuffleRead (244)
+            :     +- ShuffleQueryStage (243), Statistics(sizeInBytes=1696.3 MiB, rowCount=3.00E+6)
+            :        +- Exchange (242)
+            :           +- * Project (241)
+            :              +- * BroadcastHashJoin LeftOuter BuildRight (240)
+            :                 :- * Project (230)
+            :                 :  +- * SortMergeJoin LeftOuter (229)
+            :                 :     :- * Sort (220)
+            :                 :     :  +- AQEShuffleRead (219)
+            :                 :     :     +- ShuffleQueryStage (218), Statistics(sizeInBytes=1602.0 MiB, rowCount=3.00E+6)
+            :                 :     :        +- Exchange (217)
+            :                 :     :           +- * Project (216)
+            :                 :     :              +- * BroadcastHashJoin LeftOuter BuildRight (215)
+            :                 :     :                 :- * Project (205)
+            :                 :     :                 :  +- * SortMergeJoin LeftOuter (204)
+            :                 :     :                 :     :- * Sort (195)
+            :                 :     :                 :     :  +- AQEShuffleRead (194)
+            :                 :     :                 :     :     +- ShuffleQueryStage (193), Statistics(sizeInBytes=1507.7 MiB, rowCount=3.00E+6)
+            :                 :     :                 :     :        +- Exchange (192)
+            :                 :     :                 :     :           +- * Project (191)
+            :                 :     :                 :     :              +- * BroadcastHashJoin LeftOuter BuildRight (190)
+            :                 :     :                 :     :                 :- * Project (180)
+            :                 :     :                 :     :                 :  +- * SortMergeJoin LeftOuter (179)
+            :                 :     :                 :     :                 :     :- * Sort (170)
+            :                 :     :                 :     :                 :     :  +- AQEShuffleRead (169)
+            :                 :     :                 :     :                 :     :     +- ShuffleQueryStage (168), Statistics(sizeInBytes=1413.3 MiB, rowCount=3.00E+6)
+            :                 :     :                 :     :                 :     :        +- Exchange (167)
+            :                 :     :                 :     :                 :     :           +- * Project (166)
+            :                 :     :                 :     :                 :     :              +- * BroadcastHashJoin LeftOuter BuildRight (165)
+            :                 :     :                 :     :                 :     :                 :- * Project (155)
+            :                 :     :                 :     :                 :     :                 :  +- * SortMergeJoin LeftOuter (154)
+            :                 :     :                 :     :                 :     :                 :     :- * Sort (145)
+            :                 :     :                 :     :                 :     :                 :     :  +- AQEShuffleRead (144)
+            :                 :     :                 :     :                 :     :                 :     :     +- ShuffleQueryStage (143), Statistics(sizeInBytes=1319.0 MiB, rowCount=3.00E+6)
+            :                 :     :                 :     :                 :     :                 :     :        +- Exchange (142)
+            :                 :     :                 :     :                 :     :                 :     :           +- * Project (141)
+            :                 :     :                 :     :                 :     :                 :     :              +- * BroadcastHashJoin LeftOuter BuildRight (140)
+            :                 :     :                 :     :                 :     :                 :     :                 :- * Project (130)
+            :                 :     :                 :     :                 :     :                 :     :                 :  +- * SortMergeJoin LeftOuter (129)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :- * Sort (120)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :  +- AQEShuffleRead (119)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :     +- ShuffleQueryStage (118), Statistics(sizeInBytes=1224.6 MiB, rowCount=3.00E+6)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :        +- Exchange (117)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :           +- * Project (116)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :              +- * BroadcastHashJoin LeftOuter BuildRight (115)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :- * Project (105)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :  +- * SortMergeJoin LeftOuter (104)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :- * Sort (95)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :  +- AQEShuffleRead (94)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :     +- ShuffleQueryStage (93), Statistics(sizeInBytes=1130.3 MiB, rowCount=3.00E+6)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :        +- Exchange (92)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :           +- * Project (91)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :              +- * BroadcastHashJoin LeftOuter BuildRight (90)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :- * Project (80)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :  +- * SortMergeJoin LeftOuter (79)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :- * Sort (70)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :  +- AQEShuffleRead (69)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :     +- ShuffleQueryStage (68), Statistics(sizeInBytes=1036.0 MiB, rowCount=3.00E+6)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :        +- Exchange (67)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :           +- * Project (66)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :              +- * BroadcastHashJoin LeftOuter BuildRight (65)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :- * Project (55)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :  +- * SortMergeJoin LeftOuter (54)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :- * Sort (45)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :  +- AQEShuffleRead (44)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :     +- ShuffleQueryStage (43), Statistics(sizeInBytes=941.7 MiB, rowCount=3.00E+6)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :        +- Exchange (42)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :           +- * Project (41)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :              +- * BroadcastHashJoin LeftOuter BuildRight (40)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :- * Project (30)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :  +- * SortMergeJoin LeftOuter (29)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :- * Sort (20)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :  +- AQEShuffleRead (19)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :     +- ShuffleQueryStage (18), Statistics(sizeInBytes=847.3 MiB, rowCount=3.00E+6)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :        +- Exchange (17)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :           +- * Project (16)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :              +- * BroadcastHashJoin LeftOuter BuildRight (15)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :- AQEShuffleRead (5)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :  +- ShuffleQueryStage (4), Statistics(sizeInBytes=824.0 MiB, rowCount=3.00E+6)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     +- Exchange (3)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :        +- * ColumnarToRow (2)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :           +- Scan parquet  (1)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 +- BroadcastQueryStage (14), Statistics(sizeInBytes=1536.0 KiB, rowCount=9.92E+3)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                    +- BroadcastExchange (13)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                       +- AQEShuffleRead (12)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                          +- ShuffleQueryStage (11), Statistics(sizeInBytes=465.0 KiB, rowCount=9.92E+3)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                             +- Exchange (10)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                +- * Project (9)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                   +- * Filter (8)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                      +- * ColumnarToRow (7)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                         +- Scan parquet  (6)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     +- * Sort (28)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :        +- AQEShuffleRead (27)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :           +- ShuffleQueryStage (26), Statistics(sizeInBytes=45.8 MiB, rowCount=1.00E+6)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :              +- Exchange (25)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                 +- * Project (24)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                    +- * Filter (23)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                       +- * ColumnarToRow (22)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                          +- Scan parquet  (21)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 +- BroadcastQueryStage (39), Statistics(sizeInBytes=1536.0 KiB, rowCount=1.00E+4)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                    +- BroadcastExchange (38)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                       +- AQEShuffleRead (37)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                          +- ShuffleQueryStage (36), Statistics(sizeInBytes=469.0 KiB, rowCount=1.00E+4)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                             +- Exchange (35)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                +- * Project (34)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                   +- * Filter (33)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                      +- * ColumnarToRow (32)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                         +- Scan parquet  (31)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     +- * Sort (53)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :        +- AQEShuffleRead (52)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :           +- ShuffleQueryStage (51), Statistics(sizeInBytes=45.8 MiB, rowCount=1.00E+6)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :              +- Exchange (50)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                 +- * Project (49)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                    +- * Filter (48)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                       +- * ColumnarToRow (47)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                          +- Scan parquet  (46)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 +- BroadcastQueryStage (64), Statistics(sizeInBytes=1536.0 KiB, rowCount=1.01E+4)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                    +- BroadcastExchange (63)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                       +- AQEShuffleRead (62)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                          +- ShuffleQueryStage (61), Statistics(sizeInBytes=474.4 KiB, rowCount=1.01E+4)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                             +- Exchange (60)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                +- * Project (59)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                   +- * Filter (58)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                      +- * ColumnarToRow (57)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                         +- Scan parquet  (56)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     +- * Sort (78)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :        +- AQEShuffleRead (77)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :           +- ShuffleQueryStage (76), Statistics(sizeInBytes=45.8 MiB, rowCount=1.00E+6)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :              +- Exchange (75)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                 +- * Project (74)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                    +- * Filter (73)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                       +- * ColumnarToRow (72)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                          +- Scan parquet  (71)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                 +- BroadcastQueryStage (89), Statistics(sizeInBytes=1536.0 KiB, rowCount=9.96E+3)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                    +- BroadcastExchange (88)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                       +- AQEShuffleRead (87)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                          +- ShuffleQueryStage (86), Statistics(sizeInBytes=466.8 KiB, rowCount=9.96E+3)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                             +- Exchange (85)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                +- * Project (84)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                   +- * Filter (83)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                      +- * ColumnarToRow (82)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     :                                         +- Scan parquet  (81)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :     +- * Sort (103)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :        +- AQEShuffleRead (102)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :           +- ShuffleQueryStage (101), Statistics(sizeInBytes=45.8 MiB, rowCount=1.00E+6)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :              +- Exchange (100)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                 +- * Project (99)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                    +- * Filter (98)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                       +- * ColumnarToRow (97)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 :                          +- Scan parquet  (96)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                 +- BroadcastQueryStage (114), Statistics(sizeInBytes=1536.0 KiB, rowCount=9.93E+3)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                    +- BroadcastExchange (113)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                       +- AQEShuffleRead (112)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                          +- ShuffleQueryStage (111), Statistics(sizeInBytes=465.4 KiB, rowCount=9.93E+3)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                             +- Exchange (110)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                                +- * Project (109)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                                   +- * Filter (108)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                                      +- * ColumnarToRow (107)
+            :                 :     :                 :     :                 :     :                 :     :                 :     :                                         +- Scan parquet  (106)
+            :                 :     :                 :     :                 :     :                 :     :                 :     +- * Sort (128)
+            :                 :     :                 :     :                 :     :                 :     :                 :        +- AQEShuffleRead (127)
+            :                 :     :                 :     :                 :     :                 :     :                 :           +- ShuffleQueryStage (126), Statistics(sizeInBytes=45.8 MiB, rowCount=1.00E+6)
+            :                 :     :                 :     :                 :     :                 :     :                 :              +- Exchange (125)
+            :                 :     :                 :     :                 :     :                 :     :                 :                 +- * Project (124)
+            :                 :     :                 :     :                 :     :                 :     :                 :                    +- * Filter (123)
+            :                 :     :                 :     :                 :     :                 :     :                 :                       +- * ColumnarToRow (122)
+            :                 :     :                 :     :                 :     :                 :     :                 :                          +- Scan parquet  (121)
+            :                 :     :                 :     :                 :     :                 :     :                 +- BroadcastQueryStage (139), Statistics(sizeInBytes=1536.0 KiB, rowCount=1.00E+4)
+            :                 :     :                 :     :                 :     :                 :     :                    +- BroadcastExchange (138)
+            :                 :     :                 :     :                 :     :                 :     :                       +- AQEShuffleRead (137)
+            :                 :     :                 :     :                 :     :                 :     :                          +- ShuffleQueryStage (136), Statistics(sizeInBytes=469.4 KiB, rowCount=1.00E+4)
+            :                 :     :                 :     :                 :     :                 :     :                             +- Exchange (135)
+            :                 :     :                 :     :                 :     :                 :     :                                +- * Project (134)
+            :                 :     :                 :     :                 :     :                 :     :                                   +- * Filter (133)
+            :                 :     :                 :     :                 :     :                 :     :                                      +- * ColumnarToRow (132)
+            :                 :     :                 :     :                 :     :                 :     :                                         +- Scan parquet  (131)
+            :                 :     :                 :     :                 :     :                 :     +- * Sort (153)
+            :                 :     :                 :     :                 :     :                 :        +- AQEShuffleRead (152)
+            :                 :     :                 :     :                 :     :                 :           +- ShuffleQueryStage (151), Statistics(sizeInBytes=45.8 MiB, rowCount=1.00E+6)
+            :                 :     :                 :     :                 :     :                 :              +- Exchange (150)
+            :                 :     :                 :     :                 :     :                 :                 +- * Project (149)
+            :                 :     :                 :     :                 :     :                 :                    +- * Filter (148)
+            :                 :     :                 :     :                 :     :                 :                       +- * ColumnarToRow (147)
+            :                 :     :                 :     :                 :     :                 :                          +- Scan parquet  (146)
+            :                 :     :                 :     :                 :     :                 +- BroadcastQueryStage (164), Statistics(sizeInBytes=1536.0 KiB, rowCount=1.01E+4)
+            :                 :     :                 :     :                 :     :                    +- BroadcastExchange (163)
+            :                 :     :                 :     :                 :     :                       +- AQEShuffleRead (162)
+            :                 :     :                 :     :                 :     :                          +- ShuffleQueryStage (161), Statistics(sizeInBytes=475.7 KiB, rowCount=1.01E+4)
+            :                 :     :                 :     :                 :     :                             +- Exchange (160)
+            :                 :     :                 :     :                 :     :                                +- * Project (159)
+            :                 :     :                 :     :                 :     :                                   +- * Filter (158)
+            :                 :     :                 :     :                 :     :                                      +- * ColumnarToRow (157)
+            :                 :     :                 :     :                 :     :                                         +- Scan parquet  (156)
+            :                 :     :                 :     :                 :     +- * Sort (178)
+            :                 :     :                 :     :                 :        +- AQEShuffleRead (177)
+            :                 :     :                 :     :                 :           +- ShuffleQueryStage (176), Statistics(sizeInBytes=45.8 MiB, rowCount=1.00E+6)
+            :                 :     :                 :     :                 :              +- Exchange (175)
+            :                 :     :                 :     :                 :                 +- * Project (174)
+            :                 :     :                 :     :                 :                    +- * Filter (173)
+            :                 :     :                 :     :                 :                       +- * ColumnarToRow (172)
+            :                 :     :                 :     :                 :                          +- Scan parquet  (171)
+            :                 :     :                 :     :                 +- BroadcastQueryStage (189), Statistics(sizeInBytes=1536.0 KiB, rowCount=9.93E+3)
+            :                 :     :                 :     :                    +- BroadcastExchange (188)
+            :                 :     :                 :     :                       +- AQEShuffleRead (187)
+            :                 :     :                 :     :                          +- ShuffleQueryStage (186), Statistics(sizeInBytes=465.4 KiB, rowCount=9.93E+3)
+            :                 :     :                 :     :                             +- Exchange (185)
+            :                 :     :                 :     :                                +- * Project (184)
+            :                 :     :                 :     :                                   +- * Filter (183)
+            :                 :     :                 :     :                                      +- * ColumnarToRow (182)
+            :                 :     :                 :     :                                         +- Scan parquet  (181)
+            :                 :     :                 :     +- * Sort (203)
+            :                 :     :                 :        +- AQEShuffleRead (202)
+            :                 :     :                 :           +- ShuffleQueryStage (201), Statistics(sizeInBytes=45.8 MiB, rowCount=1.00E+6)
+            :                 :     :                 :              +- Exchange (200)
+            :                 :     :                 :                 +- * Project (199)
+            :                 :     :                 :                    +- * Filter (198)
+            :                 :     :                 :                       +- * ColumnarToRow (197)
+            :                 :     :                 :                          +- Scan parquet  (196)
+            :                 :     :                 +- BroadcastQueryStage (214), Statistics(sizeInBytes=1536.0 KiB, rowCount=1.01E+4)
+            :                 :     :                    +- BroadcastExchange (213)
+            :                 :     :                       +- AQEShuffleRead (212)
+            :                 :     :                          +- ShuffleQueryStage (211), Statistics(sizeInBytes=471.7 KiB, rowCount=1.01E+4)
+            :                 :     :                             +- Exchange (210)
+            :                 :     :                                +- * Project (209)
+            :                 :     :                                   +- * Filter (208)
+            :                 :     :                                      +- * ColumnarToRow (207)
+            :                 :     :                                         +- Scan parquet  (206)
+            :                 :     +- * Sort (228)
+            :                 :        +- AQEShuffleRead (227)
+            :                 :           +- ShuffleQueryStage (226), Statistics(sizeInBytes=45.8 MiB, rowCount=1.00E+6)
+            :                 :              +- Exchange (225)
+            :                 :                 +- * Project (224)
+            :                 :                    +- * Filter (223)
+            :                 :                       +- * ColumnarToRow (222)
+            :                 :                          +- Scan parquet  (221)
+            :                 +- BroadcastQueryStage (239), Statistics(sizeInBytes=1536.0 KiB, rowCount=9.97E+3)
+            :                    +- BroadcastExchange (238)
+            :                       +- AQEShuffleRead (237)
+            :                          +- ShuffleQueryStage (236), Statistics(sizeInBytes=467.2 KiB, rowCount=9.97E+3)
+            :                             +- Exchange (235)
+            :                                +- * Project (234)
+            :                                   +- * Filter (233)
+            :                                      +- * ColumnarToRow (232)
+            :                                         +- Scan parquet  (231)
+            +- * Sort (253)
+               +- AQEShuffleRead (252)
+                  +- ShuffleQueryStage (251), Statistics(sizeInBytes=45.8 MiB, rowCount=1.00E+6)
+                     +- Exchange (250)
+                        +- * Project (249)
+                           +- * Filter (248)
+                              +- * ColumnarToRow (247)
+                                 +- Scan parquet  (246)
+   +- == Initial Plan ==
+      Project (416)
+      +- SortMergeJoin LeftOuter (415)
+         :- Sort (410)
+         :  +- Exchange (409)
+         :     +- Project (408)
+         :        +- SortMergeJoin LeftOuter (407)
+         :           :- Sort (402)
+         :           :  +- Exchange (401)
+         :           :     +- Project (400)
+         :           :        +- SortMergeJoin LeftOuter (399)
+         :           :           :- Sort (394)
+         :           :           :  +- Exchange (393)
+         :           :           :     +- Project (392)
+         :           :           :        +- SortMergeJoin LeftOuter (391)
+         :           :           :           :- Sort (386)
+         :           :           :           :  +- Exchange (385)
+         :           :           :           :     +- Project (384)
+         :           :           :           :        +- SortMergeJoin LeftOuter (383)
+         :           :           :           :           :- Sort (378)
+         :           :           :           :           :  +- Exchange (377)
+         :           :           :           :           :     +- Project (376)
+         :           :           :           :           :        +- SortMergeJoin LeftOuter (375)
+         :           :           :           :           :           :- Sort (370)
+         :           :           :           :           :           :  +- Exchange (369)
+         :           :           :           :           :           :     +- Project (368)
+         :           :           :           :           :           :        +- SortMergeJoin LeftOuter (367)
+         :           :           :           :           :           :           :- Sort (362)
+         :           :           :           :           :           :           :  +- Exchange (361)
+         :           :           :           :           :           :           :     +- Project (360)
+         :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (359)
+         :           :           :           :           :           :           :           :- Sort (354)
+         :           :           :           :           :           :           :           :  +- Exchange (353)
+         :           :           :           :           :           :           :           :     +- Project (352)
+         :           :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (351)
+         :           :           :           :           :           :           :           :           :- Sort (346)
+         :           :           :           :           :           :           :           :           :  +- Exchange (345)
+         :           :           :           :           :           :           :           :           :     +- Project (344)
+         :           :           :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (343)
+         :           :           :           :           :           :           :           :           :           :- Sort (338)
+         :           :           :           :           :           :           :           :           :           :  +- Exchange (337)
+         :           :           :           :           :           :           :           :           :           :     +- Project (336)
+         :           :           :           :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (335)
+         :           :           :           :           :           :           :           :           :           :           :- Sort (330)
+         :           :           :           :           :           :           :           :           :           :           :  +- Exchange (329)
+         :           :           :           :           :           :           :           :           :           :           :     +- Project (328)
+         :           :           :           :           :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (327)
+         :           :           :           :           :           :           :           :           :           :           :           :- Sort (322)
+         :           :           :           :           :           :           :           :           :           :           :           :  +- Exchange (321)
+         :           :           :           :           :           :           :           :           :           :           :           :     +- Project (320)
+         :           :           :           :           :           :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (319)
+         :           :           :           :           :           :           :           :           :           :           :           :           :- Sort (314)
+         :           :           :           :           :           :           :           :           :           :           :           :           :  +- Exchange (313)
+         :           :           :           :           :           :           :           :           :           :           :           :           :     +- Project (312)
+         :           :           :           :           :           :           :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (311)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :- Sort (306)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :  +- Exchange (305)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :     +- Project (304)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (303)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :- Sort (298)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :  +- Exchange (297)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :     +- Project (296)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (295)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :- Sort (290)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :  +- Exchange (289)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :     +- Project (288)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (287)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :- Sort (282)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :  +- Exchange (281)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :     +- Project (280)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (279)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :- Sort (274)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :  +- Exchange (273)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :     +- Project (272)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (271)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :- Sort (266)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :  +- Exchange (265)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :     +- Project (264)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :        +- SortMergeJoin LeftOuter (263)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :- Sort (258)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :  +- Exchange (257)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :     +- Scan parquet  (1)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           +- Sort (262)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :              +- Exchange (261)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                 +- Project (260)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                    +- Filter (259)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                       +- Scan parquet  (6)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           +- Sort (270)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :              +- Exchange (269)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                 +- Project (268)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                    +- Filter (267)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                       +- Scan parquet  (21)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           +- Sort (278)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :              +- Exchange (277)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                 +- Project (276)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                    +- Filter (275)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                       +- Scan parquet  (31)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           +- Sort (286)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :              +- Exchange (285)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                 +- Project (284)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                    +- Filter (283)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                       +- Scan parquet  (46)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :           +- Sort (294)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :              +- Exchange (293)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                 +- Project (292)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                    +- Filter (291)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           :                       +- Scan parquet  (56)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :           +- Sort (302)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :              +- Exchange (301)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :                 +- Project (300)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :                    +- Filter (299)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           :                       +- Scan parquet  (71)
+         :           :           :           :           :           :           :           :           :           :           :           :           :           +- Sort (310)
+         :           :           :           :           :           :           :           :           :           :           :           :           :              +- Exchange (309)
+         :           :           :           :           :           :           :           :           :           :           :           :           :                 +- Project (308)
+         :           :           :           :           :           :           :           :           :           :           :           :           :                    +- Filter (307)
+         :           :           :           :           :           :           :           :           :           :           :           :           :                       +- Scan parquet  (81)
+         :           :           :           :           :           :           :           :           :           :           :           :           +- Sort (318)
+         :           :           :           :           :           :           :           :           :           :           :           :              +- Exchange (317)
+         :           :           :           :           :           :           :           :           :           :           :           :                 +- Project (316)
+         :           :           :           :           :           :           :           :           :           :           :           :                    +- Filter (315)
+         :           :           :           :           :           :           :           :           :           :           :           :                       +- Scan parquet  (96)
+         :           :           :           :           :           :           :           :           :           :           :           +- Sort (326)
+         :           :           :           :           :           :           :           :           :           :           :              +- Exchange (325)
+         :           :           :           :           :           :           :           :           :           :           :                 +- Project (324)
+         :           :           :           :           :           :           :           :           :           :           :                    +- Filter (323)
+         :           :           :           :           :           :           :           :           :           :           :                       +- Scan parquet  (106)
+         :           :           :           :           :           :           :           :           :           :           +- Sort (334)
+         :           :           :           :           :           :           :           :           :           :              +- Exchange (333)
+         :           :           :           :           :           :           :           :           :           :                 +- Project (332)
+         :           :           :           :           :           :           :           :           :           :                    +- Filter (331)
+         :           :           :           :           :           :           :           :           :           :                       +- Scan parquet  (121)
+         :           :           :           :           :           :           :           :           :           +- Sort (342)
+         :           :           :           :           :           :           :           :           :              +- Exchange (341)
+         :           :           :           :           :           :           :           :           :                 +- Project (340)
+         :           :           :           :           :           :           :           :           :                    +- Filter (339)
+         :           :           :           :           :           :           :           :           :                       +- Scan parquet  (131)
+         :           :           :           :           :           :           :           :           +- Sort (350)
+         :           :           :           :           :           :           :           :              +- Exchange (349)
+         :           :           :           :           :           :           :           :                 +- Project (348)
+         :           :           :           :           :           :           :           :                    +- Filter (347)
+         :           :           :           :           :           :           :           :                       +- Scan parquet  (146)
+         :           :           :           :           :           :           :           +- Sort (358)
+         :           :           :           :           :           :           :              +- Exchange (357)
+         :           :           :           :           :           :           :                 +- Project (356)
+         :           :           :           :           :           :           :                    +- Filter (355)
+         :           :           :           :           :           :           :                       +- Scan parquet  (156)
+         :           :           :           :           :           :           +- Sort (366)
+         :           :           :           :           :           :              +- Exchange (365)
+         :           :           :           :           :           :                 +- Project (364)
+         :           :           :           :           :           :                    +- Filter (363)
+         :           :           :           :           :           :                       +- Scan parquet  (171)
+         :           :           :           :           :           +- Sort (374)
+         :           :           :           :           :              +- Exchange (373)
+         :           :           :           :           :                 +- Project (372)
+         :           :           :           :           :                    +- Filter (371)
+         :           :           :           :           :                       +- Scan parquet  (181)
+         :           :           :           :           +- Sort (382)
+         :           :           :           :              +- Exchange (381)
+         :           :           :           :                 +- Project (380)
+         :           :           :           :                    +- Filter (379)
+         :           :           :           :                       +- Scan parquet  (196)
+         :           :           :           +- Sort (390)
+         :           :           :              +- Exchange (389)
+         :           :           :                 +- Project (388)
+         :           :           :                    +- Filter (387)
+         :           :           :                       +- Scan parquet  (206)
+         :           :           +- Sort (398)
+         :           :              +- Exchange (397)
+         :           :                 +- Project (396)
+         :           :                    +- Filter (395)
+         :           :                       +- Scan parquet  (221)
+         :           +- Sort (406)
+         :              +- Exchange (405)
+         :                 +- Project (404)
+         :                    +- Filter (403)
+         :                       +- Scan parquet  (231)
+         +- Sort (414)
+            +- Exchange (413)
+               +- Project (412)
+                  +- Filter (411)
+                     +- Scan parquet  (246)
+
+
+(1) Scan parquet 
+Output [22]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/facts_rows-3000000_k1-n1000000-h0-null0_k2-n1000000-h0-null0_k3-n1000000-h0-null0_k4-n1000000-h0-null0_k5-n1000000-h0-null0_k6-n1000000-h0-null0_k7-n1000000-h0-null0_k8-n1000000-h0-null0_h1578d9adf939/data]
+ReadSchema: struct<id:bigint,k1:bigint,k2:bigint,k3:bigint,k4:bigint,k5:bigint,k6:bigint,k7:bigint,k8:bigint,k9:bigint,k10:bigint,k11:bigint,k12:bigint,k13:bigint,k14:bigint,k15:bigint,k16:bigint,k17:bigint,k18:bigint,k19:bigint,k20:bigint,payload:string>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [22]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45]
+
+(3) Exchange
+Input [22]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45]
+Arguments: hashpartitioning(k1#25L, 200), ENSURE_REQUIREMENTS, [plan_id=13907]
+
+(4) ShuffleQueryStage
+Output [22]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45]
+Arguments: 0
+
+(5) AQEShuffleRead
+Input [22]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45]
+Arguments: local
+
+(6) Scan parquet 
+Output [3]: [k1#46L, filter_bucket#47, payload#48]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k1_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k1)]
+ReadSchema: struct<k1:bigint,filter_bucket:int,payload:string>
+
+(7) ColumnarToRow [codegen id : 2]
+Input [3]: [k1#46L, filter_bucket#47, payload#48]
+
+(8) Filter [codegen id : 2]
+Input [3]: [k1#46L, filter_bucket#47, payload#48]
+Condition : ((isnotnull(filter_bucket#47) AND (filter_bucket#47 < 10)) AND isnotnull(k1#46L))
+
+(9) Project [codegen id : 2]
+Output [2]: [k1#46L, payload#48 AS dim1_payload#147]
+Input [3]: [k1#46L, filter_bucket#47, payload#48]
+
+(10) Exchange
+Input [2]: [k1#46L, dim1_payload#147]
+Arguments: hashpartitioning(k1#46L, 200), ENSURE_REQUIREMENTS, [plan_id=13924]
+
+(11) ShuffleQueryStage
+Output [2]: [k1#46L, dim1_payload#147]
+Arguments: 1
+
+(12) AQEShuffleRead
+Input [2]: [k1#46L, dim1_payload#147]
+Arguments: local
+
+(13) BroadcastExchange
+Input [2]: [k1#46L, dim1_payload#147]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=18137]
+
+(14) BroadcastQueryStage
+Output [2]: [k1#46L, dim1_payload#147]
+Arguments: 23
+
+(15) BroadcastHashJoin [codegen id : 22]
+Left keys [1]: [k1#25L]
+Right keys [1]: [k1#46L]
+Join type: LeftOuter
+Join condition: None
+
+(16) Project [codegen id : 22]
+Output [23]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147]
+Input [24]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, k1#46L, dim1_payload#147]
+
+(17) Exchange
+Input [23]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147]
+Arguments: hashpartitioning(k2#26L, 200), ENSURE_REQUIREMENTS, [plan_id=23638]
+
+(18) ShuffleQueryStage
+Output [23]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147]
+Arguments: 31
+
+(19) AQEShuffleRead
+Input [23]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147]
+Arguments: coalesced
+
+(20) Sort [codegen id : 23]
+Input [23]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147]
+Arguments: [k2#26L ASC NULLS FIRST], false, 0
+
+(21) Scan parquet 
+Output [2]: [k2#49L, payload#51]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k2_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k2)]
+ReadSchema: struct<k2:bigint,payload:string>
+
+(22) ColumnarToRow [codegen id : 3]
+Input [2]: [k2#49L, payload#51]
+
+(23) Filter [codegen id : 3]
+Input [2]: [k2#49L, payload#51]
+Condition : isnotnull(k2#49L)
+
+(24) Project [codegen id : 3]
+Output [2]: [k2#49L, payload#51 AS dim2_payload#148]
+Input [2]: [k2#49L, payload#51]
+
+(25) Exchange
+Input [2]: [k2#49L, dim2_payload#148]
+Arguments: hashpartitioning(k2#49L, 200), ENSURE_REQUIREMENTS, [plan_id=13949]
+
+(26) ShuffleQueryStage
+Output [2]: [k2#49L, dim2_payload#148]
+Arguments: 2
+
+(27) AQEShuffleRead
+Input [2]: [k2#49L, dim2_payload#148]
+Arguments: coalesced
+
+(28) Sort [codegen id : 24]
+Input [2]: [k2#49L, dim2_payload#148]
+Arguments: [k2#49L ASC NULLS FIRST], false, 0
+
+(29) SortMergeJoin [codegen id : 25]
+Left keys [1]: [k2#26L]
+Right keys [1]: [k2#49L]
+Join type: LeftOuter
+Join condition: None
+
+(30) Project [codegen id : 25]
+Output [24]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148]
+Input [25]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, k2#49L, dim2_payload#148]
+
+(31) Scan parquet 
+Output [3]: [k3#52L, filter_bucket#53, payload#54]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k3_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k3)]
+ReadSchema: struct<k3:bigint,filter_bucket:int,payload:string>
+
+(32) ColumnarToRow [codegen id : 4]
+Input [3]: [k3#52L, filter_bucket#53, payload#54]
+
+(33) Filter [codegen id : 4]
+Input [3]: [k3#52L, filter_bucket#53, payload#54]
+Condition : ((isnotnull(filter_bucket#53) AND (filter_bucket#53 < 10)) AND isnotnull(k3#52L))
+
+(34) Project [codegen id : 4]
+Output [2]: [k3#52L, payload#54 AS dim3_payload#149]
+Input [3]: [k3#52L, filter_bucket#53, payload#54]
+
+(35) Exchange
+Input [2]: [k3#52L, dim3_payload#149]
+Arguments: hashpartitioning(k3#52L, 200), ENSURE_REQUIREMENTS, [plan_id=13974]
+
+(36) ShuffleQueryStage
+Output [2]: [k3#52L, dim3_payload#149]
+Arguments: 3
+
+(37) AQEShuffleRead
+Input [2]: [k3#52L, dim3_payload#149]
+Arguments: local
+
+(38) BroadcastExchange
+Input [2]: [k3#52L, dim3_payload#149]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=21786]
+
+(39) BroadcastQueryStage
+Output [2]: [k3#52L, dim3_payload#149]
+Arguments: 28
+
+(40) BroadcastHashJoin [codegen id : 25]
+Left keys [1]: [k3#27L]
+Right keys [1]: [k3#52L]
+Join type: LeftOuter
+Join condition: None
+
+(41) Project [codegen id : 25]
+Output [25]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149]
+Input [26]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, k3#52L, dim3_payload#149]
+
+(42) Exchange
+Input [25]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149]
+Arguments: hashpartitioning(k4#28L, 200), ENSURE_REQUIREMENTS, [plan_id=24555]
+
+(43) ShuffleQueryStage
+Output [25]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149]
+Arguments: 32
+
+(44) AQEShuffleRead
+Input [25]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149]
+Arguments: coalesced
+
+(45) Sort [codegen id : 26]
+Input [25]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149]
+Arguments: [k4#28L ASC NULLS FIRST], false, 0
+
+(46) Scan parquet 
+Output [2]: [k4#55L, payload#57]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k4_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k4)]
+ReadSchema: struct<k4:bigint,payload:string>
+
+(47) ColumnarToRow [codegen id : 5]
+Input [2]: [k4#55L, payload#57]
+
+(48) Filter [codegen id : 5]
+Input [2]: [k4#55L, payload#57]
+Condition : isnotnull(k4#55L)
+
+(49) Project [codegen id : 5]
+Output [2]: [k4#55L, payload#57 AS dim4_payload#150]
+Input [2]: [k4#55L, payload#57]
+
+(50) Exchange
+Input [2]: [k4#55L, dim4_payload#150]
+Arguments: hashpartitioning(k4#55L, 200), ENSURE_REQUIREMENTS, [plan_id=13999]
+
+(51) ShuffleQueryStage
+Output [2]: [k4#55L, dim4_payload#150]
+Arguments: 4
+
+(52) AQEShuffleRead
+Input [2]: [k4#55L, dim4_payload#150]
+Arguments: coalesced
+
+(53) Sort [codegen id : 27]
+Input [2]: [k4#55L, dim4_payload#150]
+Arguments: [k4#55L ASC NULLS FIRST], false, 0
+
+(54) SortMergeJoin [codegen id : 28]
+Left keys [1]: [k4#28L]
+Right keys [1]: [k4#55L]
+Join type: LeftOuter
+Join condition: None
+
+(55) Project [codegen id : 28]
+Output [26]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150]
+Input [27]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, k4#55L, dim4_payload#150]
+
+(56) Scan parquet 
+Output [3]: [k5#58L, filter_bucket#59, payload#60]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k5_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k5)]
+ReadSchema: struct<k5:bigint,filter_bucket:int,payload:string>
+
+(57) ColumnarToRow [codegen id : 6]
+Input [3]: [k5#58L, filter_bucket#59, payload#60]
+
+(58) Filter [codegen id : 6]
+Input [3]: [k5#58L, filter_bucket#59, payload#60]
+Condition : ((isnotnull(filter_bucket#59) AND (filter_bucket#59 < 10)) AND isnotnull(k5#58L))
+
+(59) Project [codegen id : 6]
+Output [2]: [k5#58L, payload#60 AS dim5_payload#151]
+Input [3]: [k5#58L, filter_bucket#59, payload#60]
+
+(60) Exchange
+Input [2]: [k5#58L, dim5_payload#151]
+Arguments: hashpartitioning(k5#58L, 200), ENSURE_REQUIREMENTS, [plan_id=14024]
+
+(61) ShuffleQueryStage
+Output [2]: [k5#58L, dim5_payload#151]
+Arguments: 5
+
+(62) AQEShuffleRead
+Input [2]: [k5#58L, dim5_payload#151]
+Arguments: local
+
+(63) BroadcastExchange
+Input [2]: [k5#58L, dim5_payload#151]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=15392]
+
+(64) BroadcastQueryStage
+Output [2]: [k5#58L, dim5_payload#151]
+Arguments: 21
+
+(65) BroadcastHashJoin [codegen id : 28]
+Left keys [1]: [k5#29L]
+Right keys [1]: [k5#58L]
+Join type: LeftOuter
+Join condition: None
+
+(66) Project [codegen id : 28]
+Output [27]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151]
+Input [28]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, k5#58L, dim5_payload#151]
+
+(67) Exchange
+Input [27]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151]
+Arguments: hashpartitioning(k6#30L, 200), ENSURE_REQUIREMENTS, [plan_id=24965]
+
+(68) ShuffleQueryStage
+Output [27]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151]
+Arguments: 33
+
+(69) AQEShuffleRead
+Input [27]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151]
+Arguments: coalesced
+
+(70) Sort [codegen id : 29]
+Input [27]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151]
+Arguments: [k6#30L ASC NULLS FIRST], false, 0
+
+(71) Scan parquet 
+Output [2]: [k6#61L, payload#63]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k6_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k6)]
+ReadSchema: struct<k6:bigint,payload:string>
+
+(72) ColumnarToRow [codegen id : 7]
+Input [2]: [k6#61L, payload#63]
+
+(73) Filter [codegen id : 7]
+Input [2]: [k6#61L, payload#63]
+Condition : isnotnull(k6#61L)
+
+(74) Project [codegen id : 7]
+Output [2]: [k6#61L, payload#63 AS dim6_payload#152]
+Input [2]: [k6#61L, payload#63]
+
+(75) Exchange
+Input [2]: [k6#61L, dim6_payload#152]
+Arguments: hashpartitioning(k6#61L, 200), ENSURE_REQUIREMENTS, [plan_id=14049]
+
+(76) ShuffleQueryStage
+Output [2]: [k6#61L, dim6_payload#152]
+Arguments: 6
+
+(77) AQEShuffleRead
+Input [2]: [k6#61L, dim6_payload#152]
+Arguments: coalesced
+
+(78) Sort [codegen id : 30]
+Input [2]: [k6#61L, dim6_payload#152]
+Arguments: [k6#61L ASC NULLS FIRST], false, 0
+
+(79) SortMergeJoin [codegen id : 31]
+Left keys [1]: [k6#30L]
+Right keys [1]: [k6#61L]
+Join type: LeftOuter
+Join condition: None
+
+(80) Project [codegen id : 31]
+Output [28]: [k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152]
+Input [29]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, k6#61L, dim6_payload#152]
+
+(81) Scan parquet 
+Output [3]: [k7#64L, filter_bucket#65, payload#66]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k7_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k7)]
+ReadSchema: struct<k7:bigint,filter_bucket:int,payload:string>
+
+(82) ColumnarToRow [codegen id : 8]
+Input [3]: [k7#64L, filter_bucket#65, payload#66]
+
+(83) Filter [codegen id : 8]
+Input [3]: [k7#64L, filter_bucket#65, payload#66]
+Condition : ((isnotnull(filter_bucket#65) AND (filter_bucket#65 < 10)) AND isnotnull(k7#64L))
+
+(84) Project [codegen id : 8]
+Output [2]: [k7#64L, payload#66 AS dim7_payload#153]
+Input [3]: [k7#64L, filter_bucket#65, payload#66]
+
+(85) Exchange
+Input [2]: [k7#64L, dim7_payload#153]
+Arguments: hashpartitioning(k7#64L, 200), ENSURE_REQUIREMENTS, [plan_id=14074]
+
+(86) ShuffleQueryStage
+Output [2]: [k7#64L, dim7_payload#153]
+Arguments: 7
+
+(87) AQEShuffleRead
+Input [2]: [k7#64L, dim7_payload#153]
+Arguments: local
+
+(88) BroadcastExchange
+Input [2]: [k7#64L, dim7_payload#153]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=17224]
+
+(89) BroadcastQueryStage
+Output [2]: [k7#64L, dim7_payload#153]
+Arguments: 22
+
+(90) BroadcastHashJoin [codegen id : 31]
+Left keys [1]: [k7#31L]
+Right keys [1]: [k7#64L]
+Join type: LeftOuter
+Join condition: None
+
+(91) Project [codegen id : 31]
+Output [29]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153]
+Input [30]: [k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, k7#64L, dim7_payload#153]
+
+(92) Exchange
+Input [29]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153]
+Arguments: hashpartitioning(k8#32L, 200), ENSURE_REQUIREMENTS, [plan_id=25332]
+
+(93) ShuffleQueryStage
+Output [29]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153]
+Arguments: 34
+
+(94) AQEShuffleRead
+Input [29]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153]
+Arguments: coalesced
+
+(95) Sort [codegen id : 32]
+Input [29]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153]
+Arguments: [k8#32L ASC NULLS FIRST], false, 0
+
+(96) Scan parquet 
+Output [2]: [k8#67L, payload#69]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k8_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k8)]
+ReadSchema: struct<k8:bigint,payload:string>
+
+(97) ColumnarToRow [codegen id : 9]
+Input [2]: [k8#67L, payload#69]
+
+(98) Filter [codegen id : 9]
+Input [2]: [k8#67L, payload#69]
+Condition : isnotnull(k8#67L)
+
+(99) Project [codegen id : 9]
+Output [2]: [k8#67L, payload#69 AS dim8_payload#154]
+Input [2]: [k8#67L, payload#69]
+
+(100) Exchange
+Input [2]: [k8#67L, dim8_payload#154]
+Arguments: hashpartitioning(k8#67L, 200), ENSURE_REQUIREMENTS, [plan_id=14099]
+
+(101) ShuffleQueryStage
+Output [2]: [k8#67L, dim8_payload#154]
+Arguments: 8
+
+(102) AQEShuffleRead
+Input [2]: [k8#67L, dim8_payload#154]
+Arguments: coalesced
+
+(103) Sort [codegen id : 33]
+Input [2]: [k8#67L, dim8_payload#154]
+Arguments: [k8#67L ASC NULLS FIRST], false, 0
+
+(104) SortMergeJoin [codegen id : 34]
+Left keys [1]: [k8#32L]
+Right keys [1]: [k8#67L]
+Join type: LeftOuter
+Join condition: None
+
+(105) Project [codegen id : 34]
+Output [30]: [k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154]
+Input [31]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, k8#67L, dim8_payload#154]
+
+(106) Scan parquet 
+Output [3]: [k9#70L, filter_bucket#71, payload#72]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k9_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k9)]
+ReadSchema: struct<k9:bigint,filter_bucket:int,payload:string>
+
+(107) ColumnarToRow [codegen id : 10]
+Input [3]: [k9#70L, filter_bucket#71, payload#72]
+
+(108) Filter [codegen id : 10]
+Input [3]: [k9#70L, filter_bucket#71, payload#72]
+Condition : ((isnotnull(filter_bucket#71) AND (filter_bucket#71 < 10)) AND isnotnull(k9#70L))
+
+(109) Project [codegen id : 10]
+Output [2]: [k9#70L, payload#72 AS dim9_payload#155]
+Input [3]: [k9#70L, filter_bucket#71, payload#72]
+
+(110) Exchange
+Input [2]: [k9#70L, dim9_payload#155]
+Arguments: hashpartitioning(k9#70L, 200), ENSURE_REQUIREMENTS, [plan_id=14124]
+
+(111) ShuffleQueryStage
+Output [2]: [k9#70L, dim9_payload#155]
+Arguments: 9
+
+(112) AQEShuffleRead
+Input [2]: [k9#70L, dim9_payload#155]
+Arguments: local
+
+(113) BroadcastExchange
+Input [2]: [k9#70L, dim9_payload#155]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=20998]
+
+(114) BroadcastQueryStage
+Output [2]: [k9#70L, dim9_payload#155]
+Arguments: 27
+
+(115) BroadcastHashJoin [codegen id : 34]
+Left keys [1]: [k9#33L]
+Right keys [1]: [k9#70L]
+Join type: LeftOuter
+Join condition: None
+
+(116) Project [codegen id : 34]
+Output [31]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155]
+Input [32]: [k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, k9#70L, dim9_payload#155]
+
+(117) Exchange
+Input [31]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155]
+Arguments: hashpartitioning(k10#34L, 200), ENSURE_REQUIREMENTS, [plan_id=25656]
+
+(118) ShuffleQueryStage
+Output [31]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155]
+Arguments: 35
+
+(119) AQEShuffleRead
+Input [31]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155]
+Arguments: coalesced
+
+(120) Sort [codegen id : 35]
+Input [31]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155]
+Arguments: [k10#34L ASC NULLS FIRST], false, 0
+
+(121) Scan parquet 
+Output [2]: [k10#73L, payload#75]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k10_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k10)]
+ReadSchema: struct<k10:bigint,payload:string>
+
+(122) ColumnarToRow [codegen id : 11]
+Input [2]: [k10#73L, payload#75]
+
+(123) Filter [codegen id : 11]
+Input [2]: [k10#73L, payload#75]
+Condition : isnotnull(k10#73L)
+
+(124) Project [codegen id : 11]
+Output [2]: [k10#73L, payload#75 AS dim10_payload#156]
+Input [2]: [k10#73L, payload#75]
+
+(125) Exchange
+Input [2]: [k10#73L, dim10_payload#156]
+Arguments: hashpartitioning(k10#73L, 200), ENSURE_REQUIREMENTS, [plan_id=14149]
+
+(126) ShuffleQueryStage
+Output [2]: [k10#73L, dim10_payload#156]
+Arguments: 10
+
+(127) AQEShuffleRead
+Input [2]: [k10#73L, dim10_payload#156]
+Arguments: coalesced
+
+(128) Sort [codegen id : 36]
+Input [2]: [k10#73L, dim10_payload#156]
+Arguments: [k10#73L ASC NULLS FIRST], false, 0
+
+(129) SortMergeJoin [codegen id : 37]
+Left keys [1]: [k10#34L]
+Right keys [1]: [k10#73L]
+Join type: LeftOuter
+Join condition: None
+
+(130) Project [codegen id : 37]
+Output [32]: [k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156]
+Input [33]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, k10#73L, dim10_payload#156]
+
+(131) Scan parquet 
+Output [3]: [k11#76L, filter_bucket#77, payload#78]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k11_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k11)]
+ReadSchema: struct<k11:bigint,filter_bucket:int,payload:string>
+
+(132) ColumnarToRow [codegen id : 12]
+Input [3]: [k11#76L, filter_bucket#77, payload#78]
+
+(133) Filter [codegen id : 12]
+Input [3]: [k11#76L, filter_bucket#77, payload#78]
+Condition : ((isnotnull(filter_bucket#77) AND (filter_bucket#77 < 10)) AND isnotnull(k11#76L))
+
+(134) Project [codegen id : 12]
+Output [2]: [k11#76L, payload#78 AS dim11_payload#157]
+Input [3]: [k11#76L, filter_bucket#77, payload#78]
+
+(135) Exchange
+Input [2]: [k11#76L, dim11_payload#157]
+Arguments: hashpartitioning(k11#76L, 200), ENSURE_REQUIREMENTS, [plan_id=14174]
+
+(136) ShuffleQueryStage
+Output [2]: [k11#76L, dim11_payload#157]
+Arguments: 11
+
+(137) AQEShuffleRead
+Input [2]: [k11#76L, dim11_payload#157]
+Arguments: local
+
+(138) BroadcastExchange
+Input [2]: [k11#76L, dim11_payload#157]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=19091]
+
+(139) BroadcastQueryStage
+Output [2]: [k11#76L, dim11_payload#157]
+Arguments: 24
+
+(140) BroadcastHashJoin [codegen id : 37]
+Left keys [1]: [k11#35L]
+Right keys [1]: [k11#76L]
+Join type: LeftOuter
+Join condition: None
+
+(141) Project [codegen id : 37]
+Output [33]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157]
+Input [34]: [k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, k11#76L, dim11_payload#157]
+
+(142) Exchange
+Input [33]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157]
+Arguments: hashpartitioning(k12#36L, 200), ENSURE_REQUIREMENTS, [plan_id=25937]
+
+(143) ShuffleQueryStage
+Output [33]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157]
+Arguments: 36
+
+(144) AQEShuffleRead
+Input [33]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157]
+Arguments: coalesced
+
+(145) Sort [codegen id : 38]
+Input [33]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157]
+Arguments: [k12#36L ASC NULLS FIRST], false, 0
+
+(146) Scan parquet 
+Output [2]: [k12#79L, payload#81]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k12_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k12)]
+ReadSchema: struct<k12:bigint,payload:string>
+
+(147) ColumnarToRow [codegen id : 13]
+Input [2]: [k12#79L, payload#81]
+
+(148) Filter [codegen id : 13]
+Input [2]: [k12#79L, payload#81]
+Condition : isnotnull(k12#79L)
+
+(149) Project [codegen id : 13]
+Output [2]: [k12#79L, payload#81 AS dim12_payload#158]
+Input [2]: [k12#79L, payload#81]
+
+(150) Exchange
+Input [2]: [k12#79L, dim12_payload#158]
+Arguments: hashpartitioning(k12#79L, 200), ENSURE_REQUIREMENTS, [plan_id=14199]
+
+(151) ShuffleQueryStage
+Output [2]: [k12#79L, dim12_payload#158]
+Arguments: 12
+
+(152) AQEShuffleRead
+Input [2]: [k12#79L, dim12_payload#158]
+Arguments: coalesced
+
+(153) Sort [codegen id : 39]
+Input [2]: [k12#79L, dim12_payload#158]
+Arguments: [k12#79L ASC NULLS FIRST], false, 0
+
+(154) SortMergeJoin [codegen id : 40]
+Left keys [1]: [k12#36L]
+Right keys [1]: [k12#79L]
+Join type: LeftOuter
+Join condition: None
+
+(155) Project [codegen id : 40]
+Output [34]: [k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158]
+Input [35]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, k12#79L, dim12_payload#158]
+
+(156) Scan parquet 
+Output [3]: [k13#82L, filter_bucket#83, payload#84]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k13_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k13)]
+ReadSchema: struct<k13:bigint,filter_bucket:int,payload:string>
+
+(157) ColumnarToRow [codegen id : 14]
+Input [3]: [k13#82L, filter_bucket#83, payload#84]
+
+(158) Filter [codegen id : 14]
+Input [3]: [k13#82L, filter_bucket#83, payload#84]
+Condition : ((isnotnull(filter_bucket#83) AND (filter_bucket#83 < 10)) AND isnotnull(k13#82L))
+
+(159) Project [codegen id : 14]
+Output [2]: [k13#82L, payload#84 AS dim13_payload#159]
+Input [3]: [k13#82L, filter_bucket#83, payload#84]
+
+(160) Exchange
+Input [2]: [k13#82L, dim13_payload#159]
+Arguments: hashpartitioning(k13#82L, 200), ENSURE_REQUIREMENTS, [plan_id=14224]
+
+(161) ShuffleQueryStage
+Output [2]: [k13#82L, dim13_payload#159]
+Arguments: 13
+
+(162) AQEShuffleRead
+Input [2]: [k13#82L, dim13_payload#159]
+Arguments: local
+
+(163) BroadcastExchange
+Input [2]: [k13#82L, dim13_payload#159]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=22612]
+
+(164) BroadcastQueryStage
+Output [2]: [k13#82L, dim13_payload#159]
+Arguments: 29
+
+(165) BroadcastHashJoin [codegen id : 40]
+Left keys [1]: [k13#37L]
+Right keys [1]: [k13#82L]
+Join type: LeftOuter
+Join condition: None
+
+(166) Project [codegen id : 40]
+Output [35]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159]
+Input [36]: [k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, k13#82L, dim13_payload#159]
+
+(167) Exchange
+Input [35]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159]
+Arguments: hashpartitioning(k14#38L, 200), ENSURE_REQUIREMENTS, [plan_id=26175]
+
+(168) ShuffleQueryStage
+Output [35]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159]
+Arguments: 37
+
+(169) AQEShuffleRead
+Input [35]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159]
+Arguments: coalesced
+
+(170) Sort [codegen id : 41]
+Input [35]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159]
+Arguments: [k14#38L ASC NULLS FIRST], false, 0
+
+(171) Scan parquet 
+Output [2]: [k14#85L, payload#87]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k14_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k14)]
+ReadSchema: struct<k14:bigint,payload:string>
+
+(172) ColumnarToRow [codegen id : 15]
+Input [2]: [k14#85L, payload#87]
+
+(173) Filter [codegen id : 15]
+Input [2]: [k14#85L, payload#87]
+Condition : isnotnull(k14#85L)
+
+(174) Project [codegen id : 15]
+Output [2]: [k14#85L, payload#87 AS dim14_payload#160]
+Input [2]: [k14#85L, payload#87]
+
+(175) Exchange
+Input [2]: [k14#85L, dim14_payload#160]
+Arguments: hashpartitioning(k14#85L, 200), ENSURE_REQUIREMENTS, [plan_id=14249]
+
+(176) ShuffleQueryStage
+Output [2]: [k14#85L, dim14_payload#160]
+Arguments: 14
+
+(177) AQEShuffleRead
+Input [2]: [k14#85L, dim14_payload#160]
+Arguments: coalesced
+
+(178) Sort [codegen id : 42]
+Input [2]: [k14#85L, dim14_payload#160]
+Arguments: [k14#85L ASC NULLS FIRST], false, 0
+
+(179) SortMergeJoin [codegen id : 43]
+Left keys [1]: [k14#38L]
+Right keys [1]: [k14#85L]
+Join type: LeftOuter
+Join condition: None
+
+(180) Project [codegen id : 43]
+Output [36]: [k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160]
+Input [37]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, k14#85L, dim14_payload#160]
+
+(181) Scan parquet 
+Output [3]: [k15#88L, filter_bucket#89, payload#90]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k15_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k15)]
+ReadSchema: struct<k15:bigint,filter_bucket:int,payload:string>
+
+(182) ColumnarToRow [codegen id : 16]
+Input [3]: [k15#88L, filter_bucket#89, payload#90]
+
+(183) Filter [codegen id : 16]
+Input [3]: [k15#88L, filter_bucket#89, payload#90]
+Condition : ((isnotnull(filter_bucket#89) AND (filter_bucket#89 < 10)) AND isnotnull(k15#88L))
+
+(184) Project [codegen id : 16]
+Output [2]: [k15#88L, payload#90 AS dim15_payload#161]
+Input [3]: [k15#88L, filter_bucket#89, payload#90]
+
+(185) Exchange
+Input [2]: [k15#88L, dim15_payload#161]
+Arguments: hashpartitioning(k15#88L, 200), ENSURE_REQUIREMENTS, [plan_id=14274]
+
+(186) ShuffleQueryStage
+Output [2]: [k15#88L, dim15_payload#161]
+Arguments: 15
+
+(187) AQEShuffleRead
+Input [2]: [k15#88L, dim15_payload#161]
+Arguments: local
+
+(188) BroadcastExchange
+Input [2]: [k15#88L, dim15_payload#161]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=23326]
+
+(189) BroadcastQueryStage
+Output [2]: [k15#88L, dim15_payload#161]
+Arguments: 30
+
+(190) BroadcastHashJoin [codegen id : 43]
+Left keys [1]: [k15#39L]
+Right keys [1]: [k15#88L]
+Join type: LeftOuter
+Join condition: None
+
+(191) Project [codegen id : 43]
+Output [37]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161]
+Input [38]: [k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, k15#88L, dim15_payload#161]
+
+(192) Exchange
+Input [37]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161]
+Arguments: hashpartitioning(k16#40L, 200), ENSURE_REQUIREMENTS, [plan_id=26370]
+
+(193) ShuffleQueryStage
+Output [37]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161]
+Arguments: 38
+
+(194) AQEShuffleRead
+Input [37]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161]
+Arguments: coalesced
+
+(195) Sort [codegen id : 44]
+Input [37]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161]
+Arguments: [k16#40L ASC NULLS FIRST], false, 0
+
+(196) Scan parquet 
+Output [2]: [k16#91L, payload#93]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k16_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k16)]
+ReadSchema: struct<k16:bigint,payload:string>
+
+(197) ColumnarToRow [codegen id : 17]
+Input [2]: [k16#91L, payload#93]
+
+(198) Filter [codegen id : 17]
+Input [2]: [k16#91L, payload#93]
+Condition : isnotnull(k16#91L)
+
+(199) Project [codegen id : 17]
+Output [2]: [k16#91L, payload#93 AS dim16_payload#162]
+Input [2]: [k16#91L, payload#93]
+
+(200) Exchange
+Input [2]: [k16#91L, dim16_payload#162]
+Arguments: hashpartitioning(k16#91L, 200), ENSURE_REQUIREMENTS, [plan_id=14299]
+
+(201) ShuffleQueryStage
+Output [2]: [k16#91L, dim16_payload#162]
+Arguments: 16
+
+(202) AQEShuffleRead
+Input [2]: [k16#91L, dim16_payload#162]
+Arguments: coalesced
+
+(203) Sort [codegen id : 45]
+Input [2]: [k16#91L, dim16_payload#162]
+Arguments: [k16#91L ASC NULLS FIRST], false, 0
+
+(204) SortMergeJoin [codegen id : 46]
+Left keys [1]: [k16#40L]
+Right keys [1]: [k16#91L]
+Join type: LeftOuter
+Join condition: None
+
+(205) Project [codegen id : 46]
+Output [38]: [k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162]
+Input [39]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, k16#91L, dim16_payload#162]
+
+(206) Scan parquet 
+Output [3]: [k17#94L, filter_bucket#95, payload#96]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k17_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k17)]
+ReadSchema: struct<k17:bigint,filter_bucket:int,payload:string>
+
+(207) ColumnarToRow [codegen id : 18]
+Input [3]: [k17#94L, filter_bucket#95, payload#96]
+
+(208) Filter [codegen id : 18]
+Input [3]: [k17#94L, filter_bucket#95, payload#96]
+Condition : ((isnotnull(filter_bucket#95) AND (filter_bucket#95 < 10)) AND isnotnull(k17#94L))
+
+(209) Project [codegen id : 18]
+Output [2]: [k17#94L, payload#96 AS dim17_payload#163]
+Input [3]: [k17#94L, filter_bucket#95, payload#96]
+
+(210) Exchange
+Input [2]: [k17#94L, dim17_payload#163]
+Arguments: hashpartitioning(k17#94L, 200), ENSURE_REQUIREMENTS, [plan_id=14324]
+
+(211) ShuffleQueryStage
+Output [2]: [k17#94L, dim17_payload#163]
+Arguments: 17
+
+(212) AQEShuffleRead
+Input [2]: [k17#94L, dim17_payload#163]
+Arguments: local
+
+(213) BroadcastExchange
+Input [2]: [k17#94L, dim17_payload#163]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=20564]
+
+(214) BroadcastQueryStage
+Output [2]: [k17#94L, dim17_payload#163]
+Arguments: 26
+
+(215) BroadcastHashJoin [codegen id : 46]
+Left keys [1]: [k17#41L]
+Right keys [1]: [k17#94L]
+Join type: LeftOuter
+Join condition: None
+
+(216) Project [codegen id : 46]
+Output [39]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163]
+Input [40]: [k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, k17#94L, dim17_payload#163]
+
+(217) Exchange
+Input [39]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163]
+Arguments: hashpartitioning(k18#42L, 200), ENSURE_REQUIREMENTS, [plan_id=26522]
+
+(218) ShuffleQueryStage
+Output [39]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163]
+Arguments: 39
+
+(219) AQEShuffleRead
+Input [39]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163]
+Arguments: coalesced
+
+(220) Sort [codegen id : 47]
+Input [39]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163]
+Arguments: [k18#42L ASC NULLS FIRST], false, 0
+
+(221) Scan parquet 
+Output [2]: [k18#97L, payload#99]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k18_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k18)]
+ReadSchema: struct<k18:bigint,payload:string>
+
+(222) ColumnarToRow [codegen id : 19]
+Input [2]: [k18#97L, payload#99]
+
+(223) Filter [codegen id : 19]
+Input [2]: [k18#97L, payload#99]
+Condition : isnotnull(k18#97L)
+
+(224) Project [codegen id : 19]
+Output [2]: [k18#97L, payload#99 AS dim18_payload#164]
+Input [2]: [k18#97L, payload#99]
+
+(225) Exchange
+Input [2]: [k18#97L, dim18_payload#164]
+Arguments: hashpartitioning(k18#97L, 200), ENSURE_REQUIREMENTS, [plan_id=14349]
+
+(226) ShuffleQueryStage
+Output [2]: [k18#97L, dim18_payload#164]
+Arguments: 18
+
+(227) AQEShuffleRead
+Input [2]: [k18#97L, dim18_payload#164]
+Arguments: coalesced
+
+(228) Sort [codegen id : 48]
+Input [2]: [k18#97L, dim18_payload#164]
+Arguments: [k18#97L ASC NULLS FIRST], false, 0
+
+(229) SortMergeJoin [codegen id : 49]
+Left keys [1]: [k18#42L]
+Right keys [1]: [k18#97L]
+Join type: LeftOuter
+Join condition: None
+
+(230) Project [codegen id : 49]
+Output [40]: [k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164]
+Input [41]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, k18#97L, dim18_payload#164]
+
+(231) Scan parquet 
+Output [3]: [k19#100L, filter_bucket#101, payload#102]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k19_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k19)]
+ReadSchema: struct<k19:bigint,filter_bucket:int,payload:string>
+
+(232) ColumnarToRow [codegen id : 20]
+Input [3]: [k19#100L, filter_bucket#101, payload#102]
+
+(233) Filter [codegen id : 20]
+Input [3]: [k19#100L, filter_bucket#101, payload#102]
+Condition : ((isnotnull(filter_bucket#101) AND (filter_bucket#101 < 10)) AND isnotnull(k19#100L))
+
+(234) Project [codegen id : 20]
+Output [2]: [k19#100L, payload#102 AS dim19_payload#165]
+Input [3]: [k19#100L, filter_bucket#101, payload#102]
+
+(235) Exchange
+Input [2]: [k19#100L, dim19_payload#165]
+Arguments: hashpartitioning(k19#100L, 200), ENSURE_REQUIREMENTS, [plan_id=14374]
+
+(236) ShuffleQueryStage
+Output [2]: [k19#100L, dim19_payload#165]
+Arguments: 19
+
+(237) AQEShuffleRead
+Input [2]: [k19#100L, dim19_payload#165]
+Arguments: local
+
+(238) BroadcastExchange
+Input [2]: [k19#100L, dim19_payload#165]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=19573]
+
+(239) BroadcastQueryStage
+Output [2]: [k19#100L, dim19_payload#165]
+Arguments: 25
+
+(240) BroadcastHashJoin [codegen id : 49]
+Left keys [1]: [k19#43L]
+Right keys [1]: [k19#100L]
+Join type: LeftOuter
+Join condition: None
+
+(241) Project [codegen id : 49]
+Output [41]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165]
+Input [42]: [k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, k19#100L, dim19_payload#165]
+
+(242) Exchange
+Input [41]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165]
+Arguments: hashpartitioning(k20#44L, 200), ENSURE_REQUIREMENTS, [plan_id=26631]
+
+(243) ShuffleQueryStage
+Output [41]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165]
+Arguments: 40
+
+(244) AQEShuffleRead
+Input [41]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165]
+Arguments: coalesced
+
+(245) Sort [codegen id : 50]
+Input [41]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165]
+Arguments: [k20#44L ASC NULLS FIRST], false, 0
+
+(246) Scan parquet 
+Output [2]: [k20#103L, payload#105]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k20_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k20)]
+ReadSchema: struct<k20:bigint,payload:string>
+
+(247) ColumnarToRow [codegen id : 21]
+Input [2]: [k20#103L, payload#105]
+
+(248) Filter [codegen id : 21]
+Input [2]: [k20#103L, payload#105]
+Condition : isnotnull(k20#103L)
+
+(249) Project [codegen id : 21]
+Output [2]: [k20#103L, payload#105 AS dim20_payload#166]
+Input [2]: [k20#103L, payload#105]
+
+(250) Exchange
+Input [2]: [k20#103L, dim20_payload#166]
+Arguments: hashpartitioning(k20#103L, 200), ENSURE_REQUIREMENTS, [plan_id=14406]
+
+(251) ShuffleQueryStage
+Output [2]: [k20#103L, dim20_payload#166]
+Arguments: 20
+
+(252) AQEShuffleRead
+Input [2]: [k20#103L, dim20_payload#166]
+Arguments: coalesced
+
+(253) Sort [codegen id : 51]
+Input [2]: [k20#103L, dim20_payload#166]
+Arguments: [k20#103L ASC NULLS FIRST], false, 0
+
+(254) SortMergeJoin [codegen id : 52]
+Left keys [1]: [k20#44L]
+Right keys [1]: [k20#103L]
+Join type: LeftOuter
+Join condition: None
+
+(255) Project [codegen id : 52]
+Output [42]: [k20#44L, k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165, dim20_payload#166]
+Input [43]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165, k20#103L, dim20_payload#166]
+
+(256) ResultQueryStage
+Output [42]: [k20#44L, k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165, dim20_payload#166]
+Arguments: 41
+
+(257) Exchange
+Input [22]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45]
+Arguments: hashpartitioning(k1#25L, 200), ENSURE_REQUIREMENTS, [plan_id=13417]
+
+(258) Sort
+Input [22]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45]
+Arguments: [k1#25L ASC NULLS FIRST], false, 0
+
+(259) Filter
+Input [3]: [k1#46L, filter_bucket#47, payload#48]
+Condition : ((isnotnull(filter_bucket#47) AND (filter_bucket#47 < 10)) AND isnotnull(k1#46L))
+
+(260) Project
+Output [2]: [k1#46L, payload#48 AS dim1_payload#147]
+Input [3]: [k1#46L, filter_bucket#47, payload#48]
+
+(261) Exchange
+Input [2]: [k1#46L, dim1_payload#147]
+Arguments: hashpartitioning(k1#46L, 200), ENSURE_REQUIREMENTS, [plan_id=13418]
+
+(262) Sort
+Input [2]: [k1#46L, dim1_payload#147]
+Arguments: [k1#46L ASC NULLS FIRST], false, 0
+
+(263) SortMergeJoin
+Left keys [1]: [k1#25L]
+Right keys [1]: [k1#46L]
+Join type: LeftOuter
+Join condition: None
+
+(264) Project
+Output [23]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147]
+Input [24]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, k1#46L, dim1_payload#147]
+
+(265) Exchange
+Input [23]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147]
+Arguments: hashpartitioning(k2#26L, 200), ENSURE_REQUIREMENTS, [plan_id=13425]
+
+(266) Sort
+Input [23]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147]
+Arguments: [k2#26L ASC NULLS FIRST], false, 0
+
+(267) Filter
+Input [2]: [k2#49L, payload#51]
+Condition : isnotnull(k2#49L)
+
+(268) Project
+Output [2]: [k2#49L, payload#51 AS dim2_payload#148]
+Input [2]: [k2#49L, payload#51]
+
+(269) Exchange
+Input [2]: [k2#49L, dim2_payload#148]
+Arguments: hashpartitioning(k2#49L, 200), ENSURE_REQUIREMENTS, [plan_id=13426]
+
+(270) Sort
+Input [2]: [k2#49L, dim2_payload#148]
+Arguments: [k2#49L ASC NULLS FIRST], false, 0
+
+(271) SortMergeJoin
+Left keys [1]: [k2#26L]
+Right keys [1]: [k2#49L]
+Join type: LeftOuter
+Join condition: None
+
+(272) Project
+Output [24]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148]
+Input [25]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, k2#49L, dim2_payload#148]
+
+(273) Exchange
+Input [24]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148]
+Arguments: hashpartitioning(k3#27L, 200), ENSURE_REQUIREMENTS, [plan_id=13433]
+
+(274) Sort
+Input [24]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148]
+Arguments: [k3#27L ASC NULLS FIRST], false, 0
+
+(275) Filter
+Input [3]: [k3#52L, filter_bucket#53, payload#54]
+Condition : ((isnotnull(filter_bucket#53) AND (filter_bucket#53 < 10)) AND isnotnull(k3#52L))
+
+(276) Project
+Output [2]: [k3#52L, payload#54 AS dim3_payload#149]
+Input [3]: [k3#52L, filter_bucket#53, payload#54]
+
+(277) Exchange
+Input [2]: [k3#52L, dim3_payload#149]
+Arguments: hashpartitioning(k3#52L, 200), ENSURE_REQUIREMENTS, [plan_id=13434]
+
+(278) Sort
+Input [2]: [k3#52L, dim3_payload#149]
+Arguments: [k3#52L ASC NULLS FIRST], false, 0
+
+(279) SortMergeJoin
+Left keys [1]: [k3#27L]
+Right keys [1]: [k3#52L]
+Join type: LeftOuter
+Join condition: None
+
+(280) Project
+Output [25]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149]
+Input [26]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, k3#52L, dim3_payload#149]
+
+(281) Exchange
+Input [25]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149]
+Arguments: hashpartitioning(k4#28L, 200), ENSURE_REQUIREMENTS, [plan_id=13441]
+
+(282) Sort
+Input [25]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149]
+Arguments: [k4#28L ASC NULLS FIRST], false, 0
+
+(283) Filter
+Input [2]: [k4#55L, payload#57]
+Condition : isnotnull(k4#55L)
+
+(284) Project
+Output [2]: [k4#55L, payload#57 AS dim4_payload#150]
+Input [2]: [k4#55L, payload#57]
+
+(285) Exchange
+Input [2]: [k4#55L, dim4_payload#150]
+Arguments: hashpartitioning(k4#55L, 200), ENSURE_REQUIREMENTS, [plan_id=13442]
+
+(286) Sort
+Input [2]: [k4#55L, dim4_payload#150]
+Arguments: [k4#55L ASC NULLS FIRST], false, 0
+
+(287) SortMergeJoin
+Left keys [1]: [k4#28L]
+Right keys [1]: [k4#55L]
+Join type: LeftOuter
+Join condition: None
+
+(288) Project
+Output [26]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150]
+Input [27]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, k4#55L, dim4_payload#150]
+
+(289) Exchange
+Input [26]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150]
+Arguments: hashpartitioning(k5#29L, 200), ENSURE_REQUIREMENTS, [plan_id=13449]
+
+(290) Sort
+Input [26]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150]
+Arguments: [k5#29L ASC NULLS FIRST], false, 0
+
+(291) Filter
+Input [3]: [k5#58L, filter_bucket#59, payload#60]
+Condition : ((isnotnull(filter_bucket#59) AND (filter_bucket#59 < 10)) AND isnotnull(k5#58L))
+
+(292) Project
+Output [2]: [k5#58L, payload#60 AS dim5_payload#151]
+Input [3]: [k5#58L, filter_bucket#59, payload#60]
+
+(293) Exchange
+Input [2]: [k5#58L, dim5_payload#151]
+Arguments: hashpartitioning(k5#58L, 200), ENSURE_REQUIREMENTS, [plan_id=13450]
+
+(294) Sort
+Input [2]: [k5#58L, dim5_payload#151]
+Arguments: [k5#58L ASC NULLS FIRST], false, 0
+
+(295) SortMergeJoin
+Left keys [1]: [k5#29L]
+Right keys [1]: [k5#58L]
+Join type: LeftOuter
+Join condition: None
+
+(296) Project
+Output [27]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151]
+Input [28]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, k5#58L, dim5_payload#151]
+
+(297) Exchange
+Input [27]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151]
+Arguments: hashpartitioning(k6#30L, 200), ENSURE_REQUIREMENTS, [plan_id=13457]
+
+(298) Sort
+Input [27]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151]
+Arguments: [k6#30L ASC NULLS FIRST], false, 0
+
+(299) Filter
+Input [2]: [k6#61L, payload#63]
+Condition : isnotnull(k6#61L)
+
+(300) Project
+Output [2]: [k6#61L, payload#63 AS dim6_payload#152]
+Input [2]: [k6#61L, payload#63]
+
+(301) Exchange
+Input [2]: [k6#61L, dim6_payload#152]
+Arguments: hashpartitioning(k6#61L, 200), ENSURE_REQUIREMENTS, [plan_id=13458]
+
+(302) Sort
+Input [2]: [k6#61L, dim6_payload#152]
+Arguments: [k6#61L ASC NULLS FIRST], false, 0
+
+(303) SortMergeJoin
+Left keys [1]: [k6#30L]
+Right keys [1]: [k6#61L]
+Join type: LeftOuter
+Join condition: None
+
+(304) Project
+Output [28]: [k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152]
+Input [29]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, k6#61L, dim6_payload#152]
+
+(305) Exchange
+Input [28]: [k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152]
+Arguments: hashpartitioning(k7#31L, 200), ENSURE_REQUIREMENTS, [plan_id=13465]
+
+(306) Sort
+Input [28]: [k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152]
+Arguments: [k7#31L ASC NULLS FIRST], false, 0
+
+(307) Filter
+Input [3]: [k7#64L, filter_bucket#65, payload#66]
+Condition : ((isnotnull(filter_bucket#65) AND (filter_bucket#65 < 10)) AND isnotnull(k7#64L))
+
+(308) Project
+Output [2]: [k7#64L, payload#66 AS dim7_payload#153]
+Input [3]: [k7#64L, filter_bucket#65, payload#66]
+
+(309) Exchange
+Input [2]: [k7#64L, dim7_payload#153]
+Arguments: hashpartitioning(k7#64L, 200), ENSURE_REQUIREMENTS, [plan_id=13466]
+
+(310) Sort
+Input [2]: [k7#64L, dim7_payload#153]
+Arguments: [k7#64L ASC NULLS FIRST], false, 0
+
+(311) SortMergeJoin
+Left keys [1]: [k7#31L]
+Right keys [1]: [k7#64L]
+Join type: LeftOuter
+Join condition: None
+
+(312) Project
+Output [29]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153]
+Input [30]: [k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, k7#64L, dim7_payload#153]
+
+(313) Exchange
+Input [29]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153]
+Arguments: hashpartitioning(k8#32L, 200), ENSURE_REQUIREMENTS, [plan_id=13473]
+
+(314) Sort
+Input [29]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153]
+Arguments: [k8#32L ASC NULLS FIRST], false, 0
+
+(315) Filter
+Input [2]: [k8#67L, payload#69]
+Condition : isnotnull(k8#67L)
+
+(316) Project
+Output [2]: [k8#67L, payload#69 AS dim8_payload#154]
+Input [2]: [k8#67L, payload#69]
+
+(317) Exchange
+Input [2]: [k8#67L, dim8_payload#154]
+Arguments: hashpartitioning(k8#67L, 200), ENSURE_REQUIREMENTS, [plan_id=13474]
+
+(318) Sort
+Input [2]: [k8#67L, dim8_payload#154]
+Arguments: [k8#67L ASC NULLS FIRST], false, 0
+
+(319) SortMergeJoin
+Left keys [1]: [k8#32L]
+Right keys [1]: [k8#67L]
+Join type: LeftOuter
+Join condition: None
+
+(320) Project
+Output [30]: [k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154]
+Input [31]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, k8#67L, dim8_payload#154]
+
+(321) Exchange
+Input [30]: [k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154]
+Arguments: hashpartitioning(k9#33L, 200), ENSURE_REQUIREMENTS, [plan_id=13481]
+
+(322) Sort
+Input [30]: [k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154]
+Arguments: [k9#33L ASC NULLS FIRST], false, 0
+
+(323) Filter
+Input [3]: [k9#70L, filter_bucket#71, payload#72]
+Condition : ((isnotnull(filter_bucket#71) AND (filter_bucket#71 < 10)) AND isnotnull(k9#70L))
+
+(324) Project
+Output [2]: [k9#70L, payload#72 AS dim9_payload#155]
+Input [3]: [k9#70L, filter_bucket#71, payload#72]
+
+(325) Exchange
+Input [2]: [k9#70L, dim9_payload#155]
+Arguments: hashpartitioning(k9#70L, 200), ENSURE_REQUIREMENTS, [plan_id=13482]
+
+(326) Sort
+Input [2]: [k9#70L, dim9_payload#155]
+Arguments: [k9#70L ASC NULLS FIRST], false, 0
+
+(327) SortMergeJoin
+Left keys [1]: [k9#33L]
+Right keys [1]: [k9#70L]
+Join type: LeftOuter
+Join condition: None
+
+(328) Project
+Output [31]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155]
+Input [32]: [k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, k9#70L, dim9_payload#155]
+
+(329) Exchange
+Input [31]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155]
+Arguments: hashpartitioning(k10#34L, 200), ENSURE_REQUIREMENTS, [plan_id=13489]
+
+(330) Sort
+Input [31]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155]
+Arguments: [k10#34L ASC NULLS FIRST], false, 0
+
+(331) Filter
+Input [2]: [k10#73L, payload#75]
+Condition : isnotnull(k10#73L)
+
+(332) Project
+Output [2]: [k10#73L, payload#75 AS dim10_payload#156]
+Input [2]: [k10#73L, payload#75]
+
+(333) Exchange
+Input [2]: [k10#73L, dim10_payload#156]
+Arguments: hashpartitioning(k10#73L, 200), ENSURE_REQUIREMENTS, [plan_id=13490]
+
+(334) Sort
+Input [2]: [k10#73L, dim10_payload#156]
+Arguments: [k10#73L ASC NULLS FIRST], false, 0
+
+(335) SortMergeJoin
+Left keys [1]: [k10#34L]
+Right keys [1]: [k10#73L]
+Join type: LeftOuter
+Join condition: None
+
+(336) Project
+Output [32]: [k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156]
+Input [33]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, k10#73L, dim10_payload#156]
+
+(337) Exchange
+Input [32]: [k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156]
+Arguments: hashpartitioning(k11#35L, 200), ENSURE_REQUIREMENTS, [plan_id=13497]
+
+(338) Sort
+Input [32]: [k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156]
+Arguments: [k11#35L ASC NULLS FIRST], false, 0
+
+(339) Filter
+Input [3]: [k11#76L, filter_bucket#77, payload#78]
+Condition : ((isnotnull(filter_bucket#77) AND (filter_bucket#77 < 10)) AND isnotnull(k11#76L))
+
+(340) Project
+Output [2]: [k11#76L, payload#78 AS dim11_payload#157]
+Input [3]: [k11#76L, filter_bucket#77, payload#78]
+
+(341) Exchange
+Input [2]: [k11#76L, dim11_payload#157]
+Arguments: hashpartitioning(k11#76L, 200), ENSURE_REQUIREMENTS, [plan_id=13498]
+
+(342) Sort
+Input [2]: [k11#76L, dim11_payload#157]
+Arguments: [k11#76L ASC NULLS FIRST], false, 0
+
+(343) SortMergeJoin
+Left keys [1]: [k11#35L]
+Right keys [1]: [k11#76L]
+Join type: LeftOuter
+Join condition: None
+
+(344) Project
+Output [33]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157]
+Input [34]: [k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, k11#76L, dim11_payload#157]
+
+(345) Exchange
+Input [33]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157]
+Arguments: hashpartitioning(k12#36L, 200), ENSURE_REQUIREMENTS, [plan_id=13505]
+
+(346) Sort
+Input [33]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157]
+Arguments: [k12#36L ASC NULLS FIRST], false, 0
+
+(347) Filter
+Input [2]: [k12#79L, payload#81]
+Condition : isnotnull(k12#79L)
+
+(348) Project
+Output [2]: [k12#79L, payload#81 AS dim12_payload#158]
+Input [2]: [k12#79L, payload#81]
+
+(349) Exchange
+Input [2]: [k12#79L, dim12_payload#158]
+Arguments: hashpartitioning(k12#79L, 200), ENSURE_REQUIREMENTS, [plan_id=13506]
+
+(350) Sort
+Input [2]: [k12#79L, dim12_payload#158]
+Arguments: [k12#79L ASC NULLS FIRST], false, 0
+
+(351) SortMergeJoin
+Left keys [1]: [k12#36L]
+Right keys [1]: [k12#79L]
+Join type: LeftOuter
+Join condition: None
+
+(352) Project
+Output [34]: [k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158]
+Input [35]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, k12#79L, dim12_payload#158]
+
+(353) Exchange
+Input [34]: [k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158]
+Arguments: hashpartitioning(k13#37L, 200), ENSURE_REQUIREMENTS, [plan_id=13513]
+
+(354) Sort
+Input [34]: [k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158]
+Arguments: [k13#37L ASC NULLS FIRST], false, 0
+
+(355) Filter
+Input [3]: [k13#82L, filter_bucket#83, payload#84]
+Condition : ((isnotnull(filter_bucket#83) AND (filter_bucket#83 < 10)) AND isnotnull(k13#82L))
+
+(356) Project
+Output [2]: [k13#82L, payload#84 AS dim13_payload#159]
+Input [3]: [k13#82L, filter_bucket#83, payload#84]
+
+(357) Exchange
+Input [2]: [k13#82L, dim13_payload#159]
+Arguments: hashpartitioning(k13#82L, 200), ENSURE_REQUIREMENTS, [plan_id=13514]
+
+(358) Sort
+Input [2]: [k13#82L, dim13_payload#159]
+Arguments: [k13#82L ASC NULLS FIRST], false, 0
+
+(359) SortMergeJoin
+Left keys [1]: [k13#37L]
+Right keys [1]: [k13#82L]
+Join type: LeftOuter
+Join condition: None
+
+(360) Project
+Output [35]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159]
+Input [36]: [k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, k13#82L, dim13_payload#159]
+
+(361) Exchange
+Input [35]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159]
+Arguments: hashpartitioning(k14#38L, 200), ENSURE_REQUIREMENTS, [plan_id=13521]
+
+(362) Sort
+Input [35]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159]
+Arguments: [k14#38L ASC NULLS FIRST], false, 0
+
+(363) Filter
+Input [2]: [k14#85L, payload#87]
+Condition : isnotnull(k14#85L)
+
+(364) Project
+Output [2]: [k14#85L, payload#87 AS dim14_payload#160]
+Input [2]: [k14#85L, payload#87]
+
+(365) Exchange
+Input [2]: [k14#85L, dim14_payload#160]
+Arguments: hashpartitioning(k14#85L, 200), ENSURE_REQUIREMENTS, [plan_id=13522]
+
+(366) Sort
+Input [2]: [k14#85L, dim14_payload#160]
+Arguments: [k14#85L ASC NULLS FIRST], false, 0
+
+(367) SortMergeJoin
+Left keys [1]: [k14#38L]
+Right keys [1]: [k14#85L]
+Join type: LeftOuter
+Join condition: None
+
+(368) Project
+Output [36]: [k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160]
+Input [37]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, k14#85L, dim14_payload#160]
+
+(369) Exchange
+Input [36]: [k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160]
+Arguments: hashpartitioning(k15#39L, 200), ENSURE_REQUIREMENTS, [plan_id=13529]
+
+(370) Sort
+Input [36]: [k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160]
+Arguments: [k15#39L ASC NULLS FIRST], false, 0
+
+(371) Filter
+Input [3]: [k15#88L, filter_bucket#89, payload#90]
+Condition : ((isnotnull(filter_bucket#89) AND (filter_bucket#89 < 10)) AND isnotnull(k15#88L))
+
+(372) Project
+Output [2]: [k15#88L, payload#90 AS dim15_payload#161]
+Input [3]: [k15#88L, filter_bucket#89, payload#90]
+
+(373) Exchange
+Input [2]: [k15#88L, dim15_payload#161]
+Arguments: hashpartitioning(k15#88L, 200), ENSURE_REQUIREMENTS, [plan_id=13530]
+
+(374) Sort
+Input [2]: [k15#88L, dim15_payload#161]
+Arguments: [k15#88L ASC NULLS FIRST], false, 0
+
+(375) SortMergeJoin
+Left keys [1]: [k15#39L]
+Right keys [1]: [k15#88L]
+Join type: LeftOuter
+Join condition: None
+
+(376) Project
+Output [37]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161]
+Input [38]: [k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, k15#88L, dim15_payload#161]
+
+(377) Exchange
+Input [37]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161]
+Arguments: hashpartitioning(k16#40L, 200), ENSURE_REQUIREMENTS, [plan_id=13537]
+
+(378) Sort
+Input [37]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161]
+Arguments: [k16#40L ASC NULLS FIRST], false, 0
+
+(379) Filter
+Input [2]: [k16#91L, payload#93]
+Condition : isnotnull(k16#91L)
+
+(380) Project
+Output [2]: [k16#91L, payload#93 AS dim16_payload#162]
+Input [2]: [k16#91L, payload#93]
+
+(381) Exchange
+Input [2]: [k16#91L, dim16_payload#162]
+Arguments: hashpartitioning(k16#91L, 200), ENSURE_REQUIREMENTS, [plan_id=13538]
+
+(382) Sort
+Input [2]: [k16#91L, dim16_payload#162]
+Arguments: [k16#91L ASC NULLS FIRST], false, 0
+
+(383) SortMergeJoin
+Left keys [1]: [k16#40L]
+Right keys [1]: [k16#91L]
+Join type: LeftOuter
+Join condition: None
+
+(384) Project
+Output [38]: [k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162]
+Input [39]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, k16#91L, dim16_payload#162]
+
+(385) Exchange
+Input [38]: [k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162]
+Arguments: hashpartitioning(k17#41L, 200), ENSURE_REQUIREMENTS, [plan_id=13545]
+
+(386) Sort
+Input [38]: [k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162]
+Arguments: [k17#41L ASC NULLS FIRST], false, 0
+
+(387) Filter
+Input [3]: [k17#94L, filter_bucket#95, payload#96]
+Condition : ((isnotnull(filter_bucket#95) AND (filter_bucket#95 < 10)) AND isnotnull(k17#94L))
+
+(388) Project
+Output [2]: [k17#94L, payload#96 AS dim17_payload#163]
+Input [3]: [k17#94L, filter_bucket#95, payload#96]
+
+(389) Exchange
+Input [2]: [k17#94L, dim17_payload#163]
+Arguments: hashpartitioning(k17#94L, 200), ENSURE_REQUIREMENTS, [plan_id=13546]
+
+(390) Sort
+Input [2]: [k17#94L, dim17_payload#163]
+Arguments: [k17#94L ASC NULLS FIRST], false, 0
+
+(391) SortMergeJoin
+Left keys [1]: [k17#41L]
+Right keys [1]: [k17#94L]
+Join type: LeftOuter
+Join condition: None
+
+(392) Project
+Output [39]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163]
+Input [40]: [k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, k17#94L, dim17_payload#163]
+
+(393) Exchange
+Input [39]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163]
+Arguments: hashpartitioning(k18#42L, 200), ENSURE_REQUIREMENTS, [plan_id=13553]
+
+(394) Sort
+Input [39]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163]
+Arguments: [k18#42L ASC NULLS FIRST], false, 0
+
+(395) Filter
+Input [2]: [k18#97L, payload#99]
+Condition : isnotnull(k18#97L)
+
+(396) Project
+Output [2]: [k18#97L, payload#99 AS dim18_payload#164]
+Input [2]: [k18#97L, payload#99]
+
+(397) Exchange
+Input [2]: [k18#97L, dim18_payload#164]
+Arguments: hashpartitioning(k18#97L, 200), ENSURE_REQUIREMENTS, [plan_id=13554]
+
+(398) Sort
+Input [2]: [k18#97L, dim18_payload#164]
+Arguments: [k18#97L ASC NULLS FIRST], false, 0
+
+(399) SortMergeJoin
+Left keys [1]: [k18#42L]
+Right keys [1]: [k18#97L]
+Join type: LeftOuter
+Join condition: None
+
+(400) Project
+Output [40]: [k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164]
+Input [41]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, k18#97L, dim18_payload#164]
+
+(401) Exchange
+Input [40]: [k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164]
+Arguments: hashpartitioning(k19#43L, 200), ENSURE_REQUIREMENTS, [plan_id=13561]
+
+(402) Sort
+Input [40]: [k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164]
+Arguments: [k19#43L ASC NULLS FIRST], false, 0
+
+(403) Filter
+Input [3]: [k19#100L, filter_bucket#101, payload#102]
+Condition : ((isnotnull(filter_bucket#101) AND (filter_bucket#101 < 10)) AND isnotnull(k19#100L))
+
+(404) Project
+Output [2]: [k19#100L, payload#102 AS dim19_payload#165]
+Input [3]: [k19#100L, filter_bucket#101, payload#102]
+
+(405) Exchange
+Input [2]: [k19#100L, dim19_payload#165]
+Arguments: hashpartitioning(k19#100L, 200), ENSURE_REQUIREMENTS, [plan_id=13562]
+
+(406) Sort
+Input [2]: [k19#100L, dim19_payload#165]
+Arguments: [k19#100L ASC NULLS FIRST], false, 0
+
+(407) SortMergeJoin
+Left keys [1]: [k19#43L]
+Right keys [1]: [k19#100L]
+Join type: LeftOuter
+Join condition: None
+
+(408) Project
+Output [41]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165]
+Input [42]: [k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k19#43L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, k19#100L, dim19_payload#165]
+
+(409) Exchange
+Input [41]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165]
+Arguments: hashpartitioning(k20#44L, 200), ENSURE_REQUIREMENTS, [plan_id=13569]
+
+(410) Sort
+Input [41]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165]
+Arguments: [k20#44L ASC NULLS FIRST], false, 0
+
+(411) Filter
+Input [2]: [k20#103L, payload#105]
+Condition : isnotnull(k20#103L)
+
+(412) Project
+Output [2]: [k20#103L, payload#105 AS dim20_payload#166]
+Input [2]: [k20#103L, payload#105]
+
+(413) Exchange
+Input [2]: [k20#103L, dim20_payload#166]
+Arguments: hashpartitioning(k20#103L, 200), ENSURE_REQUIREMENTS, [plan_id=13570]
+
+(414) Sort
+Input [2]: [k20#103L, dim20_payload#166]
+Arguments: [k20#103L ASC NULLS FIRST], false, 0
+
+(415) SortMergeJoin
+Left keys [1]: [k20#44L]
+Right keys [1]: [k20#103L]
+Join type: LeftOuter
+Join condition: None
+
+(416) Project
+Output [42]: [k20#44L, k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165, dim20_payload#166]
+Input [43]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165, k20#103L, dim20_payload#166]
+
+(417) AdaptiveSparkPlan
+Output [42]: [k20#44L, k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165, dim20_payload#166]
+Arguments: isFinalPlan=true
+
+(418) OverwriteByExpression
+Input [42]: [k20#44L, k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#45, dim1_payload#147, dim2_payload#148, dim3_payload#149, dim4_payload#150, dim5_payload#151, dim6_payload#152, dim7_payload#153, dim8_payload#154, dim9_payload#155, dim10_payload#156, dim11_payload#157, dim12_payload#158, dim13_payload#159, dim14_payload#160, dim15_payload#161, dim16_payload#162, dim17_payload#163, dim18_payload#164, dim19_payload#165, dim20_payload#166]
+Arguments: NoopWrite
+

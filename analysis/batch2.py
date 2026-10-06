@@ -48,14 +48,14 @@ MODE_STYLE = {
 }
 
 
-def load_runs():
-    done = {p.name for p in (BATCH / "done").iterdir()}
-    frames = [pd.read_csv(p) for p in sorted((BATCH / "jobs").glob("*.csv")) if p.stem in done]
+def load_runs(batch=BATCH, param_keys=PARAM_KEYS):
+    done = {p.name for p in (batch / "done").iterdir()}
+    frames = [pd.read_csv(p) for p in sorted((batch / "jobs").glob("*.csv")) if p.stem in done]
     df = pd.concat(frames, ignore_index=True)
     df = df[~df["is_warmup"]].copy()
     params = df["params"].apply(json.loads)
-    for key in PARAM_KEYS:
-        df[key] = params.apply(lambda p, k=key: p[k])
+    for key in param_keys:
+        df[key] = params.apply(lambda p, k=key: p.get(k))
     df["round"] = df["job_id"].str.extract(r"^r(\d+)_").astype(int)
     df["join_stage_duration_s"] = df["join_stage_duration_ms"] / 1000
     df["join_task_duration_s_max"] = df["join_task_duration_ms_max"] / 1000
@@ -96,6 +96,9 @@ def summarize(df, keys):
 def attach_null_partition(summary, keys):
     """Copy the AQE-off largest task read (NULL partition) to every mode of a point."""
     point_keys = [k for k in keys if k != "mode"]
+    if not point_keys:
+        value = summary.loc[summary["mode"] == "aqe_off", "join_task_read_max_mib_median"]
+        return summary.assign(null_partition_mib_aqe_off=value.iloc[0] if len(value) else None)
     off = summary[summary["mode"] == "aqe_off"][point_keys + ["join_task_read_max_mib_median"]]
     off = off.rename(columns={"join_task_read_max_mib_median": "null_partition_mib_aqe_off"})
     return summary.merge(off, on=point_keys, how="left")

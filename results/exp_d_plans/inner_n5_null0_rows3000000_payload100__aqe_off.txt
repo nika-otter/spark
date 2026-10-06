@@ -1,0 +1,295 @@
+== Physical Plan ==
+OverwriteByExpression (54)
++- * Project (53)
+   +- * SortMergeJoin Inner (52)
+      :- * Sort (45)
+      :  +- Exchange (44)
+      :     +- * Project (43)
+      :        +- * SortMergeJoin Inner (42)
+      :           :- * Sort (35)
+      :           :  +- Exchange (34)
+      :           :     +- * Project (33)
+      :           :        +- * SortMergeJoin Inner (32)
+      :           :           :- * Sort (25)
+      :           :           :  +- Exchange (24)
+      :           :           :     +- * Project (23)
+      :           :           :        +- * SortMergeJoin Inner (22)
+      :           :           :           :- * Sort (15)
+      :           :           :           :  +- Exchange (14)
+      :           :           :           :     +- * Project (13)
+      :           :           :           :        +- * SortMergeJoin Inner (12)
+      :           :           :           :           :- * Sort (5)
+      :           :           :           :           :  +- Exchange (4)
+      :           :           :           :           :     +- * Filter (3)
+      :           :           :           :           :        +- * ColumnarToRow (2)
+      :           :           :           :           :           +- Scan parquet  (1)
+      :           :           :           :           +- * Sort (11)
+      :           :           :           :              +- Exchange (10)
+      :           :           :           :                 +- * Project (9)
+      :           :           :           :                    +- * Filter (8)
+      :           :           :           :                       +- * ColumnarToRow (7)
+      :           :           :           :                          +- Scan parquet  (6)
+      :           :           :           +- * Sort (21)
+      :           :           :              +- Exchange (20)
+      :           :           :                 +- * Project (19)
+      :           :           :                    +- * Filter (18)
+      :           :           :                       +- * ColumnarToRow (17)
+      :           :           :                          +- Scan parquet  (16)
+      :           :           +- * Sort (31)
+      :           :              +- Exchange (30)
+      :           :                 +- * Project (29)
+      :           :                    +- * Filter (28)
+      :           :                       +- * ColumnarToRow (27)
+      :           :                          +- Scan parquet  (26)
+      :           +- * Sort (41)
+      :              +- Exchange (40)
+      :                 +- * Project (39)
+      :                    +- * Filter (38)
+      :                       +- * ColumnarToRow (37)
+      :                          +- Scan parquet  (36)
+      +- * Sort (51)
+         +- Exchange (50)
+            +- * Project (49)
+               +- * Filter (48)
+                  +- * ColumnarToRow (47)
+                     +- Scan parquet  (46)
+
+
+(1) Scan parquet 
+Output [7]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/facts_rows-3000000_k1-n1000000-h0-null0_k2-n1000000-h0-null0_k3-n1000000-h0-null0_k4-n1000000-h0-null0_k5-n1000000-h0-null0_payload-100_seed-42/data]
+PushedFilters: [IsNotNull(k1), IsNotNull(k2), IsNotNull(k3), IsNotNull(k4), IsNotNull(k5)]
+ReadSchema: struct<id:bigint,k1:bigint,k2:bigint,k3:bigint,k4:bigint,k5:bigint,payload:string>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [7]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30]
+
+(3) Filter [codegen id : 1]
+Input [7]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30]
+Condition : ((((isnotnull(k1#25L) AND isnotnull(k2#26L)) AND isnotnull(k3#27L)) AND isnotnull(k4#28L)) AND isnotnull(k5#29L))
+
+(4) Exchange
+Input [7]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30]
+Arguments: hashpartitioning(k1#25L, 200), ENSURE_REQUIREMENTS, [plan_id=617]
+
+(5) Sort [codegen id : 2]
+Input [7]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30]
+Arguments: [k1#25L ASC NULLS FIRST], false, 0
+
+(6) Scan parquet 
+Output [3]: [k1#31L, filter_bucket#32, payload#33]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k1_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k1)]
+ReadSchema: struct<k1:bigint,filter_bucket:int,payload:string>
+
+(7) ColumnarToRow [codegen id : 3]
+Input [3]: [k1#31L, filter_bucket#32, payload#33]
+
+(8) Filter [codegen id : 3]
+Input [3]: [k1#31L, filter_bucket#32, payload#33]
+Condition : ((isnotnull(filter_bucket#32) AND (filter_bucket#32 < 10)) AND isnotnull(k1#31L))
+
+(9) Project [codegen id : 3]
+Output [2]: [k1#31L, payload#33 AS dim1_payload#57]
+Input [3]: [k1#31L, filter_bucket#32, payload#33]
+
+(10) Exchange
+Input [2]: [k1#31L, dim1_payload#57]
+Arguments: hashpartitioning(k1#31L, 200), ENSURE_REQUIREMENTS, [plan_id=627]
+
+(11) Sort [codegen id : 4]
+Input [2]: [k1#31L, dim1_payload#57]
+Arguments: [k1#31L ASC NULLS FIRST], false, 0
+
+(12) SortMergeJoin [codegen id : 5]
+Left keys [1]: [k1#25L]
+Right keys [1]: [k1#31L]
+Join type: Inner
+Join condition: None
+
+(13) Project [codegen id : 5]
+Output [8]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57]
+Input [9]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, k1#31L, dim1_payload#57]
+
+(14) Exchange
+Input [8]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57]
+Arguments: hashpartitioning(k2#26L, 200), ENSURE_REQUIREMENTS, [plan_id=635]
+
+(15) Sort [codegen id : 6]
+Input [8]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57]
+Arguments: [k2#26L ASC NULLS FIRST], false, 0
+
+(16) Scan parquet 
+Output [2]: [k2#34L, payload#36]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k2_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k2)]
+ReadSchema: struct<k2:bigint,payload:string>
+
+(17) ColumnarToRow [codegen id : 7]
+Input [2]: [k2#34L, payload#36]
+
+(18) Filter [codegen id : 7]
+Input [2]: [k2#34L, payload#36]
+Condition : isnotnull(k2#34L)
+
+(19) Project [codegen id : 7]
+Output [2]: [k2#34L, payload#36 AS dim2_payload#58]
+Input [2]: [k2#34L, payload#36]
+
+(20) Exchange
+Input [2]: [k2#34L, dim2_payload#58]
+Arguments: hashpartitioning(k2#34L, 200), ENSURE_REQUIREMENTS, [plan_id=645]
+
+(21) Sort [codegen id : 8]
+Input [2]: [k2#34L, dim2_payload#58]
+Arguments: [k2#34L ASC NULLS FIRST], false, 0
+
+(22) SortMergeJoin [codegen id : 9]
+Left keys [1]: [k2#26L]
+Right keys [1]: [k2#34L]
+Join type: Inner
+Join condition: None
+
+(23) Project [codegen id : 9]
+Output [9]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58]
+Input [10]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57, k2#34L, dim2_payload#58]
+
+(24) Exchange
+Input [9]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58]
+Arguments: hashpartitioning(k3#27L, 200), ENSURE_REQUIREMENTS, [plan_id=653]
+
+(25) Sort [codegen id : 10]
+Input [9]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58]
+Arguments: [k3#27L ASC NULLS FIRST], false, 0
+
+(26) Scan parquet 
+Output [3]: [k3#37L, filter_bucket#38, payload#39]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k3_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k3)]
+ReadSchema: struct<k3:bigint,filter_bucket:int,payload:string>
+
+(27) ColumnarToRow [codegen id : 11]
+Input [3]: [k3#37L, filter_bucket#38, payload#39]
+
+(28) Filter [codegen id : 11]
+Input [3]: [k3#37L, filter_bucket#38, payload#39]
+Condition : ((isnotnull(filter_bucket#38) AND (filter_bucket#38 < 10)) AND isnotnull(k3#37L))
+
+(29) Project [codegen id : 11]
+Output [2]: [k3#37L, payload#39 AS dim3_payload#59]
+Input [3]: [k3#37L, filter_bucket#38, payload#39]
+
+(30) Exchange
+Input [2]: [k3#37L, dim3_payload#59]
+Arguments: hashpartitioning(k3#37L, 200), ENSURE_REQUIREMENTS, [plan_id=663]
+
+(31) Sort [codegen id : 12]
+Input [2]: [k3#37L, dim3_payload#59]
+Arguments: [k3#37L ASC NULLS FIRST], false, 0
+
+(32) SortMergeJoin [codegen id : 13]
+Left keys [1]: [k3#27L]
+Right keys [1]: [k3#37L]
+Join type: Inner
+Join condition: None
+
+(33) Project [codegen id : 13]
+Output [10]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59]
+Input [11]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, k3#37L, dim3_payload#59]
+
+(34) Exchange
+Input [10]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59]
+Arguments: hashpartitioning(k4#28L, 200), ENSURE_REQUIREMENTS, [plan_id=671]
+
+(35) Sort [codegen id : 14]
+Input [10]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59]
+Arguments: [k4#28L ASC NULLS FIRST], false, 0
+
+(36) Scan parquet 
+Output [2]: [k4#40L, payload#42]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k4_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k4)]
+ReadSchema: struct<k4:bigint,payload:string>
+
+(37) ColumnarToRow [codegen id : 15]
+Input [2]: [k4#40L, payload#42]
+
+(38) Filter [codegen id : 15]
+Input [2]: [k4#40L, payload#42]
+Condition : isnotnull(k4#40L)
+
+(39) Project [codegen id : 15]
+Output [2]: [k4#40L, payload#42 AS dim4_payload#60]
+Input [2]: [k4#40L, payload#42]
+
+(40) Exchange
+Input [2]: [k4#40L, dim4_payload#60]
+Arguments: hashpartitioning(k4#40L, 200), ENSURE_REQUIREMENTS, [plan_id=681]
+
+(41) Sort [codegen id : 16]
+Input [2]: [k4#40L, dim4_payload#60]
+Arguments: [k4#40L ASC NULLS FIRST], false, 0
+
+(42) SortMergeJoin [codegen id : 17]
+Left keys [1]: [k4#28L]
+Right keys [1]: [k4#40L]
+Join type: Inner
+Join condition: None
+
+(43) Project [codegen id : 17]
+Output [11]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60]
+Input [12]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, k4#40L, dim4_payload#60]
+
+(44) Exchange
+Input [11]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60]
+Arguments: hashpartitioning(k5#29L, 200), ENSURE_REQUIREMENTS, [plan_id=689]
+
+(45) Sort [codegen id : 18]
+Input [11]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60]
+Arguments: [k5#29L ASC NULLS FIRST], false, 0
+
+(46) Scan parquet 
+Output [3]: [k5#43L, filter_bucket#44, payload#45]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k5_n1000000_match0.7_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k5)]
+ReadSchema: struct<k5:bigint,filter_bucket:int,payload:string>
+
+(47) ColumnarToRow [codegen id : 19]
+Input [3]: [k5#43L, filter_bucket#44, payload#45]
+
+(48) Filter [codegen id : 19]
+Input [3]: [k5#43L, filter_bucket#44, payload#45]
+Condition : ((isnotnull(filter_bucket#44) AND (filter_bucket#44 < 10)) AND isnotnull(k5#43L))
+
+(49) Project [codegen id : 19]
+Output [2]: [k5#43L, payload#45 AS dim5_payload#61]
+Input [3]: [k5#43L, filter_bucket#44, payload#45]
+
+(50) Exchange
+Input [2]: [k5#43L, dim5_payload#61]
+Arguments: hashpartitioning(k5#43L, 200), ENSURE_REQUIREMENTS, [plan_id=699]
+
+(51) Sort [codegen id : 20]
+Input [2]: [k5#43L, dim5_payload#61]
+Arguments: [k5#43L ASC NULLS FIRST], false, 0
+
+(52) SortMergeJoin [codegen id : 21]
+Left keys [1]: [k5#29L]
+Right keys [1]: [k5#43L]
+Join type: Inner
+Join condition: None
+
+(53) Project [codegen id : 21]
+Output [12]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60, dim5_payload#61]
+Input [13]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60, k5#43L, dim5_payload#61]
+
+(54) OverwriteByExpression
+Input [12]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60, dim5_payload#61]
+Arguments: NoopWrite
+

@@ -45,7 +45,7 @@ def main():
     parser.add_argument("--job-id", default=None, help="batch job id recorded with each run")
     args = parser.parse_args()
 
-    scenario = build_scenario(args.experiment, args.param)
+    scenario = build_scenario(args.experiment, args.param, args.mode)
 
     if args.generate_only:
         spark, _ = build_session("generate-" + scenario.scenario_id)
@@ -75,7 +75,7 @@ def main():
     for i in range(args.warmup + args.runs):
         is_warmup = i < args.warmup
         label = "{}|{}|run-{}".format(scenario.scenario_id, args.mode, i)
-        df = scenario.query(tables)
+        df = scenario.query(tables, args.mode)
 
         sc.setJobDescription(label)
         start = time.perf_counter()

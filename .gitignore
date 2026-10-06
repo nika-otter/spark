@@ -16,3 +16,4 @@ __pycache__/
 .vscode/
 .idea/
 results/batch2/batch.pid
+results/batch3/batch.pid
