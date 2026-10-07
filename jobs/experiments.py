@@ -9,12 +9,13 @@ pipeline experiments: facts joined sequentially to n dims on k1..kn with the
 broadcast thresholds at their defaults.
 """
 
+import json
 from dataclasses import dataclass
 from typing import Callable, Dict
 
 from pyspark.sql import functions as F
 
-from generate import FILTER_BUCKETS, DimSpec, FactsSpec, KeySpec
+from generate import FILTER_BUCKETS, DimSpec, FactsSpec, KeySpec, RealSpec, manifest_path
 
 MIB = 1024 * 1024
 
@@ -36,6 +37,19 @@ MODES = {
     "aqe_on_rule2": {"spark.sql.adaptive.enabled": "true"},
     "aqe_on_rules12": {"spark.sql.adaptive.enabled": "true"},
     "aqe_on_hints": {"spark.sql.adaptive.enabled": "true"},
+    # Batch 5
+    "aqe_on_fixed8": {
+        "spark.sql.adaptive.enabled": "true",
+        "spark.sql.adaptive.advisoryPartitionSizeInBytes": str(8 * MIB),
+        "spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes": str(32 * MIB),
+    },
+    "aqe_on_fixed16": {
+        "spark.sql.adaptive.enabled": "true",
+        "spark.sql.adaptive.advisoryPartitionSizeInBytes": str(16 * MIB),
+        "spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes": str(64 * MIB),
+    },
+    # rule 2 recomputed between runs from the previous run's r (run_experiment --iterate-rule2)
+    "aqe_on_rules12_iter": {"spark.sql.adaptive.enabled": "true"},
 }
 
 # Parameters a mode requires (checked in build_scenario).
@@ -43,6 +57,7 @@ MODE_REQUIRES = {
     "aqe_on_rule1": {"accurate_skew_factor"},
     "aqe_on_rule2": {"rule2_ratio"},
     "aqe_on_rules12": {"accurate_skew_factor", "rule2_ratio"},
+    "aqe_on_rules12_iter": {"accurate_skew_factor", "rule2_ratio"},
 }
 
 # Rows per file split mechanism: with both values far above any facts file,
@@ -77,12 +92,16 @@ DEFAULTS = {
     "codec": "lz4",                     # spark.io.compression.codec (Spark default)
     "accurate_skew_factor": -1.0,       # rule 1: spark.shuffle.accurateBlockSkewedFactor
     "rule2_ratio": 0.0,                 # rule 2: measured compression ratio r (0 = off)
+    "rule2_factor": 1.0,                # label only: rule2_ratio = factor x measured r
+    "facts_sample": 0.0,                # null_skew only: > 0 keeps this share of facts rows
     # pipeline experiments only
     "n_dims": 0,
     "dim_payload_bytes": 20,
     "match_rate": 1.0,
     "filter_buckets_kept": 10,          # of 1000 -> ~1 % of a filtered dim
     "null_key": 1,                      # index i of the key k<i> that gets null_share
+    "dataset": "",                      # real_query: taxi | hits | pageviews
+    "query": "",                        # real_query: natural | lowcard
     "filter_aligned": 0,                # 1: facts keys of filtered dims reference only
                                         #    dim rows that pass the filter
 }
@@ -125,6 +144,10 @@ def _suffix(p):
         s += "_accskew{:g}".format(p["accurate_skew_factor"])
     if p["rule2_ratio"] > 0:
         s += "_rule2r{:.3g}".format(p["rule2_ratio"])
+    if p["rule2_factor"] != 1.0:
+        s += "_f{:g}".format(p["rule2_factor"])
+    if p["facts_sample"] > 0:
+        s += "_sample{:g}".format(p["facts_sample"])
     return s
 
 
@@ -142,7 +165,12 @@ def null_skew(experiment, p):
     dim = DimSpec("k", p["n_keys"], match_rate=1.0, **payload)
 
     def query(t, mode):
-        return t["facts"].join(t["dim_k"], on="k", how=p["join"])
+        facts = t["facts"]
+        if p["facts_sample"] > 0:
+            # deterministic sample of facts rows (by id), independent of partitioning
+            bucket = F.pmod(F.xxhash64(F.lit(p["seed"]), F.lit("sample"), F.col("id")), F.lit(10000))
+            facts = facts.where(bucket < int(round(p["facts_sample"] * 10000)))
+        return facts.join(t["dim_k"], on="k", how=p["join"])
 
     scenario_id = "{}_null{:g}_rows{}_payload{}".format(
         p["join"], p["null_share"], p["rows"], p["payload_bytes"])
@@ -212,6 +240,59 @@ def pipeline(experiment, p):
                     _common_conf(p, broadcast_disabled=False), query)
 
 
+# real_query: natural (high-cardinality) and low-cardinality keys per dataset;
+# for hits the low-cardinality key is CounterID or RegionID, whichever has the
+# larger share of its most frequent value in the manifest (prepare_real.py).
+REAL_KEYS = {
+    "taxi": (["PULocationID", "pickup_hour"], ["PULocationID"]),
+    "hits": (["UserID"], None),
+    "pageviews": (["project", "page_title"], ["project"]),
+}
+REAL_AGG = {   # (column, function) of the per-key table besides the row count
+    "taxi": ("total_amount", F.sum),
+    "hits": ("EventTime", F.max),
+    "pageviews": ("views", F.sum),
+}
+
+
+def real_lowcard_key(name, manifest):
+    if name != "hits":
+        return REAL_KEYS[name][1]
+    keys = manifest["keys"]
+    return ["CounterID"] if keys["CounterID"]["top1_share"] >= keys["RegionID"]["top1_share"] \
+        else ["RegionID"]
+
+
+def real_query(experiment, p):
+    """Fact table LEFT JOIN a per-key table derived from the same data.
+
+    natural: high-cardinality key, default broadcast thresholds.
+    lowcard: low-cardinality, naturally skewed key, broadcast disabled to
+    emulate a large dimension.
+    """
+    name, kind = p["dataset"], p["query"]
+    if name not in REAL_KEYS or kind not in ("natural", "lowcard"):
+        raise ValueError("dataset must be taxi|hits|pageviews and query natural|lowcard")
+    spec = RealSpec(name)
+    with open(manifest_path(spec)) as f:
+        manifest = json.load(f)
+    key = REAL_KEYS[name][0] if kind == "natural" else real_lowcard_key(name, manifest)
+    agg_col, agg_fn = REAL_AGG[name]
+
+    def query(t, mode):
+        facts = t["facts"]
+        if name == "taxi":
+            facts = facts.withColumn("pickup_hour", F.date_trunc("hour", "tpep_pickup_datetime"))
+        per_key = facts.groupBy(*key).agg(F.count(F.lit(1)).alias("key_rows"),
+                                          agg_fn(agg_col).alias("key_" + agg_col))
+        return facts.join(per_key, on=key, how="left")
+
+    params = dict(p, join_key="+".join(key))
+    scenario_id = "{}_{}_{}".format(name, kind, "+".join(key)) + _suffix(p)
+    return Scenario(experiment, scenario_id, params, {"facts": spec},
+                    _common_conf(p, broadcast_disabled=(kind == "lowcard")), query)
+
+
 # Experiment name -> (builder, defaults that differ from DEFAULTS).
 EXPERIMENTS = {
     "pilot_null": (null_skew, {}),
@@ -231,6 +312,17 @@ EXPERIMENTS = {
     "exp_e_volume": (null_skew, {"null_share": 0.2, "payload_kind": "mixed"}),
     "exp_e_coalesce": (null_skew, {"null_share": 0.0, "payload_kind": "mixed"}),
     "exp_f_hotkey": (null_skew, {"null_share": 0.0, "hot_share": 0.2, "payload_kind": "mixed"}),
+    # Batch 5
+    "exp_g_alt": (null_skew, {"payload_kind": "mixed", "rows": 55_000_000, "num_files": 44}),
+    "exp_h_stress": (pipeline, {"join": "left", "n_dims": 5, "match_rate": 0.7,
+                                "null_share": 0.2, "null_key": 2, "payload_kind": "mixed",
+                                "payload_bytes": 400, "payload_random_fraction": 0.04,
+                                "shuffle_partitions": 2001}),
+    "exp_h_sens": (null_skew, {"payload_kind": "mixed", "rows": 55_000_000, "num_files": 44,
+                               "null_share": 0.2, "payload_random_fraction": 0.04,
+                               "shuffle_partitions": 2001}),
+    "exp_h_sample": (null_skew, {"null_share": 0.08, "payload_kind": "mixed", "num_files": 45}),
+    "exp_real": (real_query, {}),
 }
 
 

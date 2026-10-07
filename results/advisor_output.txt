@@ -1,0 +1,28 @@
+# scripts/aqe_advisor.py on three existing runs (2026-10-07T16:21Z)
+
+$ .venv/bin/python scripts/aqe_advisor.py --app-id app-20261006071154-0272 --execution "|run-"   # batch 3 combined check, AQE on
+source: History Server http://localhost:18080 app app-20261006071154-0272
+Spark 4.1.3, AQE enabled in the run: true, codec: lz4
+shuffles: 6 in 3 SQL executions; data size 21893.1 MiB, bytes written 2846.4 MiB; r = 7.692 (per shuffle 7.09 .. 7.70)
+recommended settings:
+  spark.shuffle.accurateBlockSkewedFactor=5.0  # rule 1: 2001 shuffle partitions > 2000, map outputs use HighlyCompressedMapStatus, which reports non-huge blocks as the average size
+  spark.sql.adaptive.advisoryPartitionSizeInBytes=8725062  # rule 2: 64 MiB / r, r = 7.692; AQE compares this with compressed block sizes
+  spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes=34900250  # rule 2: 256 MiB / r, the default threshold expressed in compressed bytes
+
+$ .venv/bin/python scripts/aqe_advisor.py --app-id app-20261007074807-0023   # batch 5a TPC-H q9 profile (lz4, AQE on)
+source: History Server http://localhost:18080 app app-20261007074807-0023
+Spark 4.1.3, AQE enabled in the run: true, codec: lz4
+shuffles: 6 in 1 SQL executions; data size 960.8 MiB, bytes written 447.5 MiB; r = 2.147 (per shuffle 0.59 .. 2.45)
+recommended settings:
+  (rule 1 not needed)  # 200 shuffle partitions <= 2000: CompressedMapStatus keeps every block size
+  spark.sql.adaptive.advisoryPartitionSizeInBytes=31252602  # rule 2: 64 MiB / r, r = 2.147; AQE compares this with compressed block sizes
+  spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes=125010409  # rule 2: 256 MiB / r, the default threshold expressed in compressed bytes
+
+$ docker compose exec spark-master python3 /opt/project/scripts/aqe_advisor.py --eventlog /opt/spark-events/eventlog_v2_app-20261007145739-0344   # batch 5a stress pipeline profile (AQE on)
+source: event log /opt/spark-events/eventlog_v2_app-20261007145739-0344
+Spark 4.1.3, AQE enabled in the run: true, codec: lz4
+shuffles: 8 in 1 SQL executions; data size 9692.2 MiB, bytes written 1325.6 MiB; r = 7.312 (per shuffle 0.62 .. 8.25)
+recommended settings:
+  spark.shuffle.accurateBlockSkewedFactor=5.0  # rule 1: 2001 shuffle partitions > 2000, map outputs use HighlyCompressedMapStatus, which reports non-huge blocks as the average size
+  spark.sql.adaptive.advisoryPartitionSizeInBytes=9178171  # rule 2: 64 MiB / r, r = 7.312; AQE compares this with compressed block sizes
+  spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes=36712687  # rule 2: 256 MiB / r, the default threshold expressed in compressed bytes

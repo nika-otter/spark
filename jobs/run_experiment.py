@@ -26,6 +26,8 @@ from experiments import MODES, build_scenario
 from generate import data_path, ensure_dataset, load_manifest, manifest_path
 from spark_conf import RESULTS_DIR, build_session, effective_conf, environment_info
 
+MIB = 1024 * 1024
+
 
 def release_shuffle_files(sc, settle_seconds=5):
     gc.collect()
@@ -43,6 +45,10 @@ def main():
     parser.add_argument("--csv", default=RESULTS_DIR + "/runs.csv")
     parser.add_argument("--generate-only", action="store_true")
     parser.add_argument("--job-id", default=None, help="batch job id recorded with each run")
+    parser.add_argument("--iterate-rule2", type=int, default=0,
+                        help="mode aqe_on_rules12_iter: after the warm-up, run this many "
+                             "iterations; iteration k sets rule 2 from r measured in run k-1 "
+                             "(the first measured run uses parameter rule2_ratio)")
     args = parser.parse_args()
 
     scenario = build_scenario(args.experiment, args.param, args.mode)
@@ -72,8 +78,16 @@ def main():
     tables = {name: spark.read.parquet(data_path(spec)) for name, spec in scenario.tables.items()}
     out_dir = "{}/runs/{}/{}/{}".format(RESULTS_DIR, scenario.experiment, scenario.scenario_id, args.mode)
 
-    for i in range(args.warmup + args.runs):
+    n_runs = args.warmup + (args.iterate_rule2 if args.iterate_rule2 > 0 else args.runs)
+    r_prev = scenario.params["rule2_ratio"]
+    for i in range(n_runs):
         is_warmup = i < args.warmup
+        iteration = None
+        if args.iterate_rule2 > 0 and not is_warmup:
+            iteration = i - args.warmup + 1
+            spark.conf.set("spark.sql.adaptive.advisoryPartitionSizeInBytes", str(int(64 * MIB / r_prev)))
+            spark.conf.set("spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes",
+                           str(int(256 * MIB / r_prev)))
         label = "{}|{}|run-{}".format(scenario.scenario_id, args.mode, i)
         df = scenario.query(tables, args.mode)
 
@@ -93,7 +107,8 @@ def main():
             "run_index": i,
             "is_warmup": is_warmup,
             "run_label": label,
-            "params": scenario.params,
+            "params": dict(scenario.params, rule2_ratio=r_prev, iteration=iteration)
+            if iteration else scenario.params,
             "datasets": manifests,
             "elapsed_seconds": round(elapsed, 3),
             "environment": env,
@@ -105,6 +120,10 @@ def main():
         release_shuffle_files(sc)
 
         m = record["metrics"]
+        if iteration:
+            print("iteration {}: rule2_ratio used {:.4f}, measured r_overall {:.4f}".format(
+                iteration, r_prev, m["compression_ratio_overall"]), flush=True)
+            r_prev = m["compression_ratio_overall"]
         print("{} {}: {:.2f} s, joins={}, skew={} ({} splits), partitions {} -> {}".format(
             label, "warm-up" if is_warmup else "measured", elapsed,
             {k: v for k, v in m["join_strategies"].items() if v},

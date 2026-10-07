@@ -1,0 +1,62 @@
+{
+ "hits_lowcard_sp200": {
+  "profile_seconds": 126.692,
+  "r_facts": 3.204301075268817,
+  "r_overall": 3.2036780450938402
+ },
+ "hits_lowcard_sp2001": {
+  "profile_seconds": 136.184,
+  "r_facts": 3.204301075268817,
+  "r_overall": 3.2020647110663476
+ },
+ "hits_natural_sp200": {
+  "profile_seconds": 109.0,
+  "r_facts": 3.104166666666667,
+  "r_overall": 3.070423090183717
+ },
+ "hits_natural_sp2001": {
+  "profile_seconds": 174.171,
+  "r_facts": 3.01010101010101,
+  "r_overall": 2.9759967919340053
+ },
+ "pageviews_lowcard_sp200": {
+  "profile_seconds": 43.837,
+  "r_facts": 3.6,
+  "r_overall": 3.599393904762655
+ },
+ "pageviews_lowcard_sp2001": {
+  "profile_seconds": 61.38,
+  "r_facts": 3.6,
+  "r_overall": 3.598454541503219
+ },
+ "pageviews_natural_sp200": {
+  "profile_seconds": 99.509,
+  "r_facts": 2.842105263157895,
+  "r_overall": 2.680555555555556
+ },
+ "pageviews_natural_sp2001": {
+  "profile_seconds": 167.19,
+  "r_facts": 2.5714285714285716,
+  "r_overall": 2.4430379746835444
+ },
+ "taxi_lowcard_sp200": {
+  "profile_seconds": 71.366,
+  "r_facts": 3.520833333333333,
+  "r_overall": 3.5207177228183912
+ },
+ "taxi_lowcard_sp2001": {
+  "profile_seconds": 92.718,
+  "r_facts": 3.520833333333333,
+  "r_overall": 3.5206654727856317
+ },
+ "taxi_natural_sp200": {
+  "profile_seconds": 44.601,
+  "r_facts": 3.520833333333333,
+  "r_overall": 3.513425400939575
+ },
+ "taxi_natural_sp2001": {
+  "profile_seconds": 78.98,
+  "r_facts": 3.520833333333333,
+  "r_overall": 3.509232853993487
+ }
+}

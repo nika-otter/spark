@@ -263,6 +263,20 @@ class DimSpec:
         }
 
 
+@dataclass(frozen=True)
+class RealSpec:
+    """A real dataset loaded by jobs/prepare_real.py (batch 5, step 1c)."""
+
+    name: str
+    table: str = field(default="facts", init=False)
+
+    def dataset_id(self):
+        return "real_" + self.name
+
+    def build(self, spark):
+        raise RuntimeError("real datasets are loaded with jobs/prepare_real.py " + self.name)
+
+
 def dataset_dir(spec):
     return "{}/{}".format(DATASETS_DIR, spec.dataset_id())
 

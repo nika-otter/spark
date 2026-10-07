@@ -22,8 +22,11 @@ Definitions and known limits:
 - Stage duration = completionTime - submissionTime from the REST API.
 - Compression ratio of a shuffle = Exchange "data size" (sum of UnsafeRow
   bytes) / Exchange "shuffle bytes written" (bytes after the codec). Both are
-  parsed from the SQL metric strings, which Spark formats with 4 significant
-  digits (e.g. "259.4 MiB"); the ratio is therefore exact to about 0.1 %.
+  parsed from the SQL metric strings, which Spark formats as "%.1f <unit>"
+  (Utils.bytesToString), e.g. "259.4 MiB" or "7.0 GiB"; the relative error of
+  one value is up to 0.05 unit / value, i.e. up to ~0.7 % for values of a few
+  GiB (found in batch 5: 7.656 from exact event-log bytes vs 7.692 from the
+  strings for the batch-3 combined check).
   "facts" ratio = the exchange with the largest data size; "overall" =
   sum of data size / sum of bytes written over all shuffle exchanges.
 - Quantiles: median as statistics.median, p95 as nearest-rank.
@@ -334,12 +337,13 @@ def _join_info(node):
     jtype = next((t for t in _JOIN_TYPES if re.search(r"\b{}\b".format(t), desc)), None)
     return {
         "node_id": node["id"],
-        "strategy": node["name"],
+        "strategy": node["name"].split("(")[0],
         "left_keys": _strip_ids(keys[0]) if keys else None,
         "right_keys": _strip_ids(keys[1]) if len(keys) > 1 else None,
         "join_type": jtype,
         "build_side": build.group(1).lower() if build else None,
-        "skew_join_flag": "isSkewJoin=true" in desc or "skew=true" in desc,
+        "skew_join_flag": "skew=true" in node["name"] or "isSkewJoin=true" in desc
+        or "skew=true" in desc,
         "output_rows": _metric_number(node["metrics"].get("number of output rows") or ""),
         "desc": desc,
     }
@@ -353,7 +357,8 @@ def join_details(rest, nodes, edges):
         parents.setdefault(child, []).append(parent)
 
     def is_join(n):
-        return nodes[n]["name"] in JOIN_OPERATORS
+        # a skew-optimized join is named e.g. "SortMergeJoin(skew=true)"
+        return nodes[n]["name"].split("(")[0] in JOIN_OPERATORS
 
     def inputs(join_id):
         """Nodes below a join down to (and including) the next join/exchange."""

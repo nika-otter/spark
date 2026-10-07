@@ -33,6 +33,12 @@ Docker Desktop with **10 CPUs** and **22 GB** memory (Settings → Resources).
 | `scripts/batch4.sh` | Start or resume batch 4 (corrected D, data volume and skew source, Spark 3.5.9 replication) under caffeinate; switches between the two clusters itself |
 | `.venv/bin/python analysis/batch4.py` | Batch 4 summaries (`results/exp_d2_summary.csv`, `exp_e_summary.csv`, `exp_f_summary.csv`, `spark35_summary.csv`, `exp_d2_plans/`) |
 | `.venv/bin/python analysis/step4_null_task.py DIR [STDERR_DIR]` | Batch 4 step 4: NULL-partition task of the batch-3 combined check from copied event/executor logs |
+| `.venv/bin/python scripts/gen_tpc.py tpch\|tpcds 10` | TPC-H / TPC-DS SF10 with DuckDB into `data/` (then `docker cp` into `/opt/spark-data/`) |
+| `scripts/download_real.sh` | Download the three real datasets of batch 5 into `data/raw/` |
+| `scripts/batch5a.sh` | Batch 5a: TPC-H/TPC-DS profiles and timing, rule 2 vs alternatives, rule-2 refinements |
+| `scripts/batch5b.sh prepare\|rounds` | Batch 5b: load real datasets, profile, then 4 rounds |
+| `.venv/bin/python analysis/batch5.py` | Batch 5a summaries; `analysis/recover_k2.py` k2-join metrics of step 3a from the History Server |
+| `.venv/bin/python scripts/aqe_advisor.py --app-id ID \| --eventlog PATH` | Recommended AQE settings (rules 1 and 2) from a previous run |
 | `.venv/bin/python analysis/figures.py` | Thesis figures (Ukrainian) in `results/figures/` as PNG 300 dpi and PDF |
 
 To delete all data and event logs: `docker compose down -v`.

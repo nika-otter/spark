@@ -45,9 +45,51 @@ control of experiment B is `aqe_on` with parameter `accurate_skew_factor=5.0`.
 | 13 | `exp_f_hotkey` (4, step 2d) | 55M rows, 44 files, broadcast off, NULL 0, 20 % of rows on hot key 0 (present in dim); multi: 5 hot keys 0-4 of 4 % each | baseline level 1x / 200 partitions, INNER and LEFT; combined level 8x / 2001, INNER and LEFT; multi: combined, LEFT | baseline: off, on; combined and multi: off, on, rules12 | `exp_f_summary.csv` (also holds the 55M NULL rows of 11, column `skew_source`) | `figures/exp_f` |
 | 14 | Spark 3.5.9 replication (4, step 3) | cluster `docker-compose.spark35.yml` (same resources, same data volume); datasets of 4, 6 and 7 | B: 200, 2000, 2001 (on), 2001 rule 1, 200 and 2001 (off); C2: levels 1x, 4x, 16x lz4; combined check | B as listed; C2: off, on, rule2; combined: all five | `spark35_summary.csv` (3.5.9 columns `_359`, 4.1.3 columns `_413` from summaries 4, 6, 7) | `figures/spark35` |
 | 15 | Step 4 of batch 4 (no new runs) | event and executor logs of the batch-3 combined check (7), AQE off vs on | longest join task of each measured run | aqe_off, aqe_on | `step4_null_task.csv` | – |
+| 16 | `tpch_profile`, `tpch_timing` (5a, step 1a) | TPC-H SF10 (DuckDB 1.4.5 dbgen, Parquet in `/opt/spark-data/tpch_sf10`; lineitem 59 986 052 rows), Spark query texts `bench/tpch/q1..q22.sql` (Spark v4.1.3 `sql/core/src/test/resources/tpch`), default broadcast thresholds, 200 partitions | profile: every query, one AQE-on run with lz4 and one with zstd; timing: one application per query, 1 warm-up + 3 measured rounds, modes interleaved in randomized order; r per query = overall ratio of the lz4 profile | profile: aqe_on; timing: aqe_off, aqe_on, aqe_on_rule2 | `tpc_shuffle_ratios.csv`, `tpc_ratio_summary.csv`, `tpc_timing_summary.csv` | `figures/tpc_ratios`, `figures/tpc_timing` |
+| 17 | `tpcds_profile`, `tpcds_timing` (5a, step 1b) | TPC-DS SF10 (DuckDB dsdgen; store_sales 28 800 991 rows), `bench/tpcds/*.sql` (103 queries, Spark v4.1.3 `tpcds`); column `customer.c_last_review_date_sk` renamed to `c_last_review_date` at view registration (query texts use the TPC-DS v1.4 name, q30) | profile: all 103 queries, lz4; timing: the 30 queries with the largest total shuffle bytes written in the profile (list in `batch5a/ratios.json`, key `tpcds_top30`), 1 warm-up + 3 measured rounds | aqe_on, aqe_on_rule2 | as 16 | as 16 |
+| 18 | `exp_g_alt` (5a, step 2) | 55M rows, 44 files, LEFT, broadcast off, lz4. S1: 1x, 20 % NULL, 200; S2: 8x, 20 % NULL, 200; S3: 8x, 20 % NULL, 2001; S4: 8x, 0 % NULL, 2001; S5: 1x, 0 % NULL, 2001. In S3-S5 rule 1 is added to every AQE-on mode; r from an AQE-on profiling run | S1-S5 | aqe_off, aqe_on, aqe_on_fixed8 (advisory 8MB, skew 32MB), aqe_on_fixed16 (16MB, 64MB), aqe_on_nocoalesce, aqe_on_rule2 | `exp_g_summary.csv` | `figures/exp_g` |
+| 19 | `exp_h_stress` (5a, step 3a) | as 10, 7M facts rows (NULL partition of the k2 join 635.7 MiB uncompressed shuffle data, estimated as NULL rows x data size per record of the k2 exchange), payload 400 B level 8x | one point; r from AQE-off (4.925) and AQE-on (7.332) profiles; maximum per-shuffle ratio 8.185 | aqe_off, aqe_on, rules 1+2 with r_off / r_on / r_max, iterated (warm-up with r_on, then 3 runs each using r of the previous run) | `exp_h_stress_summary.csv`, `exp_h_stress_k2.csv` (k2 join, recovered from the History Server, `analysis/recover_k2.py`), `exp_h_iter.csv` | `figures/exp_h` |
+| 20 | `exp_h_sens` (5a, step 3b) | dataset and point of S3 | r (S3 profile, 7.687) x 0.5, 1, 2 | aqe_on_rules12 | `exp_h_sens_summary.csv` | `figures/exp_h` |
+| 21 | `exp_h_sample` (5a, step 3c) | datasets of 6 (55M, 8 % NULL, 45 files), levels 1x, 4x, 16x; facts filtered to a deterministic 1 % / 10 % (xxhash64 of id) | one AQE-on run each | aqe_on | `exp_h_sample.csv` | `figures/exp_h` |
+| 22 | `scripts/aqe_advisor.py` (5a, step 3d) | three existing runs | – | – | `advisor_output.txt` | – |
 
-Other files: `calibration/` (pilot calibration), `batch3/ratios.json` and
-`batch4/ratios.json` (rule-2 ratios r), `batch3/calibration_*.csv`,
+## Real datasets (batch 5, step 1c)
+
+Downloaded with `scripts/download_real.sh` into `data/raw/` (not committed; per
+file URL, UTC time and size in `data/raw/downloads.tsv`), loaded by
+`jobs/prepare_real.py` into `/opt/spark-data/datasets/real_<name>/` (manifest
+with row count, schema and key distributions).
+
+| Dataset | Source URL | Downloaded (UTC) | Rows after loading | License |
+|---|---|---|---|---|
+| NYC TLC yellow taxi trips, 2018 (12 monthly files) | `https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2018-MM.parquet` (page https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page) | 2026-10-07 07:42-07:45 | 102 871 387 (all rows; column types differ between months and are cast to one schema) | no license stated on the TLC page; it states "The trip data was not created by the TLC, and TLC makes no representations as to the accuracy of these data" |
+| ClickBench hits | `https://datasets.clickhouse.com/hits_compatible/hits.parquet` (https://github.com/ClickHouse/ClickBench) | 2026-10-07 08:31 (resumed after an interrupted download; 14 779 976 446 bytes) | 99 997 497 (the whole dataset; below the 100M target, as published) | no license for the dataset stated in the ClickBench README |
+| Wikimedia pageviews, hourly, 2024-01-01 00:00-23:00 (24 files) | `https://dumps.wikimedia.org/other/pageviews/2024/2024-01/pageviews-20240101-HH0000.gz` | 2026-10-07 07:45-07:54 | 143 351 375 (0 lines dropped) | CC0 ("All Analytics datasets are available under the Creative Commons CC0 dedication", https://dumps.wikimedia.org/other/pageviews/readme.html) |
+
+hits columns (15 of 105, fixed before any measurement, not chosen by
+compressibility; `HITS_COLUMNS` in `jobs/prepare_real.py`):
+
+| Column | Reason |
+|---|---|
+| WatchID | row identifier |
+| UserID | join key of Q-natural (high cardinality) |
+| CounterID | candidate low-cardinality key |
+| RegionID | candidate low-cardinality key (chosen: larger top-1 share, 18.3 % vs 8.5 %) |
+| EventTime | time column (event timestamp) |
+| EventDate | time column (date) |
+| ClientIP | numeric (32-bit) |
+| OS | numeric (small code) |
+| ResolutionWidth | numeric |
+| IsRefresh | numeric (flag) |
+| TraficSourceID | numeric (small code) |
+| SearchEngineID | numeric (small code) |
+| AdvEngineID | numeric (small code) |
+| URL | long text |
+| Title | long text |
+
+Other files: `calibration/` (pilot calibration), `batch3/ratios.json`,
+`batch4/ratios.json`, `batch5a/ratios.json`, `batch5b/ratios.json` (rule-2 ratios r
+and profiles), `batch3/calibration_*.csv`,
 `batch{2,3,4}/plan.json` (job order), `batch{2,3,4}/jobs/*.csv` (one row per run;
 `json_path` relative to that directory), `pilot_null_attempt1_host_sleep/`
 (invalid first pilot attempt, host sleep).

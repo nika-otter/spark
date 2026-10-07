@@ -567,10 +567,161 @@ def fig_spark35():
     save(fig, "spark35")
 
 
+# --------------------------------------------------------------------------- batch 5
+
+def fig_tpc_ratios():
+    sh = pd.read_csv(RESULTS / "tpc_shuffle_ratios.csv").dropna(subset=["ratio"])
+    panels = (("tpch", "lz4", "TPC-H SF10, lz4"), ("tpch", "zstd", "TPC-H SF10, zstd"),
+              ("tpcds", "lz4", "TPC-DS SF10, lz4"))
+    bins = np.logspace(np.log10(0.25), np.log10(64), 25)
+    fig, axes = plt.subplots(1, 3, figsize=(10.5, 3.2), sharey=False)
+    for ax, (bench, codec, title) in zip(axes, panels):
+        r = sh[(sh["bench"] == bench) & (sh["codec"] == codec)]["ratio"]
+        ax.hist(r.clip(upper=63), bins=bins, color=C["blue"], edgecolor="white", linewidth=0.6)
+        for x in (2, 4):
+            ax.axvline(x, color="#52514e", linestyle="--", linewidth=0.8)
+        ax.set_xscale("log")
+        ticks = [0.25, 0.5, 1, 2, 4, 8, 16, 32]
+        ax.set_xticks(ticks)
+        ax.set_xticklabels([num(t) for t in ticks])
+        ax.minorticks_off()
+        style(ax, "Кількість shuffle", "Коефіцієнт стиснення (data size / bytes written)",
+              "{} ({} shuffle)".format(title, len(r)))
+        ax.yaxis.set_major_locator(MaxNLocator(integer=True))
+    fig.suptitle("Розподіл коефіцієнтів стиснення окремих shuffle (AQE увімкнено, типові параметри; "
+                 "пунктир — 2 і 4)", fontsize=9, x=0.01, ha="left")
+    fig.tight_layout()
+    save(fig, "tpc_ratios")
+
+
+def fig_tpc_timing():
+    t = pd.read_csv(RESULTS / "tpc_timing_summary.csv")
+    t = t[t["mode"] == "aqe_on"].copy()
+    fig, axes = plt.subplots(1, 2, figsize=(10.5, 3.6), gridspec_kw={"width_ratios": [22, 30]})
+    for ax, bench, title in ((axes[0], "tpch", "TPC-H SF10, 22 запити"),
+                             (axes[1], "tpcds", "TPC-DS SF10, 30 запитів з найбільшим shuffle")):
+        d = t[t["bench"] == bench].sort_values("rule2_over_on_round_median").reset_index(drop=True)
+        x = np.arange(len(d))
+        med = d["rule2_over_on_round_median"]
+        ax.errorbar(x, med, yerr=[med - d["rule2_over_on_round_min"], d["rule2_over_on_round_max"] - med],
+                    color=C["violet"], marker="D", markersize=4, linestyle="none", capsize=2,
+                    elinewidth=0.8)
+        ax.axhline(1, color="#52514e", linewidth=0.8)
+        ax.axhline(1.1, color="#52514e", linewidth=0.8, linestyle="--")
+        ax.set_xticks(x)
+        ax.set_xticklabels(d["query"], rotation=90, fontsize=6.5)
+        style(ax, "Час з правилом 2 / час з AQE (типові)", title=title, ylim0=False)
+    fig.suptitle("Відношення часу запиту: правило 2 до AQE з типовими параметрами (медіана за 3 раундами; "
+                 "планки — мін.–макс.; пунктир — 1,1)", fontsize=9, x=0.01, ha="left")
+    fig.tight_layout()
+    save(fig, "tpc_timing")
+
+
+G_MODES = ("aqe_off", "aqe_on", "aqe_on_fixed8", "aqe_on_fixed16", "aqe_on_nocoalesce", "aqe_on_rule2")
+MODE.update({
+    "aqe_on_fixed8": ("#8a8984", "<", "AQE + фіксовані 8 МБ / 32 МБ"),
+    "aqe_on_fixed16": ("#52514e", ">", "AQE + фіксовані 16 МБ / 64 МБ"),
+})
+
+
+def fig_exp_g():
+    s = pd.read_csv(RESULTS / "exp_g_summary.csv")
+    scen = ["S1", "S2", "S3", "S4", "S5"]
+    labels = {"S1": "S1\n1x, 20 % NULL,\n200", "S2": "S2\n8x, 20 % NULL,\n200",
+              "S3": "S3\n8x, 20 % NULL,\n2001", "S4": "S4\n8x, без NULL,\n2001",
+              "S5": "S5\n1x, без NULL,\n2001"}
+    groups = [{r["mode"]: r for _, r in s[s["scenario"] == sc].iterrows()} for sc in scen]
+    fig, axes = plt.subplots(3, 1, figsize=(10.5, 8.4), sharex=True)
+    panels = (("wall_s_median", "wall_s_q25", "wall_s_q75", "Час виконання запиту, с"),
+              ("longest_join_task_s_median", "longest_join_task_s_q25", "longest_join_task_s_q75",
+               "Найдовша задача join-стадії, с"),
+              ("join_stage_tasks_median", None, None, "Задач у join-стадії"))
+    for ax, (value, q25, q75, ylabel) in zip(axes, panels):
+        grouped_bars(ax, groups, G_MODES, value, q25, q75)
+        style(ax, ylabel)
+    axes[2].set_yscale("log", nonpositive="clip")
+    axes[2].set_ylim(5, 4000)
+    axes[2].set_yticks([10, 100, 1000])
+    axes[2].set_yticklabels(["10", "100", "1000"])
+    axes[2].minorticks_off()
+    axes[2].set_xticks(range(len(scen)))
+    axes[2].set_xticklabels([labels[x] for x in scen], fontsize=7.5)
+    handles, lab = axes[0].get_legend_handles_labels()
+    fig.legend(handles, lab, frameon=False, loc="lower center", ncol=3)
+    fig.suptitle("Крок 2: правило 2 проти простих альтернатив, 55 млн рядків, LEFT JOIN; у S3–S5 до всіх "
+                 "AQE-режимів додано правило 1\n(медіана; планки — IQR; задачі — лог. шкала)",
+                 fontsize=9, x=0.01, ha="left")
+    fig.tight_layout(rect=(0, 0.06, 1, 1))
+    save(fig, "exp_g")
+
+
+H_VARIANTS = (("aqe_off", "AQE\nвимк."), ("aqe_on", "AQE\nувімк."), ("rules12_roff", "правила 1, 2\nr з AQE off"),
+              ("rules12_ron", "правила 1, 2\nr з AQE on"), ("rules12_rmax", "правила 1, 2\nr = макс."))
+
+
+def fig_exp_h():
+    st = pd.read_csv(RESULTS / "exp_h_stress_summary.csv").set_index("variant")
+    k2 = pd.read_csv(RESULTS / "exp_h_stress_k2.csv").groupby("variant")["k2_longest_task_s"].median()
+    st["k2_longest_task_s_median"] = k2
+    it = pd.read_csv(RESULTS / "exp_h_iter.csv")
+    se = pd.read_csv(RESULTS / "exp_h_sens_summary.csv").sort_values("rule2_factor")
+    sa = pd.read_csv(RESULTS / "exp_h_sample.csv")
+    fig, axes = plt.subplots(2, 2, figsize=(10.5, 6.8))
+    ax = axes[0, 0]
+    d = st.reindex([v for v, _ in H_VARIANTS])
+    x = np.arange(len(d))
+    for i, (col, name, color) in enumerate((("k2_longest_task_s_median", "найдовша задача join k2", C["blue"]),
+                                             ("wall_s_median", "час запиту", C["orange"]))):
+        ax.bar(x - 0.2 + 0.4 * i, d[col], width=0.38, color=color, label=name)
+    ax.set_xticks(x)
+    ax.set_xticklabels([l for _, l in H_VARIANTS], fontsize=6.5)
+    style(ax, "с", title="3a: стрес-конвеєр, 7 млн рядків")
+    ax.legend(frameon=False, loc="upper right", fontsize=7)
+
+    ax = axes[0, 1]
+    for rnd, g in it.groupby("round"):
+        g = g.sort_values("iteration")
+        ax.plot([0] + list(g["iteration"]), [g["r_used"].iloc[0]] + list(g["r_measured"]),
+                marker="o", color=C["violet"], alpha=0.35 + 0.15 * rnd, linewidth=1.2)
+    ax.set_xticks([0, 1, 2, 3])
+    style(ax, "r", "Ітерація (0 — r з профілювання AQE on)", "3a: ітеративне правило, 4 раунди",
+          ylim0=False)
+
+    ax = axes[1, 0]
+    med = se["wall_s_median"]
+    ax.errorbar(se["rule2_factor"], med, yerr=[med - se["wall_s_q25"], se["wall_s_q75"] - med],
+                color=C["yellow"], marker="v", capsize=2.5, linewidth=1.8, label="час запиту")
+    med = se["longest_join_task_s_median"]
+    ax.errorbar(se["rule2_factor"], med, yerr=[med - se["longest_join_task_s_q25"],
+                                               se["longest_join_task_s_q75"] - med],
+                color=C["blue"], marker="o", capsize=2.5, linewidth=1.8, label="найдовша задача join")
+    ax.set_xscale("log")
+    ax.set_xticks([0.5, 1, 2])
+    ax.set_xticklabels(["0,5", "1", "2"])
+    ax.minorticks_off()
+    style(ax, "с", "Множник r", "3b: чутливість, правила 1 і 2")
+    ax.legend(frameon=False, loc="upper left", fontsize=7)
+
+    ax = axes[1, 1]
+    lv = np.arange(len(sa))
+    for i, (col, name, color) in enumerate((("r_sample_1pct", "вибірка 1 %", C["aqua"]),
+                                             ("r_sample_10pct", "вибірка 10 %", C["violet"]),
+                                             ("r_full", "повні дані", C["blue"]))):
+        ax.bar(lv - 0.27 + 0.27 * i, sa[col], width=0.25, color=color, label=name)
+    ax.set_xticks(lv)
+    ax.set_xticklabels(sa["level"])
+    style(ax, "r", "Рівень стиснення", "3c: r на вибірці facts")
+    ax.legend(frameon=False, loc="upper left", fontsize=7)
+    fig.suptitle("Крок 3: уточнення правила 2 (медіани; планки — IQR)", fontsize=9, x=0.01, ha="left")
+    fig.tight_layout()
+    save(fig, "exp_h")
+
+
 FIGS = {"pilot_null": fig_pilot, "exp_a": fig_exp_a, "exp_b": fig_exp_b,
         "exp_c2": fig_exp_c2, "exp_d": fig_exp_d, "exp_d2": fig_exp_d2,
         "exp_d2_stress": fig_exp_d2_stress, "exp_e": fig_exp_e, "exp_f": fig_exp_f,
-        "spark35": fig_spark35}
+        "spark35": fig_spark35, "tpc_ratios": fig_tpc_ratios, "tpc_timing": fig_tpc_timing,
+        "exp_g": fig_exp_g, "exp_h": fig_exp_h}
 
 
 def main():
