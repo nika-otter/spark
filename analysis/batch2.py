@@ -56,7 +56,7 @@ def load_runs(batch=BATCH, param_keys=PARAM_KEYS):
     params = df["params"].apply(json.loads)
     for key in param_keys:
         df[key] = params.apply(lambda p, k=key: p.get(k))
-    df["round"] = df["job_id"].str.extract(r"^r(\d+)_").astype(int)
+    df["round"] = df["job_id"].str.extract(r"^(?:s\d+_)?r(\d+)_").astype(int)
     df["join_stage_duration_s"] = df["join_stage_duration_ms"] / 1000
     df["join_task_duration_s_max"] = df["join_task_duration_ms_max"] / 1000
     df["executor_run_time_s"] = df["executor_run_time_ms"] / 1000

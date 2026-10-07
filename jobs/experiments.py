@@ -14,7 +14,7 @@ from typing import Callable, Dict
 
 from pyspark.sql import functions as F
 
-from generate import DimSpec, FactsSpec, KeySpec
+from generate import FILTER_BUCKETS, DimSpec, FactsSpec, KeySpec
 
 MIB = 1024 * 1024
 
@@ -63,7 +63,9 @@ class Scenario:
 
 DEFAULTS = {
     "join": "left",
-    "null_share": 0.0,                  # NULL share of the (first) join key
+    "null_share": 0.0,                  # NULL share of the join key (pipeline: key null_key)
+    "hot_share": 0.0,                   # null_skew only: share of rows on hot keys
+    "hot_keys": 1,                      # null_skew only: hot_share spread over this many keys
     "rows": 55_000_000,
     "payload_bytes": 100,
     "payload_kind": "hex",
@@ -80,6 +82,9 @@ DEFAULTS = {
     "dim_payload_bytes": 20,
     "match_rate": 1.0,
     "filter_buckets_kept": 10,          # of 1000 -> ~1 % of a filtered dim
+    "null_key": 1,                      # index i of the key k<i> that gets null_share
+    "filter_aligned": 0,                # 1: facts keys of filtered dims reference only
+                                        #    dim rows that pass the filter
 }
 
 
@@ -131,7 +136,8 @@ def null_skew(experiment, p):
                    payload_random_fraction=p["payload_random_fraction"])
     facts = FactsSpec(
         rows=p["rows"],
-        keys=(KeySpec("k", p["n_keys"], hot_share=0.0, null_share=p["null_share"]),),
+        keys=(KeySpec("k", p["n_keys"], hot_share=p["hot_share"], null_share=p["null_share"],
+                      hot_keys=p["hot_keys"]),),
         num_files=p["num_files"], **payload)
     dim = DimSpec("k", p["n_keys"], match_rate=1.0, **payload)
 
@@ -139,7 +145,12 @@ def null_skew(experiment, p):
         return t["facts"].join(t["dim_k"], on="k", how=p["join"])
 
     scenario_id = "{}_null{:g}_rows{}_payload{}".format(
-        p["join"], p["null_share"], p["rows"], p["payload_bytes"]) + _suffix(p)
+        p["join"], p["null_share"], p["rows"], p["payload_bytes"])
+    if p["hot_share"] > 0:
+        scenario_id += "_hot{:g}".format(p["hot_share"])
+        if p["hot_keys"] > 1:
+            scenario_id += "x{}".format(p["hot_keys"])
+    scenario_id += _suffix(p)
     return Scenario(experiment, scenario_id, p, {"facts": facts, "dim_k": dim},
                     _common_conf(p, broadcast_disabled=True), query)
 
@@ -153,15 +164,26 @@ def pipeline(experiment, p):
     n = p["n_dims"]
     if n < 1 or p["join"] not in ("left", "inner"):
         raise ValueError("pipeline needs n_dims >= 1 and join left/inner")
-    keys = tuple(KeySpec("k{}".format(i), p["n_keys"],
-                         null_share=p["null_share"] if i == 1 else 0.0)
+    aligned = p["filter_aligned"] == 1
+    # Aligned layout: a filtered dim keeps exactly the key indices
+    # [0, n_filtered) (filter layout "prefix"), and the facts key of that dim
+    # is drawn from this range only; match_rate still applies on top.
+    n_filtered = p["n_keys"] * p["filter_buckets_kept"] // FILTER_BUCKETS
+
+    def key_range(i):
+        return n_filtered if aligned and is_filtered_dim(i) else p["n_keys"]
+
+    keys = tuple(KeySpec("k{}".format(i), key_range(i),
+                         null_share=p["null_share"] if i == p["null_key"] else 0.0)
                  for i in range(1, n + 1))
     facts = FactsSpec(rows=p["rows"], keys=keys, payload_bytes=p["payload_bytes"],
                       seed=p["seed"], payload_kind=p["payload_kind"],
                       payload_random_fraction=p["payload_random_fraction"],
                       num_files=p["num_files"])
-    dims = {"dim_k{}".format(i): DimSpec("k{}".format(i), p["n_keys"], match_rate=p["match_rate"],
-                                         payload_bytes=p["dim_payload_bytes"], seed=p["seed"])
+    dims = {"dim_k{}".format(i): DimSpec(
+                "k{}".format(i), p["n_keys"], match_rate=p["match_rate"],
+                payload_bytes=p["dim_payload_bytes"], seed=p["seed"],
+                filter_layout="prefix" if aligned and is_filtered_dim(i) else "hash")
             for i in range(1, n + 1)}
 
     def query(t, mode):
@@ -178,7 +200,12 @@ def pipeline(experiment, p):
         return df
 
     scenario_id = "{}_n{}_null{:g}_rows{}_payload{}".format(
-        p["join"], n, p["null_share"], p["rows"], p["payload_bytes"]) + _suffix(p)
+        p["join"], n, p["null_share"], p["rows"], p["payload_bytes"])
+    if p["null_key"] != 1:
+        scenario_id += "_nullk{}".format(p["null_key"])
+    if aligned:
+        scenario_id += "_aligned_match{:g}".format(p["match_rate"])
+    scenario_id += _suffix(p)
     tables = {"facts": facts}
     tables.update(dims)
     return Scenario(experiment, scenario_id, p, tables,
@@ -196,6 +223,14 @@ EXPERIMENTS = {
     "exp_rules": (null_skew, {"null_share": 0.2, "payload_kind": "mixed", "num_files": 45,
                               "shuffle_partitions": 2001}),
     "exp_d_pipeline": (pipeline, {"match_rate": 0.7}),
+    # Batch 4
+    "exp_d2_inner": (pipeline, {"join": "inner", "filter_aligned": 1, "match_rate": 0.966}),
+    "exp_d2_stress": (pipeline, {"join": "left", "n_dims": 5, "match_rate": 0.7,
+                                 "null_share": 0.2, "null_key": 2, "payload_kind": "mixed",
+                                 "shuffle_partitions": 2001}),
+    "exp_e_volume": (null_skew, {"null_share": 0.2, "payload_kind": "mixed"}),
+    "exp_e_coalesce": (null_skew, {"null_share": 0.0, "payload_kind": "mixed"}),
+    "exp_f_hotkey": (null_skew, {"null_share": 0.0, "hot_share": 0.2, "payload_kind": "mixed"}),
 }
 
 

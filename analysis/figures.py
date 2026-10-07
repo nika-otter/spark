@@ -5,6 +5,11 @@
   results/figures/exp_b.{png,pdf}
   results/figures/exp_c2.{png,pdf}
   results/figures/exp_d.{png,pdf}
+  results/figures/exp_d2.{png,pdf}         batch 4, step 1a
+  results/figures/exp_d2_stress.{png,pdf}  batch 4, step 1b
+  results/figures/exp_e.{png,pdf}          batch 4, step 2a-2c
+  results/figures/exp_f.{png,pdf}          batch 4, step 2d
+  results/figures/spark35.{png,pdf}        batch 4, step 3
 
 Conventions: a legend identifies the series (no direct labels); points are
 medians over measured runs, bars span the interquartile range; lines join
@@ -331,8 +336,241 @@ def fig_exp_d():
     save(fig, "exp_d")
 
 
+# --------------------------------------------------------------------------- batch 4
+
+def grouped_bars(ax, groups, modes, value, q25=None, q75=None, width=0.8):
+    """Bars per group (x position) and mode; missing (group, mode) pairs are skipped."""
+    n = len(modes)
+    w = width / n
+    for i, mode in enumerate(modes):
+        xs, ys, lo, hi = [], [], [], []
+        for gx, rows in enumerate(groups):
+            r = rows.get(mode)
+            if r is None:
+                continue
+            xs.append(gx - width / 2 + w * (i + 0.5))
+            ys.append(r[value])
+            if q25:
+                lo.append(r[value] - r[q25])
+                hi.append(r[q75] - r[value])
+        if not xs:
+            continue
+        color, _, name = MODE[mode]
+        ax.bar(xs, ys, width=w * 0.92, color=color, label=name,
+               yerr=[lo, hi] if q25 else None, capsize=1.8, error_kw={"elinewidth": 0.7})
+
+
+def fig_exp_d2():
+    s = pd.read_csv(RESULTS / "exp_d2_summary.csv")
+    s = s[s["experiment"] == "exp_d2_inner"].copy()
+    modes = ("aqe_off", "aqe_on", "aqe_on_hints")
+    scen = [(5, "INNER, n = 5"), (20, "INNER, n = 20")]
+    d = []
+    for n, name in scen:
+        for mode in modes:
+            r = s[(s["n_dims"] == n) & (s["mode"] == mode)]
+            if not r.empty:
+                d.append(dict(r.iloc[0], scenario=name))
+    d = pd.DataFrame(d)
+    x, pos, prev = [], 0.0, None
+    for _, r in d.iterrows():
+        if prev is not None and r["scenario"] != prev:
+            pos += 0.6
+        x.append(pos)
+        prev = r["scenario"]
+        pos += 1
+    d["x"] = x
+
+    fig, axes = plt.subplots(1, 2, figsize=(9.0, 3.4))
+    bottom = np.zeros(len(d))
+    for key, color, name in STRATEGY:
+        counts = d["join_strategies"].apply(lambda v: json.loads(v.split(" || ")[0]).get(key, 0))
+        if counts.sum() == 0:
+            continue
+        axes[0].bar(d["x"], counts, bottom=bottom, color=color, width=0.8, label=name,
+                    edgecolor="white", linewidth=1)
+        bottom += counts.values
+    style(axes[0], "Кількість з'єднань у фінальному плані")
+    axes[0].yaxis.set_major_locator(MaxNLocator(integer=True))
+    axes[0].legend(frameon=False, loc="upper left")
+    axes[0].set_ylim(0, bottom.max() * 1.25)
+
+    axes[1].bar(d["x"], d["wall_s_median"], color="#8a8984", width=0.8,
+                yerr=[d["wall_s_median"] - d["wall_s_q25"], d["wall_s_q75"] - d["wall_s_median"]],
+                capsize=2, error_kw={"elinewidth": 0.8})
+    style(axes[1], "Час виконання запиту, с\n(медіана; планки — IQR)")
+    for _, r in d.iterrows():
+        share = r["output_rows_median"] / r["rows"] * 100
+        axes[1].annotate("{} %".format(num(share, 1)), (r["x"], r["wall_s_q75"]),
+                         xytext=(0, 3), textcoords="offset points", ha="center", fontsize=6.5,
+                         color="#52514e")
+    for ax in axes:
+        ax.set_xticks(d["x"])
+        ax.set_xticklabels([MODE_SHORT[m] for m in d["mode"]], fontsize=7)
+        for name in d["scenario"].unique():
+            xs = d[d["scenario"] == name]["x"]
+            ax.annotate(name, (xs.mean(), 0), xytext=(0, -30), textcoords="offset points",
+                        xycoords=("data", "axes fraction"), ha="center", fontsize=8)
+    fig.suptitle("Експеримент D2: INNER-конвеєр, 3 млн рядків facts; над стовпцями — "
+                 "частка рядків facts у результаті", fontsize=9, x=0.01, ha="left")
+    fig.tight_layout(rect=(0, 0.05, 1, 1))
+    save(fig, "exp_d2")
+
+
+STRESS_MODES = ("aqe_off", "aqe_on", "aqe_on_rule1", "aqe_on_rule2", "aqe_on_rules12")
+MODE_SHORT.update({"aqe_on_rule1": "правило\n1", "aqe_on_rule2": "правило\n2"})
+
+
+def fig_exp_d2_stress():
+    s = pd.read_csv(RESULTS / "exp_d2_summary.csv")
+    s = s[s["experiment"] == "exp_d2_stress"].set_index("mode").reindex(STRESS_MODES).dropna(how="all")
+    x = np.arange(len(s))
+    fig, axes = plt.subplots(1, 3, figsize=(11.5, 3.1))
+    panels = (("k2_longest_task_s", "Найдовша задача стадії join за k2, с"),
+              ("k2_stage_s", "Тривалість стадії join за k2, с"),
+              ("wall_s", "Час виконання запиту, с"))
+    for ax, (prefix, ylabel) in zip(axes, panels):
+        med = s[prefix + "_median"]
+        ax.bar(x, med, color=[MODE[m][0] for m in s.index], width=0.7,
+               yerr=[med - s[prefix + "_q25"], s[prefix + "_q75"] - med],
+               capsize=2, error_kw={"elinewidth": 0.8})
+        ax.set_xticks(x)
+        ax.set_xticklabels([MODE_SHORT[m] for m in s.index], fontsize=7)
+        style(ax, ylabel)
+    fig.suptitle("Експеримент D2, стрес: LEFT, n = 5, 20 % NULL у k2, 2001 партиція "
+                 "(медіана; планки — IQR)", fontsize=9, x=0.01, ha="left")
+    fig.tight_layout()
+    save(fig, "exp_d2_stress")
+
+
+def fig_exp_e():
+    s = pd.read_csv(RESULTS / "exp_e_summary.csv")
+    rows = (
+        ("exp_e_volume", 0.2, "1x", 200, ("aqe_off", "aqe_on"),
+         "2a: 20 % NULL, рівень стиснення 1x, 200 партицій"),
+        ("exp_e_volume", 0.2, "8x", 2001, ("aqe_off", "aqe_on", "aqe_on_rules12"),
+         "2b: 20 % NULL, рівень 8x, 2001 партиція"),
+        ("exp_e_coalesce", 0.0, "8x", 2001, ("aqe_off", "aqe_on", "aqe_on_rule2"),
+         "2c: без NULL, рівень 8x, 2001 партиція"),
+    )
+    fig, axes = plt.subplots(3, 2, figsize=(8.4, 8.0))
+    for (exp, ns, level, sp, modes, title), axrow in zip(rows, axes):
+        part = s[(s["experiment"] == exp) & (s["null_share"] == ns) & (s["level"] == level)
+                 & (s["shuffle_partitions"] == sp)]
+        for ax, prefix, ylabel in ((axrow[0], "longest_join_task_s", "Найдовша задача join-стадії, с"),
+                                   (axrow[1], "wall_s", "Час виконання запиту, с")):
+            for mode in modes:
+                m = part[part["mode"] == mode].sort_values("rows")
+                series(ax, m["rows"] / 1e6, m[prefix + "_median"], m[prefix + "_q25"],
+                       m[prefix + "_q75"], mode)
+            style(ax, ylabel, "Рядків facts, млн")
+            ax.set_xticks(sorted(part["rows"].unique() / 1e6))
+            ax.xaxis.set_major_formatter(COMMA)
+        axrow[0].set_title(title, loc="left")
+        axrow[0].legend(frameon=False, loc="upper left")
+    fig.suptitle("Експеримент E: обсяг даних, LEFT JOIN, broadcast вимкнено ({})".format(IQR_NOTE),
+                 fontsize=9, x=0.01, ha="left")
+    fig.tight_layout()
+    save(fig, "exp_e")
+
+
+F_SCEN = (("null_key", "left", "NULL\nLEFT"), ("hot", "left", "гарячий\nключ, LEFT"),
+          ("hot", "inner", "гарячий\nключ, INNER"), ("hot x5", "left", "5 гарячих\nключів, LEFT"))
+
+
+def fig_exp_f():
+    s = pd.read_csv(RESULTS / "exp_f_summary.csv")
+    rows = (("1x", 200, ("aqe_off", "aqe_on"), "рівень 1x, 200 партицій"),
+            ("8x", 2001, ("aqe_off", "aqe_on", "aqe_on_rules12"), "рівень 8x, 2001 партиція"))
+    fig, axes = plt.subplots(2, 3, figsize=(12.0, 6.8))
+    for (level, sp, modes, title), axrow in zip(rows, axes):
+        part = s[(s["level"] == level) & (s["shuffle_partitions"] == sp)]
+        groups, labels = [], []
+        for src, join, label in F_SCEN:
+            g = part[(part["skew_source"] == src) & (part["join"] == join)]
+            if g.empty:
+                continue
+            groups.append({r["mode"]: r for _, r in g.iterrows()})
+            labels.append(label)
+        panels = (("longest_join_task_s_median", "longest_join_task_s_q25",
+                   "longest_join_task_s_q75", "Найдовша задача join-стадії, с"),
+                  ("wall_s_median", "wall_s_q25", "wall_s_q75", "Час виконання запиту, с"),
+                  ("skewed_partitions_median", None, None, "Skewed-партицій (медіана)"))
+        for ax, (value, q25, q75, ylabel) in zip(axrow, panels):
+            grouped_bars(ax, groups, modes, value, q25, q75)
+            ax.set_xticks(range(len(labels)))
+            ax.set_xticklabels(labels, fontsize=7)
+            style(ax, ylabel)
+        axrow[2].yaxis.set_major_locator(MaxNLocator(integer=True))
+        axrow[0].set_title(title, loc="left")
+    handles, labels = axes[1, 0].get_legend_handles_labels()
+    fig.legend(handles, labels, frameon=False, loc="lower center", ncol=3)
+    fig.suptitle("Експеримент F: джерело перекосу (NULL або гарячий ключ, 20 % рядків), "
+                 "55 млн рядків ({})".format(IQR_NOTE), fontsize=9, x=0.01, ha="left")
+    fig.tight_layout(rect=(0, 0.05, 1, 1))
+    save(fig, "exp_f")
+
+
+VERSION = {"413": (C["blue"], "Spark 4.1.3 (пакети 2–3)"), "359": (C["orange"], "Spark 3.5.9 (пакет 4)")}
+S35_SHORT = {"aqe_off": "вимк.", "aqe_on": "увімк.", "aqe_on_rule1": "+пр. 1",
+             "aqe_on_rule2": "+пр. 2", "aqe_on_rules12": "+пр. 1, 2"}
+
+
+def fig_spark35():
+    s = pd.read_csv(RESULTS / "spark35_summary.csv")
+
+    def label(r):
+        mode = S35_SHORT[r["mode"]]
+        if r["experiment"] == "exp_b_partitions":
+            if r["accurate_skew_factor"] > 0:
+                mode = S35_SHORT["aqe_on_rule1"]
+            return "{}\n{}".format(int(r["shuffle_partitions"]), mode)
+        if r["experiment"] == "exp_c2_dose":
+            return "{}\n{}".format(r["level"], mode)
+        return mode
+
+    panels = (("exp_b_partitions", "B: 20 % NULL, партиції"),
+              ("exp_c2_dose", "C2: 8 % NULL, рівень стиснення lz4"),
+              ("exp_rules", "Комбінована перевірка"))
+    fig, axes = plt.subplots(2, 3, figsize=(12.0, 6.0),
+                             gridspec_kw={"width_ratios": [6, 9, 5]})
+    for col, (exp, title) in enumerate(panels):
+        d = s[s["experiment"] == exp].copy()
+        if exp == "exp_b_partitions":
+            d = d.sort_values(["shuffle_partitions", "accurate_skew_factor", "mode"])
+        elif exp == "exp_c2_dose":
+            d["order"] = d["payload_random_fraction"].map({1.0: 0, 0.19: 1, 0.0: 2})
+            d = d.sort_values(["order", "mode"])
+        else:
+            d["order"] = d["mode"].map({m: i for i, m in enumerate(STRESS_MODES)})
+            d = d.sort_values("order")
+        x = np.arange(len(d))
+        for row, (prefix, ylabel) in enumerate((("wall_s", "Час виконання запиту, с"),
+                                                ("longest_join_task_s", "Найдовша задача join-стадії, с"))):
+            ax = axes[row, col]
+            for i, ver in enumerate(("413", "359")):
+                med = d["{}_median_{}".format(prefix, ver)]
+                ax.bar(x - 0.2 + 0.4 * i, med, width=0.38, color=VERSION[ver][0],
+                       label=VERSION[ver][1],
+                       yerr=[med - d["{}_q25_{}".format(prefix, ver)],
+                             d["{}_q75_{}".format(prefix, ver)] - med],
+                       capsize=1.5, error_kw={"elinewidth": 0.7})
+            ax.set_xticks(x)
+            ax.set_xticklabels([label(r) for _, r in d.iterrows()], fontsize=6.5)
+            style(ax, ylabel)
+        axes[0, col].set_title(title, loc="left")
+    handles, labels = axes[0, 0].get_legend_handles_labels()
+    fig.legend(handles, labels, frameon=False, loc="lower center", ncol=2)
+    fig.suptitle("Spark 3.5.9 поруч із 4.1.3: 55 млн рядків, LEFT JOIN ({})".format(IQR_NOTE),
+                 fontsize=9, x=0.01, ha="left")
+    fig.tight_layout(rect=(0, 0.04, 1, 1))
+    save(fig, "spark35")
+
+
 FIGS = {"pilot_null": fig_pilot, "exp_a": fig_exp_a, "exp_b": fig_exp_b,
-        "exp_c2": fig_exp_c2, "exp_d": fig_exp_d}
+        "exp_c2": fig_exp_c2, "exp_d": fig_exp_d, "exp_d2": fig_exp_d2,
+        "exp_d2_stress": fig_exp_d2_stress, "exp_e": fig_exp_e, "exp_f": fig_exp_f,
+        "spark35": fig_spark35}
 
 
 def main():

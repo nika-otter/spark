@@ -1,0 +1,493 @@
+== Physical Plan ==
+OverwriteByExpression (90)
++- AdaptiveSparkPlan (89)
+   +- == Final Plan ==
+      ResultQueryStage (56), Statistics(sizeInBytes=8.0 EiB)
+      +- * Project (55)
+         +- * BroadcastHashJoin Inner BuildRight (54)
+            :- * Project (47)
+            :  +- * SortMergeJoin Inner (46)
+            :     :- * Sort (37)
+            :     :  +- AQEShuffleRead (36)
+            :     :     +- ShuffleQueryStage (35), Statistics(sizeInBytes=679.1 MiB, rowCount=2.70E+6)
+            :     :        +- Exchange (34)
+            :     :           +- * Project (33)
+            :     :              +- * BroadcastHashJoin Inner BuildRight (32)
+            :     :                 :- * Project (25)
+            :     :                 :  +- * SortMergeJoin Inner (24)
+            :     :                 :     :- * Sort (15)
+            :     :                 :     :  +- AQEShuffleRead (14)
+            :     :                 :     :     +- ShuffleQueryStage (13), Statistics(sizeInBytes=552.8 MiB, rowCount=2.90E+6)
+            :     :                 :     :        +- Exchange (12)
+            :     :                 :     :           +- * Project (11)
+            :     :                 :     :              +- * BroadcastHashJoin Inner BuildRight (10)
+            :     :                 :     :                 :- * Filter (3)
+            :     :                 :     :                 :  +- * ColumnarToRow (2)
+            :     :                 :     :                 :     +- Scan parquet  (1)
+            :     :                 :     :                 +- BroadcastQueryStage (9), Statistics(sizeInBytes=1536.0 KiB, rowCount=1.00E+4)
+            :     :                 :     :                    +- BroadcastExchange (8)
+            :     :                 :     :                       +- * Project (7)
+            :     :                 :     :                          +- * Filter (6)
+            :     :                 :     :                             +- * ColumnarToRow (5)
+            :     :                 :     :                                +- Scan parquet  (4)
+            :     :                 :     +- * Sort (23)
+            :     :                 :        +- AQEShuffleRead (22)
+            :     :                 :           +- ShuffleQueryStage (21), Statistics(sizeInBytes=45.8 MiB, rowCount=1.00E+6)
+            :     :                 :              +- Exchange (20)
+            :     :                 :                 +- * Project (19)
+            :     :                 :                    +- * Filter (18)
+            :     :                 :                       +- * ColumnarToRow (17)
+            :     :                 :                          +- Scan parquet  (16)
+            :     :                 +- BroadcastQueryStage (31), Statistics(sizeInBytes=1536.0 KiB, rowCount=1.00E+4)
+            :     :                    +- BroadcastExchange (30)
+            :     :                       +- * Project (29)
+            :     :                          +- * Filter (28)
+            :     :                             +- * ColumnarToRow (27)
+            :     :                                +- Scan parquet  (26)
+            :     +- * Sort (45)
+            :        +- AQEShuffleRead (44)
+            :           +- ShuffleQueryStage (43), Statistics(sizeInBytes=45.8 MiB, rowCount=1.00E+6)
+            :              +- Exchange (42)
+            :                 +- * Project (41)
+            :                    +- * Filter (40)
+            :                       +- * ColumnarToRow (39)
+            :                          +- Scan parquet  (38)
+            +- BroadcastQueryStage (53), Statistics(sizeInBytes=1536.0 KiB, rowCount=1.00E+4)
+               +- BroadcastExchange (52)
+                  +- * Project (51)
+                     +- * Filter (50)
+                        +- * ColumnarToRow (49)
+                           +- Scan parquet  (48)
+   +- == Initial Plan ==
+      Project (88)
+      +- BroadcastHashJoin Inner BuildRight (87)
+         :- Project (83)
+         :  +- SortMergeJoin Inner (82)
+         :     :- Sort (77)
+         :     :  +- Exchange (76)
+         :     :     +- Project (75)
+         :     :        +- BroadcastHashJoin Inner BuildRight (74)
+         :     :           :- Project (70)
+         :     :           :  +- SortMergeJoin Inner (69)
+         :     :           :     :- Sort (64)
+         :     :           :     :  +- Exchange (63)
+         :     :           :     :     +- Project (62)
+         :     :           :     :        +- BroadcastHashJoin Inner BuildRight (61)
+         :     :           :     :           :- Filter (57)
+         :     :           :     :           :  +- Scan parquet  (1)
+         :     :           :     :           +- BroadcastExchange (60)
+         :     :           :     :              +- Project (59)
+         :     :           :     :                 +- Filter (58)
+         :     :           :     :                    +- Scan parquet  (4)
+         :     :           :     +- Sort (68)
+         :     :           :        +- Exchange (67)
+         :     :           :           +- Project (66)
+         :     :           :              +- Filter (65)
+         :     :           :                 +- Scan parquet  (16)
+         :     :           +- BroadcastExchange (73)
+         :     :              +- Project (72)
+         :     :                 +- Filter (71)
+         :     :                    +- Scan parquet  (26)
+         :     +- Sort (81)
+         :        +- Exchange (80)
+         :           +- Project (79)
+         :              +- Filter (78)
+         :                 +- Scan parquet  (38)
+         +- BroadcastExchange (86)
+            +- Project (85)
+               +- Filter (84)
+                  +- Scan parquet  (48)
+
+
+(1) Scan parquet 
+Output [7]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/facts_rows-3000000_k1-n10000-h0-null0_k2-n1000000-h0-null0_k3-n10000-h0-null0_k4-n1000000-h0-null0_k5-n10000-h0-null0_payload-100_seed-42/data]
+PushedFilters: [IsNotNull(k1), IsNotNull(k2), IsNotNull(k3), IsNotNull(k4), IsNotNull(k5)]
+ReadSchema: struct<id:bigint,k1:bigint,k2:bigint,k3:bigint,k4:bigint,k5:bigint,payload:string>
+
+(2) ColumnarToRow [codegen id : 6]
+Input [7]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30]
+
+(3) Filter [codegen id : 6]
+Input [7]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30]
+Condition : ((((isnotnull(k1#25L) AND isnotnull(k2#26L)) AND isnotnull(k3#27L)) AND isnotnull(k4#28L)) AND isnotnull(k5#29L))
+
+(4) Scan parquet 
+Output [3]: [k1#31L, filter_bucket#32, payload#33]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k1_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k1)]
+ReadSchema: struct<k1:bigint,filter_bucket:int,payload:string>
+
+(5) ColumnarToRow [codegen id : 1]
+Input [3]: [k1#31L, filter_bucket#32, payload#33]
+
+(6) Filter [codegen id : 1]
+Input [3]: [k1#31L, filter_bucket#32, payload#33]
+Condition : ((isnotnull(filter_bucket#32) AND (filter_bucket#32 < 10)) AND isnotnull(k1#31L))
+
+(7) Project [codegen id : 1]
+Output [2]: [k1#31L, payload#33 AS dim1_payload#57]
+Input [3]: [k1#31L, filter_bucket#32, payload#33]
+
+(8) BroadcastExchange
+Input [2]: [k1#31L, dim1_payload#57]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=1065]
+
+(9) BroadcastQueryStage
+Output [2]: [k1#31L, dim1_payload#57]
+Arguments: 0
+
+(10) BroadcastHashJoin [codegen id : 6]
+Left keys [1]: [k1#25L]
+Right keys [1]: [k1#31L]
+Join type: Inner
+Join condition: None
+
+(11) Project [codegen id : 6]
+Output [8]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57]
+Input [9]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, k1#31L, dim1_payload#57]
+
+(12) Exchange
+Input [8]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57]
+Arguments: hashpartitioning(k2#26L, 200), ENSURE_REQUIREMENTS, [plan_id=1498]
+
+(13) ShuffleQueryStage
+Output [8]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57]
+Arguments: 5
+
+(14) AQEShuffleRead
+Input [8]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57]
+Arguments: coalesced
+
+(15) Sort [codegen id : 7]
+Input [8]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57]
+Arguments: [k2#26L ASC NULLS FIRST], false, 0
+
+(16) Scan parquet 
+Output [2]: [k2#34L, payload#36]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k2_n1000000_match0.966_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k2)]
+ReadSchema: struct<k2:bigint,payload:string>
+
+(17) ColumnarToRow [codegen id : 2]
+Input [2]: [k2#34L, payload#36]
+
+(18) Filter [codegen id : 2]
+Input [2]: [k2#34L, payload#36]
+Condition : isnotnull(k2#34L)
+
+(19) Project [codegen id : 2]
+Output [2]: [k2#34L, payload#36 AS dim2_payload#58]
+Input [2]: [k2#34L, payload#36]
+
+(20) Exchange
+Input [2]: [k2#34L, dim2_payload#58]
+Arguments: hashpartitioning(k2#34L, 200), ENSURE_REQUIREMENTS, [plan_id=1088]
+
+(21) ShuffleQueryStage
+Output [2]: [k2#34L, dim2_payload#58]
+Arguments: 1
+
+(22) AQEShuffleRead
+Input [2]: [k2#34L, dim2_payload#58]
+Arguments: coalesced
+
+(23) Sort [codegen id : 8]
+Input [2]: [k2#34L, dim2_payload#58]
+Arguments: [k2#34L ASC NULLS FIRST], false, 0
+
+(24) SortMergeJoin [codegen id : 9]
+Left keys [1]: [k2#26L]
+Right keys [1]: [k2#34L]
+Join type: Inner
+Join condition: None
+
+(25) Project [codegen id : 9]
+Output [9]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58]
+Input [10]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57, k2#34L, dim2_payload#58]
+
+(26) Scan parquet 
+Output [3]: [k3#37L, filter_bucket#38, payload#39]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k3_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k3)]
+ReadSchema: struct<k3:bigint,filter_bucket:int,payload:string>
+
+(27) ColumnarToRow [codegen id : 3]
+Input [3]: [k3#37L, filter_bucket#38, payload#39]
+
+(28) Filter [codegen id : 3]
+Input [3]: [k3#37L, filter_bucket#38, payload#39]
+Condition : ((isnotnull(filter_bucket#38) AND (filter_bucket#38 < 10)) AND isnotnull(k3#37L))
+
+(29) Project [codegen id : 3]
+Output [2]: [k3#37L, payload#39 AS dim3_payload#59]
+Input [3]: [k3#37L, filter_bucket#38, payload#39]
+
+(30) BroadcastExchange
+Input [2]: [k3#37L, dim3_payload#59]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=1111]
+
+(31) BroadcastQueryStage
+Output [2]: [k3#37L, dim3_payload#59]
+Arguments: 2
+
+(32) BroadcastHashJoin [codegen id : 9]
+Left keys [1]: [k3#27L]
+Right keys [1]: [k3#37L]
+Join type: Inner
+Join condition: None
+
+(33) Project [codegen id : 9]
+Output [10]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59]
+Input [11]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, k3#37L, dim3_payload#59]
+
+(34) Exchange
+Input [10]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59]
+Arguments: hashpartitioning(k4#28L, 200), ENSURE_REQUIREMENTS, [plan_id=1656]
+
+(35) ShuffleQueryStage
+Output [10]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59]
+Arguments: 6
+
+(36) AQEShuffleRead
+Input [10]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59]
+Arguments: coalesced
+
+(37) Sort [codegen id : 10]
+Input [10]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59]
+Arguments: [k4#28L ASC NULLS FIRST], false, 0
+
+(38) Scan parquet 
+Output [2]: [k4#40L, payload#42]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k4_n1000000_match0.966_payload-20_seed-42/data]
+PushedFilters: [IsNotNull(k4)]
+ReadSchema: struct<k4:bigint,payload:string>
+
+(39) ColumnarToRow [codegen id : 4]
+Input [2]: [k4#40L, payload#42]
+
+(40) Filter [codegen id : 4]
+Input [2]: [k4#40L, payload#42]
+Condition : isnotnull(k4#40L)
+
+(41) Project [codegen id : 4]
+Output [2]: [k4#40L, payload#42 AS dim4_payload#60]
+Input [2]: [k4#40L, payload#42]
+
+(42) Exchange
+Input [2]: [k4#40L, dim4_payload#60]
+Arguments: hashpartitioning(k4#40L, 200), ENSURE_REQUIREMENTS, [plan_id=1141]
+
+(43) ShuffleQueryStage
+Output [2]: [k4#40L, dim4_payload#60]
+Arguments: 3
+
+(44) AQEShuffleRead
+Input [2]: [k4#40L, dim4_payload#60]
+Arguments: coalesced
+
+(45) Sort [codegen id : 11]
+Input [2]: [k4#40L, dim4_payload#60]
+Arguments: [k4#40L ASC NULLS FIRST], false, 0
+
+(46) SortMergeJoin [codegen id : 12]
+Left keys [1]: [k4#28L]
+Right keys [1]: [k4#40L]
+Join type: Inner
+Join condition: None
+
+(47) Project [codegen id : 12]
+Output [11]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60]
+Input [12]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, k4#40L, dim4_payload#60]
+
+(48) Scan parquet 
+Output [3]: [k5#43L, filter_bucket#44, payload#45]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k5_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]
+PushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k5)]
+ReadSchema: struct<k5:bigint,filter_bucket:int,payload:string>
+
+(49) ColumnarToRow [codegen id : 5]
+Input [3]: [k5#43L, filter_bucket#44, payload#45]
+
+(50) Filter [codegen id : 5]
+Input [3]: [k5#43L, filter_bucket#44, payload#45]
+Condition : ((isnotnull(filter_bucket#44) AND (filter_bucket#44 < 10)) AND isnotnull(k5#43L))
+
+(51) Project [codegen id : 5]
+Output [2]: [k5#43L, payload#45 AS dim5_payload#61]
+Input [3]: [k5#43L, filter_bucket#44, payload#45]
+
+(52) BroadcastExchange
+Input [2]: [k5#43L, dim5_payload#61]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=1170]
+
+(53) BroadcastQueryStage
+Output [2]: [k5#43L, dim5_payload#61]
+Arguments: 4
+
+(54) BroadcastHashJoin [codegen id : 12]
+Left keys [1]: [k5#29L]
+Right keys [1]: [k5#43L]
+Join type: Inner
+Join condition: None
+
+(55) Project [codegen id : 12]
+Output [12]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60, dim5_payload#61]
+Input [13]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60, k5#43L, dim5_payload#61]
+
+(56) ResultQueryStage
+Output [12]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60, dim5_payload#61]
+Arguments: 7
+
+(57) Filter
+Input [7]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30]
+Condition : ((((isnotnull(k1#25L) AND isnotnull(k2#26L)) AND isnotnull(k3#27L)) AND isnotnull(k4#28L)) AND isnotnull(k5#29L))
+
+(58) Filter
+Input [3]: [k1#31L, filter_bucket#32, payload#33]
+Condition : ((isnotnull(filter_bucket#32) AND (filter_bucket#32 < 10)) AND isnotnull(k1#31L))
+
+(59) Project
+Output [2]: [k1#31L, payload#33 AS dim1_payload#57]
+Input [3]: [k1#31L, filter_bucket#32, payload#33]
+
+(60) BroadcastExchange
+Input [2]: [k1#31L, dim1_payload#57]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=986]
+
+(61) BroadcastHashJoin
+Left keys [1]: [k1#25L]
+Right keys [1]: [k1#31L]
+Join type: Inner
+Join condition: None
+
+(62) Project
+Output [8]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57]
+Input [9]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, k1#31L, dim1_payload#57]
+
+(63) Exchange
+Input [8]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57]
+Arguments: hashpartitioning(k2#26L, 200), ENSURE_REQUIREMENTS, [plan_id=991]
+
+(64) Sort
+Input [8]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57]
+Arguments: [k2#26L ASC NULLS FIRST], false, 0
+
+(65) Filter
+Input [2]: [k2#34L, payload#36]
+Condition : isnotnull(k2#34L)
+
+(66) Project
+Output [2]: [k2#34L, payload#36 AS dim2_payload#58]
+Input [2]: [k2#34L, payload#36]
+
+(67) Exchange
+Input [2]: [k2#34L, dim2_payload#58]
+Arguments: hashpartitioning(k2#34L, 200), ENSURE_REQUIREMENTS, [plan_id=992]
+
+(68) Sort
+Input [2]: [k2#34L, dim2_payload#58]
+Arguments: [k2#34L ASC NULLS FIRST], false, 0
+
+(69) SortMergeJoin
+Left keys [1]: [k2#26L]
+Right keys [1]: [k2#34L]
+Join type: Inner
+Join condition: None
+
+(70) Project
+Output [9]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58]
+Input [10]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57, k2#34L, dim2_payload#58]
+
+(71) Filter
+Input [3]: [k3#37L, filter_bucket#38, payload#39]
+Condition : ((isnotnull(filter_bucket#38) AND (filter_bucket#38 < 10)) AND isnotnull(k3#37L))
+
+(72) Project
+Output [2]: [k3#37L, payload#39 AS dim3_payload#59]
+Input [3]: [k3#37L, filter_bucket#38, payload#39]
+
+(73) BroadcastExchange
+Input [2]: [k3#37L, dim3_payload#59]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=998]
+
+(74) BroadcastHashJoin
+Left keys [1]: [k3#27L]
+Right keys [1]: [k3#37L]
+Join type: Inner
+Join condition: None
+
+(75) Project
+Output [10]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59]
+Input [11]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, k3#37L, dim3_payload#59]
+
+(76) Exchange
+Input [10]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59]
+Arguments: hashpartitioning(k4#28L, 200), ENSURE_REQUIREMENTS, [plan_id=1003]
+
+(77) Sort
+Input [10]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59]
+Arguments: [k4#28L ASC NULLS FIRST], false, 0
+
+(78) Filter
+Input [2]: [k4#40L, payload#42]
+Condition : isnotnull(k4#40L)
+
+(79) Project
+Output [2]: [k4#40L, payload#42 AS dim4_payload#60]
+Input [2]: [k4#40L, payload#42]
+
+(80) Exchange
+Input [2]: [k4#40L, dim4_payload#60]
+Arguments: hashpartitioning(k4#40L, 200), ENSURE_REQUIREMENTS, [plan_id=1004]
+
+(81) Sort
+Input [2]: [k4#40L, dim4_payload#60]
+Arguments: [k4#40L ASC NULLS FIRST], false, 0
+
+(82) SortMergeJoin
+Left keys [1]: [k4#28L]
+Right keys [1]: [k4#40L]
+Join type: Inner
+Join condition: None
+
+(83) Project
+Output [11]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60]
+Input [12]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, k4#40L, dim4_payload#60]
+
+(84) Filter
+Input [3]: [k5#43L, filter_bucket#44, payload#45]
+Condition : ((isnotnull(filter_bucket#44) AND (filter_bucket#44 < 10)) AND isnotnull(k5#43L))
+
+(85) Project
+Output [2]: [k5#43L, payload#45 AS dim5_payload#61]
+Input [3]: [k5#43L, filter_bucket#44, payload#45]
+
+(86) BroadcastExchange
+Input [2]: [k5#43L, dim5_payload#61]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=1010]
+
+(87) BroadcastHashJoin
+Left keys [1]: [k5#29L]
+Right keys [1]: [k5#43L]
+Join type: Inner
+Join condition: None
+
+(88) Project
+Output [12]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60, dim5_payload#61]
+Input [13]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60, k5#43L, dim5_payload#61]
+
+(89) AdaptiveSparkPlan
+Output [12]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60, dim5_payload#61]
+Arguments: isFinalPlan=true
+
+(90) OverwriteByExpression
+Input [12]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#30, dim1_payload#57, dim2_payload#58, dim3_payload#59, dim4_payload#60, dim5_payload#61]
+Arguments: NoopWrite
+

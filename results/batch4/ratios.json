@@ -1,0 +1,72 @@
+{
+ "s1_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000": {
+  "cluster": "4.1.3",
+  "r_facts": 3.584344515822032,
+  "r_overall": 4.402900063098632
+ },
+ "s2_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001": {
+  "cluster": "4.1.3",
+  "r_facts": 7.598049607801569,
+  "r_overall": 7.578979591836735
+ },
+ "s2_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001": {
+  "cluster": "4.1.3",
+  "r_facts": 7.594829413011231,
+  "r_overall": 7.585178255898556
+ },
+ "s2_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001": {
+  "cluster": "4.1.3",
+  "r_facts": 7.539382382541448,
+  "r_overall": 7.535043542125695
+ },
+ "s2_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001": {
+  "cluster": "4.1.3",
+  "r_facts": 7.727468736524364,
+  "r_overall": 7.703173615432482
+ },
+ "s2_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001": {
+  "cluster": "4.1.3",
+  "r_facts": 7.6992481203007515,
+  "r_overall": 7.687453913409881
+ },
+ "s2_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001": {
+  "cluster": "4.1.3",
+  "r_facts": 7.631547906278485,
+  "r_overall": 7.6262610173091225
+ },
+ "s2_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001": {
+  "cluster": "4.1.3",
+  "r_facts": 7.670411985018727,
+  "r_overall": 7.659214945424013
+ },
+ "s2_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001": {
+  "cluster": "4.1.3",
+  "r_facts": 7.758415412923477,
+  "r_overall": 7.745383145828911
+ },
+ "s2_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001": {
+  "cluster": "4.1.3",
+  "r_facts": 7.758415412923477,
+  "r_overall": 7.745383145828911
+ },
+ "s3_exp_c2_dose_codec-lz4_payload_random_fraction-0.0": {
+  "cluster": "3.5.9",
+  "r_facts": 12.880503144654089,
+  "r_overall": 12.88663252692919
+ },
+ "s3_exp_c2_dose_codec-lz4_payload_random_fraction-0.19": {
+  "cluster": "3.5.9",
+  "r_facts": 3.836437593663027,
+  "r_overall": 3.840692595126572
+ },
+ "s3_exp_c2_dose_codec-lz4_payload_random_fraction-1.0": {
+  "cluster": "3.5.9",
+  "r_facts": 1.1666666666666667,
+  "r_overall": 1.166791909824926
+ },
+ "s3_exp_rules_payload_random_fraction-0.04": {
+  "cluster": "3.5.9",
+  "r_facts": 7.70338527673294,
+  "r_overall": 7.691505059021923
+ }
+}

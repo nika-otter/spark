@@ -17,3 +17,4 @@ __pycache__/
 .idea/
 results/batch2/batch.pid
 results/batch3/batch.pid
+results/batch4/batch.pid

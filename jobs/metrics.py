@@ -27,6 +27,16 @@ Definitions and known limits:
   "facts" ratio = the exchange with the largest data size; "overall" =
   sum of data size / sum of bytes written over all shuffle exchanges.
 - Quantiles: median as statistics.median, p95 as nearest-rank.
+- Per-join details (`joins`, since batch 4): the SQL plan graph of the
+  execution is read from the driver's SQLAppStatusStore (via py4j), because
+  the REST API has no node descriptions. For every join node: strategy, join
+  keys, join type, build side, "number of output rows", the AQEShuffleReads
+  on its inputs (skew counts), and the stage it ran in. The stage is taken
+  from the "(stage S.A: task T)" annotation of a task-level metric of the
+  join's WholeStageCodegen cluster or of the operators below it (Sort,
+  Project, ...); that stage's duration, longest task and spill come from REST.
+  `output_rows` = output rows of the topmost join. `exchanges_detail` adds the
+  hash-partitioning key and per-exchange compression ratio.
 """
 
 import csv
@@ -62,7 +72,7 @@ CSV_FIELDS = [
     "join_task_read_bytes_p95", "join_task_read_bytes_max",
     "join_task_peak_mem_min", "join_task_peak_mem_median",
     "join_task_peak_mem_p95", "join_task_peak_mem_max",
-    "task_read_max_over_median", "json_path",
+    "task_read_max_over_median", "output_rows", "json_path",
 ]
 
 
@@ -273,6 +283,184 @@ def join_stage_metrics(rest, stages):
     }
 
 
+_STAGE_RE = re.compile(r"\(stage (\d+)\.(\d+): task \d+\)")
+_BUILD_RE = re.compile(r"\bBuild(Left|Right)\b")
+_JOIN_TYPES = ("Inner", "LeftOuter", "RightOuter", "FullOuter", "LeftSemi", "LeftAnti", "Cross")
+
+
+def _jiter(jvm, seq):
+    return list(jvm.scala.collection.JavaConverters.seqAsJavaList(seq))
+
+
+def plan_graph(spark, execution_id):
+    """Nodes (id, name, desc, cluster, metrics by name) and edges of the SQL plan graph."""
+    jvm = spark.sparkContext._jvm
+    store = spark._jsparkSession.sharedState().statusStore()
+    values = dict(jvm.scala.collection.JavaConverters.mapAsJavaMap(
+        store.executionMetrics(execution_id)))
+    graph = store.planGraph(execution_id)
+    nodes = {}
+    for node in _jiter(jvm, graph.allNodes()):
+        entry = {
+            "id": node.id(), "name": node.name(), "desc": node.desc(), "cluster": None,
+            "metrics": {m.name(): values.get(m.accumulatorId())
+                        for m in _jiter(jvm, node.metrics())},
+        }
+        if node.getClass().getSimpleName() == "SparkPlanGraphCluster":
+            entry["children_in_cluster"] = [c.id() for c in _jiter(jvm, node.nodes())]
+        nodes[entry["id"]] = entry
+    for node in nodes.values():
+        for child in node.get("children_in_cluster", []):
+            nodes[child]["cluster"] = node["id"]
+    edges = [(e.fromId(), e.toId()) for e in _jiter(jvm, graph.edges())]
+    return nodes, edges
+
+
+def _stages_in(metric_values):
+    found = set()
+    for v in metric_values:
+        found.update((int(a), int(b)) for a, b in _STAGE_RE.findall(v or ""))
+    return found
+
+
+def _strip_ids(expr):
+    return re.sub(r"#\d+L?", "", expr)
+
+
+def _join_info(node):
+    desc = node["desc"]
+    keys = re.findall(r"\[([^\]]*)\]", desc)
+    build = _BUILD_RE.search(desc)
+    jtype = next((t for t in _JOIN_TYPES if re.search(r"\b{}\b".format(t), desc)), None)
+    return {
+        "node_id": node["id"],
+        "strategy": node["name"],
+        "left_keys": _strip_ids(keys[0]) if keys else None,
+        "right_keys": _strip_ids(keys[1]) if len(keys) > 1 else None,
+        "join_type": jtype,
+        "build_side": build.group(1).lower() if build else None,
+        "skew_join_flag": "isSkewJoin=true" in desc or "skew=true" in desc,
+        "output_rows": _metric_number(node["metrics"].get("number of output rows") or ""),
+        "desc": desc,
+    }
+
+
+def join_details(rest, nodes, edges):
+    """One entry per join node; see module docstring."""
+    children, parents = {}, {}
+    for child, parent in edges:
+        children.setdefault(parent, []).append(child)
+        parents.setdefault(child, []).append(parent)
+
+    def is_join(n):
+        return nodes[n]["name"] in JOIN_OPERATORS
+
+    def inputs(join_id):
+        """Nodes below a join down to (and including) the next join/exchange."""
+        found, stack = [], list(children.get(join_id, []))
+        while stack:
+            n = stack.pop()
+            found.append(n)
+            name = nodes[n]["name"]
+            if is_join(n) or name in ("Exchange", "BroadcastExchange"):
+                continue
+            stack.extend(children.get(n, []))
+        return found
+
+    def exchange_below(n):
+        stack = list(children.get(n, []))
+        while stack:
+            m = stack.pop()
+            if nodes[m]["name"] == "Exchange":
+                return m
+            stack.extend(children.get(m, []))
+        return None
+
+    stage_cache = {}
+    joins = []
+    for node_id in sorted(n for n in nodes if is_join(n)):
+        info = _join_info(nodes[node_id])
+        below = inputs(node_id)
+        readers = []
+        for n in below:
+            if nodes[n]["name"].startswith("AQEShuffleRead"):
+                m = nodes[n]["metrics"]
+                ex = exchange_below(n)
+                readers.append({
+                    "node_id": n,
+                    "exchange_node_id": ex,
+                    "exchange_desc": nodes[ex]["desc"] if ex is not None else None,
+                    "partitions": _metric_number(m.get("number of partitions") or ""),
+                    "skewed_partitions": _metric_number(m.get("number of skewed partitions") or ""),
+                    "skew_splits": _metric_number(m.get("number of skewed partition splits") or ""),
+                })
+        info["shuffle_readers"] = readers
+        info["skewed_partitions"] = sum(r["skewed_partitions"] or 0 for r in readers)
+        info["skew_splits"] = sum(r["skew_splits"] or 0 for r in readers)
+        # Stage: task-level metrics of the join's codegen cluster, the join
+        # itself and the operators between it and its inputs (not exchanges).
+        own = [node_id] + [n for n in below if nodes[n]["name"] not in
+                           ("Exchange", "BroadcastExchange", "ShuffleQueryStage",
+                            "BroadcastQueryStage") and not is_join(n)
+                           and not nodes[n]["name"].startswith("AQEShuffleRead")]
+        clusters = {nodes[n]["cluster"] for n in own if nodes[n]["cluster"] is not None}
+        metric_values = [v for n in list(own) + list(clusters) for v in nodes[n]["metrics"].values()]
+        stages = sorted(_stages_in(metric_values))
+        info["stages"] = [list(s) for s in stages]
+        info["stage"] = None
+        if len(stages) == 1:
+            if stages[0] not in stage_cache:
+                stage_cache[stages[0]] = _stage_task_summary(rest, *stages[0])
+            info["stage"] = stage_cache[stages[0]]
+        is_top = not any(is_join(a) for a in _ancestors(node_id, parents))
+        info["is_top_join"] = is_top
+        joins.append(info)
+    return joins
+
+
+def _ancestors(n, parents):
+    seen, stack = set(), list(parents.get(n, []))
+    while stack:
+        m = stack.pop()
+        if m not in seen:
+            seen.add(m)
+            stack.extend(parents.get(m, []))
+    return seen
+
+
+def _stage_task_summary(rest, stage_id, attempt_id):
+    stage = _stage_summary(rest.get("/stages/{}/{}?details=false".format(stage_id, attempt_id)))
+    tasks = rest.get("/stages/{}/{}/taskList?length=1000000".format(stage_id, attempt_id))
+    ok = [t for t in tasks if t["status"] == "SUCCESS"]
+    stage["task_duration_ms"] = distribution([t["duration"] for t in ok])
+    stage["task_shuffle_read_bytes"] = distribution(
+        [t["taskMetrics"]["shuffleReadMetrics"]["localBytesRead"]
+         + t["taskMetrics"]["shuffleReadMetrics"]["remoteBytesRead"] for t in ok])
+    return stage
+
+
+def exchange_details(nodes):
+    out = []
+    for n in sorted(nodes):
+        node = nodes[n]
+        if node["name"] != "Exchange":
+            continue
+        m = node["metrics"]
+        key = re.search(r"hashpartitioning\(([^#,)]+)", node["desc"])
+        data = parse_size_total(m.get("data size"))
+        written = parse_size_total(m.get("shuffle bytes written"))
+        out.append({
+            "node_id": n,
+            "partition_key": key.group(1) if key else None,
+            "desc": node["desc"],
+            "data_size_bytes": data,
+            "shuffle_bytes_written": written,
+            "ratio": data / written if data and written else None,
+            "records_written": _metric_number(m.get("shuffle records written") or ""),
+        })
+    return out
+
+
 def collect(spark, run_label):
     """All metrics of the SQL execution tagged run_label."""
     rest = Rest(spark)
@@ -284,7 +472,13 @@ def collect(spark, run_label):
     facts_scan = max(scans, key=lambda s: s["shuffle_write_bytes"]) if scans else None
     aqe = aqe_actions(execution)
     ratio_facts, ratio_overall = compression_ratios(aqe["exchanges"])
+    nodes, edges = plan_graph(spark, execution["id"])
+    joins = join_details(rest, nodes, edges)
+    top = [j for j in joins if j["is_top_join"]]
     return {
+        "joins": joins,
+        "exchanges_detail": exchange_details(nodes),
+        "output_rows": top[0]["output_rows"] if len(top) == 1 else None,
         "sql_execution_id": execution["id"],
         "sql_status": execution["status"],
         "sql_duration_ms": execution["duration"],
@@ -348,6 +542,7 @@ def csv_row(record):
         "join_stage_duration_ms": js.get("stage_duration_ms"),
         "facts_scan_map_tasks": m["facts_scan_map_tasks"],
         "task_read_max_over_median": js.get("task_read_max_over_median"),
+        "output_rows": m.get("output_rows"),
         "json_path": record["json_path"],
     }
     row.update({k: m["totals"][k] for k in (

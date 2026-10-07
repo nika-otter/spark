@@ -1,0 +1,3606 @@
+[
+ {
+  "job_id": "s1_r1_000_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_off",
+  "step": 1,
+  "round": 1,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r1_001_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on",
+  "step": 1,
+  "round": 1,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r1_002_exp_d2_inner_n_dims-20_rows-3000000_aqe_on_hints",
+  "step": 1,
+  "round": 1,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 20,
+   "rows": 3000000
+  },
+  "mode": "aqe_on_hints",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r1_003_exp_d2_inner_n_dims-20_rows-3000000_aqe_on",
+  "step": 1,
+  "round": 1,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 20,
+   "rows": 3000000
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r1_004_exp_d2_inner_n_dims-5_rows-3000000_aqe_on",
+  "step": 1,
+  "round": 1,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 5,
+   "rows": 3000000
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r1_005_exp_d2_inner_n_dims-5_rows-3000000_aqe_off",
+  "step": 1,
+  "round": 1,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 5,
+   "rows": 3000000
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r1_006_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on_rules12",
+  "step": 1,
+  "round": 1,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r1_007_exp_d2_inner_n_dims-20_rows-3000000_aqe_off",
+  "step": 1,
+  "round": 1,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 20,
+   "rows": 3000000
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r1_008_exp_d2_inner_n_dims-5_rows-3000000_aqe_on_hints",
+  "step": 1,
+  "round": 1,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 5,
+   "rows": 3000000
+  },
+  "mode": "aqe_on_hints",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r1_009_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on_rule2",
+  "step": 1,
+  "round": 1,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r1_010_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on_rule1",
+  "step": 1,
+  "round": 1,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule1",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r2_000_exp_d2_inner_n_dims-5_rows-3000000_aqe_on",
+  "step": 1,
+  "round": 2,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 5,
+   "rows": 3000000
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r2_001_exp_d2_inner_n_dims-20_rows-3000000_aqe_off",
+  "step": 1,
+  "round": 2,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 20,
+   "rows": 3000000
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r2_002_exp_d2_inner_n_dims-5_rows-3000000_aqe_off",
+  "step": 1,
+  "round": 2,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 5,
+   "rows": 3000000
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r2_003_exp_d2_inner_n_dims-20_rows-3000000_aqe_on",
+  "step": 1,
+  "round": 2,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 20,
+   "rows": 3000000
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r2_004_exp_d2_inner_n_dims-20_rows-3000000_aqe_on_hints",
+  "step": 1,
+  "round": 2,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 20,
+   "rows": 3000000
+  },
+  "mode": "aqe_on_hints",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r2_005_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on",
+  "step": 1,
+  "round": 2,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r2_006_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_off",
+  "step": 1,
+  "round": 2,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r2_007_exp_d2_inner_n_dims-5_rows-3000000_aqe_on_hints",
+  "step": 1,
+  "round": 2,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 5,
+   "rows": 3000000
+  },
+  "mode": "aqe_on_hints",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r2_008_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on_rule2",
+  "step": 1,
+  "round": 2,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r2_009_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on_rule1",
+  "step": 1,
+  "round": 2,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule1",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r2_010_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on_rules12",
+  "step": 1,
+  "round": 2,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r3_000_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_off",
+  "step": 1,
+  "round": 3,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r3_001_exp_d2_inner_n_dims-5_rows-3000000_aqe_on",
+  "step": 1,
+  "round": 3,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 5,
+   "rows": 3000000
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r3_002_exp_d2_inner_n_dims-20_rows-3000000_aqe_on_hints",
+  "step": 1,
+  "round": 3,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 20,
+   "rows": 3000000
+  },
+  "mode": "aqe_on_hints",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r3_003_exp_d2_inner_n_dims-20_rows-3000000_aqe_on",
+  "step": 1,
+  "round": 3,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 20,
+   "rows": 3000000
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r3_004_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on_rule1",
+  "step": 1,
+  "round": 3,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule1",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r3_005_exp_d2_inner_n_dims-20_rows-3000000_aqe_off",
+  "step": 1,
+  "round": 3,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 20,
+   "rows": 3000000
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r3_006_exp_d2_inner_n_dims-5_rows-3000000_aqe_off",
+  "step": 1,
+  "round": 3,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 5,
+   "rows": 3000000
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r3_007_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on_rules12",
+  "step": 1,
+  "round": 3,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r3_008_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on_rule2",
+  "step": 1,
+  "round": 3,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r3_009_exp_d2_inner_n_dims-5_rows-3000000_aqe_on_hints",
+  "step": 1,
+  "round": 3,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 5,
+   "rows": 3000000
+  },
+  "mode": "aqe_on_hints",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r3_010_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on",
+  "step": 1,
+  "round": 3,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r4_000_exp_d2_inner_n_dims-20_rows-3000000_aqe_off",
+  "step": 1,
+  "round": 4,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 20,
+   "rows": 3000000
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r4_001_exp_d2_inner_n_dims-5_rows-3000000_aqe_off",
+  "step": 1,
+  "round": 4,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 5,
+   "rows": 3000000
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r4_002_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on_rule2",
+  "step": 1,
+  "round": 4,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r4_003_exp_d2_inner_n_dims-20_rows-3000000_aqe_on",
+  "step": 1,
+  "round": 4,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 20,
+   "rows": 3000000
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r4_004_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on_rules12",
+  "step": 1,
+  "round": 4,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r4_005_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_off",
+  "step": 1,
+  "round": 4,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r4_006_exp_d2_inner_n_dims-20_rows-3000000_aqe_on_hints",
+  "step": 1,
+  "round": 4,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 20,
+   "rows": 3000000
+  },
+  "mode": "aqe_on_hints",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r4_007_exp_d2_inner_n_dims-5_rows-3000000_aqe_on_hints",
+  "step": 1,
+  "round": 4,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 5,
+   "rows": 3000000
+  },
+  "mode": "aqe_on_hints",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r4_008_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on_rule1",
+  "step": 1,
+  "round": 4,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule1",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r4_009_exp_d2_stress_payload_bytes-400_payload_random_fraction-0.04_rows-3000000_aqe_on",
+  "step": 1,
+  "round": 4,
+  "experiment": "exp_d2_stress",
+  "params": {
+   "rows": 3000000,
+   "payload_bytes": 400,
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s1_r4_010_exp_d2_inner_n_dims-5_rows-3000000_aqe_on",
+  "step": 1,
+  "round": 4,
+  "experiment": "exp_d2_inner",
+  "params": {
+   "n_dims": 5,
+   "rows": 3000000
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_000_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_001_exp_e_volume_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_002_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_003_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_004_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_005_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_006_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_007_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "hot_keys": 5,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_008_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_009_exp_e_volume_num_files-88_payload_random_fraction-1.0_rows-110000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_010_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_011_exp_e_volume_num_files-22_payload_random_fraction-1.0_rows-27500000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_012_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on_rule2",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_013_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_014_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "hot_keys": 5,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_015_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_016_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_017_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_018_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_019_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_020_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_021_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on_rule2",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_022_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_023_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_024_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "hot_keys": 5,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_025_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_026_exp_e_volume_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_027_exp_e_volume_num_files-22_payload_random_fraction-1.0_rows-27500000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_028_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_029_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_030_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_031_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_032_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_033_exp_e_volume_num_files-88_payload_random_fraction-1.0_rows-110000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_034_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_035_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rule2",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r1_036_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 1,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_000_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_001_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "hot_keys": 5,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_002_exp_e_volume_num_files-22_payload_random_fraction-1.0_rows-27500000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_003_exp_e_volume_num_files-22_payload_random_fraction-1.0_rows-27500000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_004_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_005_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_006_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_007_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_008_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_009_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_010_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on_rule2",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_011_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_012_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_013_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_014_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_015_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_016_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on_rule2",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_017_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rule2",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_018_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_019_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_020_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_021_exp_e_volume_num_files-88_payload_random_fraction-1.0_rows-110000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_022_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_023_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_024_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_025_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "hot_keys": 5,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_026_exp_e_volume_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_027_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "hot_keys": 5,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_028_exp_e_volume_num_files-88_payload_random_fraction-1.0_rows-110000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_029_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_030_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_031_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_032_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_033_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_034_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_035_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r2_036_exp_e_volume_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 2,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_000_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_001_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_002_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_003_exp_e_volume_num_files-88_payload_random_fraction-1.0_rows-110000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_004_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_005_exp_e_volume_num_files-22_payload_random_fraction-1.0_rows-27500000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_006_exp_e_volume_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_007_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_008_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "hot_keys": 5,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_009_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on_rule2",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_010_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_011_exp_e_volume_num_files-22_payload_random_fraction-1.0_rows-27500000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_012_exp_e_volume_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_013_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on_rule2",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_014_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_015_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_016_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "hot_keys": 5,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_017_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_018_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_019_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_020_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_021_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_022_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_023_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_024_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_025_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_026_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_027_exp_e_volume_num_files-88_payload_random_fraction-1.0_rows-110000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_028_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_029_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_030_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_031_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_032_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_033_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rule2",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_034_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "hot_keys": 5,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_035_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r3_036_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 3,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_000_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_001_exp_e_volume_num_files-88_payload_random_fraction-1.0_rows-110000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_002_exp_e_volume_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_003_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_004_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_005_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_006_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on_rule2",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_007_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_008_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_009_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on_rule2",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_010_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_011_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_012_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_013_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_014_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rule2",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_015_exp_e_volume_num_files-22_payload_random_fraction-1.0_rows-27500000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_016_exp_e_volume_num_files-88_payload_random_fraction-1.0_rows-110000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_017_exp_e_volume_num_files-22_payload_random_fraction-1.0_rows-27500000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_018_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_019_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_020_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_021_exp_e_volume_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_022_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "hot_keys": 5,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_023_exp_e_volume_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_024_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_025_exp_e_coalesce_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_026_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_027_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_028_exp_e_volume_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_029_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_030_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "hot_keys": 5,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_031_exp_f_hotkey_join-left_num_files-44_payload_random_fraction-1.0_rows-55000000_shuffle_partitions-200_aqe_off",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "payload_random_fraction": 1.0,
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_032_exp_e_coalesce_num_files-88_payload_random_fraction-0.04_rows-110000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 110000000,
+   "num_files": 88,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_033_exp_e_coalesce_num_files-22_payload_random_fraction-0.04_rows-27500000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_coalesce",
+  "params": {
+   "rows": 27500000,
+   "num_files": 22,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_034_exp_e_volume_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_e_volume",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_035_exp_f_hotkey_join-inner_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "inner",
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s2_r4_036_exp_f_hotkey_hot_keys-5_join-left_num_files-44_payload_random_fraction-0.04_rows-55000000_shuffle_partitions-2001_aqe_on_rules12",
+  "step": 2,
+  "round": 4,
+  "experiment": "exp_f_hotkey",
+  "params": {
+   "rows": 55000000,
+   "num_files": 44,
+   "join": "left",
+   "hot_keys": 5,
+   "payload_random_fraction": 0.04,
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "4.1.3"
+ },
+ {
+  "job_id": "s3_r1_000_exp_b_partitions_shuffle_partitions-2001_aqe_off",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_001_exp_rules_payload_random_fraction-0.04_aqe_on_rule2",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_002_exp_c2_dose_codec-lz4_payload_random_fraction-0.0_aqe_off",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_003_exp_b_partitions_shuffle_partitions-2001_aqe_on",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_004_exp_c2_dose_codec-lz4_payload_random_fraction-1.0_aqe_on_rule2",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 1.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_005_exp_c2_dose_codec-lz4_payload_random_fraction-1.0_aqe_off",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 1.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_006_exp_b_partitions_shuffle_partitions-200_aqe_on",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_007_exp_rules_payload_random_fraction-0.04_aqe_off",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_008_exp_c2_dose_codec-lz4_payload_random_fraction-1.0_aqe_on",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 1.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_009_exp_c2_dose_codec-lz4_payload_random_fraction-0.19_aqe_on_rule2",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.19,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_010_exp_rules_payload_random_fraction-0.04_aqe_on",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_011_exp_b_partitions_shuffle_partitions-2000_aqe_on",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2000
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_012_exp_b_partitions_accurate_skew_factor-5.0_shuffle_partitions-2001_aqe_on",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001,
+   "accurate_skew_factor": 5.0
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_013_exp_c2_dose_codec-lz4_payload_random_fraction-0.0_aqe_on",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_014_exp_rules_payload_random_fraction-0.04_aqe_on_rule1",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule1",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_015_exp_rules_payload_random_fraction-0.04_aqe_on_rules12",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_016_exp_c2_dose_codec-lz4_payload_random_fraction-0.19_aqe_off",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.19,
+   "codec": "lz4"
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_017_exp_c2_dose_codec-lz4_payload_random_fraction-0.0_aqe_on_rule2",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_018_exp_b_partitions_shuffle_partitions-200_aqe_off",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r1_019_exp_c2_dose_codec-lz4_payload_random_fraction-0.19_aqe_on",
+  "step": 3,
+  "round": 1,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.19,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_000_exp_rules_payload_random_fraction-0.04_aqe_on",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_001_exp_b_partitions_shuffle_partitions-2000_aqe_on",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2000
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_002_exp_b_partitions_shuffle_partitions-2001_aqe_on",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_003_exp_b_partitions_shuffle_partitions-200_aqe_on",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_004_exp_b_partitions_shuffle_partitions-2001_aqe_off",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_005_exp_rules_payload_random_fraction-0.04_aqe_on_rules12",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_006_exp_rules_payload_random_fraction-0.04_aqe_off",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_007_exp_c2_dose_codec-lz4_payload_random_fraction-0.0_aqe_off",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_008_exp_c2_dose_codec-lz4_payload_random_fraction-0.19_aqe_on",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.19,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_009_exp_b_partitions_accurate_skew_factor-5.0_shuffle_partitions-2001_aqe_on",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001,
+   "accurate_skew_factor": 5.0
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_010_exp_c2_dose_codec-lz4_payload_random_fraction-1.0_aqe_on",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 1.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_011_exp_c2_dose_codec-lz4_payload_random_fraction-0.0_aqe_on",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_012_exp_rules_payload_random_fraction-0.04_aqe_on_rule2",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_013_exp_c2_dose_codec-lz4_payload_random_fraction-0.19_aqe_on_rule2",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.19,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_014_exp_rules_payload_random_fraction-0.04_aqe_on_rule1",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule1",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_015_exp_c2_dose_codec-lz4_payload_random_fraction-0.19_aqe_off",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.19,
+   "codec": "lz4"
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_016_exp_c2_dose_codec-lz4_payload_random_fraction-1.0_aqe_off",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 1.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_017_exp_c2_dose_codec-lz4_payload_random_fraction-1.0_aqe_on_rule2",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 1.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_018_exp_b_partitions_shuffle_partitions-200_aqe_off",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r2_019_exp_c2_dose_codec-lz4_payload_random_fraction-0.0_aqe_on_rule2",
+  "step": 3,
+  "round": 2,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_000_exp_c2_dose_codec-lz4_payload_random_fraction-1.0_aqe_on_rule2",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 1.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_001_exp_c2_dose_codec-lz4_payload_random_fraction-0.0_aqe_on",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_002_exp_rules_payload_random_fraction-0.04_aqe_on",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_003_exp_c2_dose_codec-lz4_payload_random_fraction-0.0_aqe_off",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_004_exp_b_partitions_shuffle_partitions-2001_aqe_on",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_005_exp_rules_payload_random_fraction-0.04_aqe_on_rule2",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_006_exp_b_partitions_accurate_skew_factor-5.0_shuffle_partitions-2001_aqe_on",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001,
+   "accurate_skew_factor": 5.0
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_007_exp_c2_dose_codec-lz4_payload_random_fraction-1.0_aqe_off",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 1.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_008_exp_c2_dose_codec-lz4_payload_random_fraction-0.19_aqe_on",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.19,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_009_exp_b_partitions_shuffle_partitions-200_aqe_off",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_010_exp_c2_dose_codec-lz4_payload_random_fraction-0.19_aqe_on_rule2",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.19,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_011_exp_rules_payload_random_fraction-0.04_aqe_off",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_012_exp_c2_dose_codec-lz4_payload_random_fraction-0.0_aqe_on_rule2",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_013_exp_rules_payload_random_fraction-0.04_aqe_on_rule1",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule1",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_014_exp_b_partitions_shuffle_partitions-2000_aqe_on",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2000
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_015_exp_c2_dose_codec-lz4_payload_random_fraction-1.0_aqe_on",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 1.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_016_exp_rules_payload_random_fraction-0.04_aqe_on_rules12",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_017_exp_b_partitions_shuffle_partitions-2001_aqe_off",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_018_exp_b_partitions_shuffle_partitions-200_aqe_on",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r3_019_exp_c2_dose_codec-lz4_payload_random_fraction-0.19_aqe_off",
+  "step": 3,
+  "round": 3,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.19,
+   "codec": "lz4"
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_000_exp_rules_payload_random_fraction-0.04_aqe_on_rules12",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rules12",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_001_exp_c2_dose_codec-lz4_payload_random_fraction-0.0_aqe_on_rule2",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_002_exp_c2_dose_codec-lz4_payload_random_fraction-1.0_aqe_on_rule2",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 1.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_003_exp_rules_payload_random_fraction-0.04_aqe_on",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_004_exp_b_partitions_accurate_skew_factor-5.0_shuffle_partitions-2001_aqe_on",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001,
+   "accurate_skew_factor": 5.0
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_005_exp_c2_dose_codec-lz4_payload_random_fraction-0.0_aqe_on",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_006_exp_c2_dose_codec-lz4_payload_random_fraction-1.0_aqe_off",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 1.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_007_exp_c2_dose_codec-lz4_payload_random_fraction-1.0_aqe_on",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 1.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_008_exp_c2_dose_codec-lz4_payload_random_fraction-0.19_aqe_off",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.19,
+   "codec": "lz4"
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_009_exp_c2_dose_codec-lz4_payload_random_fraction-0.19_aqe_on_rule2",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.19,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_010_exp_b_partitions_shuffle_partitions-200_aqe_on",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_011_exp_b_partitions_shuffle_partitions-2001_aqe_on",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_012_exp_b_partitions_shuffle_partitions-2000_aqe_on",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2000
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_013_exp_rules_payload_random_fraction-0.04_aqe_on_rule2",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule2",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_014_exp_b_partitions_shuffle_partitions-2001_aqe_off",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 2001
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_015_exp_rules_payload_random_fraction-0.04_aqe_off",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_016_exp_b_partitions_shuffle_partitions-200_aqe_off",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_b_partitions",
+  "params": {
+   "shuffle_partitions": 200
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_017_exp_rules_payload_random_fraction-0.04_aqe_on_rule1",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_rules",
+  "params": {
+   "payload_random_fraction": 0.04
+  },
+  "mode": "aqe_on_rule1",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_018_exp_c2_dose_codec-lz4_payload_random_fraction-0.0_aqe_off",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.0,
+   "codec": "lz4"
+  },
+  "mode": "aqe_off",
+  "cluster": "3.5.9"
+ },
+ {
+  "job_id": "s3_r4_019_exp_c2_dose_codec-lz4_payload_random_fraction-0.19_aqe_on",
+  "step": 3,
+  "round": 4,
+  "experiment": "exp_c2_dose",
+  "params": {
+   "payload_random_fraction": 0.19,
+   "codec": "lz4"
+  },
+  "mode": "aqe_on",
+  "cluster": "3.5.9"
+ }
+]

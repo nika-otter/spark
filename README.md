@@ -30,6 +30,9 @@ Docker Desktop with **10 CPUs** and **22 GB** memory (Settings → Resources).
 | `.venv/bin/python analysis/pilot_anomalies.py` | Pilot anomaly checks from event logs and executor logs |
 | `scripts/batch3.sh` | Start or resume batch 3 (experiment C2, rule check, experiment D) under caffeinate |
 | `.venv/bin/python analysis/batch3.py` | Batch 3 summaries (`results/exp_c2_summary.csv`, `exp_rules_summary.csv`, `exp_d_summary.csv`, `exp_d_plans/`) |
+| `scripts/batch4.sh` | Start or resume batch 4 (corrected D, data volume and skew source, Spark 3.5.9 replication) under caffeinate; switches between the two clusters itself |
+| `.venv/bin/python analysis/batch4.py` | Batch 4 summaries (`results/exp_d2_summary.csv`, `exp_e_summary.csv`, `exp_f_summary.csv`, `spark35_summary.csv`, `exp_d2_plans/`) |
+| `.venv/bin/python analysis/step4_null_task.py DIR [STDERR_DIR]` | Batch 4 step 4: NULL-partition task of the batch-3 combined check from copied event/executor logs |
 | `.venv/bin/python analysis/figures.py` | Thesis figures (Ukrainian) in `results/figures/` as PNG 300 dpi and PDF |
 
 To delete all data and event logs: `docker compose down -v`.
@@ -61,6 +64,11 @@ To delete all data and event logs: `docker compose down -v`.
 | `results/batch2/` | Batch 2 plan, per-job CSVs, done markers (logs are not committed) |
 | `scripts/batch3.py` | Batch 3 plan: generation, rule-2 ratio calibration, 4 randomized rounds |
 | `results/batch3/` | Batch 3 plan, ratios.json, calibration CSVs, per-job CSVs, done markers |
+| `docker-compose.spark35.yml` | Spark 3.5.9 replica of the cluster (project `spark35`, shares the data volume); only one cluster runs at a time |
+| `scripts/batch4.py` | Batch 4 plan: generation, rule-2 ratio calibration per step, 4 randomized rounds per step, cluster switching |
+| `results/batch4/` | Batch 4 plan, ratios.json, calibration CSVs, per-job CSVs, done markers |
+| `results/README.md` | Index of all experiments: datasets, modes, summaries, figures |
+| `docs/source_notes_3.5.md` | Differences of Spark 3.5.9 from 4.1.3 for the facts in source_notes.md |
 | `docs/source_notes.md` | Spark 4.1.3 source references: skew join, coalescing, MapStatus, shuffle sizes |
 
 ## Generator and runner

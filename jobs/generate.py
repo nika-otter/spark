@@ -22,6 +22,12 @@ Usage (inside the master container):
 
 payload kinds: hex (default, string), random (binary, incompressible),
 repetitive (binary, highly compressible); see _payload().
+
+Hot keys: KeySpec.hot_share is spread uniformly over hot_keys keys
+HOT_KEY .. HOT_KEY + hot_keys - 1 (one hot key by default).
+Filter layout of a dim: "hash" (default) draws filter_bucket from a hash of
+the key index; "prefix" sets filter_bucket = floor(index * 1000 / n_keys), so
+filter_bucket < b keeps exactly the key indices [0, n_keys * b / 1000).
 """
 
 import argparse
@@ -123,19 +129,24 @@ class KeySpec:
     n_keys: int
     hot_share: float = 0.0
     null_share: float = 0.0
+    hot_keys: int = 1          # hot_share is spread uniformly over this many keys
 
     def tag(self):
-        return "{}-n{}-h{}-null{}".format(
+        tag = "{}-n{}-h{}-null{}".format(
             self.name, self.n_keys, _fmt(self.hot_share), _fmt(self.null_share))
+        return tag + ("-hk{}".format(self.hot_keys) if self.hot_keys > 1 else "")
 
     def column(self, seed, id_col) -> Column:
         # One uniform draw decides NULL / hot / regular, so the three shares
         # are disjoint: [0, null) -> NULL, [null, null+hot) -> HOT_KEY.
         u = _uniform(seed, "share:" + self.name, id_col)
         regular = F.pmod(_hash(seed, "key:" + self.name, id_col), F.lit(self.n_keys))
+        hot = F.lit(HOT_KEY).cast("long")
+        if self.hot_keys > 1:
+            hot = hot + F.pmod(_hash(seed, "hot:" + self.name, id_col), F.lit(self.hot_keys))
         return (
             F.when(u < self.null_share, F.lit(None).cast("long"))
-            .when(u < self.null_share + self.hot_share, F.lit(HOT_KEY).cast("long"))
+            .when(u < self.null_share + self.hot_share, hot)
             .otherwise(regular)
         )
 
@@ -177,9 +188,10 @@ class FactsSpec:
         out["row_count"] = total
         for k in self.keys:
             nulls = df.where(F.col(k.name).isNull()).count()
-            top = (df.where(F.col(k.name).isNotNull())
-                   .groupBy(k.name).count()
-                   .orderBy(F.desc("count"), F.asc(k.name)).first())
+            counts = (df.where(F.col(k.name).isNotNull())
+                      .groupBy(k.name).count()
+                      .orderBy(F.desc("count"), F.asc(k.name)).limit(max(k.hot_keys, 1)).collect())
+            top = counts[0]
             out[k.name] = {
                 "null_count": nulls,
                 "actual_null_share": nulls / total,
@@ -189,6 +201,8 @@ class FactsSpec:
                 "distinct_non_null_keys": df.select(k.name).where(F.col(k.name).isNotNull())
                 .distinct().count(),
             }
+            if k.hot_keys > 1:
+                out[k.name]["top_keys"] = [[r[k.name], r["count"]] for r in counts]
         return out
 
 
@@ -208,23 +222,32 @@ class DimSpec:
     seed: int = 42
     payload_kind: str = "hex"
     payload_random_fraction: float = 1.0   # used by payload_kind "mixed"
+    filter_layout: str = "hash"            # "hash" or "prefix", see module docstring
 
     @property
     def table(self):
         return "dim_" + self.key
 
     def dataset_id(self):
-        return "{}_n{}_match{}_payload-{}_seed-{}".format(
+        dataset_id = "{}_n{}_match{}_payload-{}_seed-{}".format(
             self.table, self.n_keys, _fmt(self.match_rate), self.payload_bytes,
             self.seed) + _kind_tag(self.payload_kind, self.payload_random_fraction)
+        if self.filter_layout != "hash":
+            dataset_id += "_filter-" + self.filter_layout
+        return dataset_id
 
     def build(self, spark):
         i = F.col("id")
         matched = _uniform(self.seed, "match:" + self.key, i) < self.match_rate
+        if self.filter_layout == "prefix":
+            bucket = F.floor(i * FILTER_BUCKETS / self.n_keys)
+        elif self.filter_layout == "hash":
+            bucket = F.pmod(_hash(self.seed, "filter:" + self.key, i), F.lit(FILTER_BUCKETS))
+        else:
+            raise ValueError("unknown filter layout " + self.filter_layout)
         return spark.range(self.n_keys).select(
             F.when(matched, i).otherwise(i + self.n_keys).alias(self.key),
-            F.pmod(_hash(self.seed, "filter:" + self.key, i), F.lit(FILTER_BUCKETS))
-            .cast("int").alias("filter_bucket"),
+            bucket.cast("int").alias("filter_bucket"),
             _payload(self.seed, self.payload_bytes, i, self.payload_kind,
                      self.payload_random_fraction).alias("payload"),
         )
