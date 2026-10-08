@@ -52,6 +52,7 @@ control of experiment B is `aqe_on` with parameter `accurate_skew_factor=5.0`.
 | 20 | `exp_h_sens` (5a, step 3b) | dataset and point of S3 | r (S3 profile, 7.687) x 0.5, 1, 2 | aqe_on_rules12 | `exp_h_sens_summary.csv` | `figures/exp_h` |
 | 21 | `exp_h_sample` (5a, step 3c) | datasets of 6 (55M, 8 % NULL, 45 files), levels 1x, 4x, 16x; facts filtered to a deterministic 1 % / 10 % (xxhash64 of id) | one AQE-on run each | aqe_on | `exp_h_sample.csv` | `figures/exp_h` |
 | 22 | `scripts/aqe_advisor.py` (5a, step 3d) | three existing runs | – | – | `advisor_output.txt` | – |
+| 23 | `exp_real` (5b, step 1c) | real datasets below; Q-natural: fact LEFT JOIN per-key table (row count and one aggregate) derived from the same data on a high-cardinality key (taxi: PULocationID + pickup hour; hits: UserID; pageviews: project + page_title), default broadcast thresholds; Q-lowcard: same on a low-cardinality key (taxi: PULocationID; hits: RegionID; pageviews: project), broadcast disabled to emulate a large dimension. Note: the per-key side is HashAggregate over a shuffle, so `OptimizeSkewedJoin` (pattern Sort over a shuffle stage on both sides, `OptimizeSkewedJoin.scala:201-203`) cannot apply to these plans | dataset x query x 200 / 2001 partitions; r per point from an AQE-on profile | 200: aqe_off, aqe_on, aqe_on_rule2; 2001: all five | `exp_real_summary.csv`, `exp_real_keys.csv` (key distributions), manifests in `batch5b/manifests/` | `figures/exp_real` |
 
 ## Real datasets (batch 5, step 1c)
 

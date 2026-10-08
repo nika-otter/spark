@@ -1,0 +1,144 @@
+{
+  "dataset_id": "real_hits",
+  "generated_at": "2026-10-07T16:23:56",
+  "keys": {
+    "CounterID": {
+      "distinct": 6506,
+      "null_rows": 0,
+      "top1_share": 0.08527283437904451,
+      "top5": [
+        {
+          "key": [
+            "3922"
+          ],
+          "rows": 8527070,
+          "share": 0.08527283437904451
+        },
+        {
+          "key": [
+            "199550"
+          ],
+          "rows": 7115413,
+          "share": 0.07115591103245314
+        },
+        {
+          "key": [
+            "105857"
+          ],
+          "rows": 5783214,
+          "share": 0.057833587574697
+        },
+        {
+          "key": [
+            "46429"
+          ],
+          "rows": 4556155,
+          "share": 0.045562690434141566
+        },
+        {
+          "key": [
+            "225510"
+          ],
+          "rows": 4226610,
+          "share": 0.04226715794696341
+        }
+      ],
+      "top5_share": 0.30209218136729965
+    },
+    "RegionID": {
+      "distinct": 9040,
+      "null_rows": 0,
+      "top1_share": 0.182962899561376,
+      "top5": [
+        {
+          "key": [
+            "229"
+          ],
+          "rows": 18295832,
+          "share": 0.182962899561376
+        },
+        {
+          "key": [
+            "2"
+          ],
+          "rows": 6687587,
+          "share": 0.06687754394492494
+        },
+        {
+          "key": [
+            "208"
+          ],
+          "rows": 4261812,
+          "share": 0.04261918675824456
+        },
+        {
+          "key": [
+            "169"
+          ],
+          "rows": 3320229,
+          "share": 0.03320312107412048
+        },
+        {
+          "key": [
+            "32"
+          ],
+          "rows": 1843518,
+          "share": 0.018435641444105345
+        }
+      ],
+      "top5_share": 0.3440983927827714
+    },
+    "UserID": {
+      "distinct": 17630976,
+      "null_rows": 0,
+      "top1_share": 0.00029097728316139753,
+      "top5": [
+        {
+          "key": [
+            "1313338681122956954"
+          ],
+          "rows": 29097,
+          "share": 0.00029097728316139753
+        },
+        {
+          "key": [
+            "1907779576417363396"
+          ],
+          "rows": 25333,
+          "share": 0.00025333634100861544
+        },
+        {
+          "key": [
+            "2305303682471783379"
+          ],
+          "rows": 10597,
+          "share": 0.00010597265249549196
+        },
+        {
+          "key": [
+            "7982623143712728547"
+          ],
+          "rows": 7584,
+          "share": 7.584189832271502e-05
+        },
+        {
+          "key": [
+            "6018350421959114808"
+          ],
+          "rows": 6678,
+          "share": 6.678167154523878e-05
+        }
+      ],
+      "top5_share": 0.0007929098465334587
+    }
+  },
+  "path": "/opt/spark-data/datasets/real_hits/data",
+  "row_count": 99997497,
+  "schema": "struct<WatchID:bigint,UserID:bigint,CounterID:int,RegionID:int,EventTime:bigint,EventDate:int,ClientIP:int,OS:smallint,ResolutionWidth:smallint,IsRefresh:smallint,TraficSourceID:smallint,SearchEngineID:smallint,AdvEngineID:smallint,URL:string,Title:string>",
+  "sources": [
+    "/opt/spark-data/raw/hits/hits.parquet"
+  ],
+  "spark_version": "4.1.3",
+  "table": "facts",
+  "write_and_stats_seconds": 100.1
+}

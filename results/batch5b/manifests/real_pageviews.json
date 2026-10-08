@@ -1,0 +1,131 @@
+{
+  "dataset_id": "real_pageviews",
+  "dropped_lines": 0,
+  "generated_at": "2026-10-07T16:25:28",
+  "keys": {
+    "project": {
+      "distinct": 1870,
+      "null_rows": 0,
+      "top1_share": 0.20990287675998923,
+      "top5": [
+        {
+          "key": [
+            "en.m"
+          ],
+          "rows": 30089866,
+          "share": 0.20990287675998923
+        },
+        {
+          "key": [
+            "en"
+          ],
+          "rows": 19672338,
+          "share": 0.1372315961392069
+        },
+        {
+          "key": [
+            "de.m"
+          ],
+          "rows": 5620434,
+          "share": 0.03920739511567294
+        },
+        {
+          "key": [
+            "ru.m"
+          ],
+          "rows": 5357756,
+          "share": 0.037374988555219646
+        },
+        {
+          "key": [
+            "es.m"
+          ],
+          "rows": 5209326,
+          "share": 0.03633956074715014
+        }
+      ],
+      "top5_share": 0.46005641731723884
+    },
+    "project+page_title": {
+      "distinct": 38295525,
+      "null_rows": 0,
+      "top1_share": 1.6742078686025856e-07,
+      "top5": [
+        {
+          "key": [
+            "ar.m",
+            "\u0623\u0645\u0647\u0627\u062a_\u0627\u0644\u0645\u0624\u0645\u0646\u064a\u0646"
+          ],
+          "rows": 24,
+          "share": 1.6742078686025856e-07
+        },
+        {
+          "key": [
+            "ar.m",
+            "\u0623\u0645_\u0627\u0644\u0628\u0646\u0627\u062a_(\u0645\u0633\u0644\u0633\u0644)"
+          ],
+          "rows": 24,
+          "share": 1.6742078686025856e-07
+        },
+        {
+          "key": [
+            "ar.m",
+            "\u0623\u0631\u064a\u062d\u0627"
+          ],
+          "rows": 24,
+          "share": 1.6742078686025856e-07
+        },
+        {
+          "key": [
+            "ar.m",
+            "\u0625\u0628\u0631\u0627\u0647\u064a\u0645_\u0627\u0644\u0646\u0627\u0628\u0644\u0633\u064a"
+          ],
+          "rows": 24,
+          "share": 1.6742078686025856e-07
+        },
+        {
+          "key": [
+            "ar.m",
+            "\u0623\u062d\u0645\u062f_\u0645\u0637\u0631"
+          ],
+          "rows": 24,
+          "share": 1.6742078686025856e-07
+        }
+      ],
+      "top5_share": 8.371039343012929e-07
+    }
+  },
+  "path": "/opt/spark-data/datasets/real_pageviews/data",
+  "raw_lines": 143351375,
+  "row_count": 143351375,
+  "schema": "struct<project:string,page_title:string,views:bigint,response_bytes:bigint,hour:timestamp>",
+  "sources": [
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-000000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-010000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-020000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-030000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-040000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-050000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-060000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-070000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-080000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-090000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-100000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-110000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-120000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-130000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-140000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-150000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-160000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-170000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-180000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-190000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-200000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-210000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-220000.gz",
+    "/opt/spark-data/raw/pageviews/pageviews-20240101-230000.gz"
+  ],
+  "spark_version": "4.1.3",
+  "table": "facts",
+  "write_and_stats_seconds": 201.2
+}

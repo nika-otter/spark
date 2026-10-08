@@ -1,0 +1,117 @@
+{
+  "dataset_id": "real_taxi",
+  "generated_at": "2026-10-07T16:19:47",
+  "keys": {
+    "PULocationID": {
+      "distinct": 264,
+      "null_rows": 0,
+      "top1_share": 0.04139645750085979,
+      "top5": [
+        {
+          "key": [
+            "237"
+          ],
+          "rows": 4258511,
+          "share": 0.04139645750085979
+        },
+        {
+          "key": [
+            "161"
+          ],
+          "rows": 3952343,
+          "share": 0.03842023632868875
+        },
+        {
+          "key": [
+            "236"
+          ],
+          "rows": 3862784,
+          "share": 0.037549644392371226
+        },
+        {
+          "key": [
+            "162"
+          ],
+          "rows": 3609955,
+          "share": 0.035091925026732654
+        },
+        {
+          "key": [
+            "186"
+          ],
+          "rows": 3491876,
+          "share": 0.03394409370605648
+        }
+      ],
+      "top5_share": 0.1864023569547089
+    },
+    "PULocationID+pickup_hour": {
+      "distinct": 1140032,
+      "null_rows": 0,
+      "top1_share": 2.6022785130718614e-05,
+      "top5": [
+        {
+          "key": [
+            "79",
+            "2018-11-04 01:00:00"
+          ],
+          "rows": 2677,
+          "share": 2.6022785130718614e-05
+        },
+        {
+          "key": [
+            "148",
+            "2018-11-04 01:00:00"
+          ],
+          "rows": 2312,
+          "share": 2.247466537998559e-05
+        },
+        {
+          "key": [
+            "79",
+            "2018-03-04 01:00:00"
+          ],
+          "rows": 1810,
+          "share": 1.7594785613224016e-05
+        },
+        {
+          "key": [
+            "79",
+            "2018-04-08 01:00:00"
+          ],
+          "rows": 1722,
+          "share": 1.673934852263633e-05
+        },
+        {
+          "key": [
+            "79",
+            "2018-01-28 02:00:00"
+          ],
+          "rows": 1717,
+          "share": 1.66907441424893e-05
+        }
+      ],
+      "top5_share": 9.952232878905384e-05
+    }
+  },
+  "path": "/opt/spark-data/datasets/real_taxi/data",
+  "row_count": 102871387,
+  "schema": "struct<VendorID:bigint,tpep_pickup_datetime:timestamp,tpep_dropoff_datetime:timestamp,passenger_count:bigint,trip_distance:double,RatecodeID:bigint,store_and_fwd_flag:string,PULocationID:bigint,DOLocationID:bigint,payment_type:bigint,fare_amount:double,extra:double,mta_tax:double,tip_amount:double,tolls_amount:double,improvement_surcharge:double,total_amount:double,congestion_surcharge:double,airport_fee:double,pickup_hour:timestamp>",
+  "sources": [
+    "/opt/spark-data/raw/taxi/yellow_tripdata_2018-01.parquet",
+    "/opt/spark-data/raw/taxi/yellow_tripdata_2018-02.parquet",
+    "/opt/spark-data/raw/taxi/yellow_tripdata_2018-03.parquet",
+    "/opt/spark-data/raw/taxi/yellow_tripdata_2018-04.parquet",
+    "/opt/spark-data/raw/taxi/yellow_tripdata_2018-05.parquet",
+    "/opt/spark-data/raw/taxi/yellow_tripdata_2018-06.parquet",
+    "/opt/spark-data/raw/taxi/yellow_tripdata_2018-07.parquet",
+    "/opt/spark-data/raw/taxi/yellow_tripdata_2018-08.parquet",
+    "/opt/spark-data/raw/taxi/yellow_tripdata_2018-09.parquet",
+    "/opt/spark-data/raw/taxi/yellow_tripdata_2018-10.parquet",
+    "/opt/spark-data/raw/taxi/yellow_tripdata_2018-11.parquet",
+    "/opt/spark-data/raw/taxi/yellow_tripdata_2018-12.parquet"
+  ],
+  "spark_version": "4.1.3",
+  "table": "facts",
+  "write_and_stats_seconds": 86.4
+}

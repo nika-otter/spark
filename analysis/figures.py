@@ -10,6 +10,9 @@
   results/figures/exp_e.{png,pdf}          batch 4, step 2a-2c
   results/figures/exp_f.{png,pdf}          batch 4, step 2d
   results/figures/spark35.{png,pdf}        batch 4, step 3
+  results/figures/tpc_ratios, tpc_timing   batch 5, step 1a/1b
+  results/figures/exp_real                 batch 5, step 1c
+  results/figures/exp_g, exp_h             batch 5, steps 2 and 3
 
 Conventions: a legend identifies the series (no direct labels); points are
 medians over measured runs, bars span the interquartile range; lines join
@@ -717,11 +720,40 @@ def fig_exp_h():
     save(fig, "exp_h")
 
 
+REAL_MODES = ("aqe_off", "aqe_on", "aqe_on_rule1", "aqe_on_rule2", "aqe_on_rules12")
+REAL_NAMES = {"taxi": "таксі", "hits": "hits", "pageviews": "pageviews"}
+
+
+def fig_exp_real():
+    s = pd.read_csv(RESULTS / "exp_real_summary.csv")
+    panels = (("natural", 200), ("natural", 2001), ("lowcard", 200), ("lowcard", 2001))
+    titles = {"natural": "Q-natural (ключ високої кардинальності, broadcast типовий)",
+              "lowcard": "Q-lowcard (ключ низької кардинальності, broadcast вимкнено)"}
+    fig, axes = plt.subplots(2, 4, figsize=(14.0, 6.4))
+    for col, (query, sp) in enumerate(panels):
+        d = s[(s["query"] == query) & (s["shuffle_partitions"] == sp)]
+        groups = [{r["mode"]: r for _, r in d[d["dataset"] == ds].iterrows()} for ds in REAL_NAMES]
+        for row, (prefix, ylabel) in enumerate((("wall_s", "Час виконання запиту, с"),
+                                                ("longest_join_task_s", "Найдовша задача join-стадії, с"))):
+            ax = axes[row, col]
+            grouped_bars(ax, groups, REAL_MODES, prefix + "_median", prefix + "_q25", prefix + "_q75")
+            ax.set_xticks(range(len(REAL_NAMES)))
+            ax.set_xticklabels(list(REAL_NAMES.values()))
+            style(ax, ylabel if col == 0 else "")
+        axes[0, col].set_title("{},\n{} {}".format(titles[query].split(" (")[0], sp, "партиція" if sp == 2001 else "партицій"), loc="left")
+    handles, labels = axes[0, 3].get_legend_handles_labels()
+    fig.legend(handles, labels, frameon=False, loc="lower center", ncol=5)
+    fig.suptitle("Крок 1c: реальні дані — таксі 2018 (102,9 млн), hits (100,0 млн), pageviews (143,4 млн); "
+                 "Q-lowcard — broadcast вимкнено ({})".format(IQR_NOTE), fontsize=9, x=0.01, ha="left")
+    fig.tight_layout(rect=(0, 0.05, 1, 1))
+    save(fig, "exp_real")
+
+
 FIGS = {"pilot_null": fig_pilot, "exp_a": fig_exp_a, "exp_b": fig_exp_b,
         "exp_c2": fig_exp_c2, "exp_d": fig_exp_d, "exp_d2": fig_exp_d2,
         "exp_d2_stress": fig_exp_d2_stress, "exp_e": fig_exp_e, "exp_f": fig_exp_f,
         "spark35": fig_spark35, "tpc_ratios": fig_tpc_ratios, "tpc_timing": fig_tpc_timing,
-        "exp_g": fig_exp_g, "exp_h": fig_exp_h}
+        "exp_g": fig_exp_g, "exp_h": fig_exp_h, "exp_real": fig_exp_real}
 
 
 def main():
