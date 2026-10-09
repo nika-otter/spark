@@ -1,0 +1,33 @@
+{
+  "dataset_id": "real_hits_keys_CounterID",
+  "fact_partitions": {
+    "200": {
+      "largest_bytes": 2888129536,
+      "largest_pid": 21,
+      "largest_rows": 8869856,
+      "median_bytes": 35607260.0,
+      "non_empty": 200,
+      "partitions": 200,
+      "total_bytes": 31962608136
+    },
+    "2001": {
+      "largest_bytes": 2776155632,
+      "largest_pid": 1842,
+      "largest_rows": 8535361,
+      "median_bytes": 520280.0,
+      "non_empty": 1953,
+      "partitions": 2001,
+      "total_bytes": 31962608136
+    }
+  },
+  "fact_rows": 99997497,
+  "facts_dataset_id": "real_hits",
+  "generated_at": "2026-10-08T18:21:11",
+  "key": "CounterID",
+  "path": "/opt/spark-data/datasets/real_hits_keys_CounterID/data",
+  "row_count": 6506,
+  "schema": "struct<CounterID:int,key_rows:bigint,key_EventTime:bigint>",
+  "seconds": 20.1,
+  "spark_version": "4.1.3",
+  "table": "keys"
+}

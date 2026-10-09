@@ -39,6 +39,7 @@ Docker Desktop with **10 CPUs** and **22 GB** memory (Settings → Resources).
 | `scripts/batch5b.sh prepare\|rounds` | Batch 5b: load real datasets, profile, then 4 rounds |
 | `.venv/bin/python analysis/batch5.py` | Batch 5a summaries; `analysis/recover_k2.py` k2-join metrics of step 3a from the History Server |
 | `.venv/bin/python scripts/aqe_advisor.py --app-id ID \| --eventlog PATH` | Recommended AQE settings (rules 1 and 2) from a previous run |
+| `scripts/batch5c.sh prepare\|rounds` | Batch 5c: key tables, validation trials, then rounds (steps 2 and 3); summaries with `analysis/batch5c.py` |
 | `.venv/bin/python analysis/figures.py` | Thesis figures (Ukrainian) in `results/figures/` as PNG 300 dpi and PDF |
 
 To delete all data and event logs: `docker compose down -v`.

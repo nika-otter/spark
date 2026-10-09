@@ -749,11 +749,64 @@ def fig_exp_real():
     save(fig, "exp_real")
 
 
+KT_POINTS = (("taxi", "PULocationID", "таксі\nPULocationID"), ("hits", "RegionID", "hits\nRegionID"),
+             ("hits", "CounterID", "hits\nCounterID"), ("pageviews", "project", "pageviews\nproject"))
+KT_MODES = {200: ("aqe_off", "aqe_on", "aqe_on_fixed16", "aqe_on_rule2"),
+            2001: ("aqe_off", "aqe_on", "aqe_on_rule1", "aqe_on_fixed16", "aqe_on_rule2", "aqe_on_rules12")}
+
+
+def fig_exp_real_kt():
+    s = pd.read_csv(RESULTS / "exp_real_kt_summary.csv")
+    fig, axes = plt.subplots(2, 2, figsize=(12.0, 6.6))
+    for col, sp in enumerate((200, 2001)):
+        d = s[s["shuffle_partitions"] == sp]
+        groups = [{r["mode"]: r for _, r in d[(d["dataset"] == ds) & (d["key"] == k)].iterrows()}
+                  for ds, k, _ in KT_POINTS]
+        for row, (prefix, ylabel) in enumerate((("wall_s", "Час виконання запиту, с"),
+                                                ("longest_join_task_s", "Найдовша задача join-стадії, с"))):
+            ax = axes[row, col]
+            grouped_bars(ax, groups, KT_MODES[sp], prefix + "_median", prefix + "_q25", prefix + "_q75")
+            ax.set_xticks(range(len(KT_POINTS)))
+            ax.set_xticklabels([l for _, _, l in KT_POINTS], fontsize=7.5)
+            style(ax, ylabel)
+        axes[0, col].set_title("{} {}".format(sp, "партиція" if sp == 2001 else "партицій"), loc="left")
+    handles, labels = axes[0, 1].get_legend_handles_labels()
+    fig.legend(handles, labels, frameon=False, loc="lower center", ncol=3)
+    fig.suptitle("Крок 2 (5c): реальні дані, таблиця ключів з Parquet, LEFT JOIN, broadcast вимкнено;\n"
+                 "у режимі fixed16 при 2001 партиції додано правило 1 ({})".format(IQR_NOTE),
+                 fontsize=9, x=0.01, ha="left")
+    fig.tight_layout(rect=(0, 0.07, 1, 1))
+    save(fig, "exp_real_kt")
+
+
+MODE.update({"aqe_on_force": (C["aqua"], "^", "AQE + forceOptimizeSkewedJoin")})
+
+
+def fig_exp_hot_kt():
+    s = pd.read_csv(RESULTS / "exp_hot_kt_summary.csv")
+    groups = [{r["mode"]: r for _, r in s[s["variant"] == v].iterrows()} for v in ("A", "B")]
+    labels = ["A: таблиця ключів\nз Parquet", "B: GROUP BY\nу тому ж запиті"]
+    modes = ("aqe_off", "aqe_on", "aqe_on_force")
+    fig, axes = plt.subplots(1, 2, figsize=(9.0, 3.4))
+    for ax, (prefix, ylabel) in zip(axes, (("wall_s", "Час виконання запиту, с"),
+                                           ("longest_join_task_s", "Найдовша задача join-стадії, с"))):
+        grouped_bars(ax, groups, modes, prefix + "_median", prefix + "_q25", prefix + "_q75")
+        ax.set_xticks([0, 1])
+        ax.set_xticklabels(labels)
+        style(ax, ylabel)
+    axes[0].legend(frameon=False, loc="upper left", fontsize=7)
+    fig.suptitle("Крок 3 (5c): 55 млн рядків, гарячий ключ 20 %, рівень 1x, 200 партицій, broadcast вимкнено\n"
+                 "({})".format(IQR_NOTE), fontsize=9, x=0.01, ha="left")
+    fig.tight_layout()
+    save(fig, "exp_hot_kt")
+
+
 FIGS = {"pilot_null": fig_pilot, "exp_a": fig_exp_a, "exp_b": fig_exp_b,
         "exp_c2": fig_exp_c2, "exp_d": fig_exp_d, "exp_d2": fig_exp_d2,
         "exp_d2_stress": fig_exp_d2_stress, "exp_e": fig_exp_e, "exp_f": fig_exp_f,
         "spark35": fig_spark35, "tpc_ratios": fig_tpc_ratios, "tpc_timing": fig_tpc_timing,
-        "exp_g": fig_exp_g, "exp_h": fig_exp_h, "exp_real": fig_exp_real}
+        "exp_g": fig_exp_g, "exp_h": fig_exp_h, "exp_real": fig_exp_real,
+        "exp_real_kt": fig_exp_real_kt, "exp_hot_kt": fig_exp_hot_kt}
 
 
 def main():

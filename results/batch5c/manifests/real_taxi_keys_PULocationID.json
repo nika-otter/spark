@@ -1,0 +1,33 @@
+{
+  "dataset_id": "real_taxi_keys_PULocationID",
+  "fact_partitions": {
+    "200": {
+      "largest_bytes": 1082393888,
+      "largest_pid": 140,
+      "largest_rows": 6442900,
+      "median_bytes": 1007772.0,
+      "non_empty": 148,
+      "partitions": 200,
+      "total_bytes": 17281925464
+    },
+    "2001": {
+      "largest_bytes": 877149512,
+      "largest_pid": 498,
+      "largest_rows": 5221227,
+      "median_bytes": 0.0,
+      "non_empty": 247,
+      "partitions": 2001,
+      "total_bytes": 17281925464
+    }
+  },
+  "fact_rows": 102871387,
+  "facts_dataset_id": "real_taxi",
+  "generated_at": "2026-10-08T18:19:47",
+  "key": "PULocationID",
+  "path": "/opt/spark-data/datasets/real_taxi_keys_PULocationID/data",
+  "row_count": 264,
+  "schema": "struct<PULocationID:bigint,key_rows:bigint,key_total_amount:double>",
+  "seconds": 12.0,
+  "spark_version": "4.1.3",
+  "table": "keys"
+}

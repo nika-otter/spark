@@ -62,6 +62,88 @@ If the rewritten plan would need an extra shuffle, the optimization is dropped
 unless `spark.sql.adaptive.forceOptimizeSkewedJoin=true`
 (`OptimizeSkewedJoin.scala:229-245`).
 
+### Which joins can be optimized at all (plan shape), and forceOptimizeSkewedJoin
+
+Added in batch 5c. `adaptive/OptimizeSkewedJoin.scala:200-217`:
+
+```scala
+  def optimizeSkewJoin(plan: SparkPlan): SparkPlan = plan.transformUp {
+    case smj @ SortMergeJoinExec(_, _, joinType, _,
+        s1 @ SortExec(_, _, ShuffleStage(left: ShuffleQueryStageExec), _),
+        s2 @ SortExec(_, _, ShuffleStage(right: ShuffleQueryStageExec), _), false) =>
+      tryOptimizeJoinChildren(left, right, joinType).map {
+        case (newLeft, newRight) =>
+          smj.copy(
+            left = s1.copy(child = newLeft), right = s2.copy(child = newRight), isSkewJoin = true)
+      }.getOrElse(smj)
+
+    case shj @ ShuffledHashJoinExec(_, _, joinType, _, _,
+        ShuffleStage(left: ShuffleQueryStageExec),
+        ShuffleStage(right: ShuffleQueryStageExec), false) =>
+      tryOptimizeJoinChildren(left, right, joinType).map {
+        case (newLeft, newRight) =>
+          shj.copy(left = newLeft, right = newRight, isSkewJoin = true)
+      }.getOrElse(shj)
+  }
+```
+
+`adaptive/OptimizeSkewedJoin.scala:248-255`:
+
+```scala
+  object ShuffleStage {
+    def unapply(plan: SparkPlan): Option[ShuffleQueryStageExec] = plan match {
+      case s: ShuffleQueryStageExec if s.isMaterialized && s.mapStats.isDefined &&
+        s.shuffle.shuffleOrigin == ENSURE_REQUIREMENTS =>
+        Some(s)
+      case _ => None
+    }
+  }
+```
+
+A sort-merge join is a candidate only if **each** child is a `SortExec` whose
+child is a materialized shuffle query stage (origin ENSURE_REQUIREMENTS). If
+an operator such as `HashAggregateExec` sits between the `Sort` and the
+shuffle stage on either side (a per-key table computed with GROUP BY in the
+same query), the pattern does not match and the join is left unchanged; the
+partition sizes are never examined. (`AQEShuffleRead`, seen between `Sort` and
+the stage in final plans, is inserted later by `CoalesceShufflePartitions`,
+which runs after `OptimizeSkewedJoin`, see the rule order above.)
+
+`adaptive/OptimizeSkewedJoin.scala:219-246` (`apply`):
+
+```scala
+  override def apply(plan: SparkPlan): SparkPlan = {
+    if (!conf.getConf(SQLConf.SKEW_JOIN_ENABLED)) {
+      return plan
+    }
+    ...
+    val optimized = optimizeSkewJoin(plan)
+    val requirementSatisfied = if (ensureRequirements.requiredDistribution.isDefined) {
+      ValidateRequirements.validate(optimized, ensureRequirements.requiredDistribution.get)
+    } else {
+      ValidateRequirements.validate(optimized)
+    }
+    if (requirementSatisfied) {
+      optimized.transform {
+        case SkewJoinChildWrapper(child) => child
+      }
+    } else if (conf.getConf(SQLConf.ADAPTIVE_FORCE_OPTIMIZE_SKEWED_JOIN)) {
+      ensureRequirements.apply(optimized).transform {
+        case SkewJoinChildWrapper(child) => child
+      }
+    } else {
+      plan
+    }
+  }
+```
+
+`spark.sql.adaptive.forceOptimizeSkewedJoin` (`SQLConf.scala:1231-1236`, default
+false, doc: "When true, force enable OptimizeSkewedJoin even if it introduces
+extra shuffle.") is consulted only after `optimizeSkewJoin` has rewritten a
+join and the rewritten plan fails the distribution check; it keeps that
+rewrite and adds the shuffles. It does not change the pattern match above, so
+it has no effect on a join whose children do not match.
+
 ### Which sizes, and is the median taken before or after coalescing
 
 `adaptive/OptimizeSkewedJoin.scala:118-124`

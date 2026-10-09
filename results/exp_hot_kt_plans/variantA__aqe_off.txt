@@ -1,0 +1,68 @@
+== Physical Plan ==
+OverwriteByExpression (12)
++- * Project (11)
+   +- * SortMergeJoin LeftOuter (10)
+      :- * Sort (4)
+      :  +- Exchange (3)
+      :     +- * ColumnarToRow (2)
+      :        +- Scan parquet  (1)
+      +- * Sort (9)
+         +- Exchange (8)
+            +- * Filter (7)
+               +- * ColumnarToRow (6)
+                  +- Scan parquet  (5)
+
+
+(1) Scan parquet 
+Output [3]: [id#24L, k#25L, payload#26]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/facts_rows-55000000_k-n1000000-h0.2-null0_payload-100_seed-42_kind-mixed1_files-44/data]
+ReadSchema: struct<id:bigint,k:bigint,payload:binary>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [3]: [id#24L, k#25L, payload#26]
+
+(3) Exchange
+Input [3]: [id#24L, k#25L, payload#26]
+Arguments: hashpartitioning(k#25L, 200), ENSURE_REQUIREMENTS, [plan_id=138]
+
+(4) Sort [codegen id : 2]
+Input [3]: [id#24L, k#25L, payload#26]
+Arguments: [k#25L ASC NULLS FIRST], false, 0
+
+(5) Scan parquet 
+Output [3]: [k#27L, key_rows#28L, key_id#29L]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/facts_rows-55000000_k-n1000000-h0.2-null0_payload-100_seed-42_kind-mixed1_files-44_keys_k/data]
+PushedFilters: [IsNotNull(k)]
+ReadSchema: struct<k:bigint,key_rows:bigint,key_id:bigint>
+
+(6) ColumnarToRow [codegen id : 3]
+Input [3]: [k#27L, key_rows#28L, key_id#29L]
+
+(7) Filter [codegen id : 3]
+Input [3]: [k#27L, key_rows#28L, key_id#29L]
+Condition : isnotnull(k#27L)
+
+(8) Exchange
+Input [3]: [k#27L, key_rows#28L, key_id#29L]
+Arguments: hashpartitioning(k#27L, 200), ENSURE_REQUIREMENTS, [plan_id=147]
+
+(9) Sort [codegen id : 4]
+Input [3]: [k#27L, key_rows#28L, key_id#29L]
+Arguments: [k#27L ASC NULLS FIRST], false, 0
+
+(10) SortMergeJoin [codegen id : 5]
+Left keys [1]: [k#25L]
+Right keys [1]: [k#27L]
+Join type: LeftOuter
+Join condition: None
+
+(11) Project [codegen id : 5]
+Output [5]: [k#25L, id#24L, payload#26, key_rows#28L, key_id#29L]
+Input [6]: [id#24L, k#25L, payload#26, k#27L, key_rows#28L, key_id#29L]
+
+(12) OverwriteByExpression
+Input [5]: [k#25L, id#24L, payload#26, key_rows#28L, key_id#29L]
+Arguments: NoopWrite
+

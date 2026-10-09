@@ -1,0 +1,139 @@
+== Physical Plan ==
+OverwriteByExpression (25)
++- AdaptiveSparkPlan (24)
+   +- == Final Plan ==
+      ResultQueryStage (16), Statistics(sizeInBytes=8.0 EiB)
+      +- * Project (15)
+         +- * SortMergeJoin(skew=true) LeftOuter (14)
+            :- * Sort (6)
+            :  +- AQEShuffleRead (5)
+            :     +- ShuffleQueryStage (4), Statistics(sizeInBytes=7.0 GiB, rowCount=5.50E+7)
+            :        +- Exchange (3)
+            :           +- * ColumnarToRow (2)
+            :              +- Scan parquet  (1)
+            +- * Sort (13)
+               +- AQEShuffleRead (12)
+                  +- ShuffleQueryStage (11), Statistics(sizeInBytes=30.5 MiB, rowCount=1.00E+6)
+                     +- Exchange (10)
+                        +- * Filter (9)
+                           +- * ColumnarToRow (8)
+                              +- Scan parquet  (7)
+   +- == Initial Plan ==
+      Project (23)
+      +- SortMergeJoin LeftOuter (22)
+         :- Sort (18)
+         :  +- Exchange (17)
+         :     +- Scan parquet  (1)
+         +- Sort (21)
+            +- Exchange (20)
+               +- Filter (19)
+                  +- Scan parquet  (7)
+
+
+(1) Scan parquet 
+Output [3]: [id#24L, k#25L, payload#26]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/facts_rows-55000000_k-n1000000-h0.2-null0_payload-100_seed-42_kind-mixed1_files-44/data]
+ReadSchema: struct<id:bigint,k:bigint,payload:binary>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [3]: [id#24L, k#25L, payload#26]
+
+(3) Exchange
+Input [3]: [id#24L, k#25L, payload#26]
+Arguments: hashpartitioning(k#25L, 200), ENSURE_REQUIREMENTS, [plan_id=186]
+
+(4) ShuffleQueryStage
+Output [3]: [id#24L, k#25L, payload#26]
+Arguments: 0
+
+(5) AQEShuffleRead
+Input [3]: [id#24L, k#25L, payload#26]
+Arguments: coalesced and skewed
+
+(6) Sort [codegen id : 3]
+Input [3]: [id#24L, k#25L, payload#26]
+Arguments: [k#25L ASC NULLS FIRST], false, 0
+
+(7) Scan parquet 
+Output [3]: [k#27L, key_rows#28L, key_id#29L]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/facts_rows-55000000_k-n1000000-h0.2-null0_payload-100_seed-42_kind-mixed1_files-44_keys_k/data]
+PushedFilters: [IsNotNull(k)]
+ReadSchema: struct<k:bigint,key_rows:bigint,key_id:bigint>
+
+(8) ColumnarToRow [codegen id : 2]
+Input [3]: [k#27L, key_rows#28L, key_id#29L]
+
+(9) Filter [codegen id : 2]
+Input [3]: [k#27L, key_rows#28L, key_id#29L]
+Condition : isnotnull(k#27L)
+
+(10) Exchange
+Input [3]: [k#27L, key_rows#28L, key_id#29L]
+Arguments: hashpartitioning(k#27L, 200), ENSURE_REQUIREMENTS, [plan_id=206]
+
+(11) ShuffleQueryStage
+Output [3]: [k#27L, key_rows#28L, key_id#29L]
+Arguments: 1
+
+(12) AQEShuffleRead
+Input [3]: [k#27L, key_rows#28L, key_id#29L]
+Arguments: coalesced
+
+(13) Sort [codegen id : 4]
+Input [3]: [k#27L, key_rows#28L, key_id#29L]
+Arguments: [k#27L ASC NULLS FIRST], false, 0
+
+(14) SortMergeJoin(skew=true) [codegen id : 5]
+Left keys [1]: [k#25L]
+Right keys [1]: [k#27L]
+Join type: LeftOuter
+Join condition: None
+
+(15) Project [codegen id : 5]
+Output [5]: [k#25L, id#24L, payload#26, key_rows#28L, key_id#29L]
+Input [6]: [id#24L, k#25L, payload#26, k#27L, key_rows#28L, key_id#29L]
+
+(16) ResultQueryStage
+Output [5]: [k#25L, id#24L, payload#26, key_rows#28L, key_id#29L]
+Arguments: 2
+
+(17) Exchange
+Input [3]: [id#24L, k#25L, payload#26]
+Arguments: hashpartitioning(k#25L, 200), ENSURE_REQUIREMENTS, [plan_id=171]
+
+(18) Sort
+Input [3]: [id#24L, k#25L, payload#26]
+Arguments: [k#25L ASC NULLS FIRST], false, 0
+
+(19) Filter
+Input [3]: [k#27L, key_rows#28L, key_id#29L]
+Condition : isnotnull(k#27L)
+
+(20) Exchange
+Input [3]: [k#27L, key_rows#28L, key_id#29L]
+Arguments: hashpartitioning(k#27L, 200), ENSURE_REQUIREMENTS, [plan_id=172]
+
+(21) Sort
+Input [3]: [k#27L, key_rows#28L, key_id#29L]
+Arguments: [k#27L ASC NULLS FIRST], false, 0
+
+(22) SortMergeJoin
+Left keys [1]: [k#25L]
+Right keys [1]: [k#27L]
+Join type: LeftOuter
+Join condition: None
+
+(23) Project
+Output [5]: [k#25L, id#24L, payload#26, key_rows#28L, key_id#29L]
+Input [6]: [id#24L, k#25L, payload#26, k#27L, key_rows#28L, key_id#29L]
+
+(24) AdaptiveSparkPlan
+Output [5]: [k#25L, id#24L, payload#26, key_rows#28L, key_id#29L]
+Arguments: isFinalPlan=true
+
+(25) OverwriteByExpression
+Input [5]: [k#25L, id#24L, payload#26, key_rows#28L, key_id#29L]
+Arguments: NoopWrite
+

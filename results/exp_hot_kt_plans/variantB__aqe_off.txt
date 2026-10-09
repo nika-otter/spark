@@ -1,0 +1,84 @@
+== Physical Plan ==
+OverwriteByExpression (14)
++- * Project (13)
+   +- * SortMergeJoin LeftOuter (12)
+      :- * Sort (4)
+      :  +- Exchange (3)
+      :     +- * ColumnarToRow (2)
+      :        +- Scan parquet  (1)
+      +- * Sort (11)
+         +- * HashAggregate (10)
+            +- Exchange (9)
+               +- * HashAggregate (8)
+                  +- * Filter (7)
+                     +- * ColumnarToRow (6)
+                        +- Scan parquet  (5)
+
+
+(1) Scan parquet 
+Output [3]: [id#24L, k#25L, payload#26]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/facts_rows-55000000_k-n1000000-h0.2-null0_payload-100_seed-42_kind-mixed1_files-44/data]
+ReadSchema: struct<id:bigint,k:bigint,payload:binary>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [3]: [id#24L, k#25L, payload#26]
+
+(3) Exchange
+Input [3]: [id#24L, k#25L, payload#26]
+Arguments: hashpartitioning(k#25L, 200), ENSURE_REQUIREMENTS, [plan_id=168]
+
+(4) Sort [codegen id : 2]
+Input [3]: [id#24L, k#25L, payload#26]
+Arguments: [k#25L ASC NULLS FIRST], false, 0
+
+(5) Scan parquet 
+Output [2]: [id#51L, k#52L]
+Batched: true
+Location: InMemoryFileIndex [file:/opt/spark-data/datasets/facts_rows-55000000_k-n1000000-h0.2-null0_payload-100_seed-42_kind-mixed1_files-44/data]
+PushedFilters: [IsNotNull(k)]
+ReadSchema: struct<id:bigint,k:bigint>
+
+(6) ColumnarToRow [codegen id : 3]
+Input [2]: [id#51L, k#52L]
+
+(7) Filter [codegen id : 3]
+Input [2]: [id#51L, k#52L]
+Condition : isnotnull(k#52L)
+
+(8) HashAggregate [codegen id : 3]
+Input [2]: [id#51L, k#52L]
+Keys [1]: [k#52L]
+Functions [2]: [partial_count(1), partial_max(id#51L)]
+Aggregate Attributes [2]: [count#55L, max#56L]
+Results [3]: [k#52L, count#57L, max#58L]
+
+(9) Exchange
+Input [3]: [k#52L, count#57L, max#58L]
+Arguments: hashpartitioning(k#52L, 200), ENSURE_REQUIREMENTS, [plan_id=178]
+
+(10) HashAggregate [codegen id : 4]
+Input [3]: [k#52L, count#57L, max#58L]
+Keys [1]: [k#52L]
+Functions [2]: [count(1), max(id#51L)]
+Aggregate Attributes [2]: [count(1)#49L, max(id#51L)#50L]
+Results [3]: [k#52L, count(1)#49L AS key_rows#44L, max(id#51L)#50L AS key_id#45L]
+
+(11) Sort [codegen id : 4]
+Input [3]: [k#52L, key_rows#44L, key_id#45L]
+Arguments: [k#52L ASC NULLS FIRST], false, 0
+
+(12) SortMergeJoin [codegen id : 5]
+Left keys [1]: [k#25L]
+Right keys [1]: [k#52L]
+Join type: LeftOuter
+Join condition: None
+
+(13) Project [codegen id : 5]
+Output [5]: [k#25L, id#24L, payload#26, key_rows#44L, key_id#45L]
+Input [6]: [id#24L, k#25L, payload#26, k#52L, key_rows#44L, key_id#45L]
+
+(14) OverwriteByExpression
+Input [5]: [k#25L, id#24L, payload#26, key_rows#44L, key_id#45L]
+Arguments: NoopWrite
+

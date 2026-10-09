@@ -277,6 +277,20 @@ class RealSpec:
         raise RuntimeError("real datasets are loaded with jobs/prepare_real.py " + self.name)
 
 
+@dataclass(frozen=True)
+class KeyTableSpec:
+    """A per-key table materialized by jobs/prepare_keytables.py (batch 5c)."""
+
+    name: str                    # dataset id, e.g. real_taxi_keys_PULocationID
+    table: str = field(default="keys", init=False)
+
+    def dataset_id(self):
+        return self.name
+
+    def build(self, spark):
+        raise RuntimeError("key tables are written by jobs/prepare_keytables.py " + self.name)
+
+
 def dataset_dir(spec):
     return "{}/{}".format(DATASETS_DIR, spec.dataset_id())
 

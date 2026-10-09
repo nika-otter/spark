@@ -15,7 +15,8 @@ from typing import Callable, Dict
 
 from pyspark.sql import functions as F
 
-from generate import FILTER_BUCKETS, DimSpec, FactsSpec, KeySpec, RealSpec, manifest_path
+from generate import FILTER_BUCKETS, DimSpec, FactsSpec, KeySpec, KeyTableSpec, RealSpec, \
+    manifest_path
 
 MIB = 1024 * 1024
 
@@ -47,6 +48,11 @@ MODES = {
         "spark.sql.adaptive.enabled": "true",
         "spark.sql.adaptive.advisoryPartitionSizeInBytes": str(16 * MIB),
         "spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes": str(64 * MIB),
+    },
+    # Batch 5c
+    "aqe_on_force": {
+        "spark.sql.adaptive.enabled": "true",
+        "spark.sql.adaptive.forceOptimizeSkewedJoin": "true",
     },
     # rule 2 recomputed between runs from the previous run's r (run_experiment --iterate-rule2)
     "aqe_on_rules12_iter": {"spark.sql.adaptive.enabled": "true"},
@@ -102,6 +108,8 @@ DEFAULTS = {
     "null_key": 1,                      # index i of the key k<i> that gets null_share
     "dataset": "",                      # real_query: taxi | hits | pageviews
     "query": "",                        # real_query: natural | lowcard
+    "key": "",                          # real_keytable: join key column
+    "variant": "",                      # hot_keytable: A (key table from Parquet) | B (inline)
     "filter_aligned": 0,                # 1: facts keys of filtered dims reference only
                                         #    dim rows that pass the filter
 }
@@ -293,6 +301,62 @@ def real_query(experiment, p):
                     _common_conf(p, broadcast_disabled=(kind == "lowcard")), query)
 
 
+def key_table_id(facts_id, key):
+    return "{}_keys_{}".format(facts_id, key)
+
+
+def real_keytable(experiment, p):
+    """Batch 5c step 2: fact LEFT JOIN a per-key table materialized as Parquet
+    (jobs/prepare_keytables.py), so that both join inputs are plain scans;
+    broadcast disabled."""
+    name, key = p["dataset"], p["key"]
+    facts = RealSpec(name)
+    keys = KeyTableSpec(key_table_id(facts.dataset_id(), key))
+
+    def query(t, mode):
+        return t["facts"].join(t["keys"], on=key, how="left")
+
+    scenario_id = "{}_keytable_{}".format(name, key) + _suffix(p)
+    return Scenario(experiment, scenario_id, dict(p, join_key=key), {"facts": facts, "keys": keys},
+                    _common_conf(p, broadcast_disabled=True), query)
+
+
+def hot_keytable(experiment, p):
+    """Batch 5c step 3: synthetic facts (hot key) LEFT JOIN a per-key table,
+    variant A: read from Parquet; variant B: the same GROUP BY computed inline."""
+    if p["variant"] not in ("A", "B"):
+        raise ValueError("variant must be A or B")
+    payload = dict(payload_bytes=p["payload_bytes"], seed=p["seed"], payload_kind=p["payload_kind"],
+                   payload_random_fraction=p["payload_random_fraction"])
+    facts = FactsSpec(rows=p["rows"],
+                      keys=(KeySpec("k", p["n_keys"], hot_share=p["hot_share"],
+                                    null_share=p["null_share"], hot_keys=p["hot_keys"]),),
+                      num_files=p["num_files"], **payload)
+    tables = {"facts": facts}
+    if p["variant"] == "A":
+        tables["keys"] = KeyTableSpec(key_table_id(facts.dataset_id(), "k"))
+
+    def query(t, mode):
+        if p["variant"] == "A":
+            keys = t["keys"]
+        else:
+            keys = t["facts"].groupBy("k").agg(*key_table_aggs("synthetic"))
+        return t["facts"].join(keys, on="k", how="left")
+
+    scenario_id = "variant{}_left_hot{:g}_rows{}".format(p["variant"], p["hot_share"], p["rows"]) + _suffix(p)
+    return Scenario(experiment, scenario_id, p, tables, _common_conf(p, broadcast_disabled=True), query)
+
+
+# Aggregates of the per-key tables (batch 5c); also used by prepare_keytables.py.
+KEY_TABLE_AGG_COLUMNS = {"taxi": ("total_amount", "sum"), "hits": ("EventTime", "max"),
+                         "pageviews": ("views", "sum"), "synthetic": ("id", "max")}
+
+
+def key_table_aggs(kind):
+    col, fn = KEY_TABLE_AGG_COLUMNS[kind]
+    return [F.count(F.lit(1)).alias("key_rows"), getattr(F, fn)(col).alias("key_" + col)]
+
+
 # Experiment name -> (builder, defaults that differ from DEFAULTS).
 EXPERIMENTS = {
     "pilot_null": (null_skew, {}),
@@ -323,6 +387,10 @@ EXPERIMENTS = {
                                "shuffle_partitions": 2001}),
     "exp_h_sample": (null_skew, {"null_share": 0.08, "payload_kind": "mixed", "num_files": 45}),
     "exp_real": (real_query, {}),
+    "exp_real_kt": (real_keytable, {}),
+    "exp_hot_kt": (hot_keytable, {"rows": 55_000_000, "num_files": 44, "payload_kind": "mixed",
+                                  "payload_random_fraction": 1.0, "hot_share": 0.2,
+                                  "null_share": 0.0}),
 }
 
 
