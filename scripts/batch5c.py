@@ -11,7 +11,9 @@
                                       randomized order as one application with
                                       1 warm-up + 2 measured runs
 
-Resumable (done markers in results/batch5c/done). Start or resume with
+Before and after every job scripts/cluster_check.py verifies AC power, the
+running containers and 3 alive workers; on failure the job is not marked done
+and the batch stops. Resumable (done markers in results/batch5c/done). Start or resume with
 scripts/batch5c.sh MODE (runs this under caffeinate).
 """
 
@@ -22,6 +24,8 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+
+import cluster_check
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "results" / "batch5c"
@@ -72,11 +76,19 @@ def run_job(job_id, script, args):
         return csv_path
     if csv_path.exists():
         csv_path.unlink()
+    problems = cluster_check.check()
+    if problems:
+        log("cluster check failed before {}: {}".format(job_id, "; ".join(problems)))
+        sys.exit("unhealthy cluster")
     start = time.time()
     rc = submit(script, args + ["--job-id", job_id, "--csv",
                                 "/opt/project/results/batch5c/jobs/" + csv_path.name],
                 OUT / "logs" / (job_id + ".log"))
     log("{} rc={} {:.0f}s".format(job_id, rc, time.time() - start))
+    problems = cluster_check.check()
+    if problems:
+        log("cluster check failed after {} (job not marked done): {}".format(job_id, "; ".join(problems)))
+        sys.exit("unhealthy cluster")
     if rc == 0 and csv_path.exists():
         (OUT / "done" / job_id).touch()
         return csv_path

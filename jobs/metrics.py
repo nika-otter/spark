@@ -466,6 +466,33 @@ def exchange_details(nodes):
     return out
 
 
+def map_status_sizes(spark):
+    """Map output statuses currently registered on the driver (batch 6, step 4c).
+
+    For every registered shuffle: number of map statuses, the MapStatus
+    class (CompressedMapStatus / HighlyCompressedMapStatus), the in-memory
+    size of the statuses array (org.apache.spark.util.SizeEstimator) and its
+    Java-serialized length (Utils.serialize; what the driver sends is this
+    stream compressed with spark.shuffle.mapStatus.compression.codec).
+    """
+    jvm = spark.sparkContext._jvm
+    tracker = jvm.org.apache.spark.SparkEnv.get().mapOutputTracker()
+    statuses = jvm.scala.collection.JavaConverters.mapAsJavaMap(tracker.shuffleStatuses())
+    out = []
+    for shuffle_id in sorted(statuses.keySet()):
+        arr = statuses.get(shuffle_id).mapStatuses()
+        n = len(arr)
+        first = arr[0] if n else None
+        out.append({
+            "shuffle_id": shuffle_id,
+            "map_statuses": n,
+            "status_class": first.getClass().getSimpleName() if first is not None else None,
+            "size_estimate_bytes": jvm.org.apache.spark.util.SizeEstimator.estimate(arr),
+            "java_serialized_bytes": len(jvm.org.apache.spark.util.Utils.serialize(arr)),
+        })
+    return out
+
+
 def collect(spark, run_label):
     """All metrics of the SQL execution tagged run_label."""
     rest = Rest(spark)

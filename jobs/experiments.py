@@ -13,7 +13,7 @@ import json
 from dataclasses import dataclass
 from typing import Callable, Dict
 
-from pyspark.sql import functions as F
+from pyspark.sql import Window, functions as F
 
 from generate import FILTER_BUCKETS, DimSpec, FactsSpec, KeySpec, KeyTableSpec, RealSpec, \
     manifest_path
@@ -110,6 +110,9 @@ DEFAULTS = {
     "query": "",                        # real_query: natural | lowcard
     "key": "",                          # real_keytable: join key column
     "variant": "",                      # hot_keytable: A (key table from Parquet) | B (inline)
+    "operator": "",                     # operator_query: window | agg
+    "executor_memory": "",              # spark.executor.memory (core conf), "" = cluster default
+    "min_highly_compress": 0,           # > 0: spark.shuffle.minNumPartitionsToHighlyCompress
     "filter_aligned": 0,                # 1: facts keys of filtered dims reference only
                                         #    dim rows that pass the filter
 }
@@ -130,6 +133,10 @@ def _common_conf(p, broadcast_disabled):
         r = p["rule2_ratio"]
         conf["spark.sql.adaptive.advisoryPartitionSizeInBytes"] = str(int(64 * MIB / r))
         conf["spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes"] = str(int(256 * MIB / r))
+    if p["executor_memory"]:
+        conf["spark.executor.memory"] = p["executor_memory"]
+    if p["min_highly_compress"] > 0:
+        conf["spark.shuffle.minNumPartitionsToHighlyCompress"] = str(p["min_highly_compress"])
     if p["num_files"] > 0:
         conf["spark.sql.files.maxPartitionBytes"] = ONE_FILE_PER_TASK_BYTES
         conf["spark.sql.files.openCostInBytes"] = ONE_FILE_PER_TASK_BYTES
@@ -156,6 +163,10 @@ def _suffix(p):
         s += "_f{:g}".format(p["rule2_factor"])
     if p["facts_sample"] > 0:
         s += "_sample{:g}".format(p["facts_sample"])
+    if p["executor_memory"]:
+        s += "_heap" + p["executor_memory"]
+    if p["min_highly_compress"] > 0:
+        s += "_minhc{}".format(p["min_highly_compress"])
     return s
 
 
@@ -347,6 +358,39 @@ def hot_keytable(experiment, p):
     return Scenario(experiment, scenario_id, p, tables, _common_conf(p, broadcast_disabled=True), query)
 
 
+def operator_query(experiment, p):
+    """Batch 6 step 1: a single shuffle-based operator on the facts table.
+
+    window: row_number() OVER (PARTITION BY k ORDER BY id), all columns kept.
+    agg:    GROUP BY id (unique per row), so partial aggregation before the
+            shuffle cannot reduce the row count; the payload is carried
+            through max(payload).
+    """
+    if p["operator"] not in ("window", "agg"):
+        raise ValueError("operator must be window or agg")
+    payload = dict(payload_bytes=p["payload_bytes"], seed=p["seed"], payload_kind=p["payload_kind"],
+                   payload_random_fraction=p["payload_random_fraction"])
+    facts = FactsSpec(rows=p["rows"],
+                      keys=(KeySpec("k", p["n_keys"], hot_share=p["hot_share"],
+                                    null_share=p["null_share"], hot_keys=p["hot_keys"]),),
+                      num_files=p["num_files"], **payload)
+
+    def query(t, mode):
+        f = t["facts"]
+        if p["operator"] == "window":
+            return f.withColumn("rn", F.row_number().over(Window.partitionBy("k").orderBy("id")))
+        return f.groupBy("id").agg(F.max("k").alias("k"), F.max("payload").alias("payload"),
+                                   F.count(F.lit(1)).alias("n"))
+
+    scenario_id = "{}_null{:g}_rows{}_payload{}".format(
+        p["operator"], p["null_share"], p["rows"], p["payload_bytes"])
+    if p["hot_share"] > 0:
+        scenario_id += "_hot{:g}".format(p["hot_share"])
+    scenario_id += _suffix(p)
+    return Scenario(experiment, scenario_id, p, {"facts": facts},
+                    _common_conf(p, broadcast_disabled=True), query)
+
+
 # Aggregates of the per-key tables (batch 5c); also used by prepare_keytables.py.
 KEY_TABLE_AGG_COLUMNS = {"taxi": ("total_amount", "sum"), "hits": ("EventTime", "max"),
                          "pageviews": ("views", "sum"), "synthetic": ("id", "max")}
@@ -388,6 +432,8 @@ EXPERIMENTS = {
     "exp_h_sample": (null_skew, {"null_share": 0.08, "payload_kind": "mixed", "num_files": 45}),
     "exp_real": (real_query, {}),
     "exp_real_kt": (real_keytable, {}),
+    "exp_op": (operator_query, {"rows": 55_000_000, "num_files": 44, "payload_kind": "mixed",
+                                "null_share": 0.0}),
     "exp_hot_kt": (hot_keytable, {"rows": 55_000_000, "num_files": 44, "payload_kind": "mixed",
                                   "payload_random_fraction": 1.0, "hot_share": 0.2,
                                   "null_share": 0.0}),

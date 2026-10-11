@@ -1,0 +1,1 @@
+{"max_safe": "3g", "note": "user decision: third heap level 3g; measured anon peak 5.06-5.35 GiB at heap 4g (worker container, step-0 trials), and one OOM kill at heap 4g in batch 5b"}

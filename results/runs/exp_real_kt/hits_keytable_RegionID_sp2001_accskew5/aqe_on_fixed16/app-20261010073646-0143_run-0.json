@@ -1,0 +1,846 @@
+{
+  "conf": {
+    "spark.app.id": "app-20261010073646-0143",
+    "spark.app.name": "exp_real_kt__hits_keytable_RegionID_sp2001_accskew5__aqe_on_fixed16",
+    "spark.app.startTime": "1791617805493",
+    "spark.app.submitTime": "1791617804899",
+    "spark.cleaner.referenceTracking.blocking.shuffle": "true",
+    "spark.cores.max": "9",
+    "spark.driver.bindAddress": "0.0.0.0",
+    "spark.driver.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-modules=jdk.incubator.vector --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false -Dio.netty.tryReflectionSetAccessible=true -Dio.netty.allocator.type=pooled -Dio.netty.handler.ssl.defaultEndpointVerificationAlgorithm=NONE --enable-native-access=ALL-UNNAMED",
+    "spark.driver.host": "spark-master",
+    "spark.driver.memory": "2g",
+    "spark.driver.port": "41833",
+    "spark.eventLog.compress": "false",
+    "spark.eventLog.dir": "file:/opt/spark-events",
+    "spark.eventLog.enabled": "true",
+    "spark.executor.cores": "3",
+    "spark.executor.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-modules=jdk.incubator.vector --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false -Dio.netty.tryReflectionSetAccessible=true -Dio.netty.allocator.type=pooled -Dio.netty.handler.ssl.defaultEndpointVerificationAlgorithm=NONE --enable-native-access=ALL-UNNAMED",
+    "spark.executor.id": "driver",
+    "spark.executor.memory": "4g",
+    "spark.hadoop.fs.s3a.vectored.read.max.merged.size": "2M",
+    "spark.hadoop.fs.s3a.vectored.read.min.seek.size": "128K",
+    "spark.io.compression.codec": "lz4",
+    "spark.master": "spark://spark-master:7077",
+    "spark.rdd.compress": "True",
+    "spark.serializer.objectStreamReset": "100",
+    "spark.shuffle.accurateBlockSkewedFactor": "5.0",
+    "spark.sql.adaptive.advisoryPartitionSizeInBytes": "16777216",
+    "spark.sql.adaptive.autoBroadcastJoinThreshold": "-1",
+    "spark.sql.adaptive.coalescePartitions.enabled": "true",
+    "spark.sql.adaptive.coalescePartitions.initialPartitionNum": null,
+    "spark.sql.adaptive.coalescePartitions.minPartitionSize": "1048576",
+    "spark.sql.adaptive.coalescePartitions.parallelismFirst": "true",
+    "spark.sql.adaptive.customCostEvaluatorClass": "<undefined>",
+    "spark.sql.adaptive.enabled": "true",
+    "spark.sql.adaptive.forceOptimizeSkewedJoin": "false",
+    "spark.sql.adaptive.localShuffleReader.enabled": "true",
+    "spark.sql.adaptive.maxShuffledHashJoinLocalMapThreshold": "0b",
+    "spark.sql.adaptive.optimizeSkewsInRebalancePartitions.enabled": "true",
+    "spark.sql.adaptive.optimizer.excludedRules": null,
+    "spark.sql.adaptive.rebalancePartitionsSmallPartitionFactor": "0.2",
+    "spark.sql.adaptive.skewJoin.enabled": "true",
+    "spark.sql.adaptive.skewJoin.skewedPartitionFactor": "5.0",
+    "spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes": "67108864",
+    "spark.sql.allowNamedFunctionArguments": "true",
+    "spark.sql.ansi.doubleQuotedIdentifiers": "false",
+    "spark.sql.ansi.enabled": "true",
+    "spark.sql.ansi.enforceReservedKeywords": "false",
+    "spark.sql.ansi.relationPrecedence": "false",
+    "spark.sql.artifact.isolation.enabled": "false",
+    "spark.sql.autoBroadcastJoinThreshold": "-1",
+    "spark.sql.avro.compression.codec": "snappy",
+    "spark.sql.avro.deflate.level": "-1",
+    "spark.sql.avro.filterPushdown.enabled": "true",
+    "spark.sql.avro.xz.level": "6",
+    "spark.sql.avro.zstandard.bufferPool.enabled": "false",
+    "spark.sql.avro.zstandard.level": "3",
+    "spark.sql.binaryOutputStyle": "<undefined>",
+    "spark.sql.broadcastTimeout": "300",
+    "spark.sql.bucketing.coalesceBucketsInJoin.enabled": "false",
+    "spark.sql.bucketing.coalesceBucketsInJoin.maxBucketRatio": "4",
+    "spark.sql.cache.serializer": "org.apache.spark.sql.execution.columnar.DefaultCachedBatchSerializer",
+    "spark.sql.catalog.spark_catalog": "builtin",
+    "spark.sql.catalog.spark_catalog.defaultDatabase": "default",
+    "spark.sql.cbo.enabled": "false",
+    "spark.sql.cbo.joinReorder.dp.star.filter": "false",
+    "spark.sql.cbo.joinReorder.dp.threshold": "12",
+    "spark.sql.cbo.joinReorder.enabled": "false",
+    "spark.sql.cbo.planStats.enabled": "false",
+    "spark.sql.cbo.starSchemaDetection": "false",
+    "spark.sql.charAsVarchar": "false",
+    "spark.sql.chunkBase64String.enabled": "true",
+    "spark.sql.classic.shuffleDependency.fileCleanup.enabled": "false",
+    "spark.sql.cli.print.header": "false",
+    "spark.sql.columnNameOfCorruptRecord": "_corrupt_record",
+    "spark.sql.connect.shuffleDependency.fileCleanup.enabled": "<value of spark.sql.shuffleDependency.fileCleanup.enabled>",
+    "spark.sql.csv.filterPushdown.enabled": "true",
+    "spark.sql.datetime.java8API.enabled": "false",
+    "spark.sql.debug.maxToStringFields": "25",
+    "spark.sql.defaultCacheStorageLevel": "MEMORY_AND_DISK",
+    "spark.sql.defaultCatalog": "spark_catalog",
+    "spark.sql.error.messageFormat": "PRETTY",
+    "spark.sql.event.truncate.length": "2147483647",
+    "spark.sql.execution.arrow.compression.codec": "none",
+    "spark.sql.execution.arrow.compression.zstd.level": "3",
+    "spark.sql.execution.arrow.enabled": "false",
+    "spark.sql.execution.arrow.fallback.enabled": "true",
+    "spark.sql.execution.arrow.localRelationThreshold": "48MB",
+    "spark.sql.execution.arrow.maxRecordsPerBatch": "10000",
+    "spark.sql.execution.arrow.pyspark.enabled": "<value of spark.sql.execution.arrow.enabled>",
+    "spark.sql.execution.arrow.pyspark.fallback.enabled": "<value of spark.sql.execution.arrow.fallback.enabled>",
+    "spark.sql.execution.arrow.pyspark.selfDestruct.enabled": "false",
+    "spark.sql.execution.arrow.pyspark.validateSchema.enabled": "false",
+    "spark.sql.execution.arrow.sparkr.enabled": "false",
+    "spark.sql.execution.arrow.transformWithStateInPySpark.maxStateRecordsPerBatch": "10000",
+    "spark.sql.execution.arrow.useLargeVarTypes": "false",
+    "spark.sql.execution.interruptOnCancel": "true",
+    "spark.sql.execution.pandas.inferPandasDictAsMap": "false",
+    "spark.sql.execution.pandas.structHandlingMode": "legacy",
+    "spark.sql.execution.pandas.udf.buffer.size": "<value of spark.buffer.size>",
+    "spark.sql.execution.pyspark.binaryAsBytes": "true",
+    "spark.sql.execution.pyspark.udf.daemonKillWorkerOnFlushFailure": "<value of spark.python.daemon.killWorkerOnFlushFailure>",
+    "spark.sql.execution.pyspark.udf.faulthandler.enabled": "<value of spark.python.worker.faulthandler.enabled>",
+    "spark.sql.execution.pyspark.udf.hideTraceback.enabled": "false",
+    "spark.sql.execution.pyspark.udf.idleTimeoutSeconds": "<value of spark.python.worker.idleTimeoutSeconds>",
+    "spark.sql.execution.pyspark.udf.killOnIdleTimeout": "<value of spark.python.worker.killOnIdleTimeout>",
+    "spark.sql.execution.pyspark.udf.simplifiedTraceback.enabled": "true",
+    "spark.sql.execution.pyspark.udf.tracebackDumpIntervalSeconds": "<value of spark.python.worker.tracebackDumpIntervalSeconds>",
+    "spark.sql.execution.python.udf.buffer.size": "<value of spark.buffer.size>",
+    "spark.sql.execution.python.udf.maxRecordsPerBatch": "100",
+    "spark.sql.execution.pythonUDF.arrow.concurrency.level": "<undefined>",
+    "spark.sql.execution.pythonUDF.arrow.enabled": "false",
+    "spark.sql.execution.pythonUDF.pandas.intToDecimalCoercionEnabled": "false",
+    "spark.sql.execution.pythonUDTF.arrow.enabled": "false",
+    "spark.sql.execution.topKSortFallbackThreshold": "2147483632",
+    "spark.sql.extendedExplainProviders": "<undefined>",
+    "spark.sql.extensions": "<undefined>",
+    "spark.sql.extensions.test.loadFromCp": "true",
+    "spark.sql.files.ignoreCorruptFiles": "false",
+    "spark.sql.files.ignoreInvalidPartitionPaths": "false",
+    "spark.sql.files.ignoreMissingFiles": "false",
+    "spark.sql.files.maxPartitionBytes": "134217728b",
+    "spark.sql.files.maxPartitionNum": "<undefined>",
+    "spark.sql.files.maxRecordsPerFile": "0",
+    "spark.sql.files.minPartitionNum": "<undefined>",
+    "spark.sql.files.openCostInBytes": "4194304b",
+    "spark.sql.function.concatBinaryAsString": "false",
+    "spark.sql.function.eltOutputAsString": "false",
+    "spark.sql.groupByAliases": "true",
+    "spark.sql.groupByOrdinal": "true",
+    "spark.sql.hive.convertInsertingPartitionedTable": "true",
+    "spark.sql.hive.convertInsertingUnpartitionedTable": "true",
+    "spark.sql.hive.convertMetastoreAsNullable": "false",
+    "spark.sql.hive.convertMetastoreCtas": "true",
+    "spark.sql.hive.convertMetastoreInsertDir": "true",
+    "spark.sql.hive.convertMetastoreOrc": "true",
+    "spark.sql.hive.convertMetastoreParquet": "true",
+    "spark.sql.hive.convertMetastoreParquet.mergeSchema": "false",
+    "spark.sql.hive.dropPartitionByName.enabled": "false",
+    "spark.sql.hive.filesourcePartitionFileCacheSize": "262144000",
+    "spark.sql.hive.manageFilesourcePartitions": "true",
+    "spark.sql.hive.metastore.barrierPrefixes": "",
+    "spark.sql.hive.metastore.jars": "builtin",
+    "spark.sql.hive.metastore.jars.path": "",
+    "spark.sql.hive.metastore.sharedPrefixes": "com.mysql.jdbc,com.mysql.cj,org.postgresql,com.microsoft.sqlserver,oracle.jdbc",
+    "spark.sql.hive.metastore.version": "2.3.10",
+    "spark.sql.hive.metastorePartitionPruning": "true",
+    "spark.sql.hive.metastorePartitionPruningFallbackOnException": "false",
+    "spark.sql.hive.metastorePartitionPruningFastFallback": "false",
+    "spark.sql.hive.thriftServer.async": "true",
+    "spark.sql.hive.thriftServer.singleSession": "false",
+    "spark.sql.hive.version": "2.3.10",
+    "spark.sql.icu.caseMappings.enabled": "true",
+    "spark.sql.inMemoryColumnarStorage.batchSize": "10000",
+    "spark.sql.inMemoryColumnarStorage.compressed": "true",
+    "spark.sql.inMemoryColumnarStorage.enableVectorizedReader": "true",
+    "spark.sql.inMemoryColumnarStorage.hugeVectorReserveRatio": "1.2",
+    "spark.sql.inMemoryColumnarStorage.hugeVectorThreshold": "-1b",
+    "spark.sql.join.preferSortMergeJoin": "true",
+    "spark.sql.json.filterPushdown.enabled": "true",
+    "spark.sql.json.useUnsafeRow": "false",
+    "spark.sql.jsonGenerator.ignoreNullFields": "true",
+    "spark.sql.leafNodeDefaultParallelism": "<undefined>",
+    "spark.sql.legacy.hive.thriftServer.useZeroBasedColumnOrdinalPosition": "false",
+    "spark.sql.mapKeyDedupPolicy": "EXCEPTION",
+    "spark.sql.maven.additionalRemoteRepositories": "https://maven-central.storage-download.googleapis.com/maven2/",
+    "spark.sql.maxBroadcastTableSize": "8589934592b",
+    "spark.sql.maxMetadataStringLength": "100",
+    "spark.sql.maxPlanStringLength": "2147483632",
+    "spark.sql.maxSinglePartitionBytes": "128m",
+    "spark.sql.metadataCacheTTLSeconds": "-1000ms",
+    "spark.sql.operatorPipeSyntaxEnabled": "true",
+    "spark.sql.optimizer.avoidCollapseUDFWithExpensiveExpr": "true",
+    "spark.sql.optimizer.collapseProjectAlwaysInline": "false",
+    "spark.sql.optimizer.dynamicPartitionPruning.enabled": "true",
+    "spark.sql.optimizer.enableCsvExpressionOptimization": "true",
+    "spark.sql.optimizer.enableJsonExpressionOptimization": "true",
+    "spark.sql.optimizer.excludedRules": "<undefined>",
+    "spark.sql.optimizer.runtime.bloomFilter.applicationSideScanSizeThreshold": "10GB",
+    "spark.sql.optimizer.runtime.bloomFilter.creationSideThreshold": "10MB",
+    "spark.sql.optimizer.runtime.bloomFilter.enabled": "true",
+    "spark.sql.optimizer.runtime.bloomFilter.expectedNumItems": "1000000",
+    "spark.sql.optimizer.runtime.bloomFilter.maxNumBits": "67108864",
+    "spark.sql.optimizer.runtime.bloomFilter.maxNumItems": "4000000",
+    "spark.sql.optimizer.runtime.bloomFilter.numBits": "8388608",
+    "spark.sql.optimizer.runtime.rowLevelOperationGroupFilter.enabled": "true",
+    "spark.sql.optimizer.runtimeFilter.number.threshold": "10",
+    "spark.sql.orc.aggregatePushdown": "false",
+    "spark.sql.orc.columnarReaderBatchSize": "4096",
+    "spark.sql.orc.columnarWriterBatchSize": "1024",
+    "spark.sql.orc.compression.codec": "zstd",
+    "spark.sql.orc.enableNestedColumnVectorizedReader": "true",
+    "spark.sql.orc.enableVectorizedReader": "true",
+    "spark.sql.orc.filterPushdown": "true",
+    "spark.sql.orc.mergeSchema": "false",
+    "spark.sql.orderByOrdinal": "true",
+    "spark.sql.parquet.aggregatePushdown": "false",
+    "spark.sql.parquet.binaryAsString": "false",
+    "spark.sql.parquet.columnarReaderBatchSize": "4096",
+    "spark.sql.parquet.compression.codec": "snappy",
+    "spark.sql.parquet.enableNestedColumnVectorizedReader": "true",
+    "spark.sql.parquet.enableVectorizedReader": "true",
+    "spark.sql.parquet.fieldId.read.enabled": "false",
+    "spark.sql.parquet.fieldId.read.ignoreMissing": "false",
+    "spark.sql.parquet.fieldId.write.enabled": "true",
+    "spark.sql.parquet.filterPushdown": "true",
+    "spark.sql.parquet.inferTimestampNTZ.enabled": "true",
+    "spark.sql.parquet.int96AsTimestamp": "true",
+    "spark.sql.parquet.int96TimestampConversion": "false",
+    "spark.sql.parquet.mergeSchema": "false",
+    "spark.sql.parquet.outputTimestampType": "INT96",
+    "spark.sql.parquet.recordLevelFilter.enabled": "false",
+    "spark.sql.parquet.respectSummaryFiles": "false",
+    "spark.sql.parquet.writeLegacyFormat": "false",
+    "spark.sql.parser.quotedRegexColumnNames": "false",
+    "spark.sql.pipelines.maxFlowRetryAttempts": "2",
+    "spark.sql.pivotMaxValues": "10000",
+    "spark.sql.planner.pythonExecution.memory": "<undefined>",
+    "spark.sql.preserveCharVarcharTypeInfo": "false",
+    "spark.sql.pyspark.inferNestedDictAsStruct.enabled": "false",
+    "spark.sql.pyspark.jvmStacktrace.enabled": "false",
+    "spark.sql.pyspark.plotting.max_rows": "1000",
+    "spark.sql.pyspark.udf.profiler": "<undefined>",
+    "spark.sql.pyspark.worker.logging.enabled": "false",
+    "spark.sql.queryExecutionListeners": "<undefined>",
+    "spark.sql.readSideCharPadding": "true",
+    "spark.sql.redaction.options.regex": "(?i)url",
+    "spark.sql.redaction.string.regex": "<value of spark.redaction.string.regex>",
+    "spark.sql.repl.eagerEval.enabled": "false",
+    "spark.sql.repl.eagerEval.maxNumRows": "20",
+    "spark.sql.repl.eagerEval.truncate": "20",
+    "spark.sql.scripting.enabled": "true",
+    "spark.sql.session.localRelationCacheThreshold": "1048576",
+    "spark.sql.session.localRelationChunkSizeBytes": "16777216",
+    "spark.sql.session.localRelationChunkSizeRows": "10000",
+    "spark.sql.session.timeZone": "Etc/UTC",
+    "spark.sql.shuffle.orderIndependentChecksum.enableFullRetryOnMismatch": "false",
+    "spark.sql.shuffle.orderIndependentChecksum.enabled": "false",
+    "spark.sql.shuffle.partitions": "2001",
+    "spark.sql.shuffleDependency.fileCleanup.enabled": "false",
+    "spark.sql.shuffleDependency.skipMigration.enabled": "false",
+    "spark.sql.shuffledHashJoinFactor": "3",
+    "spark.sql.sources.bucketing.autoBucketedScan.enabled": "true",
+    "spark.sql.sources.bucketing.enabled": "true",
+    "spark.sql.sources.bucketing.maxBuckets": "100000",
+    "spark.sql.sources.default": "parquet",
+    "spark.sql.sources.disabledJdbcConnProviderList": "",
+    "spark.sql.sources.parallelPartitionDiscovery.threshold": "32",
+    "spark.sql.sources.partitionColumnTypeInference.enabled": "true",
+    "spark.sql.sources.partitionOverwriteMode": "STATIC",
+    "spark.sql.sources.v2.bucketing.allowCompatibleTransforms.enabled": "false",
+    "spark.sql.sources.v2.bucketing.allowJoinKeysSubsetOfPartitionKeys.enabled": "false",
+    "spark.sql.sources.v2.bucketing.enabled": "true",
+    "spark.sql.sources.v2.bucketing.partiallyClusteredDistribution.enabled": "false",
+    "spark.sql.sources.v2.bucketing.partition.filter.enabled": "false",
+    "spark.sql.sources.v2.bucketing.pushPartValues.enabled": "true",
+    "spark.sql.sources.v2.bucketing.shuffle.enabled": "false",
+    "spark.sql.sources.v2.bucketing.sorting.enabled": "false",
+    "spark.sql.stackTracesInDataFrameContext": "1",
+    "spark.sql.statistics.fallBackToHdfs": "false",
+    "spark.sql.statistics.histogram.enabled": "false",
+    "spark.sql.statistics.size.autoUpdate.enabled": "false",
+    "spark.sql.statistics.updatePartitionStatsInAnalyzeTable.enabled": "false",
+    "spark.sql.storeAssignmentPolicy": "ANSI",
+    "spark.sql.streaming.checkpointLocation": "<undefined>",
+    "spark.sql.streaming.continuous.epochBacklogQueueSize": "10000",
+    "spark.sql.streaming.disabledV2Writers": "",
+    "spark.sql.streaming.fileSource.cleaner.numThreads": "1",
+    "spark.sql.streaming.forceDeleteTempCheckpointLocation": "false",
+    "spark.sql.streaming.metricsEnabled": "false",
+    "spark.sql.streaming.multipleWatermarkPolicy": "min",
+    "spark.sql.streaming.noDataMicroBatches.enabled": "true",
+    "spark.sql.streaming.numRecentProgressUpdates": "100",
+    "spark.sql.streaming.realTimeMode.allowlistCheck": "true",
+    "spark.sql.streaming.realTimeMode.minBatchDuration": "5000ms",
+    "spark.sql.streaming.sessionWindow.merge.sessions.in.local.partition": "false",
+    "spark.sql.streaming.stateStore.commitValidation.enabled": "true",
+    "spark.sql.streaming.stateStore.encodingFormat": "unsaferow",
+    "spark.sql.streaming.stateStore.stateSchemaCheck": "true",
+    "spark.sql.streaming.stopActiveRunOnRestart": "true",
+    "spark.sql.streaming.stopTimeout": "0",
+    "spark.sql.streaming.streamingQueryListeners": "<undefined>",
+    "spark.sql.streaming.transformWithState.stateSchemaVersion": "3",
+    "spark.sql.streaming.ui.enabled": "true",
+    "spark.sql.streaming.ui.retainedProgressUpdates": "100",
+    "spark.sql.streaming.ui.retainedQueries": "100",
+    "spark.sql.thriftServer.interruptOnCancel": "<value of spark.sql.execution.interruptOnCancel>",
+    "spark.sql.thriftServer.queryTimeout": "0ms",
+    "spark.sql.thriftserver.scheduler.pool": "<undefined>",
+    "spark.sql.thriftserver.ui.retainedSessions": "200",
+    "spark.sql.thriftserver.ui.retainedStatements": "200",
+    "spark.sql.timeTravelTimestampKey": "timestampAsOf",
+    "spark.sql.timeTravelVersionKey": "versionAsOf",
+    "spark.sql.timestampType": "TIMESTAMP_LTZ",
+    "spark.sql.transposeMaxValues": "500",
+    "spark.sql.tvf.allowMultipleTableArguments.enabled": "false",
+    "spark.sql.udt.allowCreatingUDTFromString": "true",
+    "spark.sql.udt.allowedDynamicUDTClasses": "",
+    "spark.sql.ui.explainMode": "formatted",
+    "spark.sql.ui.retainedExecutions": "1000",
+    "spark.sql.variable.substitute": "true",
+    "spark.sql.warehouse.dir": "file:/opt/spark/work-dir/spark-warehouse",
+    "spark.submit.deployMode": "client",
+    "spark.submit.pyFiles": ""
+  },
+  "datasets": [
+    {
+      "dataset_id": "real_hits",
+      "generated_at": "2026-10-07T16:23:56",
+      "keys": {
+        "CounterID": {
+          "distinct": 6506,
+          "null_rows": 0,
+          "top1_share": 0.08527283437904451,
+          "top5": [
+            {
+              "key": [
+                "3922"
+              ],
+              "rows": 8527070,
+              "share": 0.08527283437904451
+            },
+            {
+              "key": [
+                "199550"
+              ],
+              "rows": 7115413,
+              "share": 0.07115591103245314
+            },
+            {
+              "key": [
+                "105857"
+              ],
+              "rows": 5783214,
+              "share": 0.057833587574697
+            },
+            {
+              "key": [
+                "46429"
+              ],
+              "rows": 4556155,
+              "share": 0.045562690434141566
+            },
+            {
+              "key": [
+                "225510"
+              ],
+              "rows": 4226610,
+              "share": 0.04226715794696341
+            }
+          ],
+          "top5_share": 0.30209218136729965
+        },
+        "RegionID": {
+          "distinct": 9040,
+          "null_rows": 0,
+          "top1_share": 0.182962899561376,
+          "top5": [
+            {
+              "key": [
+                "229"
+              ],
+              "rows": 18295832,
+              "share": 0.182962899561376
+            },
+            {
+              "key": [
+                "2"
+              ],
+              "rows": 6687587,
+              "share": 0.06687754394492494
+            },
+            {
+              "key": [
+                "208"
+              ],
+              "rows": 4261812,
+              "share": 0.04261918675824456
+            },
+            {
+              "key": [
+                "169"
+              ],
+              "rows": 3320229,
+              "share": 0.03320312107412048
+            },
+            {
+              "key": [
+                "32"
+              ],
+              "rows": 1843518,
+              "share": 0.018435641444105345
+            }
+          ],
+          "top5_share": 0.3440983927827714
+        },
+        "UserID": {
+          "distinct": 17630976,
+          "null_rows": 0,
+          "top1_share": 0.00029097728316139753,
+          "top5": [
+            {
+              "key": [
+                "1313338681122956954"
+              ],
+              "rows": 29097,
+              "share": 0.00029097728316139753
+            },
+            {
+              "key": [
+                "1907779576417363396"
+              ],
+              "rows": 25333,
+              "share": 0.00025333634100861544
+            },
+            {
+              "key": [
+                "2305303682471783379"
+              ],
+              "rows": 10597,
+              "share": 0.00010597265249549196
+            },
+            {
+              "key": [
+                "7982623143712728547"
+              ],
+              "rows": 7584,
+              "share": 7.584189832271502e-05
+            },
+            {
+              "key": [
+                "6018350421959114808"
+              ],
+              "rows": 6678,
+              "share": 6.678167154523878e-05
+            }
+          ],
+          "top5_share": 0.0007929098465334587
+        }
+      },
+      "path": "/opt/spark-data/datasets/real_hits/data",
+      "row_count": 99997497,
+      "schema": "struct<WatchID:bigint,UserID:bigint,CounterID:int,RegionID:int,EventTime:bigint,EventDate:int,ClientIP:int,OS:smallint,ResolutionWidth:smallint,IsRefresh:smallint,TraficSourceID:smallint,SearchEngineID:smallint,AdvEngineID:smallint,URL:string,Title:string>",
+      "sources": [
+        "/opt/spark-data/raw/hits/hits.parquet"
+      ],
+      "spark_version": "4.1.3",
+      "table": "facts",
+      "write_and_stats_seconds": 100.1
+    },
+    {
+      "dataset_id": "real_hits_keys_RegionID",
+      "fact_partitions": {
+        "200": {
+          "largest_bytes": 5658274664,
+          "largest_pid": 100,
+          "largest_rows": 18347476,
+          "median_bytes": 47341204.0,
+          "non_empty": 200,
+          "partitions": 200,
+          "total_bytes": 31962608136
+        },
+        "2001": {
+          "largest_bytes": 5642760368,
+          "largest_pid": 185,
+          "largest_rows": 18297946,
+          "median_bytes": 297640.0,
+          "non_empty": 1971,
+          "partitions": 2001,
+          "total_bytes": 31962608136
+        }
+      },
+      "fact_rows": 99997497,
+      "facts_dataset_id": "real_hits",
+      "generated_at": "2026-10-08T18:20:41",
+      "key": "RegionID",
+      "path": "/opt/spark-data/datasets/real_hits_keys_RegionID/data",
+      "row_count": 9040,
+      "schema": "struct<RegionID:int,key_rows:bigint,key_EventTime:bigint>",
+      "seconds": 45.9,
+      "spark_version": "4.1.3",
+      "table": "keys"
+    }
+  ],
+  "elapsed_seconds": 108.011,
+  "environment": {
+    "application_id": "app-20261010073646-0143",
+    "machine": "aarch64",
+    "python_version": "3.10.12",
+    "spark_version": "4.1.3"
+  },
+  "experiment": "exp_real_kt",
+  "is_warmup": true,
+  "job_id": "s2_r3_24_hits_RegionID_sp2001_aqe_on_fixed16",
+  "json_path": "../../runs/exp_real_kt/hits_keytable_RegionID_sp2001_accskew5/aqe_on_fixed16/app-20261010073646-0143_run-0.json",
+  "metrics": {
+    "aqe": {
+      "exchanges": [
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n282.5 KiB (76.1 KiB, 76.1 KiB, 130.3 KiB (stage 3.0: task 83))",
+          "node_id": 15,
+          "partitions": 2001,
+          "records_written": "9,040",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n395.0 KiB (115.2 KiB, 116.0 KiB, 163.8 KiB (stage 3.0: task 83))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n29.8 GiB (195.0 MiB, 361.9 MiB, 678.5 MiB (stage 2.0: task 9))",
+          "node_id": 8,
+          "partitions": 2001,
+          "records_written": "99,997,497",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n9.3 GiB (64.5 MiB, 114.3 MiB, 179.0 MiB (stage 2.0: task 79))"
+        }
+      ],
+      "partitions_after": [
+        611
+      ],
+      "partitions_before": [
+        2001
+      ],
+      "shuffle_readers": [
+        {
+          "coalesced_partitions": 175,
+          "empty_partitions": 30,
+          "node_id": 14,
+          "node_name": "AQEShuffleRead",
+          "partition_data_size": "total (min, med, max (stageId: taskId))\n473.3 KiB (84.0 B, 264.0 B, 5.5 KiB (driver))",
+          "partitions": 611,
+          "skew_splits": null,
+          "skewed_partitions": null
+        },
+        {
+          "coalesced_partitions": 175,
+          "empty_partitions": 30,
+          "node_id": 7,
+          "node_name": "AQEShuffleRead",
+          "partition_data_size": "total (min, med, max (stageId: taskId))\n9.6 GiB (1027.9 KiB, 15.2 MiB, 63.8 MiB (driver))",
+          "partitions": 611,
+          "skew_splits": 373,
+          "skewed_partitions": 29
+        }
+      ],
+      "skew_join_applied": true,
+      "skew_splits": 373,
+      "skewed_partitions": 29
+    },
+    "compression_ratio_facts": 3.204301075268817,
+    "compression_ratio_overall": 3.204200256603881,
+    "exchanges_detail": [
+      {
+        "data_size_bytes": 31997506355.2,
+        "desc": "Exchange hashpartitioning(RegionID#27, 2001), ENSURE_REQUIREMENTS, [plan_id=54]",
+        "node_id": 8,
+        "partition_key": "RegionID",
+        "ratio": 3.204301075268817,
+        "records_written": 99997497,
+        "shuffle_bytes_written": 9985798963.2
+      },
+      {
+        "data_size_bytes": 289280.0,
+        "desc": "Exchange hashpartitioning(RegionID#39, 2001), ENSURE_REQUIREMENTS, [plan_id=74]",
+        "node_id": 15,
+        "partition_key": "RegionID",
+        "ratio": 0.7151898734177216,
+        "records_written": 9040,
+        "shuffle_bytes_written": 404480.0
+      }
+    ],
+    "facts_scan_map_tasks": 81,
+    "facts_scan_stage_id": 2,
+    "final_physical_plan": "== Physical Plan ==\nOverwriteByExpression (25)\n+- AdaptiveSparkPlan (24)\n   +- == Final Plan ==\n      ResultQueryStage (16), Statistics(sizeInBytes=8.0 EiB)\n      +- * Project (15)\n         +- * SortMergeJoin(skew=true) LeftOuter (14)\n            :- * Sort (6)\n            :  +- AQEShuffleRead (5)\n            :     +- ShuffleQueryStage (4), Statistics(sizeInBytes=29.8 GiB, rowCount=1.00E+8)\n            :        +- Exchange (3)\n            :           +- * ColumnarToRow (2)\n            :              +- Scan parquet  (1)\n            +- * Sort (13)\n               +- AQEShuffleRead (12)\n                  +- ShuffleQueryStage (11), Statistics(sizeInBytes=282.5 KiB, rowCount=9.04E+3)\n                     +- Exchange (10)\n                        +- * Filter (9)\n                           +- * ColumnarToRow (8)\n                              +- Scan parquet  (7)\n   +- == Initial Plan ==\n      Project (23)\n      +- SortMergeJoin LeftOuter (22)\n         :- Sort (18)\n         :  +- Exchange (17)\n         :     +- Scan parquet  (1)\n         +- Sort (21)\n            +- Exchange (20)\n               +- Filter (19)\n                  +- Scan parquet  (7)\n\n\n(1) Scan parquet \nOutput [15]: [WatchID#24L, UserID#25L, CounterID#26, RegionID#27, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/real_hits/data]\nReadSchema: struct<WatchID:bigint,UserID:bigint,CounterID:int,RegionID:int,EventTime:bigint,EventDate:int,ClientIP:int,OS:smallint,ResolutionWidth:smallint,IsRefresh:smallint,TraficSourceID:smallint,SearchEngineID:smallint,AdvEngineID:smallint,URL:string,Title:string>\n\n(2) ColumnarToRow [codegen id : 1]\nInput [15]: [WatchID#24L, UserID#25L, CounterID#26, RegionID#27, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38]\n\n(3) Exchange\nInput [15]: [WatchID#24L, UserID#25L, CounterID#26, RegionID#27, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38]\nArguments: hashpartitioning(RegionID#27, 2001), ENSURE_REQUIREMENTS, [plan_id=54]\n\n(4) ShuffleQueryStage\nOutput [15]: [WatchID#24L, UserID#25L, CounterID#26, RegionID#27, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38]\nArguments: 0\n\n(5) AQEShuffleRead\nInput [15]: [WatchID#24L, UserID#25L, CounterID#26, RegionID#27, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38]\nArguments: coalesced and skewed\n\n(6) Sort [codegen id : 3]\nInput [15]: [WatchID#24L, UserID#25L, CounterID#26, RegionID#27, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38]\nArguments: [RegionID#27 ASC NULLS FIRST], false, 0\n\n(7) Scan parquet \nOutput [3]: [RegionID#39, key_rows#40L, key_EventTime#41L]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/real_hits_keys_RegionID/data]\nPushedFilters: [IsNotNull(RegionID)]\nReadSchema: struct<RegionID:int,key_rows:bigint,key_EventTime:bigint>\n\n(8) ColumnarToRow [codegen id : 2]\nInput [3]: [RegionID#39, key_rows#40L, key_EventTime#41L]\n\n(9) Filter [codegen id : 2]\nInput [3]: [RegionID#39, key_rows#40L, key_EventTime#41L]\nCondition : isnotnull(RegionID#39)\n\n(10) Exchange\nInput [3]: [RegionID#39, key_rows#40L, key_EventTime#41L]\nArguments: hashpartitioning(RegionID#39, 2001), ENSURE_REQUIREMENTS, [plan_id=74]\n\n(11) ShuffleQueryStage\nOutput [3]: [RegionID#39, key_rows#40L, key_EventTime#41L]\nArguments: 1\n\n(12) AQEShuffleRead\nInput [3]: [RegionID#39, key_rows#40L, key_EventTime#41L]\nArguments: coalesced\n\n(13) Sort [codegen id : 4]\nInput [3]: [RegionID#39, key_rows#40L, key_EventTime#41L]\nArguments: [RegionID#39 ASC NULLS FIRST], false, 0\n\n(14) SortMergeJoin(skew=true) [codegen id : 5]\nLeft keys [1]: [RegionID#27]\nRight keys [1]: [RegionID#39]\nJoin type: LeftOuter\nJoin condition: None\n\n(15) Project [codegen id : 5]\nOutput [17]: [RegionID#27, WatchID#24L, UserID#25L, CounterID#26, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38, key_rows#40L, key_EventTime#41L]\nInput [18]: [WatchID#24L, UserID#25L, CounterID#26, RegionID#27, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38, RegionID#39, key_rows#40L, key_EventTime#41L]\n\n(16) ResultQueryStage\nOutput [17]: [RegionID#27, WatchID#24L, UserID#25L, CounterID#26, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38, key_rows#40L, key_EventTime#41L]\nArguments: 2\n\n(17) Exchange\nInput [15]: [WatchID#24L, UserID#25L, CounterID#26, RegionID#27, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38]\nArguments: hashpartitioning(RegionID#27, 2001), ENSURE_REQUIREMENTS, [plan_id=39]\n\n(18) Sort\nInput [15]: [WatchID#24L, UserID#25L, CounterID#26, RegionID#27, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38]\nArguments: [RegionID#27 ASC NULLS FIRST], false, 0\n\n(19) Filter\nInput [3]: [RegionID#39, key_rows#40L, key_EventTime#41L]\nCondition : isnotnull(RegionID#39)\n\n(20) Exchange\nInput [3]: [RegionID#39, key_rows#40L, key_EventTime#41L]\nArguments: hashpartitioning(RegionID#39, 2001), ENSURE_REQUIREMENTS, [plan_id=40]\n\n(21) Sort\nInput [3]: [RegionID#39, key_rows#40L, key_EventTime#41L]\nArguments: [RegionID#39 ASC NULLS FIRST], false, 0\n\n(22) SortMergeJoin\nLeft keys [1]: [RegionID#27]\nRight keys [1]: [RegionID#39]\nJoin type: LeftOuter\nJoin condition: None\n\n(23) Project\nOutput [17]: [RegionID#27, WatchID#24L, UserID#25L, CounterID#26, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38, key_rows#40L, key_EventTime#41L]\nInput [18]: [WatchID#24L, UserID#25L, CounterID#26, RegionID#27, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38, RegionID#39, key_rows#40L, key_EventTime#41L]\n\n(24) AdaptiveSparkPlan\nOutput [17]: [RegionID#27, WatchID#24L, UserID#25L, CounterID#26, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38, key_rows#40L, key_EventTime#41L]\nArguments: isFinalPlan=true\n\n(25) OverwriteByExpression\nInput [17]: [RegionID#27, WatchID#24L, UserID#25L, CounterID#26, EventTime#28L, EventDate#29, ClientIP#30, OS#31, ResolutionWidth#32, IsRefresh#33, TraficSourceID#34, SearchEngineID#35, AdvEngineID#36, URL#37, Title#38, key_rows#40L, key_EventTime#41L]\nArguments: NoopWrite\n\n",
+    "join_stage": {
+      "attempt_id": 0,
+      "duration_ms": {
+        "count": 611,
+        "max": 2875,
+        "median": 599,
+        "min": 27,
+        "p95": 1533
+      },
+      "gc_time_ms": {
+        "count": 611,
+        "max": 194,
+        "median": 0,
+        "min": 0,
+        "p95": 90
+      },
+      "join_stage_ambiguous": false,
+      "peak_execution_memory_bytes": {
+        "count": 611,
+        "max": 302055296,
+        "median": 109117392,
+        "min": 67239904,
+        "p95": 184614832
+      },
+      "shuffle_read_bytes": {
+        "count": 611,
+        "max": 63682044,
+        "median": 15134261,
+        "min": 60180,
+        "p95": 36143823
+      },
+      "spill_disk_bytes": {
+        "count": 611,
+        "max": 0,
+        "median": 0,
+        "min": 0,
+        "p95": 0
+      },
+      "spill_memory_bytes": {
+        "count": 611,
+        "max": 0,
+        "median": 0,
+        "min": 0,
+        "p95": 0
+      },
+      "stage_duration_ms": 48415.0,
+      "stage_id": 6,
+      "task_read_max_over_median": 4.20780664480413,
+      "tasks": 611,
+      "tasks_per_host": {
+        "spark-worker-1": 214,
+        "spark-worker-2": 229,
+        "spark-worker-3": 168
+      }
+    },
+    "join_strategies": {
+      "BroadcastHashJoin": 0,
+      "BroadcastNestedLoopJoin": 0,
+      "CartesianProduct": 0,
+      "ShuffledHashJoin": 0,
+      "SortMergeJoin": 1
+    },
+    "joins": [
+      {
+        "build_side": null,
+        "desc": "SortMergeJoin(skew=true) [RegionID#27], [RegionID#39], LeftOuter",
+        "is_top_join": true,
+        "join_type": "LeftOuter",
+        "left_keys": "RegionID",
+        "node_id": 4,
+        "output_rows": 99997497,
+        "right_keys": "RegionID",
+        "shuffle_readers": [
+          {
+            "exchange_desc": "Exchange hashpartitioning(RegionID#39, 2001), ENSURE_REQUIREMENTS, [plan_id=74]",
+            "exchange_node_id": 15,
+            "node_id": 14,
+            "partitions": 611,
+            "skew_splits": null,
+            "skewed_partitions": null
+          },
+          {
+            "exchange_desc": "Exchange hashpartitioning(RegionID#27, 2001), ENSURE_REQUIREMENTS, [plan_id=54]",
+            "exchange_node_id": 8,
+            "node_id": 7,
+            "partitions": 611,
+            "skew_splits": 373,
+            "skewed_partitions": 29
+          }
+        ],
+        "skew_join_flag": true,
+        "skew_splits": 373,
+        "skewed_partitions": 29,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 48415.0,
+          "executor_run_time_ms": 413825,
+          "gc_time_ms": 8914,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 611,
+          "num_failed_tasks": 0,
+          "num_tasks": 611,
+          "shuffle_read_bytes": 9949939122,
+          "shuffle_write_bytes": 0,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 6,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 611,
+            "max": 2875,
+            "median": 599,
+            "min": 27,
+            "p95": 1533
+          },
+          "task_shuffle_read_bytes": {
+            "count": 611,
+            "max": 63682044,
+            "median": 15134261,
+            "min": 60180,
+            "p95": 36143823
+          }
+        },
+        "stages": [
+          [
+            6,
+            0
+          ]
+        ],
+        "strategy": "SortMergeJoin"
+      }
+    ],
+    "num_stages": 3,
+    "output_rows": 99997497,
+    "shuffle_exchanges": 2,
+    "sql_duration_ms": 107970,
+    "sql_execution_id": 4,
+    "sql_status": "COMPLETED",
+    "stages": [
+      {
+        "attempt_id": 0,
+        "duration_ms": 57694.0,
+        "executor_run_time_ms": 497886,
+        "gc_time_ms": 14580,
+        "input_bytes": 887018,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 81,
+        "num_failed_tasks": 0,
+        "num_tasks": 81,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 9949447057,
+        "spill_disk_bytes": 139739749,
+        "spill_memory_bytes": 704642736,
+        "stage_id": 2,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 54536.0,
+        "executor_run_time_ms": 1371,
+        "gc_time_ms": 116,
+        "input_bytes": 10053,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 3,
+        "num_failed_tasks": 0,
+        "num_tasks": 3,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 404446,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 3,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": null,
+        "executor_run_time_ms": 0,
+        "gc_time_ms": 0,
+        "input_bytes": 0,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 0,
+        "num_failed_tasks": 0,
+        "num_tasks": 81,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 4,
+        "status": "SKIPPED"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": null,
+        "executor_run_time_ms": 0,
+        "gc_time_ms": 0,
+        "input_bytes": 0,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 0,
+        "num_failed_tasks": 0,
+        "num_tasks": 3,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 5,
+        "status": "SKIPPED"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 48415.0,
+        "executor_run_time_ms": 413825,
+        "gc_time_ms": 8914,
+        "input_bytes": 0,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 611,
+        "num_failed_tasks": 0,
+        "num_tasks": 611,
+        "shuffle_read_bytes": 9949939122,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 6,
+        "status": "COMPLETE"
+      }
+    ],
+    "totals": {
+      "executor_run_time_ms": 913082,
+      "gc_time_ms": 23610,
+      "num_tasks": 695,
+      "shuffle_read_bytes": 9949939122,
+      "shuffle_write_bytes": 9949851503,
+      "skipped_stages": 2,
+      "spill_disk_bytes": 139739749,
+      "spill_memory_bytes": 704642736
+    }
+  },
+  "mode": "aqe_on_fixed16",
+  "params": {
+    "accurate_skew_factor": 5.0,
+    "codec": "lz4",
+    "dataset": "hits",
+    "dim_payload_bytes": 20,
+    "executor_memory": "",
+    "facts_sample": 0.0,
+    "filter_aligned": 0,
+    "filter_buckets_kept": 10,
+    "hot_keys": 1,
+    "hot_share": 0.0,
+    "join": "left",
+    "join_key": "RegionID",
+    "key": "RegionID",
+    "match_rate": 1.0,
+    "min_highly_compress": 0,
+    "n_dims": 0,
+    "n_keys": 1000000,
+    "null_key": 1,
+    "null_share": 0.0,
+    "num_files": 0,
+    "operator": "",
+    "payload_bytes": 100,
+    "payload_kind": "hex",
+    "payload_random_fraction": 1.0,
+    "query": "",
+    "rows": 55000000,
+    "rule2_factor": 1.0,
+    "rule2_ratio": 0.0,
+    "seed": 42,
+    "shuffle_partitions": 2001,
+    "variant": ""
+  },
+  "recorded_at": "2026-10-10T07:38:40",
+  "run_index": 0,
+  "run_label": "hits_keytable_RegionID_sp2001_accskew5|aqe_on_fixed16|run-0",
+  "scenario_id": "hits_keytable_RegionID_sp2001_accskew5"
+}

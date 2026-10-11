@@ -801,12 +801,132 @@ def fig_exp_hot_kt():
     save(fig, "exp_hot_kt")
 
 
+OP_MODES = ("aqe_off", "aqe_on", "aqe_on_fixed16", "aqe_on_rule2")
+
+
+def fig_exp_op():
+    s = pd.read_csv(RESULTS / "exp_op_summary.csv")
+    s = s[~s["label"].str.startswith("window_hot")].copy()
+    s["op"] = s["label"].str.split("_").str[0]
+    s["level"] = s["label"].str.split("_").str[1]
+    s["sp"] = s["label"].str.extract(r"_sp(\d+)_")[0].astype(int)
+    panels = (("window", 200), ("window", 2001), ("agg", 200), ("agg", 2001))
+    names = {"window": "Window: row_number() OVER (PARTITION BY k ORDER BY id)",
+             "agg": "Агрегація GROUP BY id"}
+    fig, axes = plt.subplots(2, 4, figsize=(13.0, 6.2))
+    for col, (op, sp) in enumerate(panels):
+        d = s[(s["op"] == op) & (s["sp"] == sp)]
+        groups = [{r["mode"]: r for _, r in d[d["level"] == lv].iterrows()} for lv in ("1x", "8x")]
+        for row, (prefix, ylabel) in enumerate((("wall_s", "Час виконання запиту, с"),
+                                                ("longest_join_task_s", "Найдовша задача стадії після shuffle, с"))):
+            ax = axes[row, col]
+            grouped_bars(ax, groups, OP_MODES, prefix + "_median", prefix + "_q25", prefix + "_q75")
+            ax.set_xticks([0, 1])
+            ax.set_xticklabels(["рівень 1x", "рівень 8x"])
+            style(ax, ylabel if col == 0 else "")
+        axes[0, col].set_title("{},\n{} {}".format(names[op].split(":")[0], sp, "партиція" if sp == 2001 else "партицій"),
+                               loc="left", fontsize=9)
+    handles, labels = axes[0, 0].get_legend_handles_labels()
+    labels = [l + (" (+ правило 1 при 2001)" if "фікс" in l or "правило 2" in l else "") for l in labels]
+    fig.legend(handles, labels, frameon=False, loc="lower center", ncol=4)
+    fig.suptitle("Batch 6, крок 1: оператори без join, 55 млн рядків, без NULL ({})".format(IQR_NOTE),
+                 fontsize=9, x=0.01, ha="left")
+    fig.tight_layout(rect=(0, 0.06, 1, 1))
+    save(fig, "exp_op")
+
+
+ZSTD_POINTS = (("taxi", "таксі\nPULocationID"), ("hits", "hits\nRegionID"), ("pageviews", "pageviews\nproject"))
+ZSTD_MODES = {200: ("aqe_off", "aqe_on", "aqe_on_fixed16", "aqe_on_rule2"),
+              2001: ("aqe_off", "aqe_on", "aqe_on_fixed16", "aqe_on_rules12")}
+
+
+def fig_exp_zstd():
+    s = pd.read_csv(RESULTS / "exp_zstd_kt_summary.csv")
+    fig, axes = plt.subplots(2, 2, figsize=(11.0, 6.4))
+    for col, sp in enumerate((200, 2001)):
+        d = s[s["shuffle_partitions"] == sp]
+        groups = [{r["mode"]: r for _, r in d[d["dataset"] == ds].iterrows()} for ds, _ in ZSTD_POINTS]
+        for row, (prefix, ylabel) in enumerate((("wall_s", "Час виконання запиту, с"),
+                                                ("longest_join_task_s", "Найдовша задача join-стадії, с"))):
+            ax = axes[row, col]
+            grouped_bars(ax, groups, ZSTD_MODES[sp], prefix + "_median", prefix + "_q25", prefix + "_q75")
+            ax.set_xticks(range(len(ZSTD_POINTS)))
+            ax.set_xticklabels([l for _, l in ZSTD_POINTS], fontsize=7.5)
+            style(ax, ylabel if col == 0 else "")
+        axes[0, col].set_title("{} {}".format(sp, "партиція (fixed16 + правило 1)" if sp == 2001 else "партицій"),
+                               loc="left")
+    h0, l0 = axes[0, 0].get_legend_handles_labels()
+    h1, l1 = axes[0, 1].get_legend_handles_labels()
+    seen = {}
+    for h, l in list(zip(h0, l0)) + list(zip(h1, l1)):
+        seen.setdefault(l, h)
+    fig.legend(list(seen.values()), list(seen), frameon=False, loc="lower center", ncol=3)
+    fig.suptitle("Batch 6, крок 2: zstd, реальні дані, таблиця ключів з Parquet, broadcast вимкнено ({})".format(IQR_NOTE),
+                 fontsize=9, x=0.01, ha="left")
+    fig.tight_layout(rect=(0, 0.08, 1, 1))
+    save(fig, "exp_zstd")
+
+
+def fig_exp_mem():
+    s = pd.read_csv(RESULTS / "exp_mem_summary.csv")
+    s["heap"] = s["executor_memory"].str.rstrip("g").astype(int)
+    s["scen"] = s["label"].str.extract(r"^mem\dg_(.*)_aqe")[0]
+    scen = (("8x_null0_sp2001", "8x, без NULL, 2001 партиція", ("aqe_off", "aqe_on", "aqe_on_rules12")),
+            ("4x_null0.08_sp200", "4x, 8 % NULL, 200 партицій", ("aqe_off", "aqe_on", "aqe_on_rule2")))
+    fig, axes = plt.subplots(2, 3, figsize=(11.0, 6.0))
+    for row, (key, title, modes) in enumerate(scen):
+        d = s[s["scen"] == key]
+        for col, (prefix, ylabel, iqr) in enumerate((("wall_s", "Час виконання запиту, с", True),
+                                                     ("longest_join_task_s", "Найдовша задача join-стадії, с", True),
+                                                     ("spill_disk_mib", "Spill на диск, МіБ", False))):
+            ax = axes[row, col]
+            for mode in modes:
+                m = d[d["mode"] == mode].sort_values("heap")
+                if iqr:
+                    series(ax, m["heap"], m[prefix + "_median"], m[prefix + "_q25"], m[prefix + "_q75"], mode)
+                else:
+                    c, mk, name = MODE[mode]
+                    ax.plot(m["heap"], m[prefix + "_median"], color=c, marker=mk, linewidth=1.8, label=name)
+            ax.set_xticks([2, 3, 4])
+            style(ax, ylabel, "Heap executor-а, ГіБ")
+        axes[row, 0].set_title(title, loc="left")
+        axes[row, 0].legend(frameon=False, loc="upper left", fontsize=7)
+    fig.suptitle("Batch 6, крок 3: пам'ять executor-а, 55 млн рядків, LEFT JOIN ({}; spill — медіана)".format(IQR_NOTE),
+                 fontsize=9, x=0.01, ha="left")
+    fig.tight_layout()
+    save(fig, "exp_mem")
+
+
+def fig_step4a():
+    fig, axes = plt.subplots(1, 2, figsize=(11.0, 3.4), sharey=True)
+    for ax, key in zip(axes, ("CounterID", "RegionID")):
+        d = pd.read_csv(RESULTS / "step4a_{}_blocks.csv".format(key)).sort_values("map_index")
+        ax.bar(d["map_index"], d["block_bytes_exact"] / MIB_F, color=C["blue"], width=0.8, label="точний розмір блоку")
+        ax.plot(d["map_index"], d["block_bytes_reported"] / MIB_F, color=C["orange"], marker="o", markersize=2.5,
+                linestyle="none", label="розмір у MapStatus (бачить AQE)")
+        ax.axhline(100, color="#52514e", linestyle="--", linewidth=0.9)
+        summ = json.load(open(RESULTS / "step4a_{}_summary.json".format(key)))
+        style(ax, "Блок гарячої партиції, МіБ (стиснений)" if key == "CounterID" else "",
+              "Map-задача (індекс)", "hits {} = {}: {} рядків у {} з {} map-задач".format(
+                  key, summ["hot_value"], "{:,}".format(summ["hot_rows"]).replace(",", " "),
+                  summ["map_tasks_with_hot_rows"], summ["map_tasks"]))
+    axes[0].legend(frameon=False, loc="upper right", fontsize=7)
+    fig.suptitle("Batch 6, крок 4a: блоки гарячої reduce-партиції по map-задачах, 2001 партиція, AQE off "
+                 "(пунктир — 100 МіБ, spark.shuffle.accurateBlockThreshold)", fontsize=9, x=0.01, ha="left")
+    fig.tight_layout()
+    save(fig, "step4a_blocks")
+
+
+MIB_F = 1024 * 1024
+
+
 FIGS = {"pilot_null": fig_pilot, "exp_a": fig_exp_a, "exp_b": fig_exp_b,
         "exp_c2": fig_exp_c2, "exp_d": fig_exp_d, "exp_d2": fig_exp_d2,
         "exp_d2_stress": fig_exp_d2_stress, "exp_e": fig_exp_e, "exp_f": fig_exp_f,
         "spark35": fig_spark35, "tpc_ratios": fig_tpc_ratios, "tpc_timing": fig_tpc_timing,
         "exp_g": fig_exp_g, "exp_h": fig_exp_h, "exp_real": fig_exp_real,
-        "exp_real_kt": fig_exp_real_kt, "exp_hot_kt": fig_exp_hot_kt}
+        "exp_real_kt": fig_exp_real_kt, "exp_hot_kt": fig_exp_hot_kt,
+        "exp_op": fig_exp_op, "exp_zstd": fig_exp_zstd, "exp_mem": fig_exp_mem, "step4a_blocks": fig_step4a}
 
 
 def main():

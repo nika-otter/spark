@@ -66,6 +66,13 @@ skew, data size, shuffle partition count, compression and multi-join pipelines.
 - The Mac must be on AC power; host sleep once invalidated a whole grid
   (`results/pilot_null_attempt1_host_sleep/`). Check `pmset -g log` after a batch.
 - Wait for a background batch with a background `until ...; do sleep 60; done` task.
+- Batch scripts call `scripts/cluster_check.py` before and after every job (AC power,
+  all containers running, 3 alive workers) and stop otherwise. Needed because a worker
+  was OOM-killed at heap 4g (2026-10-08) and runs silently continued on 2 executors;
+  `caffeinate` does not prevent sleep on battery. Invalid runs are kept in
+  `results/*_invalid_*` and excluded.
+- Batch 5+ code: `jobs/run_bench.py` (TPC), `jobs/prepare_real.py`, `jobs/prepare_keytables.py`,
+  `jobs/shuffle_blocks.py`, `scripts/aqe_advisor.py`; analyses `analysis/batch5*.py`, `batch6.py`.
 
 ## Where things are
 - Run records: `results/runs/<experiment>/<scenario>/<mode>/<app>_run-<i>.json`;

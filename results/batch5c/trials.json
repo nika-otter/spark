@@ -1,62 +1,62 @@
 {
  "hits_CounterID_sp200": {
-  "json_path": "../../runs/exp_real_kt/hits_keytable_CounterID/aqe_on/app-20261008182809-0606_run-0.json",
+  "json_path": "../../runs/exp_real_kt/hits_keytable_CounterID/aqe_on/app-20261009234527-0033_run-0.json",
   "r_facts": 3.1702127659574466,
   "r_overall": 3.170197915743756,
-  "seconds": 65.703
+  "seconds": 76.659
  },
  "hits_CounterID_sp2001": {
-  "json_path": "../../runs/exp_real_kt/hits_keytable_CounterID_sp2001/aqe_on/app-20261008182932-0607_run-0.json",
+  "json_path": "../../runs/exp_real_kt/hits_keytable_CounterID_sp2001/aqe_on/app-20261009234702-0034_run-0.json",
   "r_facts": 3.1702127659574466,
   "r_overall": 3.170163823550302,
-  "seconds": 76.278
+  "seconds": 122.383
  },
  "hits_RegionID_sp200": {
-  "json_path": "../../runs/exp_real_kt/hits_keytable_RegionID/aqe_on/app-20261008182450-0604_run-0.json",
+  "json_path": "../../runs/exp_real_kt/hits_keytable_RegionID/aqe_on/app-20261009234100-0031_run-0.json",
   "r_facts": 3.204301075268817,
   "r_overall": 3.2042830238649187,
-  "seconds": 72.309
+  "seconds": 104.502
  },
  "hits_RegionID_sp2001": {
-  "json_path": "../../runs/exp_real_kt/hits_keytable_RegionID_sp2001/aqe_on/app-20261008182620-0605_run-0.json",
+  "json_path": "../../runs/exp_real_kt/hits_keytable_RegionID_sp2001/aqe_on/app-20261009234303-0032_run-0.json",
   "r_facts": 3.204301075268817,
   "r_overall": 3.204200256603881,
-  "seconds": 92.657
+  "seconds": 125.167
  },
  "hot_variantA": {
-  "json_path": "../../runs/exp_hot_kt/variantA_left_hot0.2_rows55000000_mixed1_files44/aqe_on/app-20261008183257-0610_run-0.json",
+  "json_path": "../../runs/exp_hot_kt/variantA_left_hot0.2_rows55000000_mixed1_files44/aqe_on/app-20261009235123-0037_run-0.json",
   "r_facts": 1.1864406779661016,
   "r_overall": 1.1889700052854122,
-  "seconds": 31.915
+  "seconds": 52.26
  },
  "hot_variantB": {
-  "json_path": "../../runs/exp_hot_kt/variantB_left_hot0.2_rows55000000_mixed1_files44/aqe_on/app-20261008183347-0611_run-0.json",
+  "json_path": "../../runs/exp_hot_kt/variantB_left_hot0.2_rows55000000_mixed1_files44/aqe_on/app-20261009235234-0038_run-0.json",
   "r_facts": 1.1864406779661016,
   "r_overall": 1.2587852903306849,
-  "seconds": 42.52
+  "seconds": 51.001
  },
  "pageviews_project_sp200": {
-  "json_path": "../../runs/exp_real_kt/pageviews_keytable_project/aqe_on/app-20261008183106-0608_run-0.json",
+  "json_path": "../../runs/exp_real_kt/pageviews_keytable_project/aqe_on/app-20261009234922-0035_run-0.json",
   "r_facts": 3.6,
   "r_overall": 3.599961078045322,
-  "seconds": 27.787
+  "seconds": 33.369
  },
  "pageviews_project_sp2001": {
-  "json_path": "../../runs/exp_real_kt/pageviews_keytable_project_sp2001/aqe_on/app-20261008183150-0609_run-0.json",
+  "json_path": "../../runs/exp_real_kt/pageviews_keytable_project_sp2001/aqe_on/app-20261009235013-0036_run-0.json",
   "r_facts": 3.6,
   "r_overall": 3.5998999693499583,
-  "seconds": 51.3
+  "seconds": 53.76
  },
  "taxi_PULocationID_sp200": {
-  "json_path": "../../runs/exp_real_kt/taxi_keytable_PULocationID/aqe_on/app-20261008182222-0602_run-0.json",
+  "json_path": "../../runs/exp_real_kt/taxi_keytable_PULocationID/aqe_on/app-20261009233821-0029_run-0.json",
   "r_facts": 3.425531914893617,
   "r_overall": 3.425524980157537,
-  "seconds": 50.046
+  "seconds": 54.127
  },
  "taxi_PULocationID_sp2001": {
-  "json_path": "../../runs/exp_real_kt/taxi_keytable_PULocationID_sp2001/aqe_on/app-20261008182330-0603_run-0.json",
+  "json_path": "../../runs/exp_real_kt/taxi_keytable_PULocationID_sp2001/aqe_on/app-20261009233933-0030_run-0.json",
   "r_facts": 3.425531914893617,
   "r_overall": 3.4255219218541644,
-  "seconds": 62.803
+  "seconds": 69.651
  }
 }

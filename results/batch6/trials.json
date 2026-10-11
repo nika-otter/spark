@@ -1,0 +1,97 @@
+{
+ "s1_agg_1x_sp200": {
+  "json_path": "../../runs/exp_op/agg_null0_rows55000000_payload100_mixed1_files44/aqe_on/app-20261010102658-0187_run-0.json",
+  "r_overall": 1.213114754098361,
+  "seconds": 61.568
+ },
+ "s1_agg_1x_sp2001": {
+  "json_path": "../../runs/exp_op/agg_null0_rows55000000_payload100_mixed1_files44_sp2001/aqe_on/app-20261010102818-0188_run-0.json",
+  "r_overall": 1.213114754098361,
+  "seconds": 54.293
+ },
+ "s1_agg_8x_sp200": {
+  "json_path": "../../runs/exp_op/agg_null0_rows55000000_payload100_mixed0.04_files44/aqe_on/app-20261010102931-0189_run-0.json",
+  "r_overall": 6.540307267391681,
+  "seconds": 17.999
+ },
+ "s1_agg_8x_sp2001": {
+  "json_path": "../../runs/exp_op/agg_null0_rows55000000_payload100_mixed0.04_files44_sp2001/aqe_on/app-20261010103005-0190_run-0.json",
+  "r_overall": 6.321514974555769,
+  "seconds": 31.676
+ },
+ "s1_window_1x_sp200": {
+  "json_path": "../../runs/exp_op/window_null0_rows55000000_payload100_mixed1_files44/aqe_on/app-20261010102250-0183_run-0.json",
+  "r_overall": 1.1666666666666667,
+  "seconds": 71.355
+ },
+ "s1_window_1x_sp2001": {
+  "json_path": "../../runs/exp_op/window_null0_rows55000000_payload100_mixed1_files44_sp2001/aqe_on/app-20261010102421-0184_run-0.json",
+  "r_overall": 1.1666666666666667,
+  "seconds": 59.287
+ },
+ "s1_window_8x_sp200": {
+  "json_path": "../../runs/exp_op/window_null0_rows55000000_payload100_mixed0.04_files44/aqe_on/app-20261010102539-0185_run-0.json",
+  "r_overall": 6.600976148816649,
+  "seconds": 20.927
+ },
+ "s1_window_8x_sp2001": {
+  "json_path": "../../runs/exp_op/window_null0_rows55000000_payload100_mixed0.04_files44_sp2001/aqe_on/app-20261010102617-0186_run-0.json",
+  "r_overall": 7.594829413011231,
+  "seconds": 24.815
+ },
+ "s1_window_hot_1x_sp200": {
+  "json_path": "../../runs/exp_op/window_null0_rows55000000_payload100_hot0.2_mixed1_files44/aqe_on/app-20261010103055-0191_run-0.json",
+  "r_overall": 1.1864406779661016,
+  "seconds": 59.077
+ },
+ "s2_zstd_hits_RegionID_sp200": {
+  "json_path": "../../runs/exp_real_kt/hits_keytable_RegionID_zstd/aqe_on/app-20261010103441-0194_run-0.json",
+  "r_overall": 5.418152919270427,
+  "seconds": 105.832
+ },
+ "s2_zstd_hits_RegionID_sp2001": {
+  "json_path": "../../runs/exp_real_kt/hits_keytable_RegionID_sp2001_zstd/aqe_on/app-20261010103645-0195_run-0.json",
+  "r_overall": 5.321252576664141,
+  "seconds": 140.555
+ },
+ "s2_zstd_pageviews_project_sp200": {
+  "json_path": "../../runs/exp_real_kt/pageviews_keytable_project_zstd/aqe_on/app-20261010103925-0196_run-0.json",
+  "r_overall": 6.0038366214658785,
+  "seconds": 37.775
+ },
+ "s2_zstd_pageviews_project_sp2001": {
+  "json_path": "../../runs/exp_real_kt/pageviews_keytable_project_sp2001_zstd/aqe_on/app-20261010104020-0197_run-0.json",
+  "r_overall": 6.008944522281317,
+  "seconds": 53.455
+ },
+ "s2_zstd_taxi_PULocationID_sp200": {
+  "json_path": "../../runs/exp_real_kt/taxi_keytable_PULocationID_zstd/aqe_on/app-20261010103211-0192_run-0.json",
+  "r_overall": 6.70831610598802,
+  "seconds": 48.424
+ },
+ "s2_zstd_taxi_PULocationID_sp2001": {
+  "json_path": "../../runs/exp_real_kt/taxi_keytable_PULocationID_sp2001_zstd/aqe_on/app-20261010103317-0193_run-0.json",
+  "r_overall": 6.70831050815464,
+  "seconds": 65.326
+ },
+ "s3_mem4g_4x_null0.08_sp200": {
+  "json_path": "../../runs/exp_c2_dose/left_null0.08_rows55000000_payload100_mixed0.19_files45_heap4g/aqe_on/app-20261010104218-0199_run-0.json",
+  "r_overall": 3.840692595126572,
+  "seconds": 23.684
+ },
+ "s3_mem4g_8x_null0_sp2001": {
+  "json_path": "../../runs/exp_g_alt/left_null0_rows55000000_payload100_mixed0.04_files44_sp2001_heap4g/aqe_on/app-20261010104131-0198_run-0.json",
+  "r_overall": 7.585178255898556,
+  "seconds": 29.232
+ },
+ "s4c_hits_RegionID_sp2001": {
+  "json_path": "../../runs/exp_real_kt/hits_keytable_RegionID_sp2001_minhc2002/aqe_on/app-20261010104300-0200_run-0.json",
+  "r_overall": 3.204200256603881,
+  "seconds": 131.687
+ },
+ "s4c_synthetic_8x_null0.2_sp2001": {
+  "json_path": "../../runs/exp_g_alt/left_null0.2_rows55000000_payload100_mixed0.04_files44_sp2001_minhc2002/aqe_on/app-20261010104531-0201_run-0.json",
+  "r_overall": 7.687453913409881,
+  "seconds": 19.769
+ }
+}

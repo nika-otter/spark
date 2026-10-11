@@ -49,6 +49,8 @@ def main():
                         help="mode aqe_on_rules12_iter: after the warm-up, run this many "
                              "iterations; iteration k sets rule 2 from r measured in run k-1 "
                              "(the first measured run uses parameter rule2_ratio)")
+    parser.add_argument("--map-status-size", action="store_true",
+                        help="record the size of the registered map output statuses after each run")
     args = parser.parse_args()
 
     scenario = build_scenario(args.experiment, args.param, args.mode)
@@ -115,6 +117,8 @@ def main():
             "conf": conf,
             "metrics": metrics.collect(spark, label),
         }
+        if args.map_status_size:
+            record["map_status"] = metrics.map_status_sizes(spark)
         json_path = "{}/{}_run-{}.json".format(out_dir, env["application_id"], i)
         metrics.save(record, json_path, args.csv)
         release_shuffle_files(sc)

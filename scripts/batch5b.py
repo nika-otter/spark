@@ -13,7 +13,9 @@ Points: dataset (taxi, hits, pageviews) x query (natural, lowcard) x shuffle
 partitions (200, 2001). Modes: 200 partitions: aqe_off, aqe_on, aqe_on_rule2
 (rule 1 only changes HighlyCompressedMapStatus, used above 2000 partitions);
 2001 partitions: aqe_off, aqe_on, aqe_on_rule1, aqe_on_rule2, aqe_on_rules12.
-Resumable (done markers in results/batch5b/done). Start or resume with
+Before and after every job scripts/cluster_check.py verifies AC power, the
+running containers and 3 alive workers; on failure the job is not marked done
+and the batch stops. Resumable (done markers in results/batch5b/done). Start or resume with
 scripts/batch5b.sh MODE (runs this under caffeinate).
 """
 
@@ -24,6 +26,8 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+
+import cluster_check
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "results" / "batch5b"
@@ -73,11 +77,19 @@ def run_job(job_id, args):
         return csv_path
     if csv_path.exists():
         csv_path.unlink()
+    problems = cluster_check.check()
+    if problems:
+        log("cluster check failed before {}: {}".format(job_id, "; ".join(problems)))
+        sys.exit("unhealthy cluster")
     start = time.time()
     rc = submit("run_experiment.py", args + ["--job-id", job_id, "--csv",
                                              "/opt/project/results/batch5b/jobs/" + csv_path.name],
                 OUT / "logs" / (job_id + ".log"))
     log("{} rc={} {:.0f}s".format(job_id, rc, time.time() - start))
+    problems = cluster_check.check()
+    if problems:
+        log("cluster check failed after {} (job not marked done): {}".format(job_id, "; ".join(problems)))
+        sys.exit("unhealthy cluster")
     if rc == 0 and csv_path.exists():
         (OUT / "done" / job_id).touch()
         return csv_path

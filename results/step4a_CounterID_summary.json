@@ -1,0 +1,22 @@
+{
+  "key": "CounterID",
+  "hot_value": "3922",
+  "hot_rows": 8527070,
+  "reduce_partition": 1842,
+  "fact_shuffle_id": 0,
+  "map_tasks": 81,
+  "map_tasks_with_hot_rows": 14,
+  "blocks_found_on_disk": 81,
+  "blocks_ge_100mib": 2,
+  "block_exact_max_mib": 118.33021450042725,
+  "block_exact_sum_mib": 765.0201263427734,
+  "block_reported_sum_mib": 330.06937980651855,
+  "status_classes": [
+    "HighlyCompressedMapStatus"
+  ],
+  "hosts": [
+    "spark-worker-1",
+    "spark-worker-2",
+    "spark-worker-3"
+  ]
+}

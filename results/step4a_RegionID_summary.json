@@ -1,0 +1,22 @@
+{
+  "key": "RegionID",
+  "hot_value": "229",
+  "hot_rows": 18295832,
+  "reduce_partition": 185,
+  "fact_shuffle_id": 0,
+  "map_tasks": 81,
+  "map_tasks_with_hot_rows": 81,
+  "blocks_found_on_disk": 81,
+  "blocks_ge_100mib": 0,
+  "block_exact_max_mib": 49.07164001464844,
+  "block_exact_sum_mib": 1612.444766998291,
+  "block_reported_sum_mib": 7.462357521057129,
+  "status_classes": [
+    "HighlyCompressedMapStatus"
+  ],
+  "hosts": [
+    "spark-worker-1",
+    "spark-worker-2",
+    "spark-worker-3"
+  ]
+}
