@@ -64,6 +64,16 @@ control of experiment B is `aqe_on` with parameter `accurate_skew_factor=5.0`.
 | 32 | Step 4a (6) | `jobs/shuffle_blocks.py`: hits, 2001 partitions, AQE off; per map task of the fact shuffle: rows of the hottest key, exact block length from the shuffle index file, size reported by MapStatus | CounterID = 3922, RegionID = 229 | aqe_off | `step4a_<key>_blocks.csv`, `step4a_<key>_summary.json` | `figures/step4a_blocks` |
 | 33 | Step 4b (6, no new runs) | batch-5c taxi PULocationID at 2001 partitions: spill per stage, Sort "spill size" per join side (History Server), spilling join tasks | all modes of 26 | – | `step4b_taxi_spill.csv` | – |
 | 34 | Step 4c (6) | `spark.shuffle.minNumPartitionsToHighlyCompress=2002` vs rule 1; hits RegionID 2001 (key table): rule 1 vs the alternative; synthetic 55M, 8x, 20 % NULL, 2001: rules 1+2 vs alternative + rule 2 (rule 2 added: without it the NULL partition, 172 MiB compressed, is below the 256 MB threshold; user decision). Map output status sizes on the driver (`run_experiment --map-status-size`; SizeEstimator and Java-serialized length) | 2 points | see left | `exp_minhc_summary.csv` | – |
+| 35 | Batch 7, step 0 (validation) | datasets present (none regenerated); B at 1000 / 2000 with AQE off: SortMergeJoin, both sides Sort > Exchange, 1000 / 2000 join tasks; pipelines with aqe_off_hints: 3 BHJ + 2 SMJ (n=5), 10 + 10 (n=20), equal to aqe_on_hints; TPC-DS zstd: codec zstd in the effective conf and in the event log | 7 trials | – | `batch7/validation.json` | – |
+| 36 | `exp_b_partitions` gap (7, step 1) | as 4 (hex payload, as defined in batch 2; measured r = 1.25), AQE off only | 1000, 2000 (new) + anchors 200, 2001 | aqe_off | `exp_b_gap_summary.csv` (anchors next to `exp_b_summary.csv`) | – |
+| 37 | pipeline gap (7, step 2) | INNER n=5, 20 as 9 (`exp_d2_inner`), LEFT n=5, 20 as 8 (`exp_d_pipeline`), 3M rows; new mode `aqe_off_hints` (AQE off, the broadcast hints of `aqe_on_hints`) | 4 pipelines | aqe_off_hints (new), aqe_off (anchor) | `exp_d_gap_summary.csv` (anchors next to `exp_d2_summary.csv` / `exp_d_summary.csv`) | – |
+| 38 | TPC-DS zstd profile (7, step 3) | as 17, one AQE-on profiling run per query (all 103) with codec zstd | 103 queries | aqe_on | `tpc_shuffle_ratios_tpcds_zstd.csv`; `tpc_ratio_summary.csv` rebuilt (TPC-DS zstd row added, other rows unchanged) | – |
+
+Batch 7 checks per job: AC power, containers, 3 alive workers, exactly 3 executors
+on 3 hosts in the History Server, and no host sleep (pmset) during the job; none
+failed. The anchors of steps 1 and 2 are faster than the earlier series and lie
+outside their IQR (deterministic metrics such as spill are equal), so the new points
+are compared with the new anchors.
 
 ## Real datasets (batch 5, step 1c)
 

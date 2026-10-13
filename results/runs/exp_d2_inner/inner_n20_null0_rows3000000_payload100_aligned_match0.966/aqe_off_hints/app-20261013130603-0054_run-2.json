@@ -1,0 +1,3192 @@
+{
+  "conf": {
+    "spark.app.id": "app-20261013130603-0054",
+    "spark.app.name": "exp_d2_inner__inner_n20_null0_rows3000000_payload100_aligned_match0.966__aqe_off_hints",
+    "spark.app.startTime": "1791896762439",
+    "spark.app.submitTime": "1791896761920",
+    "spark.cleaner.referenceTracking.blocking.shuffle": "true",
+    "spark.cores.max": "9",
+    "spark.driver.bindAddress": "0.0.0.0",
+    "spark.driver.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-modules=jdk.incubator.vector --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false -Dio.netty.tryReflectionSetAccessible=true -Dio.netty.allocator.type=pooled -Dio.netty.handler.ssl.defaultEndpointVerificationAlgorithm=NONE --enable-native-access=ALL-UNNAMED",
+    "spark.driver.host": "spark-master",
+    "spark.driver.memory": "2g",
+    "spark.driver.port": "42635",
+    "spark.eventLog.compress": "false",
+    "spark.eventLog.dir": "file:/opt/spark-events",
+    "spark.eventLog.enabled": "true",
+    "spark.executor.cores": "3",
+    "spark.executor.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-modules=jdk.incubator.vector --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false -Dio.netty.tryReflectionSetAccessible=true -Dio.netty.allocator.type=pooled -Dio.netty.handler.ssl.defaultEndpointVerificationAlgorithm=NONE --enable-native-access=ALL-UNNAMED",
+    "spark.executor.id": "driver",
+    "spark.executor.memory": "4g",
+    "spark.hadoop.fs.s3a.vectored.read.max.merged.size": "2M",
+    "spark.hadoop.fs.s3a.vectored.read.min.seek.size": "128K",
+    "spark.io.compression.codec": "lz4",
+    "spark.master": "spark://spark-master:7077",
+    "spark.rdd.compress": "True",
+    "spark.serializer.objectStreamReset": "100",
+    "spark.shuffle.accurateBlockSkewedFactor": "-1.0",
+    "spark.sql.adaptive.advisoryPartitionSizeInBytes": "67108864",
+    "spark.sql.adaptive.autoBroadcastJoinThreshold": "10485760",
+    "spark.sql.adaptive.coalescePartitions.enabled": "true",
+    "spark.sql.adaptive.coalescePartitions.initialPartitionNum": null,
+    "spark.sql.adaptive.coalescePartitions.minPartitionSize": "1048576",
+    "spark.sql.adaptive.coalescePartitions.parallelismFirst": "true",
+    "spark.sql.adaptive.customCostEvaluatorClass": "<undefined>",
+    "spark.sql.adaptive.enabled": "false",
+    "spark.sql.adaptive.forceOptimizeSkewedJoin": "false",
+    "spark.sql.adaptive.localShuffleReader.enabled": "true",
+    "spark.sql.adaptive.maxShuffledHashJoinLocalMapThreshold": "0b",
+    "spark.sql.adaptive.optimizeSkewsInRebalancePartitions.enabled": "true",
+    "spark.sql.adaptive.optimizer.excludedRules": null,
+    "spark.sql.adaptive.rebalancePartitionsSmallPartitionFactor": "0.2",
+    "spark.sql.adaptive.skewJoin.enabled": "true",
+    "spark.sql.adaptive.skewJoin.skewedPartitionFactor": "5.0",
+    "spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes": "268435456",
+    "spark.sql.allowNamedFunctionArguments": "true",
+    "spark.sql.ansi.doubleQuotedIdentifiers": "false",
+    "spark.sql.ansi.enabled": "true",
+    "spark.sql.ansi.enforceReservedKeywords": "false",
+    "spark.sql.ansi.relationPrecedence": "false",
+    "spark.sql.artifact.isolation.enabled": "false",
+    "spark.sql.autoBroadcastJoinThreshold": "10485760",
+    "spark.sql.avro.compression.codec": "snappy",
+    "spark.sql.avro.deflate.level": "-1",
+    "spark.sql.avro.filterPushdown.enabled": "true",
+    "spark.sql.avro.xz.level": "6",
+    "spark.sql.avro.zstandard.bufferPool.enabled": "false",
+    "spark.sql.avro.zstandard.level": "3",
+    "spark.sql.binaryOutputStyle": "<undefined>",
+    "spark.sql.broadcastTimeout": "300",
+    "spark.sql.bucketing.coalesceBucketsInJoin.enabled": "false",
+    "spark.sql.bucketing.coalesceBucketsInJoin.maxBucketRatio": "4",
+    "spark.sql.cache.serializer": "org.apache.spark.sql.execution.columnar.DefaultCachedBatchSerializer",
+    "spark.sql.catalog.spark_catalog": "builtin",
+    "spark.sql.catalog.spark_catalog.defaultDatabase": "default",
+    "spark.sql.cbo.enabled": "false",
+    "spark.sql.cbo.joinReorder.dp.star.filter": "false",
+    "spark.sql.cbo.joinReorder.dp.threshold": "12",
+    "spark.sql.cbo.joinReorder.enabled": "false",
+    "spark.sql.cbo.planStats.enabled": "false",
+    "spark.sql.cbo.starSchemaDetection": "false",
+    "spark.sql.charAsVarchar": "false",
+    "spark.sql.chunkBase64String.enabled": "true",
+    "spark.sql.classic.shuffleDependency.fileCleanup.enabled": "false",
+    "spark.sql.cli.print.header": "false",
+    "spark.sql.columnNameOfCorruptRecord": "_corrupt_record",
+    "spark.sql.connect.shuffleDependency.fileCleanup.enabled": "<value of spark.sql.shuffleDependency.fileCleanup.enabled>",
+    "spark.sql.csv.filterPushdown.enabled": "true",
+    "spark.sql.datetime.java8API.enabled": "false",
+    "spark.sql.debug.maxToStringFields": "25",
+    "spark.sql.defaultCacheStorageLevel": "MEMORY_AND_DISK",
+    "spark.sql.defaultCatalog": "spark_catalog",
+    "spark.sql.error.messageFormat": "PRETTY",
+    "spark.sql.event.truncate.length": "2147483647",
+    "spark.sql.execution.arrow.compression.codec": "none",
+    "spark.sql.execution.arrow.compression.zstd.level": "3",
+    "spark.sql.execution.arrow.enabled": "false",
+    "spark.sql.execution.arrow.fallback.enabled": "true",
+    "spark.sql.execution.arrow.localRelationThreshold": "48MB",
+    "spark.sql.execution.arrow.maxRecordsPerBatch": "10000",
+    "spark.sql.execution.arrow.pyspark.enabled": "<value of spark.sql.execution.arrow.enabled>",
+    "spark.sql.execution.arrow.pyspark.fallback.enabled": "<value of spark.sql.execution.arrow.fallback.enabled>",
+    "spark.sql.execution.arrow.pyspark.selfDestruct.enabled": "false",
+    "spark.sql.execution.arrow.pyspark.validateSchema.enabled": "false",
+    "spark.sql.execution.arrow.sparkr.enabled": "false",
+    "spark.sql.execution.arrow.transformWithStateInPySpark.maxStateRecordsPerBatch": "10000",
+    "spark.sql.execution.arrow.useLargeVarTypes": "false",
+    "spark.sql.execution.interruptOnCancel": "true",
+    "spark.sql.execution.pandas.inferPandasDictAsMap": "false",
+    "spark.sql.execution.pandas.structHandlingMode": "legacy",
+    "spark.sql.execution.pandas.udf.buffer.size": "<value of spark.buffer.size>",
+    "spark.sql.execution.pyspark.binaryAsBytes": "true",
+    "spark.sql.execution.pyspark.udf.daemonKillWorkerOnFlushFailure": "<value of spark.python.daemon.killWorkerOnFlushFailure>",
+    "spark.sql.execution.pyspark.udf.faulthandler.enabled": "<value of spark.python.worker.faulthandler.enabled>",
+    "spark.sql.execution.pyspark.udf.hideTraceback.enabled": "false",
+    "spark.sql.execution.pyspark.udf.idleTimeoutSeconds": "<value of spark.python.worker.idleTimeoutSeconds>",
+    "spark.sql.execution.pyspark.udf.killOnIdleTimeout": "<value of spark.python.worker.killOnIdleTimeout>",
+    "spark.sql.execution.pyspark.udf.simplifiedTraceback.enabled": "true",
+    "spark.sql.execution.pyspark.udf.tracebackDumpIntervalSeconds": "<value of spark.python.worker.tracebackDumpIntervalSeconds>",
+    "spark.sql.execution.python.udf.buffer.size": "<value of spark.buffer.size>",
+    "spark.sql.execution.python.udf.maxRecordsPerBatch": "100",
+    "spark.sql.execution.pythonUDF.arrow.concurrency.level": "<undefined>",
+    "spark.sql.execution.pythonUDF.arrow.enabled": "false",
+    "spark.sql.execution.pythonUDF.pandas.intToDecimalCoercionEnabled": "false",
+    "spark.sql.execution.pythonUDTF.arrow.enabled": "false",
+    "spark.sql.execution.topKSortFallbackThreshold": "2147483632",
+    "spark.sql.extendedExplainProviders": "<undefined>",
+    "spark.sql.extensions": "<undefined>",
+    "spark.sql.extensions.test.loadFromCp": "true",
+    "spark.sql.files.ignoreCorruptFiles": "false",
+    "spark.sql.files.ignoreInvalidPartitionPaths": "false",
+    "spark.sql.files.ignoreMissingFiles": "false",
+    "spark.sql.files.maxPartitionBytes": "134217728b",
+    "spark.sql.files.maxPartitionNum": "<undefined>",
+    "spark.sql.files.maxRecordsPerFile": "0",
+    "spark.sql.files.minPartitionNum": "<undefined>",
+    "spark.sql.files.openCostInBytes": "4194304b",
+    "spark.sql.function.concatBinaryAsString": "false",
+    "spark.sql.function.eltOutputAsString": "false",
+    "spark.sql.groupByAliases": "true",
+    "spark.sql.groupByOrdinal": "true",
+    "spark.sql.hive.convertInsertingPartitionedTable": "true",
+    "spark.sql.hive.convertInsertingUnpartitionedTable": "true",
+    "spark.sql.hive.convertMetastoreAsNullable": "false",
+    "spark.sql.hive.convertMetastoreCtas": "true",
+    "spark.sql.hive.convertMetastoreInsertDir": "true",
+    "spark.sql.hive.convertMetastoreOrc": "true",
+    "spark.sql.hive.convertMetastoreParquet": "true",
+    "spark.sql.hive.convertMetastoreParquet.mergeSchema": "false",
+    "spark.sql.hive.dropPartitionByName.enabled": "false",
+    "spark.sql.hive.filesourcePartitionFileCacheSize": "262144000",
+    "spark.sql.hive.manageFilesourcePartitions": "true",
+    "spark.sql.hive.metastore.barrierPrefixes": "",
+    "spark.sql.hive.metastore.jars": "builtin",
+    "spark.sql.hive.metastore.jars.path": "",
+    "spark.sql.hive.metastore.sharedPrefixes": "com.mysql.jdbc,com.mysql.cj,org.postgresql,com.microsoft.sqlserver,oracle.jdbc",
+    "spark.sql.hive.metastore.version": "2.3.10",
+    "spark.sql.hive.metastorePartitionPruning": "true",
+    "spark.sql.hive.metastorePartitionPruningFallbackOnException": "false",
+    "spark.sql.hive.metastorePartitionPruningFastFallback": "false",
+    "spark.sql.hive.thriftServer.async": "true",
+    "spark.sql.hive.thriftServer.singleSession": "false",
+    "spark.sql.hive.version": "2.3.10",
+    "spark.sql.icu.caseMappings.enabled": "true",
+    "spark.sql.inMemoryColumnarStorage.batchSize": "10000",
+    "spark.sql.inMemoryColumnarStorage.compressed": "true",
+    "spark.sql.inMemoryColumnarStorage.enableVectorizedReader": "true",
+    "spark.sql.inMemoryColumnarStorage.hugeVectorReserveRatio": "1.2",
+    "spark.sql.inMemoryColumnarStorage.hugeVectorThreshold": "-1b",
+    "spark.sql.join.preferSortMergeJoin": "true",
+    "spark.sql.json.filterPushdown.enabled": "true",
+    "spark.sql.json.useUnsafeRow": "false",
+    "spark.sql.jsonGenerator.ignoreNullFields": "true",
+    "spark.sql.leafNodeDefaultParallelism": "<undefined>",
+    "spark.sql.legacy.hive.thriftServer.useZeroBasedColumnOrdinalPosition": "false",
+    "spark.sql.mapKeyDedupPolicy": "EXCEPTION",
+    "spark.sql.maven.additionalRemoteRepositories": "https://maven-central.storage-download.googleapis.com/maven2/",
+    "spark.sql.maxBroadcastTableSize": "8589934592b",
+    "spark.sql.maxMetadataStringLength": "100",
+    "spark.sql.maxPlanStringLength": "2147483632",
+    "spark.sql.maxSinglePartitionBytes": "128m",
+    "spark.sql.metadataCacheTTLSeconds": "-1000ms",
+    "spark.sql.operatorPipeSyntaxEnabled": "true",
+    "spark.sql.optimizer.avoidCollapseUDFWithExpensiveExpr": "true",
+    "spark.sql.optimizer.collapseProjectAlwaysInline": "false",
+    "spark.sql.optimizer.dynamicPartitionPruning.enabled": "true",
+    "spark.sql.optimizer.enableCsvExpressionOptimization": "true",
+    "spark.sql.optimizer.enableJsonExpressionOptimization": "true",
+    "spark.sql.optimizer.excludedRules": "<undefined>",
+    "spark.sql.optimizer.runtime.bloomFilter.applicationSideScanSizeThreshold": "10GB",
+    "spark.sql.optimizer.runtime.bloomFilter.creationSideThreshold": "10MB",
+    "spark.sql.optimizer.runtime.bloomFilter.enabled": "true",
+    "spark.sql.optimizer.runtime.bloomFilter.expectedNumItems": "1000000",
+    "spark.sql.optimizer.runtime.bloomFilter.maxNumBits": "67108864",
+    "spark.sql.optimizer.runtime.bloomFilter.maxNumItems": "4000000",
+    "spark.sql.optimizer.runtime.bloomFilter.numBits": "8388608",
+    "spark.sql.optimizer.runtime.rowLevelOperationGroupFilter.enabled": "true",
+    "spark.sql.optimizer.runtimeFilter.number.threshold": "10",
+    "spark.sql.orc.aggregatePushdown": "false",
+    "spark.sql.orc.columnarReaderBatchSize": "4096",
+    "spark.sql.orc.columnarWriterBatchSize": "1024",
+    "spark.sql.orc.compression.codec": "zstd",
+    "spark.sql.orc.enableNestedColumnVectorizedReader": "true",
+    "spark.sql.orc.enableVectorizedReader": "true",
+    "spark.sql.orc.filterPushdown": "true",
+    "spark.sql.orc.mergeSchema": "false",
+    "spark.sql.orderByOrdinal": "true",
+    "spark.sql.parquet.aggregatePushdown": "false",
+    "spark.sql.parquet.binaryAsString": "false",
+    "spark.sql.parquet.columnarReaderBatchSize": "4096",
+    "spark.sql.parquet.compression.codec": "snappy",
+    "spark.sql.parquet.enableNestedColumnVectorizedReader": "true",
+    "spark.sql.parquet.enableVectorizedReader": "true",
+    "spark.sql.parquet.fieldId.read.enabled": "false",
+    "spark.sql.parquet.fieldId.read.ignoreMissing": "false",
+    "spark.sql.parquet.fieldId.write.enabled": "true",
+    "spark.sql.parquet.filterPushdown": "true",
+    "spark.sql.parquet.inferTimestampNTZ.enabled": "true",
+    "spark.sql.parquet.int96AsTimestamp": "true",
+    "spark.sql.parquet.int96TimestampConversion": "false",
+    "spark.sql.parquet.mergeSchema": "false",
+    "spark.sql.parquet.outputTimestampType": "INT96",
+    "spark.sql.parquet.recordLevelFilter.enabled": "false",
+    "spark.sql.parquet.respectSummaryFiles": "false",
+    "spark.sql.parquet.writeLegacyFormat": "false",
+    "spark.sql.parser.quotedRegexColumnNames": "false",
+    "spark.sql.pipelines.maxFlowRetryAttempts": "2",
+    "spark.sql.pivotMaxValues": "10000",
+    "spark.sql.planner.pythonExecution.memory": "<undefined>",
+    "spark.sql.preserveCharVarcharTypeInfo": "false",
+    "spark.sql.pyspark.inferNestedDictAsStruct.enabled": "false",
+    "spark.sql.pyspark.jvmStacktrace.enabled": "false",
+    "spark.sql.pyspark.plotting.max_rows": "1000",
+    "spark.sql.pyspark.udf.profiler": "<undefined>",
+    "spark.sql.pyspark.worker.logging.enabled": "false",
+    "spark.sql.queryExecutionListeners": "<undefined>",
+    "spark.sql.readSideCharPadding": "true",
+    "spark.sql.redaction.options.regex": "(?i)url",
+    "spark.sql.redaction.string.regex": "<value of spark.redaction.string.regex>",
+    "spark.sql.repl.eagerEval.enabled": "false",
+    "spark.sql.repl.eagerEval.maxNumRows": "20",
+    "spark.sql.repl.eagerEval.truncate": "20",
+    "spark.sql.scripting.enabled": "true",
+    "spark.sql.session.localRelationCacheThreshold": "1048576",
+    "spark.sql.session.localRelationChunkSizeBytes": "16777216",
+    "spark.sql.session.localRelationChunkSizeRows": "10000",
+    "spark.sql.session.timeZone": "Etc/UTC",
+    "spark.sql.shuffle.orderIndependentChecksum.enableFullRetryOnMismatch": "false",
+    "spark.sql.shuffle.orderIndependentChecksum.enabled": "false",
+    "spark.sql.shuffle.partitions": "200",
+    "spark.sql.shuffleDependency.fileCleanup.enabled": "false",
+    "spark.sql.shuffleDependency.skipMigration.enabled": "false",
+    "spark.sql.shuffledHashJoinFactor": "3",
+    "spark.sql.sources.bucketing.autoBucketedScan.enabled": "true",
+    "spark.sql.sources.bucketing.enabled": "true",
+    "spark.sql.sources.bucketing.maxBuckets": "100000",
+    "spark.sql.sources.default": "parquet",
+    "spark.sql.sources.disabledJdbcConnProviderList": "",
+    "spark.sql.sources.parallelPartitionDiscovery.threshold": "32",
+    "spark.sql.sources.partitionColumnTypeInference.enabled": "true",
+    "spark.sql.sources.partitionOverwriteMode": "STATIC",
+    "spark.sql.sources.v2.bucketing.allowCompatibleTransforms.enabled": "false",
+    "spark.sql.sources.v2.bucketing.allowJoinKeysSubsetOfPartitionKeys.enabled": "false",
+    "spark.sql.sources.v2.bucketing.enabled": "true",
+    "spark.sql.sources.v2.bucketing.partiallyClusteredDistribution.enabled": "false",
+    "spark.sql.sources.v2.bucketing.partition.filter.enabled": "false",
+    "spark.sql.sources.v2.bucketing.pushPartValues.enabled": "true",
+    "spark.sql.sources.v2.bucketing.shuffle.enabled": "false",
+    "spark.sql.sources.v2.bucketing.sorting.enabled": "false",
+    "spark.sql.stackTracesInDataFrameContext": "1",
+    "spark.sql.statistics.fallBackToHdfs": "false",
+    "spark.sql.statistics.histogram.enabled": "false",
+    "spark.sql.statistics.size.autoUpdate.enabled": "false",
+    "spark.sql.statistics.updatePartitionStatsInAnalyzeTable.enabled": "false",
+    "spark.sql.storeAssignmentPolicy": "ANSI",
+    "spark.sql.streaming.checkpointLocation": "<undefined>",
+    "spark.sql.streaming.continuous.epochBacklogQueueSize": "10000",
+    "spark.sql.streaming.disabledV2Writers": "",
+    "spark.sql.streaming.fileSource.cleaner.numThreads": "1",
+    "spark.sql.streaming.forceDeleteTempCheckpointLocation": "false",
+    "spark.sql.streaming.metricsEnabled": "false",
+    "spark.sql.streaming.multipleWatermarkPolicy": "min",
+    "spark.sql.streaming.noDataMicroBatches.enabled": "true",
+    "spark.sql.streaming.numRecentProgressUpdates": "100",
+    "spark.sql.streaming.realTimeMode.allowlistCheck": "true",
+    "spark.sql.streaming.realTimeMode.minBatchDuration": "5000ms",
+    "spark.sql.streaming.sessionWindow.merge.sessions.in.local.partition": "false",
+    "spark.sql.streaming.stateStore.commitValidation.enabled": "true",
+    "spark.sql.streaming.stateStore.encodingFormat": "unsaferow",
+    "spark.sql.streaming.stateStore.stateSchemaCheck": "true",
+    "spark.sql.streaming.stopActiveRunOnRestart": "true",
+    "spark.sql.streaming.stopTimeout": "0",
+    "spark.sql.streaming.streamingQueryListeners": "<undefined>",
+    "spark.sql.streaming.transformWithState.stateSchemaVersion": "3",
+    "spark.sql.streaming.ui.enabled": "true",
+    "spark.sql.streaming.ui.retainedProgressUpdates": "100",
+    "spark.sql.streaming.ui.retainedQueries": "100",
+    "spark.sql.thriftServer.interruptOnCancel": "<value of spark.sql.execution.interruptOnCancel>",
+    "spark.sql.thriftServer.queryTimeout": "0ms",
+    "spark.sql.thriftserver.scheduler.pool": "<undefined>",
+    "spark.sql.thriftserver.ui.retainedSessions": "200",
+    "spark.sql.thriftserver.ui.retainedStatements": "200",
+    "spark.sql.timeTravelTimestampKey": "timestampAsOf",
+    "spark.sql.timeTravelVersionKey": "versionAsOf",
+    "spark.sql.timestampType": "TIMESTAMP_LTZ",
+    "spark.sql.transposeMaxValues": "500",
+    "spark.sql.tvf.allowMultipleTableArguments.enabled": "false",
+    "spark.sql.udt.allowCreatingUDTFromString": "true",
+    "spark.sql.udt.allowedDynamicUDTClasses": "",
+    "spark.sql.ui.explainMode": "formatted",
+    "spark.sql.ui.retainedExecutions": "1000",
+    "spark.sql.variable.substitute": "true",
+    "spark.sql.warehouse.dir": "file:/opt/spark/work-dir/spark-warehouse",
+    "spark.submit.deployMode": "client",
+    "spark.submit.pyFiles": ""
+  },
+  "datasets": [
+    {
+      "dataset_id": "facts_rows-3000000_k1-n10000-h0-null0_k2-n1000000-h0-null0_k3-n10000-h0-null0_k4-n1000000-h0-null0_k5-n10000-h0-null0_k6-n1000000-h0-null0_k7-n10000-h0-null0_k8-n1000000-h0-null0_k9-n100_h1b32757126bf",
+      "generated_at": "2026-10-06T16:36:36",
+      "params": {
+        "keys": [
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 10000,
+            "name": "k1",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 1000000,
+            "name": "k2",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 10000,
+            "name": "k3",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 1000000,
+            "name": "k4",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 10000,
+            "name": "k5",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 1000000,
+            "name": "k6",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 10000,
+            "name": "k7",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 1000000,
+            "name": "k8",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 10000,
+            "name": "k9",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 1000000,
+            "name": "k10",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 10000,
+            "name": "k11",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 1000000,
+            "name": "k12",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 10000,
+            "name": "k13",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 1000000,
+            "name": "k14",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 10000,
+            "name": "k15",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 1000000,
+            "name": "k16",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 10000,
+            "name": "k17",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 1000000,
+            "name": "k18",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 10000,
+            "name": "k19",
+            "null_share": 0.0
+          },
+          {
+            "hot_keys": 1,
+            "hot_share": 0.0,
+            "n_keys": 1000000,
+            "name": "k20",
+            "null_share": 0.0
+          }
+        ],
+        "num_files": 0,
+        "payload_bytes": 100,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "rows": 3000000,
+        "seed": 42,
+        "table": "facts"
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/facts_rows-3000000_k1-n10000-h0-null0_k2-n1000000-h0-null0_k3-n10000-h0-null0_k4-n1000000-h0-null0_k5-n10000-h0-null0_k6-n1000000-h0-null0_k7-n10000-h0-null0_k8-n1000000-h0-null0_k9-n100_h1b32757126bf/data",
+      "size_on_disk_bytes": 521869057,
+      "spark_version": "4.1.3",
+      "stats": {
+        "k1": {
+          "actual_most_frequent_key_share": 0.000122,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 10000,
+          "most_frequent_key": 99,
+          "most_frequent_key_count": 366,
+          "null_count": 0
+        },
+        "k10": {
+          "actual_most_frequent_key_share": 4.666666666666666e-06,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 950095,
+          "most_frequent_key": 50209,
+          "most_frequent_key_count": 14,
+          "null_count": 0
+        },
+        "k11": {
+          "actual_most_frequent_key_share": 0.000121,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 10000,
+          "most_frequent_key": 962,
+          "most_frequent_key_count": 363,
+          "null_count": 0
+        },
+        "k12": {
+          "actual_most_frequent_key_share": 4.666666666666666e-06,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 950602,
+          "most_frequent_key": 29146,
+          "most_frequent_key_count": 14,
+          "null_count": 0
+        },
+        "k13": {
+          "actual_most_frequent_key_share": 0.000123,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 10000,
+          "most_frequent_key": 7280,
+          "most_frequent_key_count": 369,
+          "null_count": 0
+        },
+        "k14": {
+          "actual_most_frequent_key_share": 4.666666666666666e-06,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 950313,
+          "most_frequent_key": 56015,
+          "most_frequent_key_count": 14,
+          "null_count": 0
+        },
+        "k15": {
+          "actual_most_frequent_key_share": 0.00012166666666666667,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 10000,
+          "most_frequent_key": 7450,
+          "most_frequent_key_count": 365,
+          "null_count": 0
+        },
+        "k16": {
+          "actual_most_frequent_key_share": 4.666666666666666e-06,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 950230,
+          "most_frequent_key": 491712,
+          "most_frequent_key_count": 14,
+          "null_count": 0
+        },
+        "k17": {
+          "actual_most_frequent_key_share": 0.00012166666666666667,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 10000,
+          "most_frequent_key": 2755,
+          "most_frequent_key_count": 365,
+          "null_count": 0
+        },
+        "k18": {
+          "actual_most_frequent_key_share": 4.666666666666666e-06,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 950370,
+          "most_frequent_key": 303558,
+          "most_frequent_key_count": 14,
+          "null_count": 0
+        },
+        "k19": {
+          "actual_most_frequent_key_share": 0.00012333333333333334,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 10000,
+          "most_frequent_key": 9593,
+          "most_frequent_key_count": 370,
+          "null_count": 0
+        },
+        "k2": {
+          "actual_most_frequent_key_share": 5e-06,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 950053,
+          "most_frequent_key": 270832,
+          "most_frequent_key_count": 15,
+          "null_count": 0
+        },
+        "k20": {
+          "actual_most_frequent_key_share": 4.666666666666666e-06,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 949949,
+          "most_frequent_key": 388611,
+          "most_frequent_key_count": 14,
+          "null_count": 0
+        },
+        "k3": {
+          "actual_most_frequent_key_share": 0.00012433333333333334,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 10000,
+          "most_frequent_key": 5340,
+          "most_frequent_key_count": 373,
+          "null_count": 0
+        },
+        "k4": {
+          "actual_most_frequent_key_share": 5e-06,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 950265,
+          "most_frequent_key": 34369,
+          "most_frequent_key_count": 15,
+          "null_count": 0
+        },
+        "k5": {
+          "actual_most_frequent_key_share": 0.000122,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 10000,
+          "most_frequent_key": 1315,
+          "most_frequent_key_count": 366,
+          "null_count": 0
+        },
+        "k6": {
+          "actual_most_frequent_key_share": 5e-06,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 950487,
+          "most_frequent_key": 674258,
+          "most_frequent_key_count": 15,
+          "null_count": 0
+        },
+        "k7": {
+          "actual_most_frequent_key_share": 0.000122,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 10000,
+          "most_frequent_key": 3589,
+          "most_frequent_key_count": 366,
+          "null_count": 0
+        },
+        "k8": {
+          "actual_most_frequent_key_share": 4.666666666666666e-06,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 950421,
+          "most_frequent_key": 90606,
+          "most_frequent_key_count": 14,
+          "null_count": 0
+        },
+        "k9": {
+          "actual_most_frequent_key_share": 0.000121,
+          "actual_null_share": 0.0,
+          "distinct_non_null_keys": 10000,
+          "most_frequent_key": 1005,
+          "most_frequent_key_count": 363,
+          "null_count": 0
+        },
+        "row_count": 3000000
+      },
+      "table": "facts",
+      "write_seconds": 7.6
+    },
+    {
+      "dataset_id": "dim_k1_n1000000_match0.966_payload-20_seed-42_filter-prefix",
+      "generated_at": "2026-10-06T15:58:22",
+      "params": {
+        "filter_layout": "prefix",
+        "key": "k1",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k1_n1000000_match0.966_payload-20_seed-42_filter-prefix/data",
+      "size_on_disk_bytes": 25190414,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.966169,
+        "filter_bucket_count": 1000,
+        "matched_keys": 966169,
+        "row_count": 1000000
+      },
+      "table": "dim_k1",
+      "write_seconds": 1.1
+    },
+    {
+      "dataset_id": "dim_k2_n1000000_match0.966_payload-20_seed-42",
+      "generated_at": "2026-10-06T15:58:23",
+      "params": {
+        "filter_layout": "hash",
+        "key": "k2",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k2_n1000000_match0.966_payload-20_seed-42/data",
+      "size_on_disk_bytes": 26481598,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.965931,
+        "filter_bucket_count": 1000,
+        "matched_keys": 965931,
+        "row_count": 1000000
+      },
+      "table": "dim_k2",
+      "write_seconds": 0.7
+    },
+    {
+      "dataset_id": "dim_k3_n1000000_match0.966_payload-20_seed-42_filter-prefix",
+      "generated_at": "2026-10-06T15:58:24",
+      "params": {
+        "filter_layout": "prefix",
+        "key": "k3",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k3_n1000000_match0.966_payload-20_seed-42_filter-prefix/data",
+      "size_on_disk_bytes": 25190435,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.965997,
+        "filter_bucket_count": 1000,
+        "matched_keys": 965997,
+        "row_count": 1000000
+      },
+      "table": "dim_k3",
+      "write_seconds": 0.5
+    },
+    {
+      "dataset_id": "dim_k4_n1000000_match0.966_payload-20_seed-42",
+      "generated_at": "2026-10-06T15:58:25",
+      "params": {
+        "filter_layout": "hash",
+        "key": "k4",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k4_n1000000_match0.966_payload-20_seed-42/data",
+      "size_on_disk_bytes": 26481600,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.966027,
+        "filter_bucket_count": 1000,
+        "matched_keys": 966027,
+        "row_count": 1000000
+      },
+      "table": "dim_k4",
+      "write_seconds": 0.3
+    },
+    {
+      "dataset_id": "dim_k5_n1000000_match0.966_payload-20_seed-42_filter-prefix",
+      "generated_at": "2026-10-06T15:58:25",
+      "params": {
+        "filter_layout": "prefix",
+        "key": "k5",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k5_n1000000_match0.966_payload-20_seed-42_filter-prefix/data",
+      "size_on_disk_bytes": 25190322,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.966277,
+        "filter_bucket_count": 1000,
+        "matched_keys": 966277,
+        "row_count": 1000000
+      },
+      "table": "dim_k5",
+      "write_seconds": 0.3
+    },
+    {
+      "dataset_id": "dim_k6_n1000000_match0.966_payload-20_seed-42",
+      "generated_at": "2026-10-06T16:36:38",
+      "params": {
+        "filter_layout": "hash",
+        "key": "k6",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k6_n1000000_match0.966_payload-20_seed-42/data",
+      "size_on_disk_bytes": 26481625,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.966279,
+        "filter_bucket_count": 1000,
+        "matched_keys": 966279,
+        "row_count": 1000000
+      },
+      "table": "dim_k6",
+      "write_seconds": 1.3
+    },
+    {
+      "dataset_id": "dim_k7_n1000000_match0.966_payload-20_seed-42_filter-prefix",
+      "generated_at": "2026-10-06T16:36:39",
+      "params": {
+        "filter_layout": "prefix",
+        "key": "k7",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k7_n1000000_match0.966_payload-20_seed-42_filter-prefix/data",
+      "size_on_disk_bytes": 25190385,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.965985,
+        "filter_bucket_count": 1000,
+        "matched_keys": 965985,
+        "row_count": 1000000
+      },
+      "table": "dim_k7",
+      "write_seconds": 0.5
+    },
+    {
+      "dataset_id": "dim_k8_n1000000_match0.966_payload-20_seed-42",
+      "generated_at": "2026-10-06T16:36:39",
+      "params": {
+        "filter_layout": "hash",
+        "key": "k8",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k8_n1000000_match0.966_payload-20_seed-42/data",
+      "size_on_disk_bytes": 26481640,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.965901,
+        "filter_bucket_count": 1000,
+        "matched_keys": 965901,
+        "row_count": 1000000
+      },
+      "table": "dim_k8",
+      "write_seconds": 0.3
+    },
+    {
+      "dataset_id": "dim_k9_n1000000_match0.966_payload-20_seed-42_filter-prefix",
+      "generated_at": "2026-10-06T16:36:40",
+      "params": {
+        "filter_layout": "prefix",
+        "key": "k9",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k9_n1000000_match0.966_payload-20_seed-42_filter-prefix/data",
+      "size_on_disk_bytes": 25190406,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.965898,
+        "filter_bucket_count": 1000,
+        "matched_keys": 965898,
+        "row_count": 1000000
+      },
+      "table": "dim_k9",
+      "write_seconds": 0.3
+    },
+    {
+      "dataset_id": "dim_k10_n1000000_match0.966_payload-20_seed-42",
+      "generated_at": "2026-10-06T16:36:40",
+      "params": {
+        "filter_layout": "hash",
+        "key": "k10",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k10_n1000000_match0.966_payload-20_seed-42/data",
+      "size_on_disk_bytes": 26481645,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.965803,
+        "filter_bucket_count": 1000,
+        "matched_keys": 965803,
+        "row_count": 1000000
+      },
+      "table": "dim_k10",
+      "write_seconds": 0.3
+    },
+    {
+      "dataset_id": "dim_k11_n1000000_match0.966_payload-20_seed-42_filter-prefix",
+      "generated_at": "2026-10-06T16:36:41",
+      "params": {
+        "filter_layout": "prefix",
+        "key": "k11",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k11_n1000000_match0.966_payload-20_seed-42_filter-prefix/data",
+      "size_on_disk_bytes": 25190498,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.966132,
+        "filter_bucket_count": 1000,
+        "matched_keys": 966132,
+        "row_count": 1000000
+      },
+      "table": "dim_k11",
+      "write_seconds": 0.3
+    },
+    {
+      "dataset_id": "dim_k12_n1000000_match0.966_payload-20_seed-42",
+      "generated_at": "2026-10-06T16:36:41",
+      "params": {
+        "filter_layout": "hash",
+        "key": "k12",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k12_n1000000_match0.966_payload-20_seed-42/data",
+      "size_on_disk_bytes": 26481692,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.966264,
+        "filter_bucket_count": 1000,
+        "matched_keys": 966264,
+        "row_count": 1000000
+      },
+      "table": "dim_k12",
+      "write_seconds": 0.3
+    },
+    {
+      "dataset_id": "dim_k13_n1000000_match0.966_payload-20_seed-42_filter-prefix",
+      "generated_at": "2026-10-06T16:36:42",
+      "params": {
+        "filter_layout": "prefix",
+        "key": "k13",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k13_n1000000_match0.966_payload-20_seed-42_filter-prefix/data",
+      "size_on_disk_bytes": 25190446,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.965972,
+        "filter_bucket_count": 1000,
+        "matched_keys": 965972,
+        "row_count": 1000000
+      },
+      "table": "dim_k13",
+      "write_seconds": 0.6
+    },
+    {
+      "dataset_id": "dim_k14_n1000000_match0.966_payload-20_seed-42",
+      "generated_at": "2026-10-06T16:36:43",
+      "params": {
+        "filter_layout": "hash",
+        "key": "k14",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k14_n1000000_match0.966_payload-20_seed-42/data",
+      "size_on_disk_bytes": 26481643,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.9659,
+        "filter_bucket_count": 1000,
+        "matched_keys": 965900,
+        "row_count": 1000000
+      },
+      "table": "dim_k14",
+      "write_seconds": 0.5
+    },
+    {
+      "dataset_id": "dim_k15_n1000000_match0.966_payload-20_seed-42_filter-prefix",
+      "generated_at": "2026-10-06T16:36:43",
+      "params": {
+        "filter_layout": "prefix",
+        "key": "k15",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k15_n1000000_match0.966_payload-20_seed-42_filter-prefix/data",
+      "size_on_disk_bytes": 25190319,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.965944,
+        "filter_bucket_count": 1000,
+        "matched_keys": 965944,
+        "row_count": 1000000
+      },
+      "table": "dim_k15",
+      "write_seconds": 0.3
+    },
+    {
+      "dataset_id": "dim_k16_n1000000_match0.966_payload-20_seed-42",
+      "generated_at": "2026-10-06T16:36:44",
+      "params": {
+        "filter_layout": "hash",
+        "key": "k16",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k16_n1000000_match0.966_payload-20_seed-42/data",
+      "size_on_disk_bytes": 26481621,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.965989,
+        "filter_bucket_count": 1000,
+        "matched_keys": 965989,
+        "row_count": 1000000
+      },
+      "table": "dim_k16",
+      "write_seconds": 0.3
+    },
+    {
+      "dataset_id": "dim_k17_n1000000_match0.966_payload-20_seed-42_filter-prefix",
+      "generated_at": "2026-10-06T16:36:44",
+      "params": {
+        "filter_layout": "prefix",
+        "key": "k17",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k17_n1000000_match0.966_payload-20_seed-42_filter-prefix/data",
+      "size_on_disk_bytes": 25190331,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.966431,
+        "filter_bucket_count": 1000,
+        "matched_keys": 966431,
+        "row_count": 1000000
+      },
+      "table": "dim_k17",
+      "write_seconds": 0.3
+    },
+    {
+      "dataset_id": "dim_k18_n1000000_match0.966_payload-20_seed-42",
+      "generated_at": "2026-10-06T16:36:45",
+      "params": {
+        "filter_layout": "hash",
+        "key": "k18",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k18_n1000000_match0.966_payload-20_seed-42/data",
+      "size_on_disk_bytes": 26481670,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.966118,
+        "filter_bucket_count": 1000,
+        "matched_keys": 966118,
+        "row_count": 1000000
+      },
+      "table": "dim_k18",
+      "write_seconds": 0.3
+    },
+    {
+      "dataset_id": "dim_k19_n1000000_match0.966_payload-20_seed-42_filter-prefix",
+      "generated_at": "2026-10-06T16:36:45",
+      "params": {
+        "filter_layout": "prefix",
+        "key": "k19",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k19_n1000000_match0.966_payload-20_seed-42_filter-prefix/data",
+      "size_on_disk_bytes": 25190439,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.96647,
+        "filter_bucket_count": 1000,
+        "matched_keys": 966470,
+        "row_count": 1000000
+      },
+      "table": "dim_k19",
+      "write_seconds": 0.3
+    },
+    {
+      "dataset_id": "dim_k20_n1000000_match0.966_payload-20_seed-42",
+      "generated_at": "2026-10-06T16:36:46",
+      "params": {
+        "filter_layout": "hash",
+        "key": "k20",
+        "match_rate": 0.966,
+        "n_keys": 1000000,
+        "payload_bytes": 20,
+        "payload_kind": "hex",
+        "payload_random_fraction": 1.0,
+        "seed": 42
+      },
+      "parquet_compression": "snappy",
+      "path": "/opt/spark-data/datasets/dim_k20_n1000000_match0.966_payload-20_seed-42/data",
+      "size_on_disk_bytes": 26481736,
+      "spark_version": "4.1.3",
+      "stats": {
+        "actual_match_rate": 0.965834,
+        "filter_bucket_count": 1000,
+        "matched_keys": 965834,
+        "row_count": 1000000
+      },
+      "table": "dim_k20",
+      "write_seconds": 0.3
+    }
+  ],
+  "elapsed_seconds": 21.641,
+  "environment": {
+    "application_id": "app-20261013130603-0054",
+    "machine": "aarch64",
+    "python_version": "3.10.12",
+    "spark_version": "4.1.3"
+  },
+  "experiment": "exp_d2_inner",
+  "is_warmup": false,
+  "job_id": "r4_00_inner_n20_aqe_off_hints",
+  "json_path": "../../runs/exp_d2_inner/inner_n20_null0_rows3000000_payload100_aligned_match0.966/aqe_off_hints/app-20261013130603-0054_run-2.json",
+  "metrics": {
+    "aqe": {
+      "exchanges": [
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n45.8 MiB (5.1 MiB, 5.1 MiB, 5.1 MiB (stage 112.0: task 5782))",
+          "node_id": 219,
+          "partitions": 200,
+          "records_written": "1,000,000",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n25.4 MiB (2.8 MiB, 2.8 MiB, 2.8 MiB (stage 112.0: task 5783))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n45.8 MiB (5.1 MiB, 5.1 MiB, 5.1 MiB (stage 110.0: task 5573))",
+          "node_id": 205,
+          "partitions": 200,
+          "records_written": "1,000,000",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n25.4 MiB (2.8 MiB, 2.8 MiB, 2.8 MiB (stage 110.0: task 5574))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n45.8 MiB (5.1 MiB, 5.1 MiB, 5.1 MiB (stage 108.0: task 5364))",
+          "node_id": 191,
+          "partitions": 200,
+          "records_written": "1,000,000",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n25.4 MiB (2.8 MiB, 2.8 MiB, 2.8 MiB (stage 108.0: task 5366))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n45.8 MiB (5.1 MiB, 5.1 MiB, 5.1 MiB (stage 106.0: task 5155))",
+          "node_id": 177,
+          "partitions": 200,
+          "records_written": "1,000,000",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n25.4 MiB (2.8 MiB, 2.8 MiB, 2.8 MiB (stage 106.0: task 5157))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n45.8 MiB (5.1 MiB, 5.1 MiB, 5.1 MiB (stage 103.0: task 4492))",
+          "node_id": 163,
+          "partitions": 200,
+          "records_written": "1,000,000",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n25.4 MiB (2.8 MiB, 2.8 MiB, 2.8 MiB (stage 103.0: task 4493))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n45.8 MiB (5.1 MiB, 5.1 MiB, 5.1 MiB (stage 101.0: task 4946))",
+          "node_id": 149,
+          "partitions": 200,
+          "records_written": "1,000,000",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n25.4 MiB (2.8 MiB, 2.8 MiB, 2.8 MiB (stage 101.0: task 4948))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n45.8 MiB (5.1 MiB, 5.1 MiB, 5.1 MiB (stage 99.0: task 4737))",
+          "node_id": 135,
+          "partitions": 200,
+          "records_written": "1,000,000",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n25.4 MiB (2.8 MiB, 2.8 MiB, 2.8 MiB (stage 99.0: task 4940))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n45.8 MiB (5.1 MiB, 5.1 MiB, 5.1 MiB (stage 97.0: task 4528))",
+          "node_id": 121,
+          "partitions": 200,
+          "records_written": "1,000,000",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n25.4 MiB (2.8 MiB, 2.8 MiB, 2.8 MiB (stage 97.0: task 4731))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n45.8 MiB (5.1 MiB, 5.1 MiB, 5.1 MiB (stage 96.0: task 4519))",
+          "node_id": 107,
+          "partitions": 200,
+          "records_written": "1,000,000",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n25.4 MiB (2.8 MiB, 2.8 MiB, 2.8 MiB (stage 96.0: task 4521))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n45.8 MiB (5.1 MiB, 5.1 MiB, 5.1 MiB (stage 93.0: task 4501))",
+          "node_id": 93,
+          "partitions": 200,
+          "records_written": "1,000,000",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n25.4 MiB (2.8 MiB, 2.8 MiB, 2.8 MiB (stage 93.0: task 4503))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n884.4 MiB (98.2 MiB, 98.3 MiB, 98.3 MiB (stage 94.0: task 4510))",
+          "node_id": 78,
+          "partitions": 200,
+          "records_written": "2,898,003",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n625.6 MiB (69.5 MiB, 69.5 MiB, 69.6 MiB (stage 94.0: task 4510))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n987.8 MiB (4.8 MiB, 4.9 MiB, 5.2 MiB (stage 95.0: task 4631))",
+          "node_id": 70,
+          "partitions": 200,
+          "records_written": "2,697,351",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n704.5 MiB (3.4 MiB, 3.5 MiB, 3.7 MiB (stage 95.0: task 4631))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n1078.1 MiB (5.2 MiB, 5.4 MiB, 5.6 MiB (stage 98.0: task 4855))",
+          "node_id": 62,
+          "partitions": 200,
+          "records_written": "2,523,292",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n763.6 MiB (3.7 MiB, 3.8 MiB, 4.0 MiB (stage 98.0: task 4855))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n1152.5 MiB (5.5 MiB, 5.8 MiB, 6.1 MiB (stage 100.0: task 4969))",
+          "node_id": 54,
+          "partitions": 200,
+          "records_written": "2,360,330",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n811.9 MiB (3.9 MiB, 4.1 MiB, 4.3 MiB (stage 100.0: task 4969))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n1212.0 MiB (5.8 MiB, 6.1 MiB, 6.3 MiB (stage 102.0: task 5275))",
+          "node_id": 46,
+          "partitions": 200,
+          "records_written": "2,206,320",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n849.8 MiB (4.0 MiB, 4.3 MiB, 4.4 MiB (stage 102.0: task 5275))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n1255.2 MiB (6.0 MiB, 6.3 MiB, 6.6 MiB (stage 104.0: task 5407))",
+          "node_id": 38,
+          "partitions": 200,
+          "records_written": "2,056,582",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n877.4 MiB (4.2 MiB, 4.4 MiB, 4.6 MiB (stage 104.0: task 5407))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n1295.3 MiB (6.2 MiB, 6.5 MiB, 6.8 MiB (stage 105.0: task 5771))",
+          "node_id": 30,
+          "partitions": 200,
+          "records_written": "1,929,335",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n903.2 MiB (4.3 MiB, 4.5 MiB, 4.8 MiB (stage 105.0: task 5771))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n1318.9 MiB (6.3 MiB, 6.6 MiB, 6.9 MiB (stage 107.0: task 5806))",
+          "node_id": 22,
+          "partitions": 200,
+          "records_written": "1,800,714",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n917.0 MiB (4.4 MiB, 4.6 MiB, 4.8 MiB (stage 107.0: task 5806))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n1337.7 MiB (6.4 MiB, 6.7 MiB, 7.0 MiB (stage 109.0: task 6007))",
+          "node_id": 14,
+          "partitions": 200,
+          "records_written": "1,685,871",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n928.2 MiB (4.4 MiB, 4.6 MiB, 4.9 MiB (stage 109.0: task 6007))"
+        },
+        {
+          "data_size": "total (min, med, max (stageId: taskId))\n1344.0 MiB (6.4 MiB, 6.7 MiB, 7.0 MiB (stage 111.0: task 6381))",
+          "node_id": 6,
+          "partitions": 200,
+          "records_written": "1,572,807",
+          "shuffle_bytes_written": "total (min, med, max (stageId: taskId))\n930.7 MiB (4.4 MiB, 4.6 MiB, 4.9 MiB (stage 111.0: task 6381))"
+        }
+      ],
+      "partitions_after": [
+        200
+      ],
+      "partitions_before": [
+        200
+      ],
+      "shuffle_readers": [],
+      "skew_join_applied": false,
+      "skew_splits": 0,
+      "skewed_partitions": 0
+    },
+    "compression_ratio_facts": 1.4440743526377995,
+    "compression_ratio_overall": 1.4387163053502843,
+    "exchanges_detail": [
+      {
+        "data_size_bytes": 1409286144.0,
+        "desc": "Exchange hashpartitioning(k20#44L, 200), ENSURE_REQUIREMENTS, [plan_id=3555]",
+        "node_id": 6,
+        "partition_key": "k20",
+        "ratio": 1.4440743526377995,
+        "records_written": 1572807,
+        "shuffle_bytes_written": 975909683.2
+      },
+      {
+        "data_size_bytes": 1402680115.2,
+        "desc": "Exchange hashpartitioning(k18#42L, 200), ENSURE_REQUIREMENTS, [plan_id=3528]",
+        "node_id": 14,
+        "partition_key": "k18",
+        "ratio": 1.4411764705882353,
+        "records_written": 1685871,
+        "shuffle_bytes_written": 973288243.2
+      },
+      {
+        "data_size_bytes": 1382966886.4,
+        "desc": "Exchange hashpartitioning(k16#40L, 200), ENSURE_REQUIREMENTS, [plan_id=3501]",
+        "node_id": 22,
+        "partition_key": "k16",
+        "ratio": 1.4382769901853871,
+        "records_written": 1800714,
+        "shuffle_bytes_written": 961544192.0
+      },
+      {
+        "data_size_bytes": 1358220492.8,
+        "desc": "Exchange hashpartitioning(k14#38L, 200), ENSURE_REQUIREMENTS, [plan_id=3474]",
+        "node_id": 30,
+        "partition_key": "k14",
+        "ratio": 1.4341231178033658,
+        "records_written": 1929335,
+        "shuffle_bytes_written": 947073843.2
+      },
+      {
+        "data_size_bytes": 1316172595.2,
+        "desc": "Exchange hashpartitioning(k12#36L, 200), ENSURE_REQUIREMENTS, [plan_id=3447]",
+        "node_id": 38,
+        "partition_key": "k12",
+        "ratio": 1.4305903806701619,
+        "records_written": 2056582,
+        "shuffle_bytes_written": 920020582.4
+      },
+      {
+        "data_size_bytes": 1270874112.0,
+        "desc": "Exchange hashpartitioning(k10#34L, 200), ENSURE_REQUIREMENTS, [plan_id=3420]",
+        "node_id": 46,
+        "partition_key": "k10",
+        "ratio": 1.4262179336314427,
+        "records_written": 2206320,
+        "shuffle_bytes_written": 891079884.8
+      },
+      {
+        "data_size_bytes": 1208483840.0,
+        "desc": "Exchange hashpartitioning(k8#32L, 200), ENSURE_REQUIREMENTS, [plan_id=3393]",
+        "node_id": 54,
+        "partition_key": "k8",
+        "ratio": 1.4195097918462865,
+        "records_written": 2360330,
+        "shuffle_bytes_written": 851338854.4
+      },
+      {
+        "data_size_bytes": 1130469785.6,
+        "desc": "Exchange hashpartitioning(k6#30L, 200), ENSURE_REQUIREMENTS, [plan_id=3366]",
+        "node_id": 62,
+        "partition_key": "k6",
+        "ratio": 1.4118648507071763,
+        "records_written": 2523292,
+        "shuffle_bytes_written": 800692633.6
+      },
+      {
+        "data_size_bytes": 1035783372.8,
+        "desc": "Exchange hashpartitioning(k4#28L, 200), ENSURE_REQUIREMENTS, [plan_id=3339]",
+        "node_id": 70,
+        "partition_key": "k4",
+        "ratio": 1.4021291696238467,
+        "records_written": 2697351,
+        "shuffle_bytes_written": 738721792.0
+      },
+      {
+        "data_size_bytes": 927360614.4,
+        "desc": "Exchange hashpartitioning(k2#26L, 200), ENSURE_REQUIREMENTS, [plan_id=3312]",
+        "node_id": 78,
+        "partition_key": "k2",
+        "ratio": 1.4136828644501278,
+        "records_written": 2898003,
+        "shuffle_bytes_written": 655989145.6
+      },
+      {
+        "data_size_bytes": 48024780.8,
+        "desc": "Exchange hashpartitioning(k2#49L, 200), ENSURE_REQUIREMENTS, [plan_id=3322]",
+        "node_id": 93,
+        "partition_key": "k2",
+        "ratio": 1.8031496062992125,
+        "records_written": 1000000,
+        "shuffle_bytes_written": 26633830.4
+      },
+      {
+        "data_size_bytes": 48024780.8,
+        "desc": "Exchange hashpartitioning(k4#55L, 200), ENSURE_REQUIREMENTS, [plan_id=3349]",
+        "node_id": 107,
+        "partition_key": "k4",
+        "ratio": 1.8031496062992125,
+        "records_written": 1000000,
+        "shuffle_bytes_written": 26633830.4
+      },
+      {
+        "data_size_bytes": 48024780.8,
+        "desc": "Exchange hashpartitioning(k6#61L, 200), ENSURE_REQUIREMENTS, [plan_id=3376]",
+        "node_id": 121,
+        "partition_key": "k6",
+        "ratio": 1.8031496062992125,
+        "records_written": 1000000,
+        "shuffle_bytes_written": 26633830.4
+      },
+      {
+        "data_size_bytes": 48024780.8,
+        "desc": "Exchange hashpartitioning(k8#67L, 200), ENSURE_REQUIREMENTS, [plan_id=3403]",
+        "node_id": 135,
+        "partition_key": "k8",
+        "ratio": 1.8031496062992125,
+        "records_written": 1000000,
+        "shuffle_bytes_written": 26633830.4
+      },
+      {
+        "data_size_bytes": 48024780.8,
+        "desc": "Exchange hashpartitioning(k10#73L, 200), ENSURE_REQUIREMENTS, [plan_id=3430]",
+        "node_id": 149,
+        "partition_key": "k10",
+        "ratio": 1.8031496062992125,
+        "records_written": 1000000,
+        "shuffle_bytes_written": 26633830.4
+      },
+      {
+        "data_size_bytes": 48024780.8,
+        "desc": "Exchange hashpartitioning(k12#79L, 200), ENSURE_REQUIREMENTS, [plan_id=3457]",
+        "node_id": 163,
+        "partition_key": "k12",
+        "ratio": 1.8031496062992125,
+        "records_written": 1000000,
+        "shuffle_bytes_written": 26633830.4
+      },
+      {
+        "data_size_bytes": 48024780.8,
+        "desc": "Exchange hashpartitioning(k14#85L, 200), ENSURE_REQUIREMENTS, [plan_id=3484]",
+        "node_id": 177,
+        "partition_key": "k14",
+        "ratio": 1.8031496062992125,
+        "records_written": 1000000,
+        "shuffle_bytes_written": 26633830.4
+      },
+      {
+        "data_size_bytes": 48024780.8,
+        "desc": "Exchange hashpartitioning(k16#91L, 200), ENSURE_REQUIREMENTS, [plan_id=3511]",
+        "node_id": 191,
+        "partition_key": "k16",
+        "ratio": 1.8031496062992125,
+        "records_written": 1000000,
+        "shuffle_bytes_written": 26633830.4
+      },
+      {
+        "data_size_bytes": 48024780.8,
+        "desc": "Exchange hashpartitioning(k18#97L, 200), ENSURE_REQUIREMENTS, [plan_id=3538]",
+        "node_id": 205,
+        "partition_key": "k18",
+        "ratio": 1.8031496062992125,
+        "records_written": 1000000,
+        "shuffle_bytes_written": 26633830.4
+      },
+      {
+        "data_size_bytes": 48024780.8,
+        "desc": "Exchange hashpartitioning(k20#103L, 200), ENSURE_REQUIREMENTS, [plan_id=3565]",
+        "node_id": 219,
+        "partition_key": "k20",
+        "ratio": 1.8031496062992125,
+        "records_written": 1000000,
+        "shuffle_bytes_written": 26633830.4
+      }
+    ],
+    "facts_scan_map_tasks": 9,
+    "facts_scan_stage_id": 94,
+    "final_physical_plan": "== Physical Plan ==\nOverwriteByExpression (174)\n+- * Project (173)\n   +- * SortMergeJoin Inner (172)\n      :- * Sort (165)\n      :  +- Exchange (164)\n      :     +- * Project (163)\n      :        +- * BroadcastHashJoin Inner BuildRight (162)\n      :           :- * Project (156)\n      :           :  +- * SortMergeJoin Inner (155)\n      :           :     :- * Sort (148)\n      :           :     :  +- Exchange (147)\n      :           :     :     +- * Project (146)\n      :           :     :        +- * BroadcastHashJoin Inner BuildRight (145)\n      :           :     :           :- * Project (139)\n      :           :     :           :  +- * SortMergeJoin Inner (138)\n      :           :     :           :     :- * Sort (131)\n      :           :     :           :     :  +- Exchange (130)\n      :           :     :           :     :     +- * Project (129)\n      :           :     :           :     :        +- * BroadcastHashJoin Inner BuildRight (128)\n      :           :     :           :     :           :- * Project (122)\n      :           :     :           :     :           :  +- * SortMergeJoin Inner (121)\n      :           :     :           :     :           :     :- * Sort (114)\n      :           :     :           :     :           :     :  +- Exchange (113)\n      :           :     :           :     :           :     :     +- * Project (112)\n      :           :     :           :     :           :     :        +- * BroadcastHashJoin Inner BuildRight (111)\n      :           :     :           :     :           :     :           :- * Project (105)\n      :           :     :           :     :           :     :           :  +- * SortMergeJoin Inner (104)\n      :           :     :           :     :           :     :           :     :- * Sort (97)\n      :           :     :           :     :           :     :           :     :  +- Exchange (96)\n      :           :     :           :     :           :     :           :     :     +- * Project (95)\n      :           :     :           :     :           :     :           :     :        +- * BroadcastHashJoin Inner BuildRight (94)\n      :           :     :           :     :           :     :           :     :           :- * Project (88)\n      :           :     :           :     :           :     :           :     :           :  +- * SortMergeJoin Inner (87)\n      :           :     :           :     :           :     :           :     :           :     :- * Sort (80)\n      :           :     :           :     :           :     :           :     :           :     :  +- Exchange (79)\n      :           :     :           :     :           :     :           :     :           :     :     +- * Project (78)\n      :           :     :           :     :           :     :           :     :           :     :        +- * BroadcastHashJoin Inner BuildRight (77)\n      :           :     :           :     :           :     :           :     :           :     :           :- * Project (71)\n      :           :     :           :     :           :     :           :     :           :     :           :  +- * SortMergeJoin Inner (70)\n      :           :     :           :     :           :     :           :     :           :     :           :     :- * Sort (63)\n      :           :     :           :     :           :     :           :     :           :     :           :     :  +- Exchange (62)\n      :           :     :           :     :           :     :           :     :           :     :           :     :     +- * Project (61)\n      :           :     :           :     :           :     :           :     :           :     :           :     :        +- * BroadcastHashJoin Inner BuildRight (60)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :- * Project (54)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :  +- * SortMergeJoin Inner (53)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :- * Sort (46)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :  +- Exchange (45)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :     +- * Project (44)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :        +- * BroadcastHashJoin Inner BuildRight (43)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :- * Project (37)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :  +- * SortMergeJoin Inner (36)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :- * Sort (29)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :  +- Exchange (28)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :     +- * Project (27)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :        +- * BroadcastHashJoin Inner BuildRight (26)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :- * Project (20)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :  +- * SortMergeJoin Inner (19)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :- * Sort (12)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :  +- Exchange (11)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :     +- * Project (10)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :        +- * BroadcastHashJoin Inner BuildRight (9)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :- * Filter (3)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :  +- * ColumnarToRow (2)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     +- Scan parquet  (1)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           +- BroadcastExchange (8)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :              +- * Project (7)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :                 +- * Filter (6)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :                    +- * ColumnarToRow (5)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :                       +- Scan parquet  (4)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     +- * Sort (18)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :        +- Exchange (17)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :           +- * Project (16)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :              +- * Filter (15)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :                 +- * ColumnarToRow (14)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :                    +- Scan parquet  (13)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           +- BroadcastExchange (25)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :              +- * Project (24)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :                 +- * Filter (23)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :                    +- * ColumnarToRow (22)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     :                       +- Scan parquet  (21)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :     +- * Sort (35)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :        +- Exchange (34)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :           +- * Project (33)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :              +- * Filter (32)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :                 +- * ColumnarToRow (31)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           :                    +- Scan parquet  (30)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :           +- BroadcastExchange (42)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :              +- * Project (41)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :                 +- * Filter (40)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :                    +- * ColumnarToRow (39)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     :                       +- Scan parquet  (38)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :     +- * Sort (52)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :        +- Exchange (51)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :           +- * Project (50)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :              +- * Filter (49)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :                 +- * ColumnarToRow (48)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           :                    +- Scan parquet  (47)\n      :           :     :           :     :           :     :           :     :           :     :           :     :           +- BroadcastExchange (59)\n      :           :     :           :     :           :     :           :     :           :     :           :     :              +- * Project (58)\n      :           :     :           :     :           :     :           :     :           :     :           :     :                 +- * Filter (57)\n      :           :     :           :     :           :     :           :     :           :     :           :     :                    +- * ColumnarToRow (56)\n      :           :     :           :     :           :     :           :     :           :     :           :     :                       +- Scan parquet  (55)\n      :           :     :           :     :           :     :           :     :           :     :           :     +- * Sort (69)\n      :           :     :           :     :           :     :           :     :           :     :           :        +- Exchange (68)\n      :           :     :           :     :           :     :           :     :           :     :           :           +- * Project (67)\n      :           :     :           :     :           :     :           :     :           :     :           :              +- * Filter (66)\n      :           :     :           :     :           :     :           :     :           :     :           :                 +- * ColumnarToRow (65)\n      :           :     :           :     :           :     :           :     :           :     :           :                    +- Scan parquet  (64)\n      :           :     :           :     :           :     :           :     :           :     :           +- BroadcastExchange (76)\n      :           :     :           :     :           :     :           :     :           :     :              +- * Project (75)\n      :           :     :           :     :           :     :           :     :           :     :                 +- * Filter (74)\n      :           :     :           :     :           :     :           :     :           :     :                    +- * ColumnarToRow (73)\n      :           :     :           :     :           :     :           :     :           :     :                       +- Scan parquet  (72)\n      :           :     :           :     :           :     :           :     :           :     +- * Sort (86)\n      :           :     :           :     :           :     :           :     :           :        +- Exchange (85)\n      :           :     :           :     :           :     :           :     :           :           +- * Project (84)\n      :           :     :           :     :           :     :           :     :           :              +- * Filter (83)\n      :           :     :           :     :           :     :           :     :           :                 +- * ColumnarToRow (82)\n      :           :     :           :     :           :     :           :     :           :                    +- Scan parquet  (81)\n      :           :     :           :     :           :     :           :     :           +- BroadcastExchange (93)\n      :           :     :           :     :           :     :           :     :              +- * Project (92)\n      :           :     :           :     :           :     :           :     :                 +- * Filter (91)\n      :           :     :           :     :           :     :           :     :                    +- * ColumnarToRow (90)\n      :           :     :           :     :           :     :           :     :                       +- Scan parquet  (89)\n      :           :     :           :     :           :     :           :     +- * Sort (103)\n      :           :     :           :     :           :     :           :        +- Exchange (102)\n      :           :     :           :     :           :     :           :           +- * Project (101)\n      :           :     :           :     :           :     :           :              +- * Filter (100)\n      :           :     :           :     :           :     :           :                 +- * ColumnarToRow (99)\n      :           :     :           :     :           :     :           :                    +- Scan parquet  (98)\n      :           :     :           :     :           :     :           +- BroadcastExchange (110)\n      :           :     :           :     :           :     :              +- * Project (109)\n      :           :     :           :     :           :     :                 +- * Filter (108)\n      :           :     :           :     :           :     :                    +- * ColumnarToRow (107)\n      :           :     :           :     :           :     :                       +- Scan parquet  (106)\n      :           :     :           :     :           :     +- * Sort (120)\n      :           :     :           :     :           :        +- Exchange (119)\n      :           :     :           :     :           :           +- * Project (118)\n      :           :     :           :     :           :              +- * Filter (117)\n      :           :     :           :     :           :                 +- * ColumnarToRow (116)\n      :           :     :           :     :           :                    +- Scan parquet  (115)\n      :           :     :           :     :           +- BroadcastExchange (127)\n      :           :     :           :     :              +- * Project (126)\n      :           :     :           :     :                 +- * Filter (125)\n      :           :     :           :     :                    +- * ColumnarToRow (124)\n      :           :     :           :     :                       +- Scan parquet  (123)\n      :           :     :           :     +- * Sort (137)\n      :           :     :           :        +- Exchange (136)\n      :           :     :           :           +- * Project (135)\n      :           :     :           :              +- * Filter (134)\n      :           :     :           :                 +- * ColumnarToRow (133)\n      :           :     :           :                    +- Scan parquet  (132)\n      :           :     :           +- BroadcastExchange (144)\n      :           :     :              +- * Project (143)\n      :           :     :                 +- * Filter (142)\n      :           :     :                    +- * ColumnarToRow (141)\n      :           :     :                       +- Scan parquet  (140)\n      :           :     +- * Sort (154)\n      :           :        +- Exchange (153)\n      :           :           +- * Project (152)\n      :           :              +- * Filter (151)\n      :           :                 +- * ColumnarToRow (150)\n      :           :                    +- Scan parquet  (149)\n      :           +- BroadcastExchange (161)\n      :              +- * Project (160)\n      :                 +- * Filter (159)\n      :                    +- * ColumnarToRow (158)\n      :                       +- Scan parquet  (157)\n      +- * Sort (171)\n         +- Exchange (170)\n            +- * Project (169)\n               +- * Filter (168)\n                  +- * ColumnarToRow (167)\n                     +- Scan parquet  (166)\n\n\n(1) Scan parquet \nOutput [22]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/facts_rows-3000000_k1-n10000-h0-null0_k2-n1000000-h0-null0_k3-n10000-h0-null0_k4-n1000000-h0-null0_k5-n10000-h0-null0_k6-n1000000-h0-null0_k7-n10000-h0-null0_k8-n1000000-h0-null0_k9-n100_h1b32757126bf/data]\nPushedFilters: [IsNotNull(k1), IsNotNull(k2), IsNotNull(k3), IsNotNull(k4), IsNotNull(k5), IsNotNull(k6), IsNotNull(k7), IsNotNull(k8), IsNotNull(k9), IsNotNull(k10), IsNotNull(k11), IsNotNull(k12), IsNotNull(k13), IsNotNull(k14), IsNotNull(k15), IsNotNull(k16), IsNotNull(k17), IsNotNull(k18), IsNotNull(k19), IsNotNull(k20)]\nReadSchema: struct<id:bigint,k1:bigint,k2:bigint,k3:bigint,k4:bigint,k5:bigint,k6:bigint,k7:bigint,k8:bigint,k9:bigint,k10:bigint,k11:bigint,k12:bigint,k13:bigint,k14:bigint,k15:bigint,k16:bigint,k17:bigint,k18:bigint,k19:bigint,k20:bigint,payload:string>\n\n(2) ColumnarToRow [codegen id : 2]\nInput [22]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45]\n\n(3) Filter [codegen id : 2]\nInput [22]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45]\nCondition : (((((((((((((((((((isnotnull(k1#25L) AND isnotnull(k2#26L)) AND isnotnull(k3#27L)) AND isnotnull(k4#28L)) AND isnotnull(k5#29L)) AND isnotnull(k6#30L)) AND isnotnull(k7#31L)) AND isnotnull(k8#32L)) AND isnotnull(k9#33L)) AND isnotnull(k10#34L)) AND isnotnull(k11#35L)) AND isnotnull(k12#36L)) AND isnotnull(k13#37L)) AND isnotnull(k14#38L)) AND isnotnull(k15#39L)) AND isnotnull(k16#40L)) AND isnotnull(k17#41L)) AND isnotnull(k18#42L)) AND isnotnull(k19#43L)) AND isnotnull(k20#44L))\n\n(4) Scan parquet \nOutput [3]: [k1#46L, filter_bucket#47, payload#48]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k1_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]\nPushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k1)]\nReadSchema: struct<k1:bigint,filter_bucket:int,payload:string>\n\n(5) ColumnarToRow [codegen id : 1]\nInput [3]: [k1#46L, filter_bucket#47, payload#48]\n\n(6) Filter [codegen id : 1]\nInput [3]: [k1#46L, filter_bucket#47, payload#48]\nCondition : ((isnotnull(filter_bucket#47) AND (filter_bucket#47 < 10)) AND isnotnull(k1#46L))\n\n(7) Project [codegen id : 1]\nOutput [2]: [k1#46L, payload#48 AS dim1_payload#167]\nInput [3]: [k1#46L, filter_bucket#47, payload#48]\n\n(8) BroadcastExchange\nInput [2]: [k1#46L, dim1_payload#167]\nArguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=3307]\n\n(9) BroadcastHashJoin [codegen id : 2]\nLeft keys [1]: [k1#25L]\nRight keys [1]: [k1#46L]\nJoin type: Inner\nJoin condition: None\n\n(10) Project [codegen id : 2]\nOutput [23]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167]\nInput [24]: [id#24L, k1#25L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, k1#46L, dim1_payload#167]\n\n(11) Exchange\nInput [23]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167]\nArguments: hashpartitioning(k2#26L, 200), ENSURE_REQUIREMENTS, [plan_id=3312]\n\n(12) Sort [codegen id : 3]\nInput [23]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167]\nArguments: [k2#26L ASC NULLS FIRST], false, 0\n\n(13) Scan parquet \nOutput [2]: [k2#49L, payload#51]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k2_n1000000_match0.966_payload-20_seed-42/data]\nPushedFilters: [IsNotNull(k2)]\nReadSchema: struct<k2:bigint,payload:string>\n\n(14) ColumnarToRow [codegen id : 4]\nInput [2]: [k2#49L, payload#51]\n\n(15) Filter [codegen id : 4]\nInput [2]: [k2#49L, payload#51]\nCondition : isnotnull(k2#49L)\n\n(16) Project [codegen id : 4]\nOutput [2]: [k2#49L, payload#51 AS dim2_payload#168]\nInput [2]: [k2#49L, payload#51]\n\n(17) Exchange\nInput [2]: [k2#49L, dim2_payload#168]\nArguments: hashpartitioning(k2#49L, 200), ENSURE_REQUIREMENTS, [plan_id=3322]\n\n(18) Sort [codegen id : 5]\nInput [2]: [k2#49L, dim2_payload#168]\nArguments: [k2#49L ASC NULLS FIRST], false, 0\n\n(19) SortMergeJoin [codegen id : 7]\nLeft keys [1]: [k2#26L]\nRight keys [1]: [k2#49L]\nJoin type: Inner\nJoin condition: None\n\n(20) Project [codegen id : 7]\nOutput [24]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168]\nInput [25]: [k1#25L, id#24L, k2#26L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, k2#49L, dim2_payload#168]\n\n(21) Scan parquet \nOutput [3]: [k3#52L, filter_bucket#53, payload#54]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k3_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]\nPushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k3)]\nReadSchema: struct<k3:bigint,filter_bucket:int,payload:string>\n\n(22) ColumnarToRow [codegen id : 6]\nInput [3]: [k3#52L, filter_bucket#53, payload#54]\n\n(23) Filter [codegen id : 6]\nInput [3]: [k3#52L, filter_bucket#53, payload#54]\nCondition : ((isnotnull(filter_bucket#53) AND (filter_bucket#53 < 10)) AND isnotnull(k3#52L))\n\n(24) Project [codegen id : 6]\nOutput [2]: [k3#52L, payload#54 AS dim3_payload#169]\nInput [3]: [k3#52L, filter_bucket#53, payload#54]\n\n(25) BroadcastExchange\nInput [2]: [k3#52L, dim3_payload#169]\nArguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=3334]\n\n(26) BroadcastHashJoin [codegen id : 7]\nLeft keys [1]: [k3#27L]\nRight keys [1]: [k3#52L]\nJoin type: Inner\nJoin condition: None\n\n(27) Project [codegen id : 7]\nOutput [25]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169]\nInput [26]: [k2#26L, k1#25L, id#24L, k3#27L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, k3#52L, dim3_payload#169]\n\n(28) Exchange\nInput [25]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169]\nArguments: hashpartitioning(k4#28L, 200), ENSURE_REQUIREMENTS, [plan_id=3339]\n\n(29) Sort [codegen id : 8]\nInput [25]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169]\nArguments: [k4#28L ASC NULLS FIRST], false, 0\n\n(30) Scan parquet \nOutput [2]: [k4#55L, payload#57]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k4_n1000000_match0.966_payload-20_seed-42/data]\nPushedFilters: [IsNotNull(k4)]\nReadSchema: struct<k4:bigint,payload:string>\n\n(31) ColumnarToRow [codegen id : 9]\nInput [2]: [k4#55L, payload#57]\n\n(32) Filter [codegen id : 9]\nInput [2]: [k4#55L, payload#57]\nCondition : isnotnull(k4#55L)\n\n(33) Project [codegen id : 9]\nOutput [2]: [k4#55L, payload#57 AS dim4_payload#170]\nInput [2]: [k4#55L, payload#57]\n\n(34) Exchange\nInput [2]: [k4#55L, dim4_payload#170]\nArguments: hashpartitioning(k4#55L, 200), ENSURE_REQUIREMENTS, [plan_id=3349]\n\n(35) Sort [codegen id : 10]\nInput [2]: [k4#55L, dim4_payload#170]\nArguments: [k4#55L ASC NULLS FIRST], false, 0\n\n(36) SortMergeJoin [codegen id : 12]\nLeft keys [1]: [k4#28L]\nRight keys [1]: [k4#55L]\nJoin type: Inner\nJoin condition: None\n\n(37) Project [codegen id : 12]\nOutput [26]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170]\nInput [27]: [k3#27L, k2#26L, k1#25L, id#24L, k4#28L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, k4#55L, dim4_payload#170]\n\n(38) Scan parquet \nOutput [3]: [k5#58L, filter_bucket#59, payload#60]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k5_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]\nPushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k5)]\nReadSchema: struct<k5:bigint,filter_bucket:int,payload:string>\n\n(39) ColumnarToRow [codegen id : 11]\nInput [3]: [k5#58L, filter_bucket#59, payload#60]\n\n(40) Filter [codegen id : 11]\nInput [3]: [k5#58L, filter_bucket#59, payload#60]\nCondition : ((isnotnull(filter_bucket#59) AND (filter_bucket#59 < 10)) AND isnotnull(k5#58L))\n\n(41) Project [codegen id : 11]\nOutput [2]: [k5#58L, payload#60 AS dim5_payload#171]\nInput [3]: [k5#58L, filter_bucket#59, payload#60]\n\n(42) BroadcastExchange\nInput [2]: [k5#58L, dim5_payload#171]\nArguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=3361]\n\n(43) BroadcastHashJoin [codegen id : 12]\nLeft keys [1]: [k5#29L]\nRight keys [1]: [k5#58L]\nJoin type: Inner\nJoin condition: None\n\n(44) Project [codegen id : 12]\nOutput [27]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171]\nInput [28]: [k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k5#29L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, k5#58L, dim5_payload#171]\n\n(45) Exchange\nInput [27]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171]\nArguments: hashpartitioning(k6#30L, 200), ENSURE_REQUIREMENTS, [plan_id=3366]\n\n(46) Sort [codegen id : 13]\nInput [27]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171]\nArguments: [k6#30L ASC NULLS FIRST], false, 0\n\n(47) Scan parquet \nOutput [2]: [k6#61L, payload#63]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k6_n1000000_match0.966_payload-20_seed-42/data]\nPushedFilters: [IsNotNull(k6)]\nReadSchema: struct<k6:bigint,payload:string>\n\n(48) ColumnarToRow [codegen id : 14]\nInput [2]: [k6#61L, payload#63]\n\n(49) Filter [codegen id : 14]\nInput [2]: [k6#61L, payload#63]\nCondition : isnotnull(k6#61L)\n\n(50) Project [codegen id : 14]\nOutput [2]: [k6#61L, payload#63 AS dim6_payload#172]\nInput [2]: [k6#61L, payload#63]\n\n(51) Exchange\nInput [2]: [k6#61L, dim6_payload#172]\nArguments: hashpartitioning(k6#61L, 200), ENSURE_REQUIREMENTS, [plan_id=3376]\n\n(52) Sort [codegen id : 15]\nInput [2]: [k6#61L, dim6_payload#172]\nArguments: [k6#61L ASC NULLS FIRST], false, 0\n\n(53) SortMergeJoin [codegen id : 17]\nLeft keys [1]: [k6#30L]\nRight keys [1]: [k6#61L]\nJoin type: Inner\nJoin condition: None\n\n(54) Project [codegen id : 17]\nOutput [28]: [k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172]\nInput [29]: [k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k6#30L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, k6#61L, dim6_payload#172]\n\n(55) Scan parquet \nOutput [3]: [k7#64L, filter_bucket#65, payload#66]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k7_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]\nPushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k7)]\nReadSchema: struct<k7:bigint,filter_bucket:int,payload:string>\n\n(56) ColumnarToRow [codegen id : 16]\nInput [3]: [k7#64L, filter_bucket#65, payload#66]\n\n(57) Filter [codegen id : 16]\nInput [3]: [k7#64L, filter_bucket#65, payload#66]\nCondition : ((isnotnull(filter_bucket#65) AND (filter_bucket#65 < 10)) AND isnotnull(k7#64L))\n\n(58) Project [codegen id : 16]\nOutput [2]: [k7#64L, payload#66 AS dim7_payload#173]\nInput [3]: [k7#64L, filter_bucket#65, payload#66]\n\n(59) BroadcastExchange\nInput [2]: [k7#64L, dim7_payload#173]\nArguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=3388]\n\n(60) BroadcastHashJoin [codegen id : 17]\nLeft keys [1]: [k7#31L]\nRight keys [1]: [k7#64L]\nJoin type: Inner\nJoin condition: None\n\n(61) Project [codegen id : 17]\nOutput [29]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173]\nInput [30]: [k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k7#31L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, k7#64L, dim7_payload#173]\n\n(62) Exchange\nInput [29]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173]\nArguments: hashpartitioning(k8#32L, 200), ENSURE_REQUIREMENTS, [plan_id=3393]\n\n(63) Sort [codegen id : 18]\nInput [29]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173]\nArguments: [k8#32L ASC NULLS FIRST], false, 0\n\n(64) Scan parquet \nOutput [2]: [k8#67L, payload#69]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k8_n1000000_match0.966_payload-20_seed-42/data]\nPushedFilters: [IsNotNull(k8)]\nReadSchema: struct<k8:bigint,payload:string>\n\n(65) ColumnarToRow [codegen id : 19]\nInput [2]: [k8#67L, payload#69]\n\n(66) Filter [codegen id : 19]\nInput [2]: [k8#67L, payload#69]\nCondition : isnotnull(k8#67L)\n\n(67) Project [codegen id : 19]\nOutput [2]: [k8#67L, payload#69 AS dim8_payload#174]\nInput [2]: [k8#67L, payload#69]\n\n(68) Exchange\nInput [2]: [k8#67L, dim8_payload#174]\nArguments: hashpartitioning(k8#67L, 200), ENSURE_REQUIREMENTS, [plan_id=3403]\n\n(69) Sort [codegen id : 20]\nInput [2]: [k8#67L, dim8_payload#174]\nArguments: [k8#67L ASC NULLS FIRST], false, 0\n\n(70) SortMergeJoin [codegen id : 22]\nLeft keys [1]: [k8#32L]\nRight keys [1]: [k8#67L]\nJoin type: Inner\nJoin condition: None\n\n(71) Project [codegen id : 22]\nOutput [30]: [k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174]\nInput [31]: [k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k8#32L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, k8#67L, dim8_payload#174]\n\n(72) Scan parquet \nOutput [3]: [k9#70L, filter_bucket#71, payload#72]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k9_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]\nPushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k9)]\nReadSchema: struct<k9:bigint,filter_bucket:int,payload:string>\n\n(73) ColumnarToRow [codegen id : 21]\nInput [3]: [k9#70L, filter_bucket#71, payload#72]\n\n(74) Filter [codegen id : 21]\nInput [3]: [k9#70L, filter_bucket#71, payload#72]\nCondition : ((isnotnull(filter_bucket#71) AND (filter_bucket#71 < 10)) AND isnotnull(k9#70L))\n\n(75) Project [codegen id : 21]\nOutput [2]: [k9#70L, payload#72 AS dim9_payload#175]\nInput [3]: [k9#70L, filter_bucket#71, payload#72]\n\n(76) BroadcastExchange\nInput [2]: [k9#70L, dim9_payload#175]\nArguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=3415]\n\n(77) BroadcastHashJoin [codegen id : 22]\nLeft keys [1]: [k9#33L]\nRight keys [1]: [k9#70L]\nJoin type: Inner\nJoin condition: None\n\n(78) Project [codegen id : 22]\nOutput [31]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175]\nInput [32]: [k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k9#33L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, k9#70L, dim9_payload#175]\n\n(79) Exchange\nInput [31]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175]\nArguments: hashpartitioning(k10#34L, 200), ENSURE_REQUIREMENTS, [plan_id=3420]\n\n(80) Sort [codegen id : 23]\nInput [31]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175]\nArguments: [k10#34L ASC NULLS FIRST], false, 0\n\n(81) Scan parquet \nOutput [2]: [k10#73L, payload#75]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k10_n1000000_match0.966_payload-20_seed-42/data]\nPushedFilters: [IsNotNull(k10)]\nReadSchema: struct<k10:bigint,payload:string>\n\n(82) ColumnarToRow [codegen id : 24]\nInput [2]: [k10#73L, payload#75]\n\n(83) Filter [codegen id : 24]\nInput [2]: [k10#73L, payload#75]\nCondition : isnotnull(k10#73L)\n\n(84) Project [codegen id : 24]\nOutput [2]: [k10#73L, payload#75 AS dim10_payload#176]\nInput [2]: [k10#73L, payload#75]\n\n(85) Exchange\nInput [2]: [k10#73L, dim10_payload#176]\nArguments: hashpartitioning(k10#73L, 200), ENSURE_REQUIREMENTS, [plan_id=3430]\n\n(86) Sort [codegen id : 25]\nInput [2]: [k10#73L, dim10_payload#176]\nArguments: [k10#73L ASC NULLS FIRST], false, 0\n\n(87) SortMergeJoin [codegen id : 27]\nLeft keys [1]: [k10#34L]\nRight keys [1]: [k10#73L]\nJoin type: Inner\nJoin condition: None\n\n(88) Project [codegen id : 27]\nOutput [32]: [k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176]\nInput [33]: [k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k10#34L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, k10#73L, dim10_payload#176]\n\n(89) Scan parquet \nOutput [3]: [k11#76L, filter_bucket#77, payload#78]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k11_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]\nPushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k11)]\nReadSchema: struct<k11:bigint,filter_bucket:int,payload:string>\n\n(90) ColumnarToRow [codegen id : 26]\nInput [3]: [k11#76L, filter_bucket#77, payload#78]\n\n(91) Filter [codegen id : 26]\nInput [3]: [k11#76L, filter_bucket#77, payload#78]\nCondition : ((isnotnull(filter_bucket#77) AND (filter_bucket#77 < 10)) AND isnotnull(k11#76L))\n\n(92) Project [codegen id : 26]\nOutput [2]: [k11#76L, payload#78 AS dim11_payload#177]\nInput [3]: [k11#76L, filter_bucket#77, payload#78]\n\n(93) BroadcastExchange\nInput [2]: [k11#76L, dim11_payload#177]\nArguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=3442]\n\n(94) BroadcastHashJoin [codegen id : 27]\nLeft keys [1]: [k11#35L]\nRight keys [1]: [k11#76L]\nJoin type: Inner\nJoin condition: None\n\n(95) Project [codegen id : 27]\nOutput [33]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177]\nInput [34]: [k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k11#35L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, k11#76L, dim11_payload#177]\n\n(96) Exchange\nInput [33]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177]\nArguments: hashpartitioning(k12#36L, 200), ENSURE_REQUIREMENTS, [plan_id=3447]\n\n(97) Sort [codegen id : 28]\nInput [33]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177]\nArguments: [k12#36L ASC NULLS FIRST], false, 0\n\n(98) Scan parquet \nOutput [2]: [k12#79L, payload#81]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k12_n1000000_match0.966_payload-20_seed-42/data]\nPushedFilters: [IsNotNull(k12)]\nReadSchema: struct<k12:bigint,payload:string>\n\n(99) ColumnarToRow [codegen id : 29]\nInput [2]: [k12#79L, payload#81]\n\n(100) Filter [codegen id : 29]\nInput [2]: [k12#79L, payload#81]\nCondition : isnotnull(k12#79L)\n\n(101) Project [codegen id : 29]\nOutput [2]: [k12#79L, payload#81 AS dim12_payload#178]\nInput [2]: [k12#79L, payload#81]\n\n(102) Exchange\nInput [2]: [k12#79L, dim12_payload#178]\nArguments: hashpartitioning(k12#79L, 200), ENSURE_REQUIREMENTS, [plan_id=3457]\n\n(103) Sort [codegen id : 30]\nInput [2]: [k12#79L, dim12_payload#178]\nArguments: [k12#79L ASC NULLS FIRST], false, 0\n\n(104) SortMergeJoin [codegen id : 32]\nLeft keys [1]: [k12#36L]\nRight keys [1]: [k12#79L]\nJoin type: Inner\nJoin condition: None\n\n(105) Project [codegen id : 32]\nOutput [34]: [k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178]\nInput [35]: [k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k12#36L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, k12#79L, dim12_payload#178]\n\n(106) Scan parquet \nOutput [3]: [k13#82L, filter_bucket#83, payload#84]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k13_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]\nPushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k13)]\nReadSchema: struct<k13:bigint,filter_bucket:int,payload:string>\n\n(107) ColumnarToRow [codegen id : 31]\nInput [3]: [k13#82L, filter_bucket#83, payload#84]\n\n(108) Filter [codegen id : 31]\nInput [3]: [k13#82L, filter_bucket#83, payload#84]\nCondition : ((isnotnull(filter_bucket#83) AND (filter_bucket#83 < 10)) AND isnotnull(k13#82L))\n\n(109) Project [codegen id : 31]\nOutput [2]: [k13#82L, payload#84 AS dim13_payload#179]\nInput [3]: [k13#82L, filter_bucket#83, payload#84]\n\n(110) BroadcastExchange\nInput [2]: [k13#82L, dim13_payload#179]\nArguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=3469]\n\n(111) BroadcastHashJoin [codegen id : 32]\nLeft keys [1]: [k13#37L]\nRight keys [1]: [k13#82L]\nJoin type: Inner\nJoin condition: None\n\n(112) Project [codegen id : 32]\nOutput [35]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179]\nInput [36]: [k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k13#37L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, k13#82L, dim13_payload#179]\n\n(113) Exchange\nInput [35]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179]\nArguments: hashpartitioning(k14#38L, 200), ENSURE_REQUIREMENTS, [plan_id=3474]\n\n(114) Sort [codegen id : 33]\nInput [35]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179]\nArguments: [k14#38L ASC NULLS FIRST], false, 0\n\n(115) Scan parquet \nOutput [2]: [k14#85L, payload#87]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k14_n1000000_match0.966_payload-20_seed-42/data]\nPushedFilters: [IsNotNull(k14)]\nReadSchema: struct<k14:bigint,payload:string>\n\n(116) ColumnarToRow [codegen id : 34]\nInput [2]: [k14#85L, payload#87]\n\n(117) Filter [codegen id : 34]\nInput [2]: [k14#85L, payload#87]\nCondition : isnotnull(k14#85L)\n\n(118) Project [codegen id : 34]\nOutput [2]: [k14#85L, payload#87 AS dim14_payload#180]\nInput [2]: [k14#85L, payload#87]\n\n(119) Exchange\nInput [2]: [k14#85L, dim14_payload#180]\nArguments: hashpartitioning(k14#85L, 200), ENSURE_REQUIREMENTS, [plan_id=3484]\n\n(120) Sort [codegen id : 35]\nInput [2]: [k14#85L, dim14_payload#180]\nArguments: [k14#85L ASC NULLS FIRST], false, 0\n\n(121) SortMergeJoin [codegen id : 37]\nLeft keys [1]: [k14#38L]\nRight keys [1]: [k14#85L]\nJoin type: Inner\nJoin condition: None\n\n(122) Project [codegen id : 37]\nOutput [36]: [k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180]\nInput [37]: [k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k14#38L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, k14#85L, dim14_payload#180]\n\n(123) Scan parquet \nOutput [3]: [k15#88L, filter_bucket#89, payload#90]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k15_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]\nPushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k15)]\nReadSchema: struct<k15:bigint,filter_bucket:int,payload:string>\n\n(124) ColumnarToRow [codegen id : 36]\nInput [3]: [k15#88L, filter_bucket#89, payload#90]\n\n(125) Filter [codegen id : 36]\nInput [3]: [k15#88L, filter_bucket#89, payload#90]\nCondition : ((isnotnull(filter_bucket#89) AND (filter_bucket#89 < 10)) AND isnotnull(k15#88L))\n\n(126) Project [codegen id : 36]\nOutput [2]: [k15#88L, payload#90 AS dim15_payload#181]\nInput [3]: [k15#88L, filter_bucket#89, payload#90]\n\n(127) BroadcastExchange\nInput [2]: [k15#88L, dim15_payload#181]\nArguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=3496]\n\n(128) BroadcastHashJoin [codegen id : 37]\nLeft keys [1]: [k15#39L]\nRight keys [1]: [k15#88L]\nJoin type: Inner\nJoin condition: None\n\n(129) Project [codegen id : 37]\nOutput [37]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181]\nInput [38]: [k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k15#39L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, k15#88L, dim15_payload#181]\n\n(130) Exchange\nInput [37]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181]\nArguments: hashpartitioning(k16#40L, 200), ENSURE_REQUIREMENTS, [plan_id=3501]\n\n(131) Sort [codegen id : 38]\nInput [37]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181]\nArguments: [k16#40L ASC NULLS FIRST], false, 0\n\n(132) Scan parquet \nOutput [2]: [k16#91L, payload#93]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k16_n1000000_match0.966_payload-20_seed-42/data]\nPushedFilters: [IsNotNull(k16)]\nReadSchema: struct<k16:bigint,payload:string>\n\n(133) ColumnarToRow [codegen id : 39]\nInput [2]: [k16#91L, payload#93]\n\n(134) Filter [codegen id : 39]\nInput [2]: [k16#91L, payload#93]\nCondition : isnotnull(k16#91L)\n\n(135) Project [codegen id : 39]\nOutput [2]: [k16#91L, payload#93 AS dim16_payload#182]\nInput [2]: [k16#91L, payload#93]\n\n(136) Exchange\nInput [2]: [k16#91L, dim16_payload#182]\nArguments: hashpartitioning(k16#91L, 200), ENSURE_REQUIREMENTS, [plan_id=3511]\n\n(137) Sort [codegen id : 40]\nInput [2]: [k16#91L, dim16_payload#182]\nArguments: [k16#91L ASC NULLS FIRST], false, 0\n\n(138) SortMergeJoin [codegen id : 42]\nLeft keys [1]: [k16#40L]\nRight keys [1]: [k16#91L]\nJoin type: Inner\nJoin condition: None\n\n(139) Project [codegen id : 42]\nOutput [38]: [k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182]\nInput [39]: [k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k16#40L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, k16#91L, dim16_payload#182]\n\n(140) Scan parquet \nOutput [3]: [k17#94L, filter_bucket#95, payload#96]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k17_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]\nPushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k17)]\nReadSchema: struct<k17:bigint,filter_bucket:int,payload:string>\n\n(141) ColumnarToRow [codegen id : 41]\nInput [3]: [k17#94L, filter_bucket#95, payload#96]\n\n(142) Filter [codegen id : 41]\nInput [3]: [k17#94L, filter_bucket#95, payload#96]\nCondition : ((isnotnull(filter_bucket#95) AND (filter_bucket#95 < 10)) AND isnotnull(k17#94L))\n\n(143) Project [codegen id : 41]\nOutput [2]: [k17#94L, payload#96 AS dim17_payload#183]\nInput [3]: [k17#94L, filter_bucket#95, payload#96]\n\n(144) BroadcastExchange\nInput [2]: [k17#94L, dim17_payload#183]\nArguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=3523]\n\n(145) BroadcastHashJoin [codegen id : 42]\nLeft keys [1]: [k17#41L]\nRight keys [1]: [k17#94L]\nJoin type: Inner\nJoin condition: None\n\n(146) Project [codegen id : 42]\nOutput [39]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, dim17_payload#183]\nInput [40]: [k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k17#41L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, k17#94L, dim17_payload#183]\n\n(147) Exchange\nInput [39]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, dim17_payload#183]\nArguments: hashpartitioning(k18#42L, 200), ENSURE_REQUIREMENTS, [plan_id=3528]\n\n(148) Sort [codegen id : 43]\nInput [39]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, dim17_payload#183]\nArguments: [k18#42L ASC NULLS FIRST], false, 0\n\n(149) Scan parquet \nOutput [2]: [k18#97L, payload#99]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k18_n1000000_match0.966_payload-20_seed-42/data]\nPushedFilters: [IsNotNull(k18)]\nReadSchema: struct<k18:bigint,payload:string>\n\n(150) ColumnarToRow [codegen id : 44]\nInput [2]: [k18#97L, payload#99]\n\n(151) Filter [codegen id : 44]\nInput [2]: [k18#97L, payload#99]\nCondition : isnotnull(k18#97L)\n\n(152) Project [codegen id : 44]\nOutput [2]: [k18#97L, payload#99 AS dim18_payload#184]\nInput [2]: [k18#97L, payload#99]\n\n(153) Exchange\nInput [2]: [k18#97L, dim18_payload#184]\nArguments: hashpartitioning(k18#97L, 200), ENSURE_REQUIREMENTS, [plan_id=3538]\n\n(154) Sort [codegen id : 45]\nInput [2]: [k18#97L, dim18_payload#184]\nArguments: [k18#97L ASC NULLS FIRST], false, 0\n\n(155) SortMergeJoin [codegen id : 47]\nLeft keys [1]: [k18#42L]\nRight keys [1]: [k18#97L]\nJoin type: Inner\nJoin condition: None\n\n(156) Project [codegen id : 47]\nOutput [40]: [k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, dim17_payload#183, dim18_payload#184]\nInput [41]: [k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k18#42L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, dim17_payload#183, k18#97L, dim18_payload#184]\n\n(157) Scan parquet \nOutput [3]: [k19#100L, filter_bucket#101, payload#102]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k19_n1000000_match0.966_payload-20_seed-42_filter-prefix/data]\nPushedFilters: [IsNotNull(filter_bucket), LessThan(filter_bucket,10), IsNotNull(k19)]\nReadSchema: struct<k19:bigint,filter_bucket:int,payload:string>\n\n(158) ColumnarToRow [codegen id : 46]\nInput [3]: [k19#100L, filter_bucket#101, payload#102]\n\n(159) Filter [codegen id : 46]\nInput [3]: [k19#100L, filter_bucket#101, payload#102]\nCondition : ((isnotnull(filter_bucket#101) AND (filter_bucket#101 < 10)) AND isnotnull(k19#100L))\n\n(160) Project [codegen id : 46]\nOutput [2]: [k19#100L, payload#102 AS dim19_payload#185]\nInput [3]: [k19#100L, filter_bucket#101, payload#102]\n\n(161) BroadcastExchange\nInput [2]: [k19#100L, dim19_payload#185]\nArguments: HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=3550]\n\n(162) BroadcastHashJoin [codegen id : 47]\nLeft keys [1]: [k19#43L]\nRight keys [1]: [k19#100L]\nJoin type: Inner\nJoin condition: None\n\n(163) Project [codegen id : 47]\nOutput [41]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, dim17_payload#183, dim18_payload#184, dim19_payload#185]\nInput [42]: [k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k19#43L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, dim17_payload#183, dim18_payload#184, k19#100L, dim19_payload#185]\n\n(164) Exchange\nInput [41]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, dim17_payload#183, dim18_payload#184, dim19_payload#185]\nArguments: hashpartitioning(k20#44L, 200), ENSURE_REQUIREMENTS, [plan_id=3555]\n\n(165) Sort [codegen id : 48]\nInput [41]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, dim17_payload#183, dim18_payload#184, dim19_payload#185]\nArguments: [k20#44L ASC NULLS FIRST], false, 0\n\n(166) Scan parquet \nOutput [2]: [k20#103L, payload#105]\nBatched: true\nLocation: InMemoryFileIndex [file:/opt/spark-data/datasets/dim_k20_n1000000_match0.966_payload-20_seed-42/data]\nPushedFilters: [IsNotNull(k20)]\nReadSchema: struct<k20:bigint,payload:string>\n\n(167) ColumnarToRow [codegen id : 49]\nInput [2]: [k20#103L, payload#105]\n\n(168) Filter [codegen id : 49]\nInput [2]: [k20#103L, payload#105]\nCondition : isnotnull(k20#103L)\n\n(169) Project [codegen id : 49]\nOutput [2]: [k20#103L, payload#105 AS dim20_payload#186]\nInput [2]: [k20#103L, payload#105]\n\n(170) Exchange\nInput [2]: [k20#103L, dim20_payload#186]\nArguments: hashpartitioning(k20#103L, 200), ENSURE_REQUIREMENTS, [plan_id=3565]\n\n(171) Sort [codegen id : 50]\nInput [2]: [k20#103L, dim20_payload#186]\nArguments: [k20#103L ASC NULLS FIRST], false, 0\n\n(172) SortMergeJoin [codegen id : 51]\nLeft keys [1]: [k20#44L]\nRight keys [1]: [k20#103L]\nJoin type: Inner\nJoin condition: None\n\n(173) Project [codegen id : 51]\nOutput [42]: [k20#44L, k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, dim17_payload#183, dim18_payload#184, dim19_payload#185, dim20_payload#186]\nInput [43]: [k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, k20#44L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, dim17_payload#183, dim18_payload#184, dim19_payload#185, k20#103L, dim20_payload#186]\n\n(174) OverwriteByExpression\nInput [42]: [k20#44L, k19#43L, k18#42L, k17#41L, k16#40L, k15#39L, k14#38L, k13#37L, k12#36L, k11#35L, k10#34L, k9#33L, k8#32L, k7#31L, k6#30L, k5#29L, k4#28L, k3#27L, k2#26L, k1#25L, id#24L, payload#45, dim1_payload#167, dim2_payload#168, dim3_payload#169, dim4_payload#170, dim5_payload#171, dim6_payload#172, dim7_payload#173, dim8_payload#174, dim9_payload#175, dim10_payload#176, dim11_payload#177, dim12_payload#178, dim13_payload#179, dim14_payload#180, dim15_payload#181, dim16_payload#182, dim17_payload#183, dim18_payload#184, dim19_payload#185, dim20_payload#186]\nArguments: NoopWrite\n\n",
+    "join_stage": {
+      "attempt_id": 0,
+      "duration_ms": {
+        "count": 200,
+        "max": 92,
+        "median": 30.0,
+        "min": 20,
+        "p95": 74
+      },
+      "gc_time_ms": {
+        "count": 200,
+        "max": 9,
+        "median": 0.0,
+        "min": 0,
+        "p95": 5
+      },
+      "join_stage_ambiguous": true,
+      "peak_execution_memory_bytes": {
+        "count": 200,
+        "max": 67895264,
+        "median": 67633120.0,
+        "min": 67633120,
+        "p95": 67633120
+      },
+      "shuffle_read_bytes": {
+        "count": 200,
+        "max": 5302783,
+        "median": 5008467.5,
+        "min": 4790185,
+        "p95": 5156323
+      },
+      "spill_disk_bytes": {
+        "count": 200,
+        "max": 0,
+        "median": 0.0,
+        "min": 0,
+        "p95": 0
+      },
+      "spill_memory_bytes": {
+        "count": 200,
+        "max": 0,
+        "median": 0.0,
+        "min": 0,
+        "p95": 0
+      },
+      "stage_duration_ms": 769.0,
+      "stage_id": 113,
+      "task_read_max_over_median": 1.058763583870715,
+      "tasks": 200,
+      "tasks_per_host": {
+        "spark-worker-1": 49,
+        "spark-worker-2": 75,
+        "spark-worker-3": 76
+      }
+    },
+    "join_strategies": {
+      "BroadcastHashJoin": 10,
+      "BroadcastNestedLoopJoin": 0,
+      "CartesianProduct": 0,
+      "ShuffledHashJoin": 0,
+      "SortMergeJoin": 10
+    },
+    "joins": [
+      {
+        "build_side": null,
+        "desc": "SortMergeJoin [k20#44L], [k20#103L], Inner",
+        "is_top_join": true,
+        "join_type": "Inner",
+        "left_keys": "k20",
+        "node_id": 3,
+        "output_rows": 1518924,
+        "right_keys": "k20",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 769.0,
+          "executor_run_time_ms": 5005,
+          "gc_time_ms": 81,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 1002528542,
+          "shuffle_write_bytes": 0,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 113,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 92,
+            "median": 30.0,
+            "min": 20,
+            "p95": 74
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 5302783,
+            "median": 5008467.5,
+            "min": 4790185,
+            "p95": 5156323
+          }
+        },
+        "stages": [
+          [
+            113,
+            0
+          ]
+        ],
+        "strategy": "SortMergeJoin"
+      },
+      {
+        "build_side": "right",
+        "desc": "BroadcastHashJoin [k19#43L], [k19#100L], Inner, BuildRight, false",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k19",
+        "node_id": 9,
+        "output_rows": 1572807,
+        "right_keys": "k19",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 2583.0,
+          "executor_run_time_ms": 21041,
+          "gc_time_ms": 325,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 999881691,
+          "shuffle_write_bytes": 975883917,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 111,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 906,
+            "median": 80.0,
+            "min": 51,
+            "p95": 363
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 5237772,
+            "median": 4987407.0,
+            "min": 4796900,
+            "p95": 5156447
+          }
+        },
+        "stages": [
+          [
+            111,
+            0
+          ]
+        ],
+        "strategy": "BroadcastHashJoin"
+      },
+      {
+        "build_side": null,
+        "desc": "SortMergeJoin [k18#42L], [k18#97L], Inner",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k18",
+        "node_id": 11,
+        "output_rows": 1628571,
+        "right_keys": "k18",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 2583.0,
+          "executor_run_time_ms": 21041,
+          "gc_time_ms": 325,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 999881691,
+          "shuffle_write_bytes": 975883917,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 111,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 906,
+            "median": 80.0,
+            "min": 51,
+            "p95": 363
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 5237772,
+            "median": 4987407.0,
+            "min": 4796900,
+            "p95": 5156447
+          }
+        },
+        "stages": [
+          [
+            111,
+            0
+          ]
+        ],
+        "strategy": "SortMergeJoin"
+      },
+      {
+        "build_side": "right",
+        "desc": "BroadcastHashJoin [k17#41L], [k17#94L], Inner, BuildRight, false",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k17",
+        "node_id": 17,
+        "output_rows": 1685871,
+        "right_keys": "k17",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1649.0,
+          "executor_run_time_ms": 12853,
+          "gc_time_ms": 276,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 988196332,
+          "shuffle_write_bytes": 973236431,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 109,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 321,
+            "median": 66.0,
+            "min": 47,
+            "p95": 93
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 5154110,
+            "median": 4939736.0,
+            "min": 4691077,
+            "p95": 5082521
+          }
+        },
+        "stages": [
+          [
+            109,
+            0
+          ]
+        ],
+        "strategy": "BroadcastHashJoin"
+      },
+      {
+        "build_side": null,
+        "desc": "SortMergeJoin [k16#40L], [k16#91L], Inner",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k16",
+        "node_id": 19,
+        "output_rows": 1739474,
+        "right_keys": "k16",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1649.0,
+          "executor_run_time_ms": 12853,
+          "gc_time_ms": 276,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 988196332,
+          "shuffle_write_bytes": 973236431,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 109,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 321,
+            "median": 66.0,
+            "min": 47,
+            "p95": 93
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 5154110,
+            "median": 4939736.0,
+            "min": 4691077,
+            "p95": 5082521
+          }
+        },
+        "stages": [
+          [
+            109,
+            0
+          ]
+        ],
+        "strategy": "SortMergeJoin"
+      },
+      {
+        "build_side": "right",
+        "desc": "BroadcastHashJoin [k15#39L], [k15#88L], Inner, BuildRight, false",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k15",
+        "node_id": 25,
+        "output_rows": 1800714,
+        "right_keys": "k15",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1558.0,
+          "executor_run_time_ms": 11965,
+          "gc_time_ms": 262,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 973670617,
+          "shuffle_write_bytes": 961553281,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 107,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 191,
+            "median": 63.0,
+            "min": 48,
+            "p95": 100
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 5089834,
+            "median": 4866519.5,
+            "min": 4641447,
+            "p95": 5008823
+          }
+        },
+        "stages": [
+          [
+            107,
+            0
+          ]
+        ],
+        "strategy": "BroadcastHashJoin"
+      },
+      {
+        "build_side": null,
+        "desc": "SortMergeJoin [k14#38L], [k14#85L], Inner",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k14",
+        "node_id": 27,
+        "output_rows": 1863651,
+        "right_keys": "k14",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1558.0,
+          "executor_run_time_ms": 11965,
+          "gc_time_ms": 262,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 973670617,
+          "shuffle_write_bytes": 961553281,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 107,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 191,
+            "median": 63.0,
+            "min": 48,
+            "p95": 100
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 5089834,
+            "median": 4866519.5,
+            "min": 4641447,
+            "p95": 5008823
+          }
+        },
+        "stages": [
+          [
+            107,
+            0
+          ]
+        ],
+        "strategy": "SortMergeJoin"
+      },
+      {
+        "build_side": "right",
+        "desc": "BroadcastHashJoin [k13#37L], [k13#82L], Inner, BuildRight, false",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k13",
+        "node_id": 33,
+        "output_rows": 1929335,
+        "right_keys": "k13",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 2809.0,
+          "executor_run_time_ms": 22545,
+          "gc_time_ms": 310,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 946696970,
+          "shuffle_write_bytes": 947027072,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 105,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 668,
+            "median": 93.0,
+            "min": 45,
+            "p95": 310
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 4967520,
+            "median": 4723290.0,
+            "min": 4551519,
+            "p95": 4875300
+          }
+        },
+        "stages": [
+          [
+            105,
+            0
+          ]
+        ],
+        "strategy": "BroadcastHashJoin"
+      },
+      {
+        "build_side": null,
+        "desc": "SortMergeJoin [k12#36L], [k12#79L], Inner",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k12",
+        "node_id": 35,
+        "output_rows": 1987157,
+        "right_keys": "k12",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 2809.0,
+          "executor_run_time_ms": 22545,
+          "gc_time_ms": 310,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 946696970,
+          "shuffle_write_bytes": 947027072,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 105,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 668,
+            "median": 93.0,
+            "min": 45,
+            "p95": 310
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 4967520,
+            "median": 4723290.0,
+            "min": 4551519,
+            "p95": 4875300
+          }
+        },
+        "stages": [
+          [
+            105,
+            0
+          ]
+        ],
+        "strategy": "SortMergeJoin"
+      },
+      {
+        "build_side": "right",
+        "desc": "BroadcastHashJoin [k11#35L], [k11#76L], Inner, BuildRight, false",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k11",
+        "node_id": 41,
+        "output_rows": 2056582,
+        "right_keys": "k11",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1458.0,
+          "executor_run_time_ms": 11144,
+          "gc_time_ms": 252,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 917733444,
+          "shuffle_write_bytes": 920053382,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 104,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 94,
+            "median": 61.0,
+            "min": 49,
+            "p95": 85
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 4849646,
+            "median": 4581383.0,
+            "min": 4390792,
+            "p95": 4732252
+          }
+        },
+        "stages": [
+          [
+            104,
+            0
+          ]
+        ],
+        "strategy": "BroadcastHashJoin"
+      },
+      {
+        "build_side": null,
+        "desc": "SortMergeJoin [k10#34L], [k10#73L], Inner",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k10",
+        "node_id": 43,
+        "output_rows": 2130654,
+        "right_keys": "k10",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1458.0,
+          "executor_run_time_ms": 11144,
+          "gc_time_ms": 252,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 917733444,
+          "shuffle_write_bytes": 920053382,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 104,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 94,
+            "median": 61.0,
+            "min": 49,
+            "p95": 85
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 4849646,
+            "median": 4581383.0,
+            "min": 4390792,
+            "p95": 4732252
+          }
+        },
+        "stages": [
+          [
+            104,
+            0
+          ]
+        ],
+        "strategy": "SortMergeJoin"
+      },
+      {
+        "build_side": "right",
+        "desc": "BroadcastHashJoin [k9#33L], [k9#70L], Inner, BuildRight, false",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k9",
+        "node_id": 49,
+        "output_rows": 2206320,
+        "right_keys": "k9",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1686.0,
+          "executor_run_time_ms": 12730,
+          "gc_time_ms": 280,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 877973978,
+          "shuffle_write_bytes": 891089713,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 102,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 142,
+            "median": 68.0,
+            "min": 48,
+            "p95": 100
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 4581971,
+            "median": 4389433.0,
+            "min": 4161263,
+            "p95": 4527939
+          }
+        },
+        "stages": [
+          [
+            102,
+            0
+          ]
+        ],
+        "strategy": "BroadcastHashJoin"
+      },
+      {
+        "build_side": null,
+        "desc": "SortMergeJoin [k8#32L], [k8#67L], Inner",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k8",
+        "node_id": 51,
+        "output_rows": 2279519,
+        "right_keys": "k8",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1686.0,
+          "executor_run_time_ms": 12730,
+          "gc_time_ms": 280,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 877973978,
+          "shuffle_write_bytes": 891089713,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 102,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 142,
+            "median": 68.0,
+            "min": 48,
+            "p95": 100
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 4581971,
+            "median": 4389433.0,
+            "min": 4161263,
+            "p95": 4527939
+          }
+        },
+        "stages": [
+          [
+            102,
+            0
+          ]
+        ],
+        "strategy": "SortMergeJoin"
+      },
+      {
+        "build_side": "right",
+        "desc": "BroadcastHashJoin [k7#31L], [k7#64L], Inner, BuildRight, false",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k7",
+        "node_id": 57,
+        "output_rows": 2360330,
+        "right_keys": "k7",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1911.0,
+          "executor_run_time_ms": 14950,
+          "gc_time_ms": 381,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 827313289,
+          "shuffle_write_bytes": 851328967,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 100,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 171,
+            "median": 79.5,
+            "min": 50,
+            "p95": 129
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 4374574,
+            "median": 4133243.5,
+            "min": 3968087,
+            "p95": 4241670
+          }
+        },
+        "stages": [
+          [
+            100,
+            0
+          ]
+        ],
+        "strategy": "BroadcastHashJoin"
+      },
+      {
+        "build_side": null,
+        "desc": "SortMergeJoin [k6#30L], [k6#61L], Inner",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k6",
+        "node_id": 59,
+        "output_rows": 2438670,
+        "right_keys": "k6",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1911.0,
+          "executor_run_time_ms": 14950,
+          "gc_time_ms": 381,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 827313289,
+          "shuffle_write_bytes": 851328967,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 100,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 171,
+            "median": 79.5,
+            "min": 50,
+            "p95": 129
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 4374574,
+            "median": 4133243.5,
+            "min": 3968087,
+            "p95": 4241670
+          }
+        },
+        "stages": [
+          [
+            100,
+            0
+          ]
+        ],
+        "strategy": "SortMergeJoin"
+      },
+      {
+        "build_side": "right",
+        "desc": "BroadcastHashJoin [k5#29L], [k5#58L], Inner, BuildRight, false",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k5",
+        "node_id": 65,
+        "output_rows": 2523292,
+        "right_keys": "k5",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1790.0,
+          "executor_run_time_ms": 13412,
+          "gc_time_ms": 390,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 765369949,
+          "shuffle_write_bytes": 800668746,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 98,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 149,
+            "median": 69.5,
+            "min": 46,
+            "p95": 116
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 3983464,
+            "median": 3828699.0,
+            "min": 3650705,
+            "p95": 3943430
+          }
+        },
+        "stages": [
+          [
+            98,
+            0
+          ]
+        ],
+        "strategy": "BroadcastHashJoin"
+      },
+      {
+        "build_side": null,
+        "desc": "SortMergeJoin [k4#28L], [k4#55L], Inner",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k4",
+        "node_id": 67,
+        "output_rows": 2605428,
+        "right_keys": "k4",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1790.0,
+          "executor_run_time_ms": 13412,
+          "gc_time_ms": 390,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 765369949,
+          "shuffle_write_bytes": 800668746,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 98,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 149,
+            "median": 69.5,
+            "min": 46,
+            "p95": 116
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 3983464,
+            "median": 3828699.0,
+            "min": 3650705,
+            "p95": 3943430
+          }
+        },
+        "stages": [
+          [
+            98,
+            0
+          ]
+        ],
+        "strategy": "SortMergeJoin"
+      },
+      {
+        "build_side": "right",
+        "desc": "BroadcastHashJoin [k3#27L], [k3#52L], Inner, BuildRight, false",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k3",
+        "node_id": 73,
+        "output_rows": 2697351,
+        "right_keys": "k3",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 2439.0,
+          "executor_run_time_ms": 19888,
+          "gc_time_ms": 300,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 682675782,
+          "shuffle_write_bytes": 738725775,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 95,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 837,
+            "median": 64.0,
+            "min": 40,
+            "p95": 163
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 3573438,
+            "median": 3412879.0,
+            "min": 3291300,
+            "p95": 3503661
+          }
+        },
+        "stages": [
+          [
+            95,
+            0
+          ]
+        ],
+        "strategy": "BroadcastHashJoin"
+      },
+      {
+        "build_side": null,
+        "desc": "SortMergeJoin [k2#26L], [k2#49L], Inner",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k2",
+        "node_id": 75,
+        "output_rows": 2799019,
+        "right_keys": "k2",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 2439.0,
+          "executor_run_time_ms": 19888,
+          "gc_time_ms": 300,
+          "input_bytes": 0,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 200,
+          "num_failed_tasks": 0,
+          "num_tasks": 200,
+          "shuffle_read_bytes": 682675782,
+          "shuffle_write_bytes": 738725775,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 95,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 200,
+            "max": 837,
+            "median": 64.0,
+            "min": 40,
+            "p95": 163
+          },
+          "task_shuffle_read_bytes": {
+            "count": 200,
+            "max": 3573438,
+            "median": 3412879.0,
+            "min": 3291300,
+            "p95": 3503661
+          }
+        },
+        "stages": [
+          [
+            95,
+            0
+          ]
+        ],
+        "strategy": "SortMergeJoin"
+      },
+      {
+        "build_side": "right",
+        "desc": "BroadcastHashJoin [k1#25L], [k1#46L], Inner, BuildRight, false",
+        "is_top_join": false,
+        "join_type": "Inner",
+        "left_keys": "k1",
+        "node_id": 81,
+        "output_rows": 2898003,
+        "right_keys": "k1",
+        "shuffle_readers": [],
+        "skew_join_flag": false,
+        "skew_splits": 0,
+        "skewed_partitions": 0,
+        "stage": {
+          "attempt_id": 0,
+          "duration_ms": 1565.0,
+          "executor_run_time_ms": 11481,
+          "gc_time_ms": 255,
+          "input_bytes": 381008,
+          "name": "save at NativeMethodAccessorImpl.java:0",
+          "num_complete_tasks": 9,
+          "num_failed_tasks": 0,
+          "num_tasks": 9,
+          "shuffle_read_bytes": 0,
+          "shuffle_write_bytes": 656031373,
+          "spill_disk_bytes": 0,
+          "spill_memory_bytes": 0,
+          "stage_id": 94,
+          "status": "COMPLETE",
+          "task_duration_ms": {
+            "count": 9,
+            "max": 1373,
+            "median": 1285,
+            "min": 1176,
+            "p95": 1373
+          },
+          "task_shuffle_read_bytes": {
+            "count": 9,
+            "max": 0,
+            "median": 0,
+            "min": 0,
+            "p95": 0
+          }
+        },
+        "stages": [
+          [
+            94,
+            0
+          ]
+        ],
+        "strategy": "BroadcastHashJoin"
+      }
+    ],
+    "num_stages": 31,
+    "output_rows": 1518924,
+    "shuffle_exchanges": 20,
+    "sql_duration_ms": 21662,
+    "sql_execution_id": 6,
+    "sql_status": "COMPLETED",
+    "stages": [
+      {
+        "attempt_id": 0,
+        "duration_ms": 223.0,
+        "executor_run_time_ms": 789,
+        "gc_time_ms": 0,
+        "input_bytes": 122538,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 83,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 278.0,
+        "executor_run_time_ms": 139,
+        "gc_time_ms": 0,
+        "input_bytes": 122206,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 84,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 244.0,
+        "executor_run_time_ms": 132,
+        "gc_time_ms": 0,
+        "input_bytes": 121836,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 85,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 217.0,
+        "executor_run_time_ms": 265,
+        "gc_time_ms": 0,
+        "input_bytes": 122710,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 86,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 204.0,
+        "executor_run_time_ms": 87,
+        "gc_time_ms": 0,
+        "input_bytes": 122528,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 87,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 219.0,
+        "executor_run_time_ms": 322,
+        "gc_time_ms": 0,
+        "input_bytes": 122004,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 88,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 243.0,
+        "executor_run_time_ms": 128,
+        "gc_time_ms": 0,
+        "input_bytes": 122242,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 89,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 288.0,
+        "executor_run_time_ms": 111,
+        "gc_time_ms": 0,
+        "input_bytes": 122214,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 90,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 319.0,
+        "executor_run_time_ms": 268,
+        "gc_time_ms": 0,
+        "input_bytes": 122302,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 91,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 383.0,
+        "executor_run_time_ms": 131,
+        "gc_time_ms": 0,
+        "input_bytes": 121666,
+        "name": "$anonfun$withThreadLocalCaptured$2 at CompletableFuture.java:1768",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 92,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 210.0,
+        "executor_run_time_ms": 906,
+        "gc_time_ms": 0,
+        "input_bytes": 78188,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 26644409,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 93,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 1565.0,
+        "executor_run_time_ms": 11481,
+        "gc_time_ms": 255,
+        "input_bytes": 381008,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 656031373,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 94,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 2439.0,
+        "executor_run_time_ms": 19888,
+        "gc_time_ms": 300,
+        "input_bytes": 0,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 200,
+        "num_failed_tasks": 0,
+        "num_tasks": 200,
+        "shuffle_read_bytes": 682675782,
+        "shuffle_write_bytes": 738725775,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 95,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 1603.0,
+        "executor_run_time_ms": 803,
+        "gc_time_ms": 39,
+        "input_bytes": 78196,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 26644174,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 96,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 4070.0,
+        "executor_run_time_ms": 681,
+        "gc_time_ms": 0,
+        "input_bytes": 77780,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 26644543,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 97,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 1790.0,
+        "executor_run_time_ms": 13412,
+        "gc_time_ms": 390,
+        "input_bytes": 0,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 200,
+        "num_failed_tasks": 0,
+        "num_tasks": 200,
+        "shuffle_read_bytes": 765369949,
+        "shuffle_write_bytes": 800668746,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 98,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 5825.0,
+        "executor_run_time_ms": 934,
+        "gc_time_ms": 14,
+        "input_bytes": 77840,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 26645011,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 99,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 1911.0,
+        "executor_run_time_ms": 14950,
+        "gc_time_ms": 381,
+        "input_bytes": 0,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 200,
+        "num_failed_tasks": 0,
+        "num_tasks": 200,
+        "shuffle_read_bytes": 827313289,
+        "shuffle_write_bytes": 851328967,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 100,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 7743.0,
+        "executor_run_time_ms": 584,
+        "gc_time_ms": 0,
+        "input_bytes": 78376,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 26643731,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 101,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 1686.0,
+        "executor_run_time_ms": 12730,
+        "gc_time_ms": 280,
+        "input_bytes": 0,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 200,
+        "num_failed_tasks": 0,
+        "num_tasks": 200,
+        "shuffle_read_bytes": 877973978,
+        "shuffle_write_bytes": 891089713,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 102,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 93.0,
+        "executor_run_time_ms": 659,
+        "gc_time_ms": 0,
+        "input_bytes": 77532,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 26643588,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 103,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 1458.0,
+        "executor_run_time_ms": 11144,
+        "gc_time_ms": 252,
+        "input_bytes": 0,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 200,
+        "num_failed_tasks": 0,
+        "num_tasks": 200,
+        "shuffle_read_bytes": 917733444,
+        "shuffle_write_bytes": 920053382,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 104,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 2809.0,
+        "executor_run_time_ms": 22545,
+        "gc_time_ms": 310,
+        "input_bytes": 0,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 200,
+        "num_failed_tasks": 0,
+        "num_tasks": 200,
+        "shuffle_read_bytes": 946696970,
+        "shuffle_write_bytes": 947027072,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 105,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 9420.0,
+        "executor_run_time_ms": 773,
+        "gc_time_ms": 0,
+        "input_bytes": 78368,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 26643545,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 106,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 1558.0,
+        "executor_run_time_ms": 11965,
+        "gc_time_ms": 262,
+        "input_bytes": 0,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 200,
+        "num_failed_tasks": 0,
+        "num_tasks": 200,
+        "shuffle_read_bytes": 973670617,
+        "shuffle_write_bytes": 961553281,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 107,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 10882.0,
+        "executor_run_time_ms": 626,
+        "gc_time_ms": 0,
+        "input_bytes": 77764,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 26643051,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 108,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 1649.0,
+        "executor_run_time_ms": 12853,
+        "gc_time_ms": 276,
+        "input_bytes": 0,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 200,
+        "num_failed_tasks": 0,
+        "num_tasks": 200,
+        "shuffle_read_bytes": 988196332,
+        "shuffle_write_bytes": 973236431,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 109,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 13704.0,
+        "executor_run_time_ms": 571,
+        "gc_time_ms": 0,
+        "input_bytes": 78476,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 26645260,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 110,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 2583.0,
+        "executor_run_time_ms": 21041,
+        "gc_time_ms": 325,
+        "input_bytes": 0,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 200,
+        "num_failed_tasks": 0,
+        "num_tasks": 200,
+        "shuffle_read_bytes": 999881691,
+        "shuffle_write_bytes": 975883917,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 111,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 15249.0,
+        "executor_run_time_ms": 567,
+        "gc_time_ms": 5,
+        "input_bytes": 77708,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 9,
+        "num_failed_tasks": 0,
+        "num_tasks": 9,
+        "shuffle_read_bytes": 0,
+        "shuffle_write_bytes": 26644625,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 112,
+        "status": "COMPLETE"
+      },
+      {
+        "attempt_id": 0,
+        "duration_ms": 769.0,
+        "executor_run_time_ms": 5005,
+        "gc_time_ms": 81,
+        "input_bytes": 0,
+        "name": "save at NativeMethodAccessorImpl.java:0",
+        "num_complete_tasks": 200,
+        "num_failed_tasks": 0,
+        "num_tasks": 200,
+        "shuffle_read_bytes": 1002528542,
+        "shuffle_write_bytes": 0,
+        "spill_disk_bytes": 0,
+        "spill_memory_bytes": 0,
+        "stage_id": 113,
+        "status": "COMPLETE"
+      }
+    ],
+    "totals": {
+      "executor_run_time_ms": 166490,
+      "gc_time_ms": 3170,
+      "num_tasks": 2189,
+      "shuffle_read_bytes": 8982040594,
+      "shuffle_write_bytes": 8982040594,
+      "skipped_stages": 0,
+      "spill_disk_bytes": 0,
+      "spill_memory_bytes": 0
+    }
+  },
+  "mode": "aqe_off_hints",
+  "params": {
+    "accurate_skew_factor": -1.0,
+    "codec": "lz4",
+    "dataset": "",
+    "dim_payload_bytes": 20,
+    "executor_memory": "",
+    "facts_sample": 0.0,
+    "filter_aligned": 1,
+    "filter_buckets_kept": 10,
+    "hot_keys": 1,
+    "hot_share": 0.0,
+    "join": "inner",
+    "key": "",
+    "match_rate": 0.966,
+    "min_highly_compress": 0,
+    "n_dims": 20,
+    "n_keys": 1000000,
+    "null_key": 1,
+    "null_share": 0.0,
+    "num_files": 0,
+    "operator": "",
+    "payload_bytes": 100,
+    "payload_kind": "hex",
+    "payload_random_fraction": 1.0,
+    "query": "",
+    "rows": 3000000,
+    "rule2_factor": 1.0,
+    "rule2_ratio": 0.0,
+    "seed": 42,
+    "shuffle_partitions": 200,
+    "variant": ""
+  },
+  "recorded_at": "2026-10-13T13:07:47",
+  "run_index": 2,
+  "run_label": "inner_n20_null0_rows3000000_payload100_aligned_match0.966|aqe_off_hints|run-2",
+  "scenario_id": "inner_n20_null0_rows3000000_payload100_aligned_match0.966"
+}

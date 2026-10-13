@@ -38,6 +38,8 @@ MODES = {
     "aqe_on_rule2": {"spark.sql.adaptive.enabled": "true"},
     "aqe_on_rules12": {"spark.sql.adaptive.enabled": "true"},
     "aqe_on_hints": {"spark.sql.adaptive.enabled": "true"},
+    # Batch 7: the same broadcast hints as aqe_on_hints, with AQE off
+    "aqe_off_hints": {"spark.sql.adaptive.enabled": "false"},
     # Batch 5
     "aqe_on_fixed8": {
         "spark.sql.adaptive.enabled": "true",
@@ -241,7 +243,7 @@ def pipeline(experiment, p):
             if is_filtered_dim(i):
                 d = d.where(F.col("filter_bucket") < p["filter_buckets_kept"])
             d = d.select(F.col(k), F.col("payload").alias("dim{}_payload".format(i)))
-            if mode == "aqe_on_hints" and is_filtered_dim(i):
+            if mode in ("aqe_on_hints", "aqe_off_hints") and is_filtered_dim(i):
                 d = F.broadcast(d)
             df = df.join(d, on=k, how=p["join"])
         return df
